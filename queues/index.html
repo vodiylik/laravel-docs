@@ -18,7 +18,7 @@
     
     
       
-        <title>Queues - Laravel Docs (uz)</title>
+        <title>Queue - Laravel Docs (uz)</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Queues
+              Queue
             
           </span>
         </div>
@@ -597,12 +597,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       <label class="md-nav__link" for="__nav_5">
         Kengaytirilgan bo'limlar
@@ -786,11 +788,743 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../queue.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Queue
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Queue
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connections-vs-queues" class="md-nav__link">
+    Connections Vs. Queues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driver-notes-prerequisites" class="md-nav__link">
+    Driver Notes &amp; Prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Driver Notes &amp; Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    Database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    Redis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-driver-prerequisites" class="md-nav__link">
+    Other Driver Prerequisites
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-jobs" class="md-nav__link">
+    Creating Jobs
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-job-classes" class="md-nav__link">
+    Generating Job Classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-structure" class="md-nav__link">
+    Class Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Class Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handle-method-dependency-injection" class="md-nav__link">
+    handle Method Dependency Injection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-relationships" class="md-nav__link">
+    Handling Relationships
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique-jobs" class="md-nav__link">
+    Unique Jobs
+  </a>
+  
+    <nav class="md-nav" aria-label="Unique Jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keeping-jobs-unique-until-processing-begins" class="md-nav__link">
+    Keeping Jobs Unique Until Processing Begins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique-job-locks" class="md-nav__link">
+    Unique Job Locks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-middleware" class="md-nav__link">
+    Job Middleware
+  </a>
+  
+    <nav class="md-nav" aria-label="Job Middleware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    Rate Limiting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preventing-job-overlaps" class="md-nav__link">
+    Preventing Job Overlaps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throttling-exceptions" class="md-nav__link">
+    Throttling Exceptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dispatching-jobs" class="md-nav__link">
+    Dispatching Jobs
+  </a>
+  
+    <nav class="md-nav" aria-label="Dispatching Jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delayed-dispatching" class="md-nav__link">
+    Delayed Dispatching
+  </a>
+  
+    <nav class="md-nav" aria-label="Delayed Dispatching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispatching-after-the-response-is-sent-to-browser" class="md-nav__link">
+    Dispatching After The Response Is Sent To Browser
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronous-dispatching" class="md-nav__link">
+    Synchronous Dispatching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobs-database-transactions" class="md-nav__link">
+    Jobs &amp; Database Transactions
+  </a>
+  
+    <nav class="md-nav" aria-label="Jobs &amp; Database Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-commit-dispatch-behavior-inline" class="md-nav__link">
+    Specifying Commit Dispatch Behavior Inline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-chaining" class="md-nav__link">
+    Job Chaining
+  </a>
+  
+    <nav class="md-nav" aria-label="Job Chaining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chain-connection-queue" class="md-nav__link">
+    Chain Connection &amp; Queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chain-failures" class="md-nav__link">
+    Chain Failures
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-queue-connection" class="md-nav__link">
+    Customizing The Queue &amp; Connection
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing The Queue &amp; Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispatching-to-a-particular-queue" class="md-nav__link">
+    Dispatching To A Particular Queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatching-to-a-particular-connection" class="md-nav__link">
+    Dispatching To A Particular Connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-max-job-attempts-timeout-values" class="md-nav__link">
+    Specifying Max Job Attempts / Timeout Values
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying Max Job Attempts / Timeout Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#max-attempts" class="md-nav__link">
+    Max Attempts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-based-attempts" class="md-nav__link">
+    Time Based Attempts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max-exceptions" class="md-nav__link">
+    Max Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    Timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failing-on-timeout" class="md-nav__link">
+    Failing On Timeout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    Error Handling
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manually-releasing-a-job" class="md-nav__link">
+    Manually Releasing A Job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-failing-a-job" class="md-nav__link">
+    Manually Failing A Job
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-batching" class="md-nav__link">
+    Job Batching
+  </a>
+  
+    <nav class="md-nav" aria-label="Job Batching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-batchable-jobs" class="md-nav__link">
+    Defining Batchable Jobs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatching-batches" class="md-nav__link">
+    Dispatching Batches
+  </a>
+  
+    <nav class="md-nav" aria-label="Dispatching Batches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#naming-batches" class="md-nav__link">
+    Naming Batches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-connection-queue" class="md-nav__link">
+    Batch Connection &amp; Queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chains-within-batches" class="md-nav__link">
+    Chains Within Batches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-jobs-to-batches" class="md-nav__link">
+    Adding Jobs To Batches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspecting-batches" class="md-nav__link">
+    Inspecting Batches
+  </a>
+  
+    <nav class="md-nav" aria-label="Inspecting Batches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#returning-batches-from-routes" class="md-nav__link">
+    Returning Batches From Routes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancelling-batches" class="md-nav__link">
+    Cancelling Batches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-failures" class="md-nav__link">
+    Batch Failures
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch Failures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allowing-failures" class="md-nav__link">
+    Allowing Failures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrying-failed-batch-jobs" class="md-nav__link">
+    Retrying Failed Batch Jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pruning-batches" class="md-nav__link">
+    Pruning Batches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queueing-closures" class="md-nav__link">
+    Queueing Closures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-queue-worker" class="md-nav__link">
+    Running The Queue Worker
+  </a>
+  
+    <nav class="md-nav" aria-label="Running The Queue Worker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-queuework-command" class="md-nav__link">
+    The queue:work Command
+  </a>
+  
+    <nav class="md-nav" aria-label="The queue:work Command">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-multiple-queue-workers" class="md-nav__link">
+    Running Multiple Queue Workers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-the-connection-queue" class="md-nav__link">
+    Specifying The Connection &amp; Queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-a-specified-number-of-jobs" class="md-nav__link">
+    Processing A Specified Number Of Jobs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-all-queued-jobs-then-exiting" class="md-nav__link">
+    Processing All Queued Jobs &amp; Then Exiting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-jobs-for-a-given-number-of-seconds" class="md-nav__link">
+    Processing Jobs For A Given Number Of Seconds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-sleep-duration" class="md-nav__link">
+    Worker Sleep Duration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-considerations" class="md-nav__link">
+    Resource Considerations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-priorities" class="md-nav__link">
+    Queue Priorities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-workers-deployment" class="md-nav__link">
+    Queue Workers &amp; Deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-expirations-timeouts" class="md-nav__link">
+    Job Expirations &amp; Timeouts
+  </a>
+  
+    <nav class="md-nav" aria-label="Job Expirations &amp; Timeouts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-expiration" class="md-nav__link">
+    Job Expiration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-timeouts" class="md-nav__link">
+    Worker Timeouts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supervisor-configuration" class="md-nav__link">
+    Supervisor Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Supervisor Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-supervisor" class="md-nav__link">
+    Installing Supervisor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-supervisor" class="md-nav__link">
+    Configuring Supervisor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-supervisor" class="md-nav__link">
+    Starting Supervisor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dealing-with-failed-jobs" class="md-nav__link">
+    Dealing With Failed Jobs
+  </a>
+  
+    <nav class="md-nav" aria-label="Dealing With Failed Jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cleaning-up-after-failed-jobs" class="md-nav__link">
+    Cleaning Up After Failed Jobs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrying-failed-jobs" class="md-nav__link">
+    Retrying Failed Jobs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-missing-models" class="md-nav__link">
+    Ignoring Missing Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-failed-jobs-in-dynamodb" class="md-nav__link">
+    Storing Failed Jobs In DynamoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pruning-failed-jobs" class="md-nav__link">
+    Pruning Failed Jobs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failed-job-events" class="md-nav__link">
+    Failed Job Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clearing-jobs-from-queues" class="md-nav__link">
+    Clearing Jobs From Queues
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job-events" class="md-nav__link">
+    Job Events
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3882,6 +4616,41 @@ Queue::looping(function () {
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../packages/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Package ishlab chiqish" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Package ishlab chiqish
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../scheduling/" class="md-footer__link md-footer__link--next" aria-label="Next: Tasklarni rejalashtirish" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Tasklarni rejalashtirish
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
