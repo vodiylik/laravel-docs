@@ -6,9 +6,9 @@ theme:
   name: material
 nav:
   - Ma'lumot:
-      - Reliz haqida: index.md
-      - Yangilash: index.md
-      - Hissa qo'shish: index.md
+      - Reliz haqida: releases.md
+      - Yangilash: upgrade.md
+      - Hissa qo'shish: contributions.md
   - Boshlash:
       - O'rnatish: installation.md
       - Sozlash: configuration.md
@@ -39,7 +39,7 @@ nav:
       - Broadcasting: broadcasting.md
       - Kesh: cache.md
       - Kolleksiyalar: collections.md
-      - Assetlarni kompilyatsiyalash: assets.md
+      - Assetlarni kompilyatsiyalash: mix.md
       - Kontraktlar: contracts.md
       - Eventlar: events.md
       - File Storage: filesystem.md
@@ -50,7 +50,7 @@ nav:
       - Notification: notifications.md
       - Package ishlab chiqish: packages.md
       - Queue: queue.md
-      - Tasklarni rejalashtirish: schedulering.md
+      - Tasklarni rejalashtirish: scheduling.md
   - Havfsizlik:
       - Autentifikatsiya: authentication.md
       - Autorizatiya: authorization.md
@@ -67,10 +67,10 @@ nav:
       - Redis: redis.md
   - Eloquent ORM:
       - Boshlash: eloquent.md
-      - O'zaro bog'lanishlar: relationships.md
-      - Kolleksiyalar: collections.md
+      - O'zaro bog'lanishlar: eloquent-relationships.md
+      - Kolleksiyalar: eloquent-collections.md
       - Mutators / Casts: eloquent-mutators.md
-      - API Resurslar: eloquent-apis.md
+      - API Resurslar: eloquent-resources.md
       - Serializatsiya: eloquent-serialization.md
   - Testing:
       - Boshlash: testing.md
