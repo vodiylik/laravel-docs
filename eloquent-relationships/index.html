@@ -18,7 +18,7 @@
     
     
       
-        <title>Eloquent: Relationships - Laravel Docs (uz)</title>
+        <title>O'zaro bog'lanishlar - Laravel Docs (uz)</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Eloquent: Relationships
+              O'zaro bog'lanishlar
             
           </span>
         </div>
@@ -200,7 +200,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../releases/" class="md-nav__link">
         Reliz haqida
       </a>
     </li>
@@ -212,7 +212,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../upgrade/" class="md-nav__link">
         Yangilash
       </a>
     </li>
@@ -224,7 +224,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../contributions/" class="md-nav__link">
         Hissa qo'shish
       </a>
     </li>
@@ -668,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../assets.md" class="md-nav__link">
+      <a href="../mix/" class="md-nav__link">
         Assetlarni kompilyatsiyalash
       </a>
     </li>
@@ -800,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../schedulering.md" class="md-nav__link">
+      <a href="../scheduling/" class="md-nav__link">
         Tasklarni rejalashtirish
       </a>
     </li>
@@ -1023,12 +1023,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       <label class="md-nav__link" for="__nav_8">
         Eloquent ORM
@@ -1056,11 +1058,720 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../relationships.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          O'zaro bog'lanishlar
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         O'zaro bog'lanishlar
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-relationships" class="md-nav__link">
+    Defining Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-to-one" class="md-nav__link">
+    One To One
+  </a>
+  
+    <nav class="md-nav" aria-label="One To One">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-inverse-of-the-relationship" class="md-nav__link">
+    Defining The Inverse Of The Relationship
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-to-many" class="md-nav__link">
+    One To Many
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-to-many-inverse-belongs-to" class="md-nav__link">
+    One To Many (Inverse) / Belongs To
+  </a>
+  
+    <nav class="md-nav" aria-label="One To Many (Inverse) / Belongs To">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-models" class="md-nav__link">
+    Default Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#has-one-of-many" class="md-nav__link">
+    Has One Of Many
+  </a>
+  
+    <nav class="md-nav" aria-label="Has One Of Many">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#advanced-has-one-of-many-relationships" class="md-nav__link">
+    Advanced Has One Of Many Relationships
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#has-one-through" class="md-nav__link">
+    Has One Through
+  </a>
+  
+    <nav class="md-nav" aria-label="Has One Through">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-conventions" class="md-nav__link">
+    Key Conventions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#has-many-through" class="md-nav__link">
+    Has Many Through
+  </a>
+  
+    <nav class="md-nav" aria-label="Has Many Through">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-conventions_1" class="md-nav__link">
+    Key Conventions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#many-to-many-relationships" class="md-nav__link">
+    Many To Many Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label="Many To Many Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-structure" class="md-nav__link">
+    Table Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-structure" class="md-nav__link">
+    Model Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-inverse-of-the-relationship_1" class="md-nav__link">
+    Defining The Inverse Of The Relationship
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-intermediate-table-columns" class="md-nav__link">
+    Retrieving Intermediate Table Columns
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieving Intermediate Table Columns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-pivot-attribute-name" class="md-nav__link">
+    Customizing The pivot Attribute Name
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-queries-via-intermediate-table-columns" class="md-nav__link">
+    Filtering Queries Via Intermediate Table Columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-custom-intermediate-table-models" class="md-nav__link">
+    Defining Custom Intermediate Table Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Custom Intermediate Table Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-pivot-models-and-incrementing-ids" class="md-nav__link">
+    Custom Pivot Models And Incrementing IDs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polymorphic-relationships" class="md-nav__link">
+    Polymorphic Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label="Polymorphic Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-to-one-polymorphic" class="md-nav__link">
+    One To One (Polymorphic)
+  </a>
+  
+    <nav class="md-nav" aria-label="One To One (Polymorphic)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-structure_1" class="md-nav__link">
+    Table Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-structure_1" class="md-nav__link">
+    Model Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-the-relationship" class="md-nav__link">
+    Retrieving The Relationship
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-conventions_2" class="md-nav__link">
+    Key Conventions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-to-many-polymorphic" class="md-nav__link">
+    One To Many (Polymorphic)
+  </a>
+  
+    <nav class="md-nav" aria-label="One To Many (Polymorphic)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-structure_2" class="md-nav__link">
+    Table Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-structure_2" class="md-nav__link">
+    Model Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-the-relationship_1" class="md-nav__link">
+    Retrieving The Relationship
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-of-many-polymorphic" class="md-nav__link">
+    One Of Many (Polymorphic)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#many-to-many-polymorphic" class="md-nav__link">
+    Many To Many (Polymorphic)
+  </a>
+  
+    <nav class="md-nav" aria-label="Many To Many (Polymorphic)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-structure_3" class="md-nav__link">
+    Table Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-structure_3" class="md-nav__link">
+    Model Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-inverse-of-the-relationship_2" class="md-nav__link">
+    Defining The Inverse Of The Relationship
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-the-relationship_2" class="md-nav__link">
+    Retrieving The Relationship
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-polymorphic-types" class="md-nav__link">
+    Custom Polymorphic Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-relationships" class="md-nav__link">
+    Dynamic Relationships
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#querying-relations" class="md-nav__link">
+    Querying Relations
+  </a>
+  
+    <nav class="md-nav" aria-label="Querying Relations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chaining-orwhere-clauses-after-relationships" class="md-nav__link">
+    Chaining orWhere Clauses After Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationship-methods-vs-dynamic-properties" class="md-nav__link">
+    Relationship Methods Vs. Dynamic Properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-relationship-existence" class="md-nav__link">
+    Querying Relationship Existence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-relationship-absence" class="md-nav__link">
+    Querying Relationship Absence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-morph-to-relationships" class="md-nav__link">
+    Querying Morph To Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label="Querying Morph To Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#querying-all-related-models" class="md-nav__link">
+    Querying All Related Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aggregating-related-models" class="md-nav__link">
+    Aggregating Related Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Aggregating Related Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#counting-related-models" class="md-nav__link">
+    Counting Related Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Counting Related Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deferred-count-loading" class="md-nav__link">
+    Deferred Count Loading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationship-counting-custom-select-statements" class="md-nav__link">
+    Relationship Counting &amp; Custom Select Statements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-aggregate-functions" class="md-nav__link">
+    Other Aggregate Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counting-related-models-on-morph-to-relationships" class="md-nav__link">
+    Counting Related Models On Morph To Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label="Counting Related Models On Morph To Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deferred-count-loading_1" class="md-nav__link">
+    Deferred Count Loading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eager-loading" class="md-nav__link">
+    Eager Loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Eager Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading-multiple-relationships" class="md-nav__link">
+    Eager Loading Multiple Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-eager-loading" class="md-nav__link">
+    Nested Eager Loading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-eager-loading-morphto-relationships" class="md-nav__link">
+    Nested Eager Loading morphTo Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading-specific-columns" class="md-nav__link">
+    Eager Loading Specific Columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading-by-default" class="md-nav__link">
+    Eager Loading By Default
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constraining-eager-loads" class="md-nav__link">
+    Constraining Eager Loads
+  </a>
+  
+    <nav class="md-nav" aria-label="Constraining Eager Loads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constraining-eager-loading-of-morphto-relationships" class="md-nav__link">
+    Constraining Eager Loading Of morphTo Relationships
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-eager-loading" class="md-nav__link">
+    Lazy Eager Loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Lazy Eager Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nested-lazy-eager-loading-morphto" class="md-nav__link">
+    Nested Lazy Eager Loading &amp; morphTo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preventing-lazy-loading" class="md-nav__link">
+    Preventing Lazy Loading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inserting-updating-related-models" class="md-nav__link">
+    Inserting &amp; Updating Related Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Inserting &amp; Updating Related Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-save-method" class="md-nav__link">
+    The save Method
+  </a>
+  
+    <nav class="md-nav" aria-label="The save Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recursively-saving-models-relationships" class="md-nav__link">
+    Recursively Saving Models &amp; Relationships
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-create-method" class="md-nav__link">
+    The create Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#belongs-to-relationships" class="md-nav__link">
+    Belongs To Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#many-to-many-relationships_1" class="md-nav__link">
+    Many To Many Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label="Many To Many Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attaching-detaching" class="md-nav__link">
+    Attaching / Detaching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syncing-associations" class="md-nav__link">
+    Syncing Associations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toggling-associations" class="md-nav__link">
+    Toggling Associations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-record-on-the-intermediate-table" class="md-nav__link">
+    Updating A Record On The Intermediate Table
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#touching-parent-timestamps" class="md-nav__link">
+    Touching Parent Timestamps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1070,7 +1781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../collections/" class="md-nav__link">
+      <a href="../eloquent-collections/" class="md-nav__link">
         Kolleksiyalar
       </a>
     </li>
@@ -1094,7 +1805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eloquent-apis.md" class="md-nav__link">
+      <a href="../eloquent-resources/" class="md-nav__link">
         API Resurslar
       </a>
     </li>
@@ -3842,6 +4553,41 @@ class Comment extends Model
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../eloquent/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Boshlash" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Boshlash
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../eloquent-collections/" class="md-footer__link md-footer__link--next" aria-label="Next: Kolleksiyalar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Kolleksiyalar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -18,7 +18,7 @@
     
     
       
-        <title>Eloquent: Collections - Laravel Docs (uz)</title>
+        <title>Kolleksiyalar - Laravel Docs (uz)</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Eloquent: Collections
+              Kolleksiyalar
             
           </span>
         </div>
@@ -200,7 +200,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../releases/" class="md-nav__link">
         Reliz haqida
       </a>
     </li>
@@ -212,7 +212,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../upgrade/" class="md-nav__link">
         Yangilash
       </a>
     </li>
@@ -224,7 +224,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../contributions/" class="md-nav__link">
         Hissa qo'shish
       </a>
     </li>
@@ -668,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../assets.md" class="md-nav__link">
+      <a href="../mix/" class="md-nav__link">
         Assetlarni kompilyatsiyalash
       </a>
     </li>
@@ -800,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../schedulering.md" class="md-nav__link">
+      <a href="../scheduling/" class="md-nav__link">
         Tasklarni rejalashtirish
       </a>
     </li>
@@ -1023,12 +1023,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       <label class="md-nav__link" for="__nav_8">
         Eloquent ORM
@@ -1058,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../relationships.md" class="md-nav__link">
+      <a href="../eloquent-relationships/" class="md-nav__link">
         O'zaro bog'lanishlar
       </a>
     </li>
@@ -1068,11 +1070,182 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../collections/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Kolleksiyalar
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Kolleksiyalar
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eloquent-collection-conversion" class="md-nav__link">
+    Eloquent Collection Conversion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-methods" class="md-nav__link">
+    Available Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#containskey-operator-null-value-null" class="md-nav__link">
+    contains($key, $operator = null, $value = null)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diffitems" class="md-nav__link">
+    diff($items)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptkeys" class="md-nav__link">
+    except($keys)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#findkey-collection-method-first-collection-method" class="md-nav__link">
+    find($key) {#collection-method .first-collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#freshwith" class="md-nav__link">
+    fresh($with = [])
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intersectitems" class="md-nav__link">
+    intersect($items)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadrelations" class="md-nav__link">
+    load($relations)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadmissingrelations" class="md-nav__link">
+    loadMissing($relations)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelkeys" class="md-nav__link">
+    modelKeys()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#makevisibleattributes" class="md-nav__link">
+    makeVisible($attributes)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#makehiddenattributes" class="md-nav__link">
+    makeHidden($attributes)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onlykeys" class="md-nav__link">
+    only($keys)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toquery" class="md-nav__link">
+    toQuery()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniquekey-null-strict-false" class="md-nav__link">
+    unique($key = null, $strict = false)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-collections" class="md-nav__link">
+    Custom Collections
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1094,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eloquent-apis.md" class="md-nav__link">
+      <a href="../eloquent-resources/" class="md-nav__link">
         API Resurslar
       </a>
     </li>
@@ -1840,6 +2013,41 @@ class User extends Model
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../eloquent-relationships/" class="md-footer__link md-footer__link--prev" aria-label="Previous: O&#39;zaro bog&#39;lanishlar" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              O'zaro bog'lanishlar
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../eloquent-mutators/" class="md-footer__link md-footer__link--next" aria-label="Next: Mutators / Casts" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Mutators / Casts
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

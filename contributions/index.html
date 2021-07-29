@@ -18,7 +18,7 @@
     
     
       
-        <title>Contribution Guide - Laravel Docs (uz)</title>
+        <title>Hissa qo'shish - Laravel Docs (uz)</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contribution Guide
+              Hissa qo'shish
             
           </span>
         </div>
@@ -177,12 +177,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
       
       <label class="md-nav__link" for="__nav_1">
         Ma'lumot
@@ -200,7 +202,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../releases/" class="md-nav__link">
         Reliz haqida
       </a>
     </li>
@@ -212,7 +214,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../upgrade/" class="md-nav__link">
         Yangilash
       </a>
     </li>
@@ -222,11 +224,120 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Hissa qo'shish
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Hissa qo'shish
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bug-reports" class="md-nav__link">
+    Bug Reports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-questions" class="md-nav__link">
+    Support Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-development-discussion" class="md-nav__link">
+    Core Development Discussion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-branch" class="md-nav__link">
+    Which Branch?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiled-assets" class="md-nav__link">
+    Compiled Assets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-vulnerabilities" class="md-nav__link">
+    Security Vulnerabilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-style" class="md-nav__link">
+    Coding Style
+  </a>
+  
+    <nav class="md-nav" aria-label="Coding Style">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phpdoc" class="md-nav__link">
+    PHPDoc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#styleci" class="md-nav__link">
+    StyleCI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-of-conduct" class="md-nav__link">
+    Code of Conduct
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -668,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../assets.md" class="md-nav__link">
+      <a href="../mix/" class="md-nav__link">
         Assetlarni kompilyatsiyalash
       </a>
     </li>
@@ -800,7 +911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../schedulering.md" class="md-nav__link">
+      <a href="../scheduling/" class="md-nav__link">
         Tasklarni rejalashtirish
       </a>
     </li>
@@ -1058,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../relationships.md" class="md-nav__link">
+      <a href="../eloquent-relationships/" class="md-nav__link">
         O'zaro bog'lanishlar
       </a>
     </li>
@@ -1070,7 +1181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../collections/" class="md-nav__link">
+      <a href="../eloquent-collections/" class="md-nav__link">
         Kolleksiyalar
       </a>
     </li>
@@ -1094,7 +1205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eloquent-apis.md" class="md-nav__link">
+      <a href="../eloquent-resources/" class="md-nav__link">
         API Resurslar
       </a>
     </li>
@@ -1705,6 +1816,41 @@ public function bind($abstract, $concrete = null, $shared = false)
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../upgrade/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Yangilash" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Yangilash
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../installation/" class="md-footer__link md-footer__link--next" aria-label="Next: O&#39;rnatish" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              O'rnatish
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

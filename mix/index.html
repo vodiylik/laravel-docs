@@ -18,7 +18,7 @@
     
     
       
-        <title>Compiling Assets (Mix) - Laravel Docs (uz)</title>
+        <title>Assetlarni kompilyatsiyalash - Laravel Docs (uz)</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Compiling Assets (Mix)
+              Assetlarni kompilyatsiyalash
             
           </span>
         </div>
@@ -200,7 +200,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../releases/" class="md-nav__link">
         Reliz haqida
       </a>
     </li>
@@ -212,7 +212,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../upgrade/" class="md-nav__link">
         Yangilash
       </a>
     </li>
@@ -224,7 +224,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../contributions/" class="md-nav__link">
         Hissa qo'shish
       </a>
     </li>
@@ -597,12 +597,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       <label class="md-nav__link" for="__nav_5">
         Kengaytirilgan bo'limlar
@@ -666,11 +668,241 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../assets.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Assetlarni kompilyatsiyalash
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Assetlarni kompilyatsiyalash
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-setup" class="md-nav__link">
+    Installation &amp; Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation &amp; Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-node" class="md-nav__link">
+    Installing Node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-laravel-mix" class="md-nav__link">
+    Installing Laravel Mix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-mix" class="md-nav__link">
+    Running Mix
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Mix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watching-assets-for-changes" class="md-nav__link">
+    Watching Assets For Changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-stylesheets" class="md-nav__link">
+    Working With Stylesheets
+  </a>
+  
+    <nav class="md-nav" aria-label="Working With Stylesheets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tailwind-css" class="md-nav__link">
+    Tailwind CSS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postcss" class="md-nav__link">
+    PostCSS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sass" class="md-nav__link">
+    Sass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-processing" class="md-nav__link">
+    URL Processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-maps" class="md-nav__link">
+    Source Maps
+  </a>
+  
+    <nav class="md-nav" aria-label="Source Maps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#style-of-source-mapping" class="md-nav__link">
+    Style Of Source Mapping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-javascript" class="md-nav__link">
+    Working With JavaScript
+  </a>
+  
+    <nav class="md-nav" aria-label="Working With JavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vue" class="md-nav__link">
+    Vue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react" class="md-nav__link">
+    React
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vendor-extraction" class="md-nav__link">
+    Vendor Extraction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-webpack-configuration" class="md-nav__link">
+    Custom Webpack Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning-cache-busting" class="md-nav__link">
+    Versioning / Cache Busting
+  </a>
+  
+    <nav class="md-nav" aria-label="Versioning / Cache Busting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-mix-base-urls" class="md-nav__link">
+    Custom Mix Base URLs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browsersync-reloading" class="md-nav__link">
+    Browsersync Reloading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    Notifications
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -800,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../schedulering.md" class="md-nav__link">
+      <a href="../scheduling/" class="md-nav__link">
         Tasklarni rejalashtirish
       </a>
     </li>
@@ -1058,7 +1290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../relationships.md" class="md-nav__link">
+      <a href="../eloquent-relationships/" class="md-nav__link">
         O'zaro bog'lanishlar
       </a>
     </li>
@@ -1070,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../collections/" class="md-nav__link">
+      <a href="../eloquent-collections/" class="md-nav__link">
         Kolleksiyalar
       </a>
     </li>
@@ -1094,7 +1326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eloquent-apis.md" class="md-nav__link">
+      <a href="../eloquent-resources/" class="md-nav__link">
         API Resurslar
       </a>
     </li>
@@ -2005,6 +2237,41 @@ if (mix.inProduction()) {
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../collections/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kolleksiyalar" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Kolleksiyalar
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../contracts/" class="md-footer__link md-footer__link--next" aria-label="Next: Kontraktlar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Kontraktlar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
