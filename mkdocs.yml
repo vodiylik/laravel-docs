@@ -1,0 +1,102 @@
+site_name: Laravel Docs (uz)
+site_url: https://laravel.k3.uz/
+site_author: Shukrullo Turgunov
+
+theme:
+  name: material
+nav:
+  - Ma'lumot:
+      - Reliz haqida: index.md
+      - Yangilash: index.md
+      - Hissa qo'shish: index.md
+  - Boshlash:
+      - O'rnatish: installation.md
+      - Sozlash: configuration.md
+      - Papkalar strukturasi: structure.md
+      - Starter Kitlar: starter-kits.md
+      - Serverga yuklash: deployment.md
+  - Arxitektura konsepsiyasi:
+      - Request Lifecycle: lifecycle.md
+      - Servislar konteyneri: container.md
+      - Servis provayderlar: providers.md
+      - Fasadlar: facades.md
+  - Boshlang'ich bo'limlar:
+      - Routing: routing.md
+      - Middleware: middleware.md
+      - CSRF himoya: csrf.md
+      - Kontrollerlar: controllers.md
+      - Requestlar: requests.md
+      - Responselar: responses.md
+      - Viewlar: views.md
+      - Blade Templatelar: blade.md
+      - URL generatsiyasi: urls.md
+      - Sessiyalar: session.md
+      - Validatsiya: validation.md
+      - Xatoliklarni aniqlash: errors.md
+      - Logging: logging.md
+  - Kengaytirilgan bo'limlar:
+      - Artisan konsoli: artisan.md
+      - Broadcasting: broadcasting.md
+      - Kesh: cache.md
+      - Kolleksiyalar: collections.md
+      - Assetlarni kompilyatsiyalash: assets.md
+      - Kontraktlar: contracts.md
+      - Eventlar: events.md
+      - File Storage: filesystem.md
+      - Helperlar: helpers.md
+      - HTTP Client: http-client.md
+      - Lokalizatsiya: localization.md
+      - Mail: mail.md
+      - Notification: notifications.md
+      - Package ishlab chiqish: packages.md
+      - Queue: queue.md
+      - Tasklarni rejalashtirish: schedulering.md
+  - Havfsizlik:
+      - Autentifikatsiya: authentication.md
+      - Autorizatiya: authorization.md
+      - Email verifikatsiya: verification.md
+      - Shifrlash: encryption.md
+      - Heshlash: hashing.md
+      - Parolni tiklash: passwords.md
+  - Ma'lumotlar ombori:
+      - Boshlash: database.md
+      - Query Builder: queries.md
+      - Paginatsiya: pagination.md
+      - Migratsiyalar: migrations.md
+      - Seeding: seeding.md
+      - Redis: redis.md
+  - Eloquent ORM:
+      - Boshlash: eloquent.md
+      - O'zaro bog'lanishlar: relationships.md
+      - Kolleksiyalar: collections.md
+      - Mutators / Casts: eloquent-mutators.md
+      - API Resurslar: eloquent-apis.md
+      - Serializatsiya: eloquent-serialization.md
+  - Testing:
+      - Boshlash: testing.md
+      - HTTP Testing: http-tests.md
+      - Console testlar: console-tests.md
+      - Brauzerda testlash: dusk.md
+      - DB ni testlash: database-testing.md
+      - Mocking: mocking.md
+  - Paketlar:
+      - Breeze: starter-kits/#laravel-breeze
+      - Cashier (Stripe): billing.md
+      - Cashier (Paddle): cashier-paddle.md
+      - Dusk: dusk.md
+      - Envoy: envoy.md
+      - Fortify: fortify.md
+      - Homestead: homestead.md
+      - Horizon: horizon.md
+      - Jetstream: https://jetstream.laravel.com/
+      - Octane: octane.md
+      - Passport: passport.md
+      - Sail: sail.md
+      - Sanctum: sanctum.md
+      - Scout: scout.md
+      - Socialite: socialite.md
+      - Telescope: telescope.md
+      - Valet: valet.md
+  - API Dokumentatsiya: https://laravel.com/api/8.x
+
+copyright: Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
