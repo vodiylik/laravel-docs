@@ -49,7 +49,7 @@ nav:
       - Mail: mail.md
       - Notification: notifications.md
       - Package ishlab chiqish: packages.md
-      - Queue: queue.md
+      - Queue: queues.md
       - Tasklarni rejalashtirish: scheduling.md
   - Havfsizlik:
       - Autentifikatsiya: authentication.md
