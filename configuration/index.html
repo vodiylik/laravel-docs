@@ -1,0 +1,2046 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/configuration/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Sozlash - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sozlash
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Sozlash
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Sozlash
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-configuration" class="md-nav__link">
+    Environment Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-file-security" class="md-nav__link">
+    Environment File Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-types" class="md-nav__link">
+    Environment Variable Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-environment-configuration" class="md-nav__link">
+    Retrieving Environment Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determining-the-current-environment" class="md-nav__link">
+    Determining The Current Environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-configuration-values" class="md-nav__link">
+    Accessing Configuration Values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-caching" class="md-nav__link">
+    Configuration Caching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    Debug Mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintenance-mode" class="md-nav__link">
+    Maintenance Mode
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintenance Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bypassing-maintenance-mode" class="md-nav__link">
+    Bypassing Maintenance Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-rendering-the-maintenance-mode-view" class="md-nav__link">
+    Pre-Rendering The Maintenance Mode View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-maintenance-mode-requests" class="md-nav__link">
+    Redirecting Maintenance Mode Requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-maintenance-mode" class="md-nav__link">
+    Disabling Maintenance Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-mode-queues" class="md-nav__link">
+    Maintenance Mode &amp; Queues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternatives-to-maintenance-mode" class="md-nav__link">
+    Alternatives To Maintenance Mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-configuration" class="md-nav__link">
+    Environment Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-file-security" class="md-nav__link">
+    Environment File Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-types" class="md-nav__link">
+    Environment Variable Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-environment-configuration" class="md-nav__link">
+    Retrieving Environment Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determining-the-current-environment" class="md-nav__link">
+    Determining The Current Environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-configuration-values" class="md-nav__link">
+    Accessing Configuration Values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-caching" class="md-nav__link">
+    Configuration Caching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    Debug Mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintenance-mode" class="md-nav__link">
+    Maintenance Mode
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintenance Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bypassing-maintenance-mode" class="md-nav__link">
+    Bypassing Maintenance Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-rendering-the-maintenance-mode-view" class="md-nav__link">
+    Pre-Rendering The Maintenance Mode View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-maintenance-mode-requests" class="md-nav__link">
+    Redirecting Maintenance Mode Requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-maintenance-mode" class="md-nav__link">
+    Disabling Maintenance Mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-mode-queues" class="md-nav__link">
+    Maintenance Mode &amp; Queues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternatives-to-maintenance-mode" class="md-nav__link">
+    Alternatives To Maintenance Mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="configuration">Configuration</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#environment-configuration">Environment Configuration</a><ul>
+<li><a href="#environment-variable-types">Environment Variable Types</a></li>
+<li><a href="#retrieving-environment-configuration">Retrieving Environment Configuration</a></li>
+<li><a href="#determining-the-current-environment">Determining The Current Environment</a></li>
+</ul>
+</li>
+<li><a href="#accessing-configuration-values">Accessing Configuration Values</a></li>
+<li><a href="#configuration-caching">Configuration Caching</a></li>
+<li><a href="#debug-mode">Debug Mode</a></li>
+<li><a href="#maintenance-mode">Maintenance Mode</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>All of the configuration files for the Laravel framework are stored in the <code>config</code> directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.</p>
+<p>These configuration files allow you to configure things like your database connection information, your mail server information, as well as various other core configuration values such as your application timezone and encryption key.</p>
+<p><a name="environment-configuration"></a></p>
+<h2 id="environment-configuration">Environment Configuration</h2>
+<p>It is often helpful to have different configuration values based on the environment where the application is running. For example, you may wish to use a different cache driver locally than you do on your production server.</p>
+<p>To make this a cinch, Laravel utilizes the <a href="https://github.com/vlucas/phpdotenv">DotEnv</a> PHP library. In a fresh Laravel installation, the root directory of your application will contain a <code>.env.example</code> file that defines many common environment variables. During the Laravel installation process, this file will automatically be copied to <code>.env</code>.</p>
+<p>Laravel's default <code>.env</code> file contains some common configuration values that may differ based on whether your application is running locally or on a production web server. These values are then retrieved from various Laravel configuration files within the <code>config</code> directory using Laravel's <code>env</code> function.</p>
+<p>If you are developing with a team, you may wish to continue including a <code>.env.example</code> file with your application. By putting placeholder values in the example configuration file, other developers on your team can clearly see which environment variables are needed to run your application.</p>
+<blockquote>
+<p>{tip} Any variable in your <code>.env</code> file can be overridden by external environment variables such as server-level or system-level environment variables.</p>
+</blockquote>
+<p><a name="environment-file-security"></a></p>
+<h4 id="environment-file-security">Environment File Security</h4>
+<p>Your <code>.env</code> file should not be committed to your application's source control, since each developer / server using your application could require a different environment configuration. Furthermore, this would be a security risk in the event an intruder gains access to your source control repository, since any sensitive credentials would get exposed.</p>
+<p><a name="environment-variable-types"></a></p>
+<h3 id="environment-variable-types">Environment Variable Types</h3>
+<p>All variables in your <code>.env</code> files are typically parsed as strings, so some reserved values have been created to allow you to return a wider range of types from the <code>env()</code> function:</p>
+<table>
+<thead>
+<tr>
+<th><code>.env</code> Value</th>
+<th><code>env()</code> Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>true</td>
+<td>(bool) true</td>
+</tr>
+<tr>
+<td>(true)</td>
+<td>(bool) true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>(bool) false</td>
+</tr>
+<tr>
+<td>(false)</td>
+<td>(bool) false</td>
+</tr>
+<tr>
+<td>empty</td>
+<td>(string) ''</td>
+</tr>
+<tr>
+<td>(empty)</td>
+<td>(string) ''</td>
+</tr>
+<tr>
+<td>null</td>
+<td>(null) null</td>
+</tr>
+<tr>
+<td>(null)</td>
+<td>(null) null</td>
+</tr>
+</tbody>
+</table>
+<p>If you need to define an environment variable with a value that contains spaces, you may do so by enclosing the value in double quotes:</p>
+<pre><code>APP_NAME="My Application"
+</code></pre>
+<p><a name="retrieving-environment-configuration"></a></p>
+<h3 id="retrieving-environment-configuration">Retrieving Environment Configuration</h3>
+<p>All of the variables listed in this file will be loaded into the <code>$_ENV</code> PHP super-global when your application receives a request. However, you may use the <code>env</code> helper to retrieve values from these variables in your configuration files. In fact, if you review the Laravel configuration files, you will notice many of the options are already using this helper:</p>
+<pre><code>'debug' =&gt; env('APP_DEBUG', false),
+</code></pre>
+<p>The second value passed to the <code>env</code> function is the "default value". This value will be returned if no environment variable exists for the given key.</p>
+<p><a name="determining-the-current-environment"></a></p>
+<h3 id="determining-the-current-environment">Determining The Current Environment</h3>
+<p>The current application environment is determined via the <code>APP_ENV</code> variable from your <code>.env</code> file. You may access this value via the <code>environment</code> method on the <code>App</code> <a href="/docs/{{version}}/facades">facade</a>:</p>
+<pre><code>use Illuminate\Support\Facades\App;
+
+$environment = App::environment();
+</code></pre>
+<p>You may also pass arguments to the <code>environment</code> method to determine if the environment matches a given value. The method will return <code>true</code> if the environment matches any of the given values:</p>
+<pre><code>if (App::environment('local')) {
+    // The environment is local
+}
+
+if (App::environment(['local', 'staging'])) {
+    // The environment is either local OR staging...
+}
+</code></pre>
+<blockquote>
+<p>{tip} The current application environment detection can be overridden by defining a server-level <code>APP_ENV</code> environment variable.</p>
+</blockquote>
+<p><a name="accessing-configuration-values"></a></p>
+<h2 id="accessing-configuration-values">Accessing Configuration Values</h2>
+<p>You may easily access your configuration values using the global <code>config</code> helper function from anywhere in your application. The configuration values may be accessed using "dot" syntax, which includes the name of the file and option you wish to access. A default value may also be specified and will be returned if the configuration option does not exist:</p>
+<pre><code>$value = config('app.timezone');
+
+// Retrieve a default value if the configuration value does not exist...
+$value = config('app.timezone', 'Asia/Seoul');
+</code></pre>
+<p>To set configuration values at runtime, pass an array to the <code>config</code> helper:</p>
+<pre><code>config(['app.timezone' =&gt; 'America/Chicago']);
+</code></pre>
+<p><a name="configuration-caching"></a></p>
+<h2 id="configuration-caching">Configuration Caching</h2>
+<p>To give your application a speed boost, you should cache all of your configuration files into a single file using the <code>config:cache</code> Artisan command. This will combine all of the configuration options for your application into a single file which can be quickly loaded by the framework.</p>
+<p>You should typically run the <code>php artisan config:cache</code> command as part of your production deployment process. The command should not be run during local development as configuration options will frequently need to be changed during the course of your application's development.</p>
+<blockquote>
+<p>{note} If you execute the <code>config:cache</code> command during your deployment process, you should be sure that you are only calling the <code>env</code> function from within your configuration files. Once the configuration has been cached, the <code>.env</code> file will not be loaded; therefore, the <code>env</code> function will only return external, system level environment variables.</p>
+</blockquote>
+<p><a name="debug-mode"></a></p>
+<h2 id="debug-mode">Debug Mode</h2>
+<p>The <code>debug</code> option in your <code>config/app.php</code> configuration file determines how much information about an error is actually displayed to the user. By default, this option is set to respect the value of the <code>APP_DEBUG</code> environment variable, which is stored in your <code>.env</code> file.</p>
+<p>For local development, you should set the <code>APP_DEBUG</code> environment variable to <code>true</code>. <strong>In your production environment, this value should always be <code>false</code>. If the variable is set to <code>true</code> in production, you risk exposing sensitive configuration values to your application's end users.</strong></p>
+<p><a name="maintenance-mode"></a></p>
+<h2 id="maintenance-mode">Maintenance Mode</h2>
+<p>When your application is in maintenance mode, a custom view will be displayed for all requests into your application. This makes it easy to "disable" your application while it is updating or when you are performing maintenance. A maintenance mode check is included in the default middleware stack for your application. If the application is in maintenance mode, a <code>Symfony\Component\HttpKernel\Exception\HttpException</code> instance will be thrown with a status code of 503.</p>
+<p>To enable maintenance mode, execute the <code>down</code> Artisan command:</p>
+<pre><code>php artisan down
+</code></pre>
+<p>If you would like the <code>Refresh</code> HTTP header to be sent with all maintenance mode responses, you may provide the <code>refresh</code> option when invoking the <code>down</code> command. The <code>Refresh</code> header will instruct the browser to automatically refresh the page after the specified number of seconds:</p>
+<pre><code>php artisan down --refresh=15
+</code></pre>
+<p>You may also provide a <code>retry</code> option to the <code>down</code> command, which will be set as the <code>Retry-After</code> HTTP header's value, although browsers generally ignore this header:</p>
+<pre><code>php artisan down --retry=60
+</code></pre>
+<p><a name="bypassing-maintenance-mode"></a></p>
+<h4 id="bypassing-maintenance-mode">Bypassing Maintenance Mode</h4>
+<p>Even while in maintenance mode, you may use the <code>secret</code> option to specify a maintenance mode bypass token:</p>
+<pre><code>php artisan down --secret="1630542a-246b-4b66-afa1-dd72a4c43515"
+</code></pre>
+<p>After placing the application in maintenance mode, you may navigate to the application URL matching this token and Laravel will issue a maintenance mode bypass cookie to your browser:</p>
+<pre><code>https://example.com/1630542a-246b-4b66-afa1-dd72a4c43515
+</code></pre>
+<p>When accessing this hidden route, you will then be redirected to the <code>/</code> route of the application. Once the cookie has been issued to your browser, you will be able to browse the application normally as if it was not in maintenance mode.</p>
+<p><a name="pre-rendering-the-maintenance-mode-view"></a></p>
+<h4 id="pre-rendering-the-maintenance-mode-view">Pre-Rendering The Maintenance Mode View</h4>
+<p>If you utilize the <code>php artisan down</code> command during deployment, your users may still occasionally encounter errors if they access the application while your Composer dependencies or other infrastructure components are updating. This occurs because a significant part of the Laravel framework must boot in order to determine your application is in maintenance mode and render the maintenance mode view using the templating engine.</p>
+<p>For this reason, Laravel allows you to pre-render a maintenance mode view that will be returned at the very beginning of the request cycle. This view is rendered before any of your application's dependencies have loaded. You may pre-render a template of your choice using the <code>down</code> command's <code>render</code> option:</p>
+<pre><code>php artisan down --render="errors::503"
+</code></pre>
+<p><a name="redirecting-maintenance-mode-requests"></a></p>
+<h4 id="redirecting-maintenance-mode-requests">Redirecting Maintenance Mode Requests</h4>
+<p>While in maintenance mode, Laravel will display the maintenance mode view for all application URLs the user attempts to access. If you wish, you may instruct Laravel to redirect all requests to a specific URL. This may be accomplished using the <code>redirect</code> option. For example, you may wish to redirect all requests to the <code>/</code> URI:</p>
+<pre><code>php artisan down --redirect=/
+</code></pre>
+<p><a name="disabling-maintenance-mode"></a></p>
+<h4 id="disabling-maintenance-mode">Disabling Maintenance Mode</h4>
+<p>To disable maintenance mode, use the <code>up</code> command:</p>
+<pre><code>php artisan up
+</code></pre>
+<blockquote>
+<p>{tip} You may customize the default maintenance mode template by defining your own template at <code>resources/views/errors/503.blade.php</code>.</p>
+</blockquote>
+<p><a name="maintenance-mode-queues"></a></p>
+<h4 id="maintenance-mode-queues">Maintenance Mode &amp; Queues</h4>
+<p>While your application is in maintenance mode, no <a href="/docs/{{version}}/queues">queued jobs</a> will be handled. The jobs will continue to be handled as normal once the application is out of maintenance mode.</p>
+<p><a name="alternatives-to-maintenance-mode"></a></p>
+<h4 id="alternatives-to-maintenance-mode">Alternatives To Maintenance Mode</h4>
+<p>Since maintenance mode requires your application to have several seconds of downtime, consider alternatives like <a href="https://vapor.laravel.com">Laravel Vapor</a> and <a href="https://envoyer.io">Envoyer</a> to accomplish zero-downtime deployment with Laravel.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: O&#39;rnatish" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              O'rnatish
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../structure/" class="md-footer__link md-footer__link--next" aria-label="Next: Papkalar strukturasi" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Papkalar strukturasi
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

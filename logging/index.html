@@ -1,0 +1,2309 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/logging/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Logging - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#logging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Logging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Logging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Logging
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-channel-name" class="md-nav__link">
+    Configuring The Channel Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-channel-drivers" class="md-nav__link">
+    Available Channel Drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel-prerequisites" class="md-nav__link">
+    Channel Prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Channel Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-single-and-daily-channels" class="md-nav__link">
+    Configuring The Single and Daily Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-papertrail-channel" class="md-nav__link">
+    Configuring The Papertrail Channel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-slack-channel" class="md-nav__link">
+    Configuring The Slack Channel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-log-stacks" class="md-nav__link">
+    Building Log Stacks
+  </a>
+  
+    <nav class="md-nav" aria-label="Building Log Stacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-levels" class="md-nav__link">
+    Log Levels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-log-messages" class="md-nav__link">
+    Writing Log Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Log Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contextual-information" class="md-nav__link">
+    Contextual Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-to-specific-channels" class="md-nav__link">
+    Writing To Specific Channels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monolog-channel-customization" class="md-nav__link">
+    Monolog Channel Customization
+  </a>
+  
+    <nav class="md-nav" aria-label="Monolog Channel Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-monolog-for-channels" class="md-nav__link">
+    Customizing Monolog For Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-monolog-handler-channels" class="md-nav__link">
+    Creating Monolog Handler Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Monolog Handler Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monolog-formatters" class="md-nav__link">
+    Monolog Formatters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-custom-channels-via-factories" class="md-nav__link">
+    Creating Custom Channels Via Factories
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-channel-name" class="md-nav__link">
+    Configuring The Channel Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-channel-drivers" class="md-nav__link">
+    Available Channel Drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel-prerequisites" class="md-nav__link">
+    Channel Prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Channel Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-single-and-daily-channels" class="md-nav__link">
+    Configuring The Single and Daily Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-papertrail-channel" class="md-nav__link">
+    Configuring The Papertrail Channel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-slack-channel" class="md-nav__link">
+    Configuring The Slack Channel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-log-stacks" class="md-nav__link">
+    Building Log Stacks
+  </a>
+  
+    <nav class="md-nav" aria-label="Building Log Stacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-levels" class="md-nav__link">
+    Log Levels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-log-messages" class="md-nav__link">
+    Writing Log Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Log Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contextual-information" class="md-nav__link">
+    Contextual Information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-to-specific-channels" class="md-nav__link">
+    Writing To Specific Channels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monolog-channel-customization" class="md-nav__link">
+    Monolog Channel Customization
+  </a>
+  
+    <nav class="md-nav" aria-label="Monolog Channel Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-monolog-for-channels" class="md-nav__link">
+    Customizing Monolog For Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-monolog-handler-channels" class="md-nav__link">
+    Creating Monolog Handler Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Monolog Handler Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monolog-formatters" class="md-nav__link">
+    Monolog Formatters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-custom-channels-via-factories" class="md-nav__link">
+    Creating Custom Channels Via Factories
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="logging">Logging</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#configuration">Configuration</a><ul>
+<li><a href="#available-channel-drivers">Available Channel Drivers</a></li>
+<li><a href="#channel-prerequisites">Channel Prerequisites</a></li>
+</ul>
+</li>
+<li><a href="#building-log-stacks">Building Log Stacks</a></li>
+<li><a href="#writing-log-messages">Writing Log Messages</a><ul>
+<li><a href="#contextual-information">Contextual Information</a></li>
+<li><a href="#writing-to-specific-channels">Writing To Specific Channels</a></li>
+</ul>
+</li>
+<li><a href="#monolog-channel-customization">Monolog Channel Customization</a><ul>
+<li><a href="#customizing-monolog-for-channels">Customizing Monolog For Channels</a></li>
+<li><a href="#creating-monolog-handler-channels">Creating Monolog Handler Channels</a></li>
+<li><a href="#creating-custom-channels-via-factories">Creating Custom Channels Via Factories</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>To help you learn more about what's happening within your application, Laravel provides robust logging services that allow you to log messages to files, the system error log, and even to Slack to notify your entire team.</p>
+<p>Laravel logging is based on "channels". Each channel represents a specific way of writing log information. For example, the <code>single</code> channel writes log files to a single log file, while the <code>slack</code> channel sends log messages to Slack. Log messages may be written to multiple channels based on their severity.</p>
+<p>Under the hood, Laravel utilizes the <a href="https://github.com/Seldaek/monolog">Monolog</a> library, which provides support for a variety of powerful log handlers. Laravel makes it a cinch to configure these handlers, allowing you to mix and match them to customize your application's log handling.</p>
+<p><a name="configuration"></a></p>
+<h2 id="configuration">Configuration</h2>
+<p>All of the configuration options for your application's logging behavior is housed in the <code>config/logging.php</code> configuration file. This file allows you to configure your application's log channels, so be sure to review each of the available channels and their options. We'll review a few common options below.</p>
+<p>By default, Laravel will use the <code>stack</code> channel when logging messages. The <code>stack</code> channel is used to aggregate multiple log channels into a single channel. For more information on building stacks, check out the <a href="#building-log-stacks">documentation below</a>.</p>
+<p><a name="configuring-the-channel-name"></a></p>
+<h4 id="configuring-the-channel-name">Configuring The Channel Name</h4>
+<p>By default, Monolog is instantiated with a "channel name" that matches the current environment, such as <code>production</code> or <code>local</code>. To change this value, add a <code>name</code> option to your channel's configuration:</p>
+<pre><code>'stack' =&gt; [
+    'driver' =&gt; 'stack',
+    'name' =&gt; 'channel-name',
+    'channels' =&gt; ['single', 'slack'],
+],
+</code></pre>
+<p><a name="available-channel-drivers"></a></p>
+<h3 id="available-channel-drivers">Available Channel Drivers</h3>
+<p>Each log channel is powered by a "driver". The driver determines how and where the log message is actually recorded. The following log channel drivers are available in every Laravel application. An entry for most of these drivers is already present in your application's <code>config/logging.php</code> configuration file, so be sure to review this file to become familiar with its contents:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>custom</code></td>
+<td>A driver that calls a specified factory to create a channel</td>
+</tr>
+<tr>
+<td><code>daily</code></td>
+<td>A <code>RotatingFileHandler</code> based Monolog driver which rotates daily</td>
+</tr>
+<tr>
+<td><code>errorlog</code></td>
+<td>A <code>ErrorLogHandler</code> based Monolog driver</td>
+</tr>
+<tr>
+<td><code>monolog</code></td>
+<td>A Monolog factory driver that may use any supported Monolog handler</td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td>A driver that discards all log messages</td>
+</tr>
+<tr>
+<td><code>papertrail</code></td>
+<td>A <code>SyslogUdpHandler</code> based Monolog driver</td>
+</tr>
+<tr>
+<td><code>single</code></td>
+<td>A single file or path based logger channel (<code>StreamHandler</code>)</td>
+</tr>
+<tr>
+<td><code>slack</code></td>
+<td>A <code>SlackWebhookHandler</code> based Monolog driver</td>
+</tr>
+<tr>
+<td><code>stack</code></td>
+<td>A wrapper to facilitate creating "multi-channel" channels</td>
+</tr>
+<tr>
+<td><code>syslog</code></td>
+<td>A <code>SyslogHandler</code> based Monolog driver</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>{tip} Check out the documentation on <a href="#monolog-channel-customization">advanced channel customization</a> to learn more about the <code>monolog</code> and <code>custom</code> drivers.</p>
+</blockquote>
+<p><a name="channel-prerequisites"></a></p>
+<h3 id="channel-prerequisites">Channel Prerequisites</h3>
+<p><a name="configuring-the-single-and-daily-channels"></a></p>
+<h4 id="configuring-the-single-and-daily-channels">Configuring The Single and Daily Channels</h4>
+<p>The <code>single</code> and <code>daily</code> channels have three optional configuration options: <code>bubble</code>, <code>permission</code>, and <code>locking</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bubble</code></td>
+<td>Indicates if messages should bubble up to other channels after being handled</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>locking</code></td>
+<td>Attempt to lock the log file before writing to it</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>permission</code></td>
+<td>The log file's permissions</td>
+<td><code>0644</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="configuring-the-papertrail-channel"></a></p>
+<h4 id="configuring-the-papertrail-channel">Configuring The Papertrail Channel</h4>
+<p>The <code>papertrail</code> channel requires the <code>host</code> and <code>port</code> configuration options. You can obtain these values from <a href="https://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-php-apps/#send-events-from-php-app">Papertrail</a>.</p>
+<p><a name="configuring-the-slack-channel"></a></p>
+<h4 id="configuring-the-slack-channel">Configuring The Slack Channel</h4>
+<p>The <code>slack</code> channel requires a <code>url</code> configuration option. This URL should match a URL for an <a href="https://slack.com/apps/A0F7XDUAZ-incoming-webhooks">incoming webhook</a> that you have configured for your Slack team.</p>
+<p>By default, Slack will only receive logs at the <code>critical</code> level and above; however, you can adjust this in your <code>config/logging.php</code> configuration file by modifying the <code>level</code> configuration option within your Slack log channel's configuration array.</p>
+<p><a name="building-log-stacks"></a></p>
+<h2 id="building-log-stacks">Building Log Stacks</h2>
+<p>As mentioned previously, the <code>stack</code> driver allows you to combine multiple channels into a single log channel for convenience. To illustrate how to use log stacks, let's take a look at an example configuration that you might see in a production application:</p>
+<pre><code>'channels' =&gt; [
+    'stack' =&gt; [
+        'driver' =&gt; 'stack',
+        'channels' =&gt; ['syslog', 'slack'],
+    ],
+
+    'syslog' =&gt; [
+        'driver' =&gt; 'syslog',
+        'level' =&gt; 'debug',
+    ],
+
+    'slack' =&gt; [
+        'driver' =&gt; 'slack',
+        'url' =&gt; env('LOG_SLACK_WEBHOOK_URL'),
+        'username' =&gt; 'Laravel Log',
+        'emoji' =&gt; ':boom:',
+        'level' =&gt; 'critical',
+    ],
+],
+</code></pre>
+<p>Let's dissect this configuration. First, notice our <code>stack</code> channel aggregates two other channels via its <code>channels</code> option: <code>syslog</code> and <code>slack</code>. So, when logging messages, both of these channels will have the opportunity to log the message. However, as we will see below, whether these channels actually log the message may be determined by the message's severity / "level".</p>
+<p><a name="log-levels"></a></p>
+<h4 id="log-levels">Log Levels</h4>
+<p>Take note of the <code>level</code> configuration option present on the <code>syslog</code> and <code>slack</code> channel configurations in the example above. This option determines the minimum "level" a message must be in order to be logged by the channel. Monolog, which powers Laravel's logging services, offers all of the log levels defined in the <a href="https://tools.ietf.org/html/rfc5424">RFC 5424 specification</a>: <strong>emergency</strong>, <strong>alert</strong>, <strong>critical</strong>, <strong>error</strong>, <strong>warning</strong>, <strong>notice</strong>, <strong>info</strong>, and <strong>debug</strong>.</p>
+<p>So, imagine we log a message using the <code>debug</code> method:</p>
+<pre><code>Log::debug('An informational message.');
+</code></pre>
+<p>Given our configuration, the <code>syslog</code> channel will write the message to the system log; however, since the error message is not <code>critical</code> or above, it will not be sent to Slack. However, if we log an <code>emergency</code> message, it will be sent to both the system log and Slack since the <code>emergency</code> level is above our minimum level threshold for both channels:</p>
+<pre><code>Log::emergency('The system is down!');
+</code></pre>
+<p><a name="writing-log-messages"></a></p>
+<h2 id="writing-log-messages">Writing Log Messages</h2>
+<p>You may write information to the logs using the <code>Log</code> <a href="/docs/{{version}}/facades">facade</a>. As previously mentioned, the logger provides the eight logging levels defined in the <a href="https://tools.ietf.org/html/rfc5424">RFC 5424 specification</a>: <strong>emergency</strong>, <strong>alert</strong>, <strong>critical</strong>, <strong>error</strong>, <strong>warning</strong>, <strong>notice</strong>, <strong>info</strong> and <strong>debug</strong>:</p>
+<pre><code>use Illuminate\Support\Facades\Log;
+
+Log::emergency($message);
+Log::alert($message);
+Log::critical($message);
+Log::error($message);
+Log::warning($message);
+Log::notice($message);
+Log::info($message);
+Log::debug($message);
+</code></pre>
+<p>You may call any of these methods to log a message for the corresponding level. By default, the message will be written to the default log channel as configured by your <code>logging</code> configuration file:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\Log;
+
+class UserController extends Controller
+{
+    /**
+     * Show the profile for the given user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        Log::info('Showing the user profile for user: '.$id);
+
+        return view('user.profile', [
+            'user' =&gt; User::findOrFail($id)
+        ]);
+    }
+}
+</code></pre>
+<p><a name="contextual-information"></a></p>
+<h3 id="contextual-information">Contextual Information</h3>
+<p>An array of contextual data may be passed to the log methods. This contextual data will be formatted and displayed with the log message:</p>
+<pre><code>use Illuminate\Support\Facades\Log;
+
+Log::info('User failed to login.', ['id' =&gt; $user-&gt;id]);
+</code></pre>
+<p>Occasionally, you may wish to specify some contextual information that should be included with all subsequent log entries. For example, you may wish to log a request ID that is associated with each incoming request to your application. To accomplish this, you may call the <code>Log</code> facade's <code>withContext</code> method:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+
+class AssignRequestId
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        $requestId = (string) Str::uuid();
+
+        Log::withContext([
+            'request-id' =&gt; $requestId
+        ]);
+
+        return $next($request)-&gt;header('Request-Id', $requestId);
+    }
+}
+</code></pre>
+<p><a name="writing-to-specific-channels"></a></p>
+<h3 id="writing-to-specific-channels">Writing To Specific Channels</h3>
+<p>Sometimes you may wish to log a message to a channel other than your application's default channel. You may use the <code>channel</code> method on the <code>Log</code> facade to retrieve and log to any channel defined in your configuration file:</p>
+<pre><code>use Illuminate\Support\Facades\Log;
+
+Log::channel('slack')-&gt;info('Something happened!');
+</code></pre>
+<p>If you would like to create an on-demand logging stack consisting of multiple channels, you may use the <code>stack</code> method:</p>
+<pre><code>Log::stack(['single', 'slack'])-&gt;info('Something happened!');
+</code></pre>
+<p><a name="monolog-channel-customization"></a></p>
+<h2 id="monolog-channel-customization">Monolog Channel Customization</h2>
+<p><a name="customizing-monolog-for-channels"></a></p>
+<h3 id="customizing-monolog-for-channels">Customizing Monolog For Channels</h3>
+<p>Sometimes you may need complete control over how Monolog is configured for an existing channel. For example, you may want to configure a custom Monolog <code>FormatterInterface</code> implementation for Laravel's built-in <code>single</code> channel.</p>
+<p>To get started, define a <code>tap</code> array on the channel's configuration. The <code>tap</code> array should contain a list of classes that should have an opportunity to customize (or "tap" into) the Monolog instance after it is created. There is no conventional location where these classes should be placed, so you are free to create a directory within your application to contain these classes:</p>
+<pre><code>'single' =&gt; [
+    'driver' =&gt; 'single',
+    'tap' =&gt; [App\Logging\CustomizeFormatter::class],
+    'path' =&gt; storage_path('logs/laravel.log'),
+    'level' =&gt; 'debug',
+],
+</code></pre>
+<p>Once you have configured the <code>tap</code> option on your channel, you're ready to define the class that will customize your Monolog instance. This class only needs a single method: <code>__invoke</code>, which receives an <code>Illuminate\Log\Logger</code> instance. The <code>Illuminate\Log\Logger</code> instance proxies all method calls to the underlying Monolog instance:</p>
+<pre><code>&lt;?php
+
+namespace App\Logging;
+
+use Monolog\Formatter\LineFormatter;
+
+class CustomizeFormatter
+{
+    /**
+     * Customize the given logger instance.
+     *
+     * @param  \Illuminate\Log\Logger  $logger
+     * @return void
+     */
+    public function __invoke($logger)
+    {
+        foreach ($logger-&gt;getHandlers() as $handler) {
+            $handler-&gt;setFormatter(new LineFormatter(
+                '[%datetime%] %channel%.%level_name%: %message% %context% %extra%'
+            ));
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>{tip} All of your "tap" classes are resolved by the <a href="/docs/{{version}}/container">service container</a>, so any constructor dependencies they require will automatically be injected.</p>
+</blockquote>
+<p><a name="creating-monolog-handler-channels"></a></p>
+<h3 id="creating-monolog-handler-channels">Creating Monolog Handler Channels</h3>
+<p>Monolog has a variety of <a href="https://github.com/Seldaek/monolog/tree/master/src/Monolog/Handler">available handlers</a> and Laravel does not include a built-in channel for each one. In some cases, you may wish to create a custom channel that is merely an instance of a specific Monolog handler that does not have a corresponding Laravel log driver.  These channels can be easily created using the <code>monolog</code> driver.</p>
+<p>When using the <code>monolog</code> driver, the <code>handler</code> configuration option is used to specify which handler will be instantiated. Optionally, any constructor parameters the handler needs may be specified using the <code>with</code> configuration option:</p>
+<pre><code>'logentries' =&gt; [
+    'driver'  =&gt; 'monolog',
+    'handler' =&gt; Monolog\Handler\SyslogUdpHandler::class,
+    'with' =&gt; [
+        'host' =&gt; 'my.logentries.internal.datahubhost.company.com',
+        'port' =&gt; '10000',
+    ],
+],
+</code></pre>
+<p><a name="monolog-formatters"></a></p>
+<h4 id="monolog-formatters">Monolog Formatters</h4>
+<p>When using the <code>monolog</code> driver, the Monolog <code>LineFormatter</code> will be used as the default formatter. However, you may customize the type of formatter passed to the handler using the <code>formatter</code> and <code>formatter_with</code> configuration options:</p>
+<pre><code>'browser' =&gt; [
+    'driver' =&gt; 'monolog',
+    'handler' =&gt; Monolog\Handler\BrowserConsoleHandler::class,
+    'formatter' =&gt; Monolog\Formatter\HtmlFormatter::class,
+    'formatter_with' =&gt; [
+        'dateFormat' =&gt; 'Y-m-d',
+    ],
+],
+</code></pre>
+<p>If you are using a Monolog handler that is capable of providing its own formatter, you may set the value of the <code>formatter</code> configuration option to <code>default</code>:</p>
+<pre><code>'newrelic' =&gt; [
+    'driver' =&gt; 'monolog',
+    'handler' =&gt; Monolog\Handler\NewRelicHandler::class,
+    'formatter' =&gt; 'default',
+],
+</code></pre>
+<p><a name="creating-custom-channels-via-factories"></a></p>
+<h3 id="creating-custom-channels-via-factories">Creating Custom Channels Via Factories</h3>
+<p>If you would like to define an entirely custom channel in which you have full control over Monolog's instantiation and configuration, you may specify a <code>custom</code> driver type in your <code>config/logging.php</code> configuration file. Your configuration should include a <code>via</code> option that contains the name of the factory class which will be invoked to create the Monolog instance:</p>
+<pre><code>'channels' =&gt; [
+    'example-custom-channel' =&gt; [
+        'driver' =&gt; 'custom',
+        'via' =&gt; App\Logging\CreateCustomLogger::class,
+    ],
+],
+</code></pre>
+<p>Once you have configured the <code>custom</code> driver channel, you're ready to define the class that will create your Monolog instance. This class only needs a single <code>__invoke</code> method which should return the Monolog logger instance. The method will receive the channels configuration array as its only argument:</p>
+<pre><code>&lt;?php
+
+namespace App\Logging;
+
+use Monolog\Logger;
+
+class CreateCustomLogger
+{
+    /**
+     * Create a custom Monolog instance.
+     *
+     * @param  array  $config
+     * @return \Monolog\Logger
+     */
+    public function __invoke(array $config)
+    {
+        return new Logger(...);
+    }
+}
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../errors/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Xatoliklarni aniqlash" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Xatoliklarni aniqlash
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../artisan/" class="md-footer__link md-footer__link--next" aria-label="Next: Artisan konsoli" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Artisan konsoli
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

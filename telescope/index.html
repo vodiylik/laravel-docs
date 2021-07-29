@@ -1,0 +1,2473 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/telescope/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Telescope - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#laravel-telescope" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Telescope
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Telescope
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Telescope
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#migration-customization" class="md-nav__link">
+    Migration Customization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-only-installation" class="md-nav__link">
+    Local Only Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-pruning" class="md-nav__link">
+    Data Pruning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-authorization" class="md-nav__link">
+    Dashboard Authorization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-telescope" class="md-nav__link">
+    Upgrading Telescope
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+    Filtering
+  </a>
+  
+    <nav class="md-nav" aria-label="Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entries" class="md-nav__link">
+    Entries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batches" class="md-nav__link">
+    Batches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tagging" class="md-nav__link">
+    Tagging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-watchers" class="md-nav__link">
+    Available Watchers
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Watchers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch-watcher" class="md-nav__link">
+    Batch Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-watcher" class="md-nav__link">
+    Cache Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-watcher" class="md-nav__link">
+    Command Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dump-watcher" class="md-nav__link">
+    Dump Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-watcher" class="md-nav__link">
+    Event Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exception-watcher" class="md-nav__link">
+    Exception Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gate-watcher" class="md-nav__link">
+    Gate Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-client-watcher" class="md-nav__link">
+    HTTP Client Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-watcher" class="md-nav__link">
+    Job Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-watcher" class="md-nav__link">
+    Log Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mail-watcher" class="md-nav__link">
+    Mail Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-watcher" class="md-nav__link">
+    Model Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notification-watcher" class="md-nav__link">
+    Notification Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-watcher" class="md-nav__link">
+    Query Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-watcher" class="md-nav__link">
+    Redis Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-watcher" class="md-nav__link">
+    Request Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule-watcher" class="md-nav__link">
+    Schedule Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-watcher" class="md-nav__link">
+    View Watcher
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-user-avatars" class="md-nav__link">
+    Displaying User Avatars
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#migration-customization" class="md-nav__link">
+    Migration Customization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-only-installation" class="md-nav__link">
+    Local Only Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-pruning" class="md-nav__link">
+    Data Pruning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-authorization" class="md-nav__link">
+    Dashboard Authorization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-telescope" class="md-nav__link">
+    Upgrading Telescope
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+    Filtering
+  </a>
+  
+    <nav class="md-nav" aria-label="Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entries" class="md-nav__link">
+    Entries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batches" class="md-nav__link">
+    Batches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tagging" class="md-nav__link">
+    Tagging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-watchers" class="md-nav__link">
+    Available Watchers
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Watchers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch-watcher" class="md-nav__link">
+    Batch Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-watcher" class="md-nav__link">
+    Cache Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-watcher" class="md-nav__link">
+    Command Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dump-watcher" class="md-nav__link">
+    Dump Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-watcher" class="md-nav__link">
+    Event Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exception-watcher" class="md-nav__link">
+    Exception Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gate-watcher" class="md-nav__link">
+    Gate Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-client-watcher" class="md-nav__link">
+    HTTP Client Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-watcher" class="md-nav__link">
+    Job Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-watcher" class="md-nav__link">
+    Log Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mail-watcher" class="md-nav__link">
+    Mail Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-watcher" class="md-nav__link">
+    Model Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notification-watcher" class="md-nav__link">
+    Notification Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-watcher" class="md-nav__link">
+    Query Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-watcher" class="md-nav__link">
+    Redis Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-watcher" class="md-nav__link">
+    Request Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule-watcher" class="md-nav__link">
+    Schedule Watcher
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-watcher" class="md-nav__link">
+    View Watcher
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-user-avatars" class="md-nav__link">
+    Displaying User Avatars
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="laravel-telescope">Laravel Telescope</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#local-only-installation">Local Only Installation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#data-pruning">Data Pruning</a></li>
+<li><a href="#dashboard-authorization">Dashboard Authorization</a></li>
+</ul>
+</li>
+<li><a href="#upgrading-telescope">Upgrading Telescope</a></li>
+<li><a href="#filtering">Filtering</a><ul>
+<li><a href="#filtering-entries">Entries</a></li>
+<li><a href="#filtering-batches">Batches</a></li>
+</ul>
+</li>
+<li><a href="#tagging">Tagging</a></li>
+<li><a href="#available-watchers">Available Watchers</a><ul>
+<li><a href="#batch-watcher">Batch Watcher</a></li>
+<li><a href="#cache-watcher">Cache Watcher</a></li>
+<li><a href="#command-watcher">Command Watcher</a></li>
+<li><a href="#dump-watcher">Dump Watcher</a></li>
+<li><a href="#event-watcher">Event Watcher</a></li>
+<li><a href="#exception-watcher">Exception Watcher</a></li>
+<li><a href="#gate-watcher">Gate Watcher</a></li>
+<li><a href="#http-client-watcher">HTTP Client Watcher</a></li>
+<li><a href="#job-watcher">Job Watcher</a></li>
+<li><a href="#log-watcher">Log Watcher</a></li>
+<li><a href="#mail-watcher">Mail Watcher</a></li>
+<li><a href="#model-watcher">Model Watcher</a></li>
+<li><a href="#notification-watcher">Notification Watcher</a></li>
+<li><a href="#query-watcher">Query Watcher</a></li>
+<li><a href="#redis-watcher">Redis Watcher</a></li>
+<li><a href="#request-watcher">Request Watcher</a></li>
+<li><a href="#schedule-watcher">Schedule Watcher</a></li>
+<li><a href="#view-watcher">View Watcher</a></li>
+</ul>
+</li>
+<li><a href="#displaying-user-avatars">Displaying User Avatars</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Telescope makes a wonderful companion to your local Laravel development environment. Telescope provides insight into the requests coming into your application, exceptions, log entries, database queries, queued jobs, mail, notifications, cache operations, scheduled tasks, variable dumps, and more.</p>
+<p><img src="https://laravel.com/img/docs/telescope-example.png"></p>
+<p><a name="installation"></a></p>
+<h2 id="installation">Installation</h2>
+<p>You may use the Composer package manager to install Telescope into your Laravel project:</p>
+<pre><code>composer require laravel/telescope
+</code></pre>
+<p>After installing Telescope, publish its assets using the <code>telescope:install</code> Artisan command. After installing Telescope, you should also run the <code>migrate</code> command in order to create the tables needed to store Telescope's data:</p>
+<pre><code>php artisan telescope:install
+
+php artisan migrate
+</code></pre>
+<p><a name="migration-customization"></a></p>
+<h4 id="migration-customization">Migration Customization</h4>
+<p>If you are not going to use Telescope's default migrations, you should call the <code>Telescope::ignoreMigrations</code> method in the <code>register</code> method of your application's <code>App\Providers\AppServiceProvider</code> class. You may export the default migrations using the following command: <code>php artisan vendor:publish --tag=telescope-migrations</code></p>
+<p><a name="local-only-installation"></a></p>
+<h3 id="local-only-installation">Local Only Installation</h3>
+<p>If you plan to only use Telescope to assist your local development, you may install Telescope using the <code>--dev</code> flag:</p>
+<pre><code>composer require laravel/telescope --dev
+
+php artisan telescope:install
+
+php artisan migrate
+</code></pre>
+<p>After running <code>telescope:install</code>, you should remove the <code>TelescopeServiceProvider</code> service provider registration from your application's <code>config/app.php</code> configuration file. Instead, manually register Telescope's service providers in the <code>register</code> method of your <code>App\Providers\AppServiceProvider</code> class. We will ensure the current environment is <code>local</code> before registering the providers:</p>
+<pre><code>/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    if ($this-&gt;app-&gt;environment('local')) {
+        $this-&gt;app-&gt;register(\Laravel\Telescope\TelescopeServiceProvider::class);
+        $this-&gt;app-&gt;register(TelescopeServiceProvider::class);
+    }
+}
+</code></pre>
+<p>Finally, you should also prevent the Telescope package from being <a href="/docs/{{version}}/packages#package-discovery">auto-discovered</a> by adding the following to your <code>composer.json</code> file:</p>
+<pre><code>"extra": {
+    "laravel": {
+        "dont-discover": [
+            "laravel/telescope"
+        ]
+    }
+},
+</code></pre>
+<p><a name="configuration"></a></p>
+<h3 id="configuration">Configuration</h3>
+<p>After publishing Telescope's assets, its primary configuration file will be located at <code>config/telescope.php</code>. This configuration file allows you to configure your <a href="#available-watchers">watcher options</a>. Each configuration option includes a description of its purpose, so be sure to thoroughly explore this file.</p>
+<p>If desired, you may disable Telescope's data collection entirely using the <code>enabled</code> configuration option:</p>
+<pre><code>'enabled' =&gt; env('TELESCOPE_ENABLED', true),
+</code></pre>
+<p><a name="data-pruning"></a></p>
+<h3 id="data-pruning">Data Pruning</h3>
+<p>Without pruning, the <code>telescope_entries</code> table can accumulate records very quickly. To mitigate this, you should <a href="/docs/{{version}}/scheduling">schedule</a> the <code>telescope:prune</code> Artisan command to run daily:</p>
+<pre><code>$schedule-&gt;command('telescope:prune')-&gt;daily();
+</code></pre>
+<p>By default, all entries older than 24 hours will be pruned. You may use the <code>hours</code> option when calling the command to determine how long to retain Telescope data. For example, the following command will delete all records created over 48 hours ago:</p>
+<pre><code>$schedule-&gt;command('telescope:prune --hours=48')-&gt;daily();
+</code></pre>
+<p><a name="dashboard-authorization"></a></p>
+<h3 id="dashboard-authorization">Dashboard Authorization</h3>
+<p>The Telescope dashboard may be accessed at the <code>/telescope</code> route. By default, you will only be able to access this dashboard in the <code>local</code> environment. Within your <code>app/Providers/TelescopeServiceProvider.php</code> file, there is an <a href="/docs/{{version}}/authorization#gates">authorization gate</a> definition. This authorization gate controls access to Telescope in <strong>non-local</strong> environments. You are free to modify this gate as needed to restrict access to your Telescope installation:</p>
+<pre><code>/**
+ * Register the Telescope gate.
+ *
+ * This gate determines who can access Telescope in non-local environments.
+ *
+ * @return void
+ */
+protected function gate()
+{
+    Gate::define('viewTelescope', function ($user) {
+        return in_array($user-&gt;email, [
+            'taylor@laravel.com',
+        ]);
+    });
+}
+</code></pre>
+<blockquote>
+<p>{note} You should ensure you change your <code>APP_ENV</code> environment variable to <code>production</code> in your production environment. Otherwise, your Telescope installation will be publicly available.</p>
+</blockquote>
+<p><a name="upgrading-telescope"></a></p>
+<h2 id="upgrading-telescope">Upgrading Telescope</h2>
+<p>When upgrading to a new major version of Telescope, it's important that you carefully review <a href="https://github.com/laravel/telescope/blob/master/UPGRADE.md">the upgrade guide</a>.</p>
+<p>In addition, when upgrading to any new Telescope version, you should re-publish Telescope's assets:</p>
+<pre><code>php artisan telescope:publish
+</code></pre>
+<p>To keep the assets up-to-date and avoid issues in future updates, you may add the <code>telescope:publish</code> command to the <code>post-update-cmd</code> scripts in your application's <code>composer.json</code> file:</p>
+<pre><code>{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan telescope:publish --ansi"
+        ]
+    }
+}
+</code></pre>
+<p><a name="filtering"></a></p>
+<h2 id="filtering">Filtering</h2>
+<p><a name="filtering-entries"></a></p>
+<h3 id="entries">Entries</h3>
+<p>You may filter the data that is recorded by Telescope via the <code>filter</code> closure that is defined in your <code>App\Providers\TelescopeServiceProvider</code> class. By default, this closure records all data in the <code>local</code> environment and exceptions, failed jobs, scheduled tasks, and data with monitored tags in all other environments:</p>
+<pre><code>use Laravel\Telescope\IncomingEntry;
+use Laravel\Telescope\Telescope;
+
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    $this-&gt;hideSensitiveRequestDetails();
+
+    Telescope::filter(function (IncomingEntry $entry) {
+        if ($this-&gt;app-&gt;environment('local')) {
+            return true;
+        }
+
+        return $entry-&gt;isReportableException() ||
+            $entry-&gt;isFailedJob() ||
+            $entry-&gt;isScheduledTask() ||
+            $entry-&gt;hasMonitoredTag();
+    });
+}
+</code></pre>
+<p><a name="filtering-batches"></a></p>
+<h3 id="batches">Batches</h3>
+<p>While the <code>filter</code> closure filters data for individual entries, you may use the <code>filterBatch</code> method to register a closure that filters all data for a given request or console command. If the closure returns <code>true</code>, all of the entries are recorded by Telescope:</p>
+<pre><code>use Illuminate\Support\Collection;
+use Laravel\Telescope\Telescope;
+
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    $this-&gt;hideSensitiveRequestDetails();
+
+    Telescope::filterBatch(function (Collection $entries) {
+        if ($this-&gt;app-&gt;environment('local')) {
+            return true;
+        }
+
+        return $entries-&gt;contains(function ($entry) {
+            return $entry-&gt;isReportableException() ||
+                $entry-&gt;isFailedJob() ||
+                $entry-&gt;isScheduledTask() ||
+                $entry-&gt;hasMonitoredTag();
+            });
+    });
+}
+</code></pre>
+<p><a name="tagging"></a></p>
+<h2 id="tagging">Tagging</h2>
+<p>Telescope allows you to search entries by "tag". Often, tags are Eloquent model class names or authenticated user IDs which Telescope automatically adds to entries. Occasionally, you may want to attach your own custom tags to entries. To accomplish this, you may use the <code>Telescope::tag</code> method. The <code>tag</code> method accepts a closure which should return an array of tags. The tags returned by the closure will be merged with any tags Telescope would automatically attach to the entry. Typically, you should call the <code>tag</code> method within the <code>register</code> method of your <code>App\Providers\TelescopeServiceProvider</code> class:</p>
+<pre><code>use Laravel\Telescope\IncomingEntry;
+use Laravel\Telescope\Telescope;
+
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    $this-&gt;hideSensitiveRequestDetails();
+
+    Telescope::tag(function (IncomingEntry $entry) {
+        return $entry-&gt;type === 'request'
+                    ? ['status:'.$entry-&gt;content['response_status']]
+                    : [];
+    });
+ }
+</code></pre>
+<p><a name="available-watchers"></a></p>
+<h2 id="available-watchers">Available Watchers</h2>
+<p>Telescope "watchers" gather application data when a request or console command is executed. You may customize the list of watchers that you would like to enable within your <code>config/telescope.php</code> configuration file:</p>
+<pre><code>'watchers' =&gt; [
+    Watchers\CacheWatcher::class =&gt; true,
+    Watchers\CommandWatcher::class =&gt; true,
+    ...
+],
+</code></pre>
+<p>Some watchers also allow you to provide additional customization options:</p>
+<pre><code>'watchers' =&gt; [
+    Watchers\QueryWatcher::class =&gt; [
+        'enabled' =&gt; env('TELESCOPE_QUERY_WATCHER', true),
+        'slow' =&gt; 100,
+    ],
+    ...
+],
+</code></pre>
+<p><a name="batch-watcher"></a></p>
+<h3 id="batch-watcher">Batch Watcher</h3>
+<p>The batch watcher records information about queued <a href="/docs/{{version}}/queues#job-batching">batches</a>, including the job and connection information.</p>
+<p><a name="cache-watcher"></a></p>
+<h3 id="cache-watcher">Cache Watcher</h3>
+<p>The cache watcher records data when a cache key is hit, missed, updated and forgotten.</p>
+<p><a name="command-watcher"></a></p>
+<h3 id="command-watcher">Command Watcher</h3>
+<p>The command watcher records the arguments, options, exit code, and output whenever an Artisan command is executed. If you would like to exclude certain commands from being recorded by the watcher, you may specify the command in the <code>ignore</code> option within your <code>config/telescope.php</code> file:</p>
+<pre><code>'watchers' =&gt; [
+    Watchers\CommandWatcher::class =&gt; [
+        'enabled' =&gt; env('TELESCOPE_COMMAND_WATCHER', true),
+        'ignore' =&gt; ['key:generate'],
+    ],
+    ...
+],
+</code></pre>
+<p><a name="dump-watcher"></a></p>
+<h3 id="dump-watcher">Dump Watcher</h3>
+<p>The dump watcher records and displays your variable dumps in Telescope. When using Laravel, variables may be dumped using the global <code>dump</code> function. The dump watcher tab must be open in a browser for the dump to be recorded, otherwise, the dumps will be ignored by the watcher.</p>
+<p><a name="event-watcher"></a></p>
+<h3 id="event-watcher">Event Watcher</h3>
+<p>The event watcher records the payload, listeners, and broadcast data for any <a href="/docs/{{version}}/events">events</a> dispatched by your application. The Laravel framework's internal events are ignored by the Event watcher.</p>
+<p><a name="exception-watcher"></a></p>
+<h3 id="exception-watcher">Exception Watcher</h3>
+<p>The exception watcher records the data and stack trace for any reportable exceptions that are thrown by your application.</p>
+<p><a name="gate-watcher"></a></p>
+<h3 id="gate-watcher">Gate Watcher</h3>
+<p>The gate watcher records the data and result of <a href="/docs/{{version}}/authorization">gate and policy</a> checks by your application. If you would like to exclude certain abilities from being recorded by the watcher, you may specify those in the <code>ignore_abilities</code> option in your <code>config/telescope.php</code> file:</p>
+<pre><code>'watchers' =&gt; [
+    Watchers\GateWatcher::class =&gt; [
+        'enabled' =&gt; env('TELESCOPE_GATE_WATCHER', true),
+        'ignore_abilities' =&gt; ['viewNova'],
+    ],
+    ...
+],
+</code></pre>
+<p><a name="http-client-watcher"></a></p>
+<h3 id="http-client-watcher">HTTP Client Watcher</h3>
+<p>The HTTP client watcher records outgoing <a href="/docs/{{version}}/http-client">HTTP client requests</a> made by your application.</p>
+<p><a name="job-watcher"></a></p>
+<h3 id="job-watcher">Job Watcher</h3>
+<p>The job watcher records the data and status of any <a href="/docs/{{version}}/queues">jobs</a> dispatched by your application.</p>
+<p><a name="log-watcher"></a></p>
+<h3 id="log-watcher">Log Watcher</h3>
+<p>The log watcher records the <a href="/docs/{{version}}/logging">log data</a> for any logs written by your application.</p>
+<p><a name="mail-watcher"></a></p>
+<h3 id="mail-watcher">Mail Watcher</h3>
+<p>The mail watcher allows you to view an in-browser preview of <a href="/docs/{{version}}/mail">emails</a> sent by your application along with their associated data. You may also download the email as an <code>.eml</code> file.</p>
+<p><a name="model-watcher"></a></p>
+<h3 id="model-watcher">Model Watcher</h3>
+<p>The model watcher records model changes whenever an Eloquent <a href="/docs/{{version}}/eloquent#events">model event</a> is dispatched. You may specify which model events should be recorded via the watcher's <code>events</code> option:</p>
+<pre><code>'watchers' =&gt; [
+    Watchers\ModelWatcher::class =&gt; [
+        'enabled' =&gt; env('TELESCOPE_MODEL_WATCHER', true),
+        'events' =&gt; ['eloquent.created*', 'eloquent.updated*'],
+    ],
+    ...
+],
+</code></pre>
+<p>If you would like to record the number of models hydrated during a given request, enable the <code>hydrations</code> option:</p>
+<pre><code>'watchers' =&gt; [
+    Watchers\ModelWatcher::class =&gt; [
+        'enabled' =&gt; env('TELESCOPE_MODEL_WATCHER', true),
+        'events' =&gt; ['eloquent.created*', 'eloquent.updated*'],
+        'hydrations' =&gt; true,
+    ],
+    ...
+],
+</code></pre>
+<p><a name="notification-watcher"></a></p>
+<h3 id="notification-watcher">Notification Watcher</h3>
+<p>The notification watcher records all <a href="/docs/{{version}}/notifications">notifications</a> sent by your application. If the notification triggers an email and you have the mail watcher enabled, the email will also be available for preview on the mail watcher screen.</p>
+<p><a name="query-watcher"></a></p>
+<h3 id="query-watcher">Query Watcher</h3>
+<p>The query watcher records the raw SQL, bindings, and execution time for all queries that are executed by your application. The watcher also tags any queries slower than 100 milliseconds as <code>slow</code>. You may customize the slow query threshold using the watcher's <code>slow</code> option:</p>
+<pre><code>'watchers' =&gt; [
+    Watchers\QueryWatcher::class =&gt; [
+        'enabled' =&gt; env('TELESCOPE_QUERY_WATCHER', true),
+        'slow' =&gt; 50,
+    ],
+    ...
+],
+</code></pre>
+<p><a name="redis-watcher"></a></p>
+<h3 id="redis-watcher">Redis Watcher</h3>
+<p>The Redis watcher records all <a href="/docs/{{version}}/redis">Redis</a> commands executed by your application. If you are using Redis for caching, cache commands will also be recorded by the Redis watcher.</p>
+<p><a name="request-watcher"></a></p>
+<h3 id="request-watcher">Request Watcher</h3>
+<p>The request watcher records the request, headers, session, and response data associated with any requests handled by the application. You may limit your recorded response data via the <code>size_limit</code> (in kilobytes) option:</p>
+<pre><code>'watchers' =&gt; [
+    Watchers\RequestWatcher::class =&gt; [
+        'enabled' =&gt; env('TELESCOPE_REQUEST_WATCHER', true),
+        'size_limit' =&gt; env('TELESCOPE_RESPONSE_SIZE_LIMIT', 64),
+    ],
+    ...
+],
+</code></pre>
+<p><a name="schedule-watcher"></a></p>
+<h3 id="schedule-watcher">Schedule Watcher</h3>
+<p>The schedule watcher records the command and output of any <a href="/docs/{{version}}/scheduling">scheduled tasks</a> run by your application.</p>
+<p><a name="view-watcher"></a></p>
+<h3 id="view-watcher">View Watcher</h3>
+<p>The view watcher records the <a href="/docs/{{version}}/views">view</a> name, path, data, and "composers" used when rendering views.</p>
+<p><a name="displaying-user-avatars"></a></p>
+<h2 id="displaying-user-avatars">Displaying User Avatars</h2>
+<p>The Telescope dashboard displays the user avatar for the user that was authenticated when a given entry was saved. By default, Telescope will retrieve avatars using the Gravatar web service. However, you may customize the avatar URL by registering a callback in your <code>App\Providers\TelescopeServiceProvider</code> class. The callback will receive the user's ID and email address and should return the user's avatar image URL:</p>
+<pre><code>use App\Models\User;
+use Laravel\Telescope\Telescope;
+
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    // ...
+
+    Telescope::avatar(function ($id, $email) {
+        return '/avatars/'.User::find($id)-&gt;avatar_path;
+    });
+}
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../socialite/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Socialite" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Socialite
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../valet/" class="md-footer__link md-footer__link--next" aria-label="Next: Valet" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Valet
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

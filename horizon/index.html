@@ -1,0 +1,2340 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/horizon/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Horizon - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#laravel-horizon" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Horizon
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Horizon
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Horizon
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environments" class="md-nav__link">
+    Environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supervisors" class="md-nav__link">
+    Supervisors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-values" class="md-nav__link">
+    Default Values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#balancing-strategies" class="md-nav__link">
+    Balancing Strategies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-authorization" class="md-nav__link">
+    Dashboard Authorization
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative-authentication-strategies" class="md-nav__link">
+    Alternative Authentication Strategies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-horizon" class="md-nav__link">
+    Upgrading Horizon
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-horizon" class="md-nav__link">
+    Running Horizon
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Horizon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploying-horizon" class="md-nav__link">
+    Deploying Horizon
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Horizon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-supervisor" class="md-nav__link">
+    Installing Supervisor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supervisor-configuration" class="md-nav__link">
+    Supervisor Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-supervisor" class="md-nav__link">
+    Starting Supervisor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    Tags
+  </a>
+  
+    <nav class="md-nav" aria-label="Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manually-tagging-jobs" class="md-nav__link">
+    Manually Tagging Jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    Notifications
+  </a>
+  
+    <nav class="md-nav" aria-label="Notifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-notification-wait-time-thresholds" class="md-nav__link">
+    Configuring Notification Wait Time Thresholds
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    Metrics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-failed-jobs" class="md-nav__link">
+    Deleting Failed Jobs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clearing-jobs-from-queues" class="md-nav__link">
+    Clearing Jobs From Queues
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environments" class="md-nav__link">
+    Environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supervisors" class="md-nav__link">
+    Supervisors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-values" class="md-nav__link">
+    Default Values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#balancing-strategies" class="md-nav__link">
+    Balancing Strategies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-authorization" class="md-nav__link">
+    Dashboard Authorization
+  </a>
+  
+    <nav class="md-nav" aria-label="Dashboard Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative-authentication-strategies" class="md-nav__link">
+    Alternative Authentication Strategies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-horizon" class="md-nav__link">
+    Upgrading Horizon
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-horizon" class="md-nav__link">
+    Running Horizon
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Horizon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploying-horizon" class="md-nav__link">
+    Deploying Horizon
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Horizon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-supervisor" class="md-nav__link">
+    Installing Supervisor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supervisor-configuration" class="md-nav__link">
+    Supervisor Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-supervisor" class="md-nav__link">
+    Starting Supervisor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    Tags
+  </a>
+  
+    <nav class="md-nav" aria-label="Tags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manually-tagging-jobs" class="md-nav__link">
+    Manually Tagging Jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    Notifications
+  </a>
+  
+    <nav class="md-nav" aria-label="Notifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-notification-wait-time-thresholds" class="md-nav__link">
+    Configuring Notification Wait Time Thresholds
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    Metrics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-failed-jobs" class="md-nav__link">
+    Deleting Failed Jobs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clearing-jobs-from-queues" class="md-nav__link">
+    Clearing Jobs From Queues
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="laravel-horizon">Laravel Horizon</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#balancing-strategies">Balancing Strategies</a></li>
+<li><a href="#dashboard-authorization">Dashboard Authorization</a></li>
+</ul>
+</li>
+<li><a href="#upgrading-horizon">Upgrading Horizon</a></li>
+<li><a href="#running-horizon">Running Horizon</a><ul>
+<li><a href="#deploying-horizon">Deploying Horizon</a></li>
+</ul>
+</li>
+<li><a href="#tags">Tags</a></li>
+<li><a href="#notifications">Notifications</a></li>
+<li><a href="#metrics">Metrics</a></li>
+<li><a href="#deleting-failed-jobs">Deleting Failed Jobs</a></li>
+<li><a href="#clearing-jobs-from-queues">Clearing Jobs From Queues</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<blockquote>
+<p>{tip} Before digging into Laravel Horizon, you should familiarize yourself with Laravel's base <a href="/docs/{{version}}/queues">queue services</a>. Horizon augments Laravel's queue with additional features that may be confusing if you are not already familiar with the basic queue features offered by Laravel.</p>
+</blockquote>
+<p>Laravel Horizon provides a beautiful dashboard and code-driven configuration for your Laravel powered <a href="/docs/{{version}}/queues">Redis queues</a>. Horizon allows you to easily monitor key metrics of your queue system such as job throughput, runtime, and job failures.</p>
+<p>When using Horizon, all of your queue worker configuration is stored in a single, simple configuration file. By defining your application's worker configuration in a version controlled file, you may easily scale or modify your application's queue workers when deploying your application.</p>
+<p><img src="https://laravel.com/img/docs/horizon-example.png"></p>
+<p><a name="installation"></a></p>
+<h2 id="installation">Installation</h2>
+<blockquote>
+<p>{note} Laravel Horizon requires that you use <a href="https://redis.io">Redis</a> to power your queue. Therefore, you should ensure that your queue connection is set to <code>redis</code> in your application's <code>config/queue.php</code> configuration file.</p>
+</blockquote>
+<p>You may install Horizon into your project using the Composer package manager:</p>
+<pre><code>composer require laravel/horizon
+</code></pre>
+<p>After installing Horizon, publish its assets using the <code>horizon:install</code> Artisan command:</p>
+<pre><code>php artisan horizon:install
+</code></pre>
+<p><a name="configuration"></a></p>
+<h3 id="configuration">Configuration</h3>
+<p>After publishing Horizon's assets, its primary configuration file will be located at <code>config/horizon.php</code>. This configuration file allows you to configure the queue worker options for your application. Each configuration option includes a description of its purpose, so be sure to thoroughly explore this file.</p>
+<p><a name="environments"></a></p>
+<h4 id="environments">Environments</h4>
+<p>After installation, the primary Horizon configuration option that you should familiarize yourself with is the <code>environments</code> configuration option. This configuration option is an array of environments that your application runs on and defines the worker process options for each environment. By default, this entry contains a <code>production</code> and <code>local</code> environment. However, you are free to add more environments as needed:</p>
+<pre><code>'environments' =&gt; [
+    'production' =&gt; [
+        'supervisor-1' =&gt; [
+            'maxProcesses' =&gt; 10,
+            'balanceMaxShift' =&gt; 1,
+            'balanceCooldown' =&gt; 3,
+        ],
+    ],
+
+    'local' =&gt; [
+        'supervisor-1' =&gt; [
+            'maxProcesses' =&gt; 3,
+        ],
+    ],
+],
+</code></pre>
+<p>When you start Horizon, it will use the worker process configuration options for the environment that your application is running on. Typically, the environment is determined by the value of the <code>APP_ENV</code> <a href="/docs/{{version}}/configuration#determining-the-current-environment">environment variable</a>. For example, the default <code>local</code> Horizon environment is configured to start three worker processes and automatically balance the number of worker processes assigned to each queue. The default <code>production</code> environment is configured to start a maximum of 10 worker processes and automatically balance the number of worker processes assigned to each queue.</p>
+<blockquote>
+<p>{note} You should ensure that the <code>environments</code> portion of your <code>horizon</code> configuration file contains an entry for each <a href="/docs/{{version}}/configuration#environment-configuration">environment</a> on which you plan to run Horizon.</p>
+</blockquote>
+<p><a name="supervisors"></a></p>
+<h4 id="supervisors">Supervisors</h4>
+<p>As you can see in Horizon's default configuration file. Each environment can contain one or more "supervisors". By default, the configuration file defines this supervisor as <code>supervisor-1</code>; however, you are free to name your supervisors whatever you want. Each supervisor is essentially responsible for "supervising" a group of worker processes and takes care of balancing worker processes across queues.</p>
+<p>You may add additional supervisors to a given environment if you would like to define a new group of worker processes that should run in that environment. You may choose to do this if you would like to define a different balancing strategy or worker process count for a given queue used by your application.</p>
+<p><a name="default-values"></a></p>
+<h4 id="default-values">Default Values</h4>
+<p>Within Horizon's default configuration file, you will notice a <code>defaults</code> configuration option. This configuration option specifies the default values for your application's <a href="#supervisors">supervisors</a>. The supervisor's default configuration values will be merged into the supervisor's configuration for each environment, allowing you to avoid unnecessary repetition when defining your supervisors.</p>
+<p><a name="balancing-strategies"></a></p>
+<h3 id="balancing-strategies">Balancing Strategies</h3>
+<p>Unlike Laravel's default queue system, Horizon allows you to choose from three worker balancing strategies: <code>simple</code>, <code>auto</code>, and <code>false</code>. The <code>simple</code> strategy, which is the configuration file's default, splits incoming jobs evenly between worker processes:</p>
+<pre><code>'balance' =&gt; 'simple',
+</code></pre>
+<p>The <code>auto</code> strategy adjusts the number of worker processes per queue based on the current workload of the queue. For example, if your <code>notifications</code> queue has 1,000 pending jobs while your <code>render</code> queue is empty, Horizon will allocate more workers to your <code>notifications</code> queue until the queue is empty.</p>
+<p>When using the <code>auto</code> strategy, you may define the <code>minProcesses</code> and <code>maxProcesses</code> configuration options to control the minimum and the maximum number of worker processes Horizon should scale up and down to:</p>
+<pre><code>'environments' =&gt; [
+    'production' =&gt; [
+        'supervisor-1' =&gt; [
+            'connection' =&gt; 'redis',
+            'queue' =&gt; ['default'],
+            'balance' =&gt; 'auto',
+            'minProcesses' =&gt; 1,
+            'maxProcesses' =&gt; 10,
+            'balanceMaxShift' =&gt; 1,
+            'balanceCooldown' =&gt; 3,
+            'tries' =&gt; 3,
+        ],
+    ],
+],
+</code></pre>
+<p>The <code>balanceMaxShift</code> and <code>balanceCooldown</code> configuration values to determine how quickly Horizon will scale to meet worker demand. In the example above, a maximum of one new process will be created or destroyed every three seconds. You are free to tweak these values as necessary based on your application's needs.</p>
+<p>When the <code>balance</code> option is set to <code>false</code>, the default Laravel behavior will be used, which processes queues in the order they are listed in your configuration.</p>
+<p><a name="dashboard-authorization"></a></p>
+<h3 id="dashboard-authorization">Dashboard Authorization</h3>
+<p>Horizon exposes a dashboard at the <code>/horizon</code> URI. By default, you will only be able to access this dashboard in the <code>local</code> environment. However, within your <code>app/Providers/HorizonServiceProvider.php</code> file, there is an <a href="/docs/{{version}}/authorization#gates">authorization gate</a> definition. This authorization gate controls access to Horizon in <strong>non-local</strong> environments. You are free to modify this gate as needed to restrict access to your Horizon installation:</p>
+<pre><code>/**
+ * Register the Horizon gate.
+ *
+ * This gate determines who can access Horizon in non-local environments.
+ *
+ * @return void
+ */
+protected function gate()
+{
+    Gate::define('viewHorizon', function ($user) {
+        return in_array($user-&gt;email, [
+            'taylor@laravel.com',
+        ]);
+    });
+}
+</code></pre>
+<p><a name="alternative-authentication-strategies"></a></p>
+<h4 id="alternative-authentication-strategies">Alternative Authentication Strategies</h4>
+<p>Remember that Laravel automatically injects the authenticated user into the gate closure. If your application is providing Horizon security via another method, such as IP restrictions, then your Horizon users may not need to "login". Therefore, you will need to change <code>function ($user)</code> closure signature above to <code>function ($user = null)</code> in order to force Laravel to not require authentication.</p>
+<p><a name="upgrading-horizon"></a></p>
+<h2 id="upgrading-horizon">Upgrading Horizon</h2>
+<p>When upgrading to a new major version of Horizon, it's important that you carefully review <a href="https://github.com/laravel/horizon/blob/master/UPGRADE.md">the upgrade guide</a>. In addition, when upgrading to any new Horizon version, you should re-publish Horizon's assets:</p>
+<pre><code>php artisan horizon:publish
+</code></pre>
+<p>To keep the assets up-to-date and avoid issues in future updates, you may add the <code>horizon:publish</code> command to the <code>post-update-cmd</code> scripts in your application's <code>composer.json</code> file:</p>
+<pre><code>{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan horizon:publish --ansi"
+        ]
+    }
+}
+</code></pre>
+<p><a name="running-horizon"></a></p>
+<h2 id="running-horizon">Running Horizon</h2>
+<p>Once you have configured your supervisors and workers in your application's <code>config/horizon.php</code> configuration file, you may start Horizon using the <code>horizon</code> Artisan command. This single command will start all of the configured worker processes for the current environment:</p>
+<pre><code>php artisan horizon
+</code></pre>
+<p>You may pause the Horizon process and instruct it to continue processing jobs using the <code>horizon:pause</code> and <code>horizon:continue</code> Artisan commands:</p>
+<pre><code>php artisan horizon:pause
+
+php artisan horizon:continue
+</code></pre>
+<p>You may also pause and continue specific Horizon <a href="#supervisors">supervisors</a> using the <code>horizon:pause-supervisor</code> and <code>horizon:continue-supervisor</code> Artisan commands:</p>
+<pre><code>php artisan horizon:pause-supervisor supervisor-1
+
+php artisan horizon:continue-supervisor supervisor-1
+</code></pre>
+<p>You may check the current status of the Horizon process using the <code>horizon:status</code> Artisan command:</p>
+<pre><code>php artisan horizon:status
+</code></pre>
+<p>You may gracefully terminate the Horizon process using the <code>horizon:terminate</code> Artisan command. Any jobs that are currently being processed by will be completed and then Horizon will stop executing:</p>
+<pre><code>php artisan horizon:terminate
+</code></pre>
+<p><a name="deploying-horizon"></a></p>
+<h3 id="deploying-horizon">Deploying Horizon</h3>
+<p>When you're ready to deploy Horizon to your application's actual server, you should configure a process monitor to monitor the <code>php artisan horizon</code> command and restart it if it exits unexpectedly. Don't worry, we'll discuss how to install a process monitor below.</p>
+<p>During your application's deployment process, you should instruct the Horizon process to terminate so that it will be restarted by your process monitor and receive your code changes:</p>
+<pre><code>php artisan horizon:terminate
+</code></pre>
+<p><a name="installing-supervisor"></a></p>
+<h4 id="installing-supervisor">Installing Supervisor</h4>
+<p>Supervisor is a process monitor for the Linux operating system and will automatically restart your <code>horizon</code> process if it stops executing. To install Supervisor on Ubuntu, you may use the following command. If you are not using Ubuntu, you can likely install Supervisor using your operating system's package manager:</p>
+<pre><code>sudo apt-get install supervisor
+</code></pre>
+<blockquote>
+<p>{tip} If configuring Supervisor yourself sounds overwhelming, consider using <a href="https://forge.laravel.com">Laravel Forge</a>, which will automatically install and configure Supervisor for your Laravel projects.</p>
+</blockquote>
+<p><a name="supervisor-configuration"></a></p>
+<h4 id="supervisor-configuration">Supervisor Configuration</h4>
+<p>Supervisor configuration files are typically stored within your server's <code>/etc/supervisor/conf.d</code> directory. Within this directory, you may create any number of configuration files that instruct supervisor how your processes should be monitored. For example, let's create a <code>horizon.conf</code> file that starts and monitors a <code>horizon</code> process:</p>
+<pre><code>[program:horizon]
+process_name=%(program_name)s
+command=php /home/forge/example.com/artisan horizon
+autostart=true
+autorestart=true
+user=forge
+redirect_stderr=true
+stdout_logfile=/home/forge/example.com/horizon.log
+stopwaitsecs=3600
+</code></pre>
+<blockquote>
+<p>{note} You should ensure that the value of <code>stopwaitsecs</code> is greater than the number of seconds consumed by your longest running job. Otherwise, Supervisor may kill the job before it is finished processing.</p>
+</blockquote>
+<p><a name="starting-supervisor"></a></p>
+<h4 id="starting-supervisor">Starting Supervisor</h4>
+<p>Once the configuration file has been created, you may update the Supervisor configuration and start the monitored processes using the following commands:</p>
+<pre><code>sudo supervisorctl reread
+
+sudo supervisorctl update
+
+sudo supervisorctl start horizon
+</code></pre>
+<blockquote>
+<p>{tip} For more information on running Supervisor, consult the <a href="http://supervisord.org/index.html">Supervisor documentation</a>.</p>
+</blockquote>
+<p><a name="tags"></a></p>
+<h2 id="tags">Tags</h2>
+<p>Horizon allows you to assign “tags” to jobs, including mailables, broadcast events, notifications, and queued event listeners. In fact, Horizon will intelligently and automatically tag most jobs depending on the Eloquent models that are attached to the job. For example, take a look at the following job:</p>
+<pre><code>&lt;?php
+
+namespace App\Jobs;
+
+use App\Models\Video;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+class RenderVideo implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    /**
+     * The video instance.
+     *
+     * @var \App\Models\Video
+     */
+    public $video;
+
+    /**
+     * Create a new job instance.
+     *
+     * @param  \App\Models\Video  $video
+     * @return void
+     */
+    public function __construct(Video $video)
+    {
+        $this-&gt;video = $video;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        //
+    }
+}
+</code></pre>
+<p>If this job is queued with an <code>App\Models\Video</code> instance that has an <code>id</code> attribute of <code>1</code>, it will automatically receive the tag <code>App\Models\Video:1</code>. This is because Horizon will search the job's properties for any Eloquent models. If Eloquent models are found, Horizon will intelligently tag the job using the model's class name and primary key:</p>
+<pre><code>use App\Jobs\RenderVideo;
+use App\Models\Video;
+
+$video = Video::find(1);
+
+RenderVideo::dispatch($video);
+</code></pre>
+<p><a name="manually-tagging-jobs"></a></p>
+<h4 id="manually-tagging-jobs">Manually Tagging Jobs</h4>
+<p>If you would like to manually define the tags for one of your queueable objects, you may define a <code>tags</code> method on the class:</p>
+<pre><code>class RenderVideo implements ShouldQueue
+{
+    /**
+     * Get the tags that should be assigned to the job.
+     *
+     * @return array
+     */
+    public function tags()
+    {
+        return ['render', 'video:'.$this-&gt;video-&gt;id];
+    }
+}
+</code></pre>
+<p><a name="notifications"></a></p>
+<h2 id="notifications">Notifications</h2>
+<blockquote>
+<p>{note} When configuring Horizon to send Slack or SMS notifications, you should review the <a href="/docs/{{version}}/notifications">prerequisites for the relevant notification channel</a>.</p>
+</blockquote>
+<p>If you would like to be notified when one of your queues has a long wait time, you may use the <code>Horizon::routeMailNotificationsTo</code>, <code>Horizon::routeSlackNotificationsTo</code>, and <code>Horizon::routeSmsNotificationsTo</code> methods. You may call these methods from the <code>boot</code> method of your application's <code>App\Providers\HorizonServiceProvider</code>:</p>
+<pre><code>/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    parent::boot();
+
+    Horizon::routeSmsNotificationsTo('15556667777');
+    Horizon::routeMailNotificationsTo('example@example.com');
+    Horizon::routeSlackNotificationsTo('slack-webhook-url', '#channel');
+}
+</code></pre>
+<p><a name="configuring-notification-wait-time-thresholds"></a></p>
+<h4 id="configuring-notification-wait-time-thresholds">Configuring Notification Wait Time Thresholds</h4>
+<p>You may configure how many seconds are considered a "long wait" within your application's <code>config/horizon.php</code> configuration file. The <code>waits</code> configuration option within this file allows you to control the long wait threshold for each connection / queue combination:</p>
+<pre><code>'waits' =&gt; [
+    'redis:default' =&gt; 60,
+    'redis:critical,high' =&gt; 90,
+],
+</code></pre>
+<p><a name="metrics"></a></p>
+<h2 id="metrics">Metrics</h2>
+<p>Horizon includes a metrics dashboard which provides information regarding your job and queue wait times and throughput. In order to populate this dashboard, you should configure Horizon's <code>snapshot</code> Artisan command to run every five minutes via your application's <a href="/docs/{{version}}/scheduling">scheduler</a>:</p>
+<pre><code>/**
+ * Define the application's command schedule.
+ *
+ * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+ * @return void
+ */
+protected function schedule(Schedule $schedule)
+{
+    $schedule-&gt;command('horizon:snapshot')-&gt;everyFiveMinutes();
+}
+</code></pre>
+<p><a name="deleting-failed-jobs"></a></p>
+<h2 id="deleting-failed-jobs">Deleting Failed Jobs</h2>
+<p>If you would like to delete a failed job, you may use the <code>horizon:forget</code> command. The <code>horizon:forget</code> command accepts the ID of the failed job as its only argument:</p>
+<pre><code>php artisan horizon:forget 5
+</code></pre>
+<p><a name="clearing-jobs-from-queues"></a></p>
+<h2 id="clearing-jobs-from-queues">Clearing Jobs From Queues</h2>
+<p>If you would like to delete all jobs from your application's default queue, you may do so using the <code>horizon:clear</code> Artisan command:</p>
+<pre><code>php artisan horizon:clear
+</code></pre>
+<p>You may provide the <code>queue</code> option to delete jobs from a specific queue:</p>
+<pre><code>php artisan horizon:clear --queue=emails
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../homestead/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Homestead" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Homestead
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../octane/" class="md-footer__link md-footer__link--next" aria-label="Next: Octane" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Octane
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

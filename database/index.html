@@ -1,0 +1,2256 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/database/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Boshlash - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-getting-started" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Boshlash
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Boshlash
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Boshlash
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqlite-configuration" class="md-nav__link">
+    SQLite Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsoft-sql-server-configuration" class="md-nav__link">
+    Microsoft SQL Server Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-using-urls" class="md-nav__link">
+    Configuration Using URLs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-write-connections" class="md-nav__link">
+    Read &amp; Write Connections
+  </a>
+  
+    <nav class="md-nav" aria-label="Read &amp; Write Connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-sticky-option" class="md-nav__link">
+    The sticky Option
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-sql-queries" class="md-nav__link">
+    Running SQL Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Running SQL Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-a-select-query" class="md-nav__link">
+    Running A Select Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-named-bindings" class="md-nav__link">
+    Using Named Bindings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-an-insert-statement" class="md-nav__link">
+    Running An Insert Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-an-update-statement" class="md-nav__link">
+    Running An Update Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-delete-statement" class="md-nav__link">
+    Running A Delete Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-general-statement" class="md-nav__link">
+    Running A General Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-an-unprepared-statement" class="md-nav__link">
+    Running An Unprepared Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implicit-commits" class="md-nav__link">
+    Implicit Commits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-multiple-database-connections" class="md-nav__link">
+    Using Multiple Database Connections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-query-events" class="md-nav__link">
+    Listening For Query Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-transactions" class="md-nav__link">
+    Database Transactions
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handling-deadlocks" class="md-nav__link">
+    Handling Deadlocks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-using-transactions" class="md-nav__link">
+    Manually Using Transactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-database-cli" class="md-nav__link">
+    Connecting To The Database CLI
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqlite-configuration" class="md-nav__link">
+    SQLite Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsoft-sql-server-configuration" class="md-nav__link">
+    Microsoft SQL Server Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-using-urls" class="md-nav__link">
+    Configuration Using URLs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-write-connections" class="md-nav__link">
+    Read &amp; Write Connections
+  </a>
+  
+    <nav class="md-nav" aria-label="Read &amp; Write Connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-sticky-option" class="md-nav__link">
+    The sticky Option
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-sql-queries" class="md-nav__link">
+    Running SQL Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Running SQL Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-a-select-query" class="md-nav__link">
+    Running A Select Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-named-bindings" class="md-nav__link">
+    Using Named Bindings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-an-insert-statement" class="md-nav__link">
+    Running An Insert Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-an-update-statement" class="md-nav__link">
+    Running An Update Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-delete-statement" class="md-nav__link">
+    Running A Delete Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-general-statement" class="md-nav__link">
+    Running A General Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-an-unprepared-statement" class="md-nav__link">
+    Running An Unprepared Statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implicit-commits" class="md-nav__link">
+    Implicit Commits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-multiple-database-connections" class="md-nav__link">
+    Using Multiple Database Connections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-query-events" class="md-nav__link">
+    Listening For Query Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-transactions" class="md-nav__link">
+    Database Transactions
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handling-deadlocks" class="md-nav__link">
+    Handling Deadlocks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-using-transactions" class="md-nav__link">
+    Manually Using Transactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-database-cli" class="md-nav__link">
+    Connecting To The Database CLI
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="database-getting-started">Database: Getting Started</h1>
+<ul>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#read-and-write-connections">Read &amp; Write Connections</a></li>
+</ul>
+</li>
+<li><a href="#running-queries">Running SQL Queries</a><ul>
+<li><a href="#using-multiple-database-connections">Using Multiple Database Connections</a></li>
+<li><a href="#listening-for-query-events">Listening For Query Events</a></li>
+</ul>
+</li>
+<li><a href="#database-transactions">Database Transactions</a></li>
+<li><a href="#connecting-to-the-database-cli">Connecting To The Database CLI</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Almost every modern web application interacts with a database. Laravel makes interacting with databases extremely simple across a variety of supported databases using raw SQL, a <a href="/docs/{{version}}/queries">fluent query builder</a>, and the <a href="/docs/{{version}}/eloquent">Eloquent ORM</a>. Currently, Laravel provides first-party support for four databases:</p>
+<div class="content-list" markdown="1">
+- MySQL 5.7+ ([Version Policy](https://en.wikipedia.org/wiki/MySQL#Release_history))
+- PostgreSQL 9.6+ ([Version Policy](https://www.postgresql.org/support/versioning/))
+- SQLite 3.8.8+
+- SQL Server 2017+ ([Version Policy](https://docs.microsoft.com/en-us/lifecycle/products/?products=sql-server))
+</div>
+
+<p><a name="configuration"></a></p>
+<h3 id="configuration">Configuration</h3>
+<p>The configuration for Laravel's database services is located in your application's <code>config/database.php</code> configuration file. In this file, you may define all of your database connections, as well as specify which connection should be used by default. Most of the configuration options within this file are driven by the values of your application's environment variables. Examples for most of Laravel's supported database systems are provided in this file.</p>
+<p>By default, Laravel's sample <a href="/docs/{{version}}/configuration#environment-configuration">environment configuration</a> is ready to use with <a href="/docs/{{version}}/sail">Laravel Sail</a>, which is a Docker configuration for developing Laravel applications on your local machine. However, you are free to modify your database configuration as needed for your local database.</p>
+<p><a name="sqlite-configuration"></a></p>
+<h4 id="sqlite-configuration">SQLite Configuration</h4>
+<p>SQLite databases are contained within a single file on your filesystem. You can create a new SQLite database using the <code>touch</code> command in your terminal: <code>touch database/database.sqlite</code>. After the database has been created, you may easily configure your environment variables to point to this database by placing the absolute path to the database in the <code>DB_DATABASE</code> environment variable:</p>
+<pre><code>DB_CONNECTION=sqlite
+DB_DATABASE=/absolute/path/to/database.sqlite
+</code></pre>
+<p>To enable foreign key constraints for SQLite connections, you should set the <code>DB_FOREIGN_KEYS</code> environment variable to <code>true</code>:</p>
+<pre><code>DB_FOREIGN_KEYS=true
+</code></pre>
+<p><a name="mssql-configuration"></a></p>
+<h4 id="microsoft-sql-server-configuration">Microsoft SQL Server Configuration</h4>
+<p>To use a Microsoft SQL Server database, you should ensure that you have the <code>sqlsrv</code> and <code>pdo_sqlsrv</code> PHP extensions installed as well as any dependencies they may require such as the Microsoft SQL ODBC driver.</p>
+<p><a name="configuration-using-urls"></a></p>
+<h4 id="configuration-using-urls">Configuration Using URLs</h4>
+<p>Typically, database connections are configured using multiple configuration values such as <code>host</code>, <code>database</code>, <code>username</code>, <code>password</code>, etc. Each of these configuration values has its own corresponding environment variable. This means that when configuring your database connection information on a production server, you need to manage several environment variables.</p>
+<p>Some managed database providers such as AWS and Heroku provide a single database "URL" that contains all of the connection information for the database in a single string. An example database URL may look something like the following:</p>
+<pre><code class="language-html">mysql://root:password@127.0.0.1/forge?charset=UTF-8
+</code></pre>
+<p>These URLs typically follow a standard schema convention:</p>
+<pre><code class="language-html">driver://username:password@host:port/database?options
+</code></pre>
+<p>For convenience, Laravel supports these URLs as an alternative to configuring your database with multiple configuration options. If the <code>url</code> (or corresponding <code>DATABASE_URL</code> environment variable) configuration option is present, it will be used to extract the database connection and credential information.</p>
+<p><a name="read-and-write-connections"></a></p>
+<h3 id="read-write-connections">Read &amp; Write Connections</h3>
+<p>Sometimes you may wish to use one database connection for SELECT statements, and another for INSERT, UPDATE, and DELETE statements. Laravel makes this a breeze, and the proper connections will always be used whether you are using raw queries, the query builder, or the Eloquent ORM.</p>
+<p>To see how read / write connections should be configured, let's look at this example:</p>
+<pre><code>'mysql' =&gt; [
+    'read' =&gt; [
+        'host' =&gt; [
+            '192.168.1.1',
+            '196.168.1.2',
+        ],
+    ],
+    'write' =&gt; [
+        'host' =&gt; [
+            '196.168.1.3',
+        ],
+    ],
+    'sticky' =&gt; true,
+    'driver' =&gt; 'mysql',
+    'database' =&gt; 'database',
+    'username' =&gt; 'root',
+    'password' =&gt; '',
+    'charset' =&gt; 'utf8mb4',
+    'collation' =&gt; 'utf8mb4_unicode_ci',
+    'prefix' =&gt; '',
+],
+</code></pre>
+<p>Note that three keys have been added to the configuration array: <code>read</code>, <code>write</code> and <code>sticky</code>. The <code>read</code> and <code>write</code> keys have array values containing a single key: <code>host</code>. The rest of the database options for the <code>read</code> and <code>write</code> connections will be merged from the main <code>mysql</code> configuration array.</p>
+<p>You only need to place items in the <code>read</code> and <code>write</code> arrays if you wish to override the values from the main <code>mysql</code> array. So, in this case, <code>192.168.1.1</code> will be used as the host for the "read" connection, while <code>192.168.1.3</code> will be used for the "write" connection. The database credentials, prefix, character set, and all other options in the main <code>mysql</code> array will be shared across both connections. When multiple values exist in the <code>host</code> configuration array, a database host will be randomly chosen for each request.</p>
+<p><a name="the-sticky-option"></a></p>
+<h4 id="the-sticky-option">The <code>sticky</code> Option</h4>
+<p>The <code>sticky</code> option is an <em>optional</em> value that can be used to allow the immediate reading of records that have been written to the database during the current request cycle. If the <code>sticky</code> option is enabled and a "write" operation has been performed against the database during the current request cycle, any further "read" operations will use the "write" connection. This ensures that any data written during the request cycle can be immediately read back from the database during that same request. It is up to you to decide if this is the desired behavior for your application.</p>
+<p><a name="running-queries"></a></p>
+<h2 id="running-sql-queries">Running SQL Queries</h2>
+<p>Once you have configured your database connection, you may run queries using the <code>DB</code> facade. The <code>DB</code> facade provides methods for each type of query: <code>select</code>, <code>update</code>, <code>insert</code>, <code>delete</code>, and <code>statement</code>.</p>
+<p><a name="running-a-select-query"></a></p>
+<h4 id="running-a-select-query">Running A Select Query</h4>
+<p>To run a basic SELECT query, you may use the <code>select</code> method on the <code>DB</code> facade:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+class UserController extends Controller
+{
+    /**
+     * Show a list of all of the application's users.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $users = DB::select('select * from users where active = ?', [1]);
+
+        return view('user.index', ['users' =&gt; $users]);
+    }
+}
+</code></pre>
+<p>The first argument passed to the <code>select</code> method is the SQL query, while the second argument is any parameter bindings that need to be bound to the query. Typically, these are the values of the <code>where</code> clause constraints. Parameter binding provides protection against SQL injection.</p>
+<p>The <code>select</code> method will always return an <code>array</code> of results. Each result within the array will be a PHP <code>stdClass</code> object representing a record from the database:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::select('select * from users');
+
+foreach ($users as $user) {
+    echo $user-&gt;name;
+}
+</code></pre>
+<p><a name="using-named-bindings"></a></p>
+<h4 id="using-named-bindings">Using Named Bindings</h4>
+<p>Instead of using <code>?</code> to represent your parameter bindings, you may execute a query using named bindings:</p>
+<pre><code>$results = DB::select('select * from users where id = :id', ['id' =&gt; 1]);
+</code></pre>
+<p><a name="running-an-insert-statement"></a></p>
+<h4 id="running-an-insert-statement">Running An Insert Statement</h4>
+<p>To execute an <code>insert</code> statement, you may use the <code>insert</code> method on the <code>DB</code> facade. Like <code>select</code>, this method accepts the SQL query as its first argument and bindings as its second argument:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+DB::insert('insert into users (id, name) values (?, ?)', [1, 'Marc']);
+</code></pre>
+<p><a name="running-an-update-statement"></a></p>
+<h4 id="running-an-update-statement">Running An Update Statement</h4>
+<p>The <code>update</code> method should be used to update existing records in the database. The number of rows affected by the statement is returned by the method:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$affected = DB::update(
+    'update users set votes = 100 where name = ?',
+    ['Anita']
+);
+</code></pre>
+<p><a name="running-a-delete-statement"></a></p>
+<h4 id="running-a-delete-statement">Running A Delete Statement</h4>
+<p>The <code>delete</code> method should be used to delete records from the database. Like <code>update</code>, the number of rows affected will be returned by the method:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$deleted = DB::delete('delete from users');
+</code></pre>
+<p><a name="running-a-general-statement"></a></p>
+<h4 id="running-a-general-statement">Running A General Statement</h4>
+<p>Some database statements do not return any value. For these types of operations, you may use the <code>statement</code> method on the <code>DB</code> facade:</p>
+<pre><code>DB::statement('drop table users');
+</code></pre>
+<p><a name="running-an-unprepared-statement"></a></p>
+<h4 id="running-an-unprepared-statement">Running An Unprepared Statement</h4>
+<p>Sometimes you may want to execute an SQL statement without binding any values. You may use the <code>DB</code> facade's <code>unprepared</code> method to accomplish this:</p>
+<pre><code>DB::unprepared('update users set votes = 100 where name = "Dries"');
+</code></pre>
+<blockquote>
+<p>{note} Since unprepared statements do not bind parameters, they may be vulnerable to SQL injection. You should never allow user controlled values within an unprepared statement.</p>
+</blockquote>
+<p><a name="implicit-commits-in-transactions"></a></p>
+<h4 id="implicit-commits">Implicit Commits</h4>
+<p>When using the <code>DB</code> facade's <code>statement</code> and <code>unprepared</code> methods within transactions you must be careful to avoid statements that cause <a href="https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html">implicit commits</a>. These statements will cause the database engine to indirectly commit the entire transaction, leaving Laravel unaware of the database's transaction level. An example of such a statement is creating a database table:</p>
+<pre><code>DB::unprepared('create table a (col varchar(1) null)');
+</code></pre>
+<p>Please refer to the MySQL manual for <a href="https://dev.mysql.com/doc/refman/8.0/en/implicit-commit.html">a list of all statements</a> that trigger implicit commits.</p>
+<p><a name="using-multiple-database-connections"></a></p>
+<h3 id="using-multiple-database-connections">Using Multiple Database Connections</h3>
+<p>If your application defines multiple connections in your <code>config/database.php</code> configuration file, you may access each connection via the <code>connection</code> method provided by the <code>DB</code> facade. The connection name passed to the <code>connection</code> method should correspond to one of the connections listed in your <code>config/database.php</code> configuration file or configured at runtime using the <code>config</code> helper:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::connection('sqlite')-&gt;select(...);
+</code></pre>
+<p>You may access the raw, underlying PDO instance of a connection using the <code>getPdo</code> method on a connection instance:</p>
+<pre><code>$pdo = DB::connection()-&gt;getPdo();
+</code></pre>
+<p><a name="listening-for-query-events"></a></p>
+<h3 id="listening-for-query-events">Listening For Query Events</h3>
+<p>If you would like to specify a closure that is invoked for each SQL query executed by your application, you may use the <code>DB</code> facade's <code>listen</code> method. This method can be useful for logging queries or debugging. You may register your query listener closure in the <code>boot</code> method of a <a href="/docs/{{version}}/providers">service provider</a>:</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        DB::listen(function ($query) {
+            // $query-&gt;sql;
+            // $query-&gt;bindings;
+            // $query-&gt;time;
+        });
+    }
+}
+</code></pre>
+<p><a name="database-transactions"></a></p>
+<h2 id="database-transactions">Database Transactions</h2>
+<p>You may use the <code>transaction</code> method provided by the <code>DB</code> facade to run a set of operations within a database transaction. If an exception is thrown within the transaction closure, the transaction will automatically be rolled back. If the closure executes successfully, the transaction will automatically be committed. You don't need to worry about manually rolling back or committing while using the <code>transaction</code> method:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+DB::transaction(function () {
+    DB::update('update users set votes = 1');
+
+    DB::delete('delete from posts');
+});
+</code></pre>
+<p><a name="handling-deadlocks"></a></p>
+<h4 id="handling-deadlocks">Handling Deadlocks</h4>
+<p>The <code>transaction</code> method accepts an optional second argument which defines the number of times a transaction should be retried when a deadlock occurs. Once these attempts have been exhausted, an exception will be thrown:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+DB::transaction(function () {
+    DB::update('update users set votes = 1');
+
+    DB::delete('delete from posts');
+}, 5);
+</code></pre>
+<p><a name="manually-using-transactions"></a></p>
+<h4 id="manually-using-transactions">Manually Using Transactions</h4>
+<p>If you would like to begin a transaction manually and have complete control over rollbacks and commits, you may use the <code>beginTransaction</code> method provided by the <code>DB</code> facade:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+DB::beginTransaction();
+</code></pre>
+<p>You can rollback the transaction via the <code>rollBack</code> method:</p>
+<pre><code>DB::rollBack();
+</code></pre>
+<p>Lastly, you can commit a transaction via the <code>commit</code> method:</p>
+<pre><code>DB::commit();
+</code></pre>
+<blockquote>
+<p>{tip} The <code>DB</code> facade's transaction methods control the transactions for both the <a href="/docs/{{version}}/queries">query builder</a> and <a href="/docs/{{version}}/eloquent">Eloquent ORM</a>.</p>
+</blockquote>
+<p><a name="connecting-to-the-database-cli"></a></p>
+<h2 id="connecting-to-the-database-cli">Connecting To The Database CLI</h2>
+<p>If you would like to connect to your database's CLI, you may use the <code>db</code> Artisan command:</p>
+<pre><code>php artisan db
+</code></pre>
+<p>If needed, you may specify a database connection name to connect to a database connection that is not the default connection:</p>
+<pre><code>php artisan db mysql
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../passwords/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Parolni tiklash" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Parolni tiklash
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../queries/" class="md-footer__link md-footer__link--next" aria-label="Next: Query Builder" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Query Builder
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

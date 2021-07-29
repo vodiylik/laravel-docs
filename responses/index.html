@@ -1,0 +1,2351 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/responses/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Responselar - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#http-responses" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Responselar
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Responselar
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Responselar
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-responses" class="md-nav__link">
+    Creating Responses
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strings-arrays" class="md-nav__link">
+    Strings &amp; Arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-objects" class="md-nav__link">
+    Response Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eloquent-models-collections" class="md-nav__link">
+    Eloquent Models &amp; Collections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attaching-headers-to-responses" class="md-nav__link">
+    Attaching Headers To Responses
+  </a>
+  
+    <nav class="md-nav" aria-label="Attaching Headers To Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-control-middleware" class="md-nav__link">
+    Cache Control Middleware
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attaching-cookies-to-responses" class="md-nav__link">
+    Attaching Cookies To Responses
+  </a>
+  
+    <nav class="md-nav" aria-label="Attaching Cookies To Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-cookie-instances" class="md-nav__link">
+    Generating Cookie Instances
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expiring-cookies-early" class="md-nav__link">
+    Expiring Cookies Early
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies-encryption" class="md-nav__link">
+    Cookies &amp; Encryption
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redirects" class="md-nav__link">
+    Redirects
+  </a>
+  
+    <nav class="md-nav" aria-label="Redirects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-to-named-routes" class="md-nav__link">
+    Redirecting To Named Routes
+  </a>
+  
+    <nav class="md-nav" aria-label="Redirecting To Named Routes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#populating-parameters-via-eloquent-models" class="md-nav__link">
+    Populating Parameters Via Eloquent Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-to-controller-actions" class="md-nav__link">
+    Redirecting To Controller Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-to-external-domains" class="md-nav__link">
+    Redirecting To External Domains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-with-flashed-session-data" class="md-nav__link">
+    Redirecting With Flashed Session Data
+  </a>
+  
+    <nav class="md-nav" aria-label="Redirecting With Flashed Session Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-with-input" class="md-nav__link">
+    Redirecting With Input
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-response-types" class="md-nav__link">
+    Other Response Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Response Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-responses" class="md-nav__link">
+    View Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-responses" class="md-nav__link">
+    JSON Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-downloads" class="md-nav__link">
+    File Downloads
+  </a>
+  
+    <nav class="md-nav" aria-label="File Downloads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#streamed-downloads" class="md-nav__link">
+    Streamed Downloads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-responses" class="md-nav__link">
+    File Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-macros" class="md-nav__link">
+    Response Macros
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-responses" class="md-nav__link">
+    Creating Responses
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strings-arrays" class="md-nav__link">
+    Strings &amp; Arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-objects" class="md-nav__link">
+    Response Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eloquent-models-collections" class="md-nav__link">
+    Eloquent Models &amp; Collections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attaching-headers-to-responses" class="md-nav__link">
+    Attaching Headers To Responses
+  </a>
+  
+    <nav class="md-nav" aria-label="Attaching Headers To Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-control-middleware" class="md-nav__link">
+    Cache Control Middleware
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attaching-cookies-to-responses" class="md-nav__link">
+    Attaching Cookies To Responses
+  </a>
+  
+    <nav class="md-nav" aria-label="Attaching Cookies To Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-cookie-instances" class="md-nav__link">
+    Generating Cookie Instances
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expiring-cookies-early" class="md-nav__link">
+    Expiring Cookies Early
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies-encryption" class="md-nav__link">
+    Cookies &amp; Encryption
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redirects" class="md-nav__link">
+    Redirects
+  </a>
+  
+    <nav class="md-nav" aria-label="Redirects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-to-named-routes" class="md-nav__link">
+    Redirecting To Named Routes
+  </a>
+  
+    <nav class="md-nav" aria-label="Redirecting To Named Routes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#populating-parameters-via-eloquent-models" class="md-nav__link">
+    Populating Parameters Via Eloquent Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-to-controller-actions" class="md-nav__link">
+    Redirecting To Controller Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-to-external-domains" class="md-nav__link">
+    Redirecting To External Domains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-with-flashed-session-data" class="md-nav__link">
+    Redirecting With Flashed Session Data
+  </a>
+  
+    <nav class="md-nav" aria-label="Redirecting With Flashed Session Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-with-input" class="md-nav__link">
+    Redirecting With Input
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-response-types" class="md-nav__link">
+    Other Response Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Response Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-responses" class="md-nav__link">
+    View Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-responses" class="md-nav__link">
+    JSON Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-downloads" class="md-nav__link">
+    File Downloads
+  </a>
+  
+    <nav class="md-nav" aria-label="File Downloads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#streamed-downloads" class="md-nav__link">
+    Streamed Downloads
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-responses" class="md-nav__link">
+    File Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response-macros" class="md-nav__link">
+    Response Macros
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="http-responses">HTTP Responses</h1>
+<ul>
+<li><a href="#creating-responses">Creating Responses</a><ul>
+<li><a href="#attaching-headers-to-responses">Attaching Headers To Responses</a></li>
+<li><a href="#attaching-cookies-to-responses">Attaching Cookies To Responses</a></li>
+<li><a href="#cookies-and-encryption">Cookies &amp; Encryption</a></li>
+</ul>
+</li>
+<li><a href="#redirects">Redirects</a><ul>
+<li><a href="#redirecting-named-routes">Redirecting To Named Routes</a></li>
+<li><a href="#redirecting-controller-actions">Redirecting To Controller Actions</a></li>
+<li><a href="#redirecting-external-domains">Redirecting To External Domains</a></li>
+<li><a href="#redirecting-with-flashed-session-data">Redirecting With Flashed Session Data</a></li>
+</ul>
+</li>
+<li><a href="#other-response-types">Other Response Types</a><ul>
+<li><a href="#view-responses">View Responses</a></li>
+<li><a href="#json-responses">JSON Responses</a></li>
+<li><a href="#file-downloads">File Downloads</a></li>
+<li><a href="#file-responses">File Responses</a></li>
+</ul>
+</li>
+<li><a href="#response-macros">Response Macros</a></li>
+</ul>
+<p><a name="creating-responses"></a></p>
+<h2 id="creating-responses">Creating Responses</h2>
+<p><a name="strings-arrays"></a></p>
+<h4 id="strings-arrays">Strings &amp; Arrays</h4>
+<p>All routes and controllers should return a response to be sent back to the user's browser. Laravel provides several different ways to return responses. The most basic response is returning a string from a route or controller. The framework will automatically convert the string into a full HTTP response:</p>
+<pre><code>Route::get('/', function () {
+    return 'Hello World';
+});
+</code></pre>
+<p>In addition to returning strings from your routes and controllers, you may also return arrays. The framework will automatically convert the array into a JSON response:</p>
+<pre><code>Route::get('/', function () {
+    return [1, 2, 3];
+});
+</code></pre>
+<blockquote>
+<p>{tip} Did you know you can also return <a href="/docs/{{version}}/eloquent-collections">Eloquent collections</a> from your routes or controllers? They will automatically be converted to JSON. Give it a shot!</p>
+</blockquote>
+<p><a name="response-objects"></a></p>
+<h4 id="response-objects">Response Objects</h4>
+<p>Typically, you won't just be returning simple strings or arrays from your route actions. Instead, you will be returning full <code>Illuminate\Http\Response</code> instances or <a href="/docs/{{version}}/views">views</a>.</p>
+<p>Returning a full <code>Response</code> instance allows you to customize the response's HTTP status code and headers. A <code>Response</code> instance inherits from the <code>Symfony\Component\HttpFoundation\Response</code> class, which provides a variety of methods for building HTTP responses:</p>
+<pre><code>Route::get('/home', function () {
+    return response('Hello World', 200)
+                  -&gt;header('Content-Type', 'text/plain');
+});
+</code></pre>
+<p><a name="eloquent-models-and-collections"></a></p>
+<h4 id="eloquent-models-collections">Eloquent Models &amp; Collections</h4>
+<p>You may also return <a href="/docs/{{version}}/eloquent">Eloquent ORM</a> models and collections directly from your routes and controllers. When you do, Laravel will automatically convert the models and collections to JSON responses while respecting the model's <a href="/docs/{{version}}/eloquent-serialization#hiding-attributes-from-json">hidden attributes</a>:</p>
+<pre><code>use App\Models\User;
+
+Route::get('/user/{user}', function (User $user) {
+    return $user;
+});
+</code></pre>
+<p><a name="attaching-headers-to-responses"></a></p>
+<h3 id="attaching-headers-to-responses">Attaching Headers To Responses</h3>
+<p>Keep in mind that most response methods are chainable, allowing for the fluent construction of response instances. For example, you may use the <code>header</code> method to add a series of headers to the response before sending it back to the user:</p>
+<pre><code>return response($content)
+            -&gt;header('Content-Type', $type)
+            -&gt;header('X-Header-One', 'Header Value')
+            -&gt;header('X-Header-Two', 'Header Value');
+</code></pre>
+<p>Or, you may use the <code>withHeaders</code> method to specify an array of headers to be added to the response:</p>
+<pre><code>return response($content)
+            -&gt;withHeaders([
+                'Content-Type' =&gt; $type,
+                'X-Header-One' =&gt; 'Header Value',
+                'X-Header-Two' =&gt; 'Header Value',
+            ]);
+</code></pre>
+<p><a name="cache-control-middleware"></a></p>
+<h4 id="cache-control-middleware">Cache Control Middleware</h4>
+<p>Laravel includes a <code>cache.headers</code> middleware, which may be used to quickly set the <code>Cache-Control</code> header for a group of routes. If <code>etag</code> is specified in the list of directives, an MD5 hash of the response content will automatically be set as the ETag identifier:</p>
+<pre><code>Route::middleware('cache.headers:public;max_age=2628000;etag')-&gt;group(function () {
+    Route::get('/privacy', function () {
+        // ...
+    });
+
+    Route::get('/terms', function () {
+        // ...
+    });
+});
+</code></pre>
+<p><a name="attaching-cookies-to-responses"></a></p>
+<h3 id="attaching-cookies-to-responses">Attaching Cookies To Responses</h3>
+<p>You may attach a cookie to an outgoing <code>Illuminate\Http\Response</code> instance using the <code>cookie</code> method. You should pass the name, value, and the number of minutes the cookie should be considered valid to this method:</p>
+<pre><code>return response('Hello World')-&gt;cookie(
+    'name', 'value', $minutes
+);
+</code></pre>
+<p>The <code>cookie</code> method also accepts a few more arguments which are used less frequently. Generally, these arguments have the same purpose and meaning as the arguments that would be given to PHP's native <a href="https://secure.php.net/manual/en/function.setcookie.php">setcookie</a> method:</p>
+<pre><code>return response('Hello World')-&gt;cookie(
+    'name', 'value', $minutes, $path, $domain, $secure, $httpOnly
+);
+</code></pre>
+<p>If you would like to ensure that a cookie is sent with the outgoing response but you do not yet have an instance of that response, you can use the <code>Cookie</code> facade to "queue" cookies for attachment to the response when it is sent. The <code>queue</code> method accepts the arguments needed to create a cookie instance. These cookies will be attached to the outgoing response before it is sent to the browser:</p>
+<pre><code>use Illuminate\Support\Facades\Cookie;
+
+Cookie::queue('name', 'value', $minutes);
+</code></pre>
+<p><a name="generating-cookie-instances"></a></p>
+<h4 id="generating-cookie-instances">Generating Cookie Instances</h4>
+<p>If you would like to generate a <code>Symfony\Component\HttpFoundation\Cookie</code> instance that can be attached to a response instance at a later time, you may use the global <code>cookie</code> helper. This cookie will not be sent back to the client unless it is attached to a response instance:</p>
+<pre><code>$cookie = cookie('name', 'value', $minutes);
+
+return response('Hello World')-&gt;cookie($cookie);
+</code></pre>
+<p><a name="expiring-cookies-early"></a></p>
+<h4 id="expiring-cookies-early">Expiring Cookies Early</h4>
+<p>You may remove a cookie by expiring it via the <code>withoutCookie</code> method of an outgoing response:</p>
+<pre><code>return response('Hello World')-&gt;withoutCookie('name');
+</code></pre>
+<p>If you do not yet have an instance of the outgoing response, you may use the <code>Cookie</code> facade's <code>expire</code> method to expire a cookie:</p>
+<pre><code>Cookie::expire('name');
+</code></pre>
+<p><a name="cookies-and-encryption"></a></p>
+<h3 id="cookies-encryption">Cookies &amp; Encryption</h3>
+<p>By default, all cookies generated by Laravel are encrypted and signed so that they can't be modified or read by the client. If you would like to disable encryption for a subset of cookies generated by your application, you may use the <code>$except</code> property of the <code>App\Http\Middleware\EncryptCookies</code> middleware, which is located in the <code>app/Http/Middleware</code> directory:</p>
+<pre><code>/**
+ * The names of the cookies that should not be encrypted.
+ *
+ * @var array
+ */
+protected $except = [
+    'cookie_name',
+];
+</code></pre>
+<p><a name="redirects"></a></p>
+<h2 id="redirects">Redirects</h2>
+<p>Redirect responses are instances of the <code>Illuminate\Http\RedirectResponse</code> class, and contain the proper headers needed to redirect the user to another URL. There are several ways to generate a <code>RedirectResponse</code> instance. The simplest method is to use the global <code>redirect</code> helper:</p>
+<pre><code>Route::get('/dashboard', function () {
+    return redirect('home/dashboard');
+});
+</code></pre>
+<p>Sometimes you may wish to redirect the user to their previous location, such as when a submitted form is invalid. You may do so by using the global <code>back</code> helper function. Since this feature utilizes the <a href="/docs/{{version}}/session">session</a>, make sure the route calling the <code>back</code> function is using the <code>web</code> middleware group:</p>
+<pre><code>Route::post('/user/profile', function () {
+    // Validate the request...
+
+    return back()-&gt;withInput();
+});
+</code></pre>
+<p><a name="redirecting-named-routes"></a></p>
+<h3 id="redirecting-to-named-routes">Redirecting To Named Routes</h3>
+<p>When you call the <code>redirect</code> helper with no parameters, an instance of <code>Illuminate\Routing\Redirector</code> is returned, allowing you to call any method on the <code>Redirector</code> instance. For example, to generate a <code>RedirectResponse</code> to a named route, you may use the <code>route</code> method:</p>
+<pre><code>return redirect()-&gt;route('login');
+</code></pre>
+<p>If your route has parameters, you may pass them as the second argument to the <code>route</code> method:</p>
+<pre><code>// For a route with the following URI: /profile/{id}
+
+return redirect()-&gt;route('profile', ['id' =&gt; 1]);
+</code></pre>
+<p><a name="populating-parameters-via-eloquent-models"></a></p>
+<h4 id="populating-parameters-via-eloquent-models">Populating Parameters Via Eloquent Models</h4>
+<p>If you are redirecting to a route with an "ID" parameter that is being populated from an Eloquent model, you may pass the model itself. The ID will be extracted automatically:</p>
+<pre><code>// For a route with the following URI: /profile/{id}
+
+return redirect()-&gt;route('profile', [$user]);
+</code></pre>
+<p>If you would like to customize the value that is placed in the route parameter, you can specify the column in the route parameter definition (<code>/profile/{id:slug}</code>) or you can override the <code>getRouteKey</code> method on your Eloquent model:</p>
+<pre><code>/**
+ * Get the value of the model's route key.
+ *
+ * @return mixed
+ */
+public function getRouteKey()
+{
+    return $this-&gt;slug;
+}
+</code></pre>
+<p><a name="redirecting-controller-actions"></a></p>
+<h3 id="redirecting-to-controller-actions">Redirecting To Controller Actions</h3>
+<p>You may also generate redirects to <a href="/docs/{{version}}/controllers">controller actions</a>. To do so, pass the controller and action name to the <code>action</code> method:</p>
+<pre><code>use App\Http\Controllers\UserController;
+
+return redirect()-&gt;action([UserController::class, 'index']);
+</code></pre>
+<p>If your controller route requires parameters, you may pass them as the second argument to the <code>action</code> method:</p>
+<pre><code>return redirect()-&gt;action(
+    [UserController::class, 'profile'], ['id' =&gt; 1]
+);
+</code></pre>
+<p><a name="redirecting-external-domains"></a></p>
+<h3 id="redirecting-to-external-domains">Redirecting To External Domains</h3>
+<p>Sometimes you may need to redirect to a domain outside of your application. You may do so by calling the <code>away</code> method, which creates a <code>RedirectResponse</code> without any additional URL encoding, validation, or verification:</p>
+<pre><code>return redirect()-&gt;away('https://www.google.com');
+</code></pre>
+<p><a name="redirecting-with-flashed-session-data"></a></p>
+<h3 id="redirecting-with-flashed-session-data">Redirecting With Flashed Session Data</h3>
+<p>Redirecting to a new URL and <a href="/docs/{{version}}/session#flash-data">flashing data to the session</a> are usually done at the same time. Typically, this is done after successfully performing an action when you flash a success message to the session. For convenience, you may create a <code>RedirectResponse</code> instance and flash data to the session in a single, fluent method chain:</p>
+<pre><code>Route::post('/user/profile', function () {
+    // ...
+
+    return redirect('dashboard')-&gt;with('status', 'Profile updated!');
+});
+</code></pre>
+<p>After the user is redirected, you may display the flashed message from the <a href="/docs/{{version}}/session">session</a>. For example, using <a href="/docs/{{version}}/blade">Blade syntax</a>:</p>
+<pre><code>@if (session('status'))
+    &lt;div class="alert alert-success"&gt;
+        {{ session('status') }}
+    &lt;/div&gt;
+@endif
+</code></pre>
+<p><a name="redirecting-with-input"></a></p>
+<h4 id="redirecting-with-input">Redirecting With Input</h4>
+<p>You may use the <code>withInput</code> method provided by the <code>RedirectResponse</code> instance to flash the current request's input data to the session before redirecting the user to a new location. This is typically done if the user has encountered a validation error. Once the input has been flashed to the session, you may easily <a href="/docs/{{version}}/requests#retrieving-old-input">retrieve it</a> during the next request to repopulate the form:</p>
+<pre><code>return back()-&gt;withInput();
+</code></pre>
+<p><a name="other-response-types"></a></p>
+<h2 id="other-response-types">Other Response Types</h2>
+<p>The <code>response</code> helper may be used to generate other types of response instances. When the <code>response</code> helper is called without arguments, an implementation of the <code>Illuminate\Contracts\Routing\ResponseFactory</code> <a href="/docs/{{version}}/contracts">contract</a> is returned. This contract provides several helpful methods for generating responses.</p>
+<p><a name="view-responses"></a></p>
+<h3 id="view-responses">View Responses</h3>
+<p>If you need control over the response's status and headers but also need to return a <a href="/docs/{{version}}/views">view</a> as the response's content, you should use the <code>view</code> method:</p>
+<pre><code>return response()
+            -&gt;view('hello', $data, 200)
+            -&gt;header('Content-Type', $type);
+</code></pre>
+<p>Of course, if you do not need to pass a custom HTTP status code or custom headers, you may use the global <code>view</code> helper function.</p>
+<p><a name="json-responses"></a></p>
+<h3 id="json-responses">JSON Responses</h3>
+<p>The <code>json</code> method will automatically set the <code>Content-Type</code> header to <code>application/json</code>, as well as convert the given array to JSON using the <code>json_encode</code> PHP function:</p>
+<pre><code>return response()-&gt;json([
+    'name' =&gt; 'Abigail',
+    'state' =&gt; 'CA',
+]);
+</code></pre>
+<p>If you would like to create a JSONP response, you may use the <code>json</code> method in combination with the <code>withCallback</code> method:</p>
+<pre><code>return response()
+            -&gt;json(['name' =&gt; 'Abigail', 'state' =&gt; 'CA'])
+            -&gt;withCallback($request-&gt;input('callback'));
+</code></pre>
+<p><a name="file-downloads"></a></p>
+<h3 id="file-downloads">File Downloads</h3>
+<p>The <code>download</code> method may be used to generate a response that forces the user's browser to download the file at the given path. The <code>download</code> method accepts a filename as the second argument to the method, which will determine the filename that is seen by the user downloading the file. Finally, you may pass an array of HTTP headers as the third argument to the method:</p>
+<pre><code>return response()-&gt;download($pathToFile);
+
+return response()-&gt;download($pathToFile, $name, $headers);
+</code></pre>
+<blockquote>
+<p>{note} Symfony HttpFoundation, which manages file downloads, requires the file being downloaded to have an ASCII filename.</p>
+</blockquote>
+<p><a name="streamed-downloads"></a></p>
+<h4 id="streamed-downloads">Streamed Downloads</h4>
+<p>Sometimes you may wish to turn the string response of a given operation into a downloadable response without having to write the contents of the operation to disk. You may use the <code>streamDownload</code> method in this scenario. This method accepts a callback, filename, and an optional array of headers as its arguments:</p>
+<pre><code>use App\Services\GitHub;
+
+return response()-&gt;streamDownload(function () {
+    echo GitHub::api('repo')
+                -&gt;contents()
+                -&gt;readme('laravel', 'laravel')['contents'];
+}, 'laravel-readme.md');
+</code></pre>
+<p><a name="file-responses"></a></p>
+<h3 id="file-responses">File Responses</h3>
+<p>The <code>file</code> method may be used to display a file, such as an image or PDF, directly in the user's browser instead of initiating a download. This method accepts the path to the file as its first argument and an array of headers as its second argument:</p>
+<pre><code>return response()-&gt;file($pathToFile);
+
+return response()-&gt;file($pathToFile, $headers);
+</code></pre>
+<p><a name="response-macros"></a></p>
+<h2 id="response-macros">Response Macros</h2>
+<p>If you would like to define a custom response that you can re-use in a variety of your routes and controllers, you may use the <code>macro</code> method on the <code>Response</code> facade. Typically, you should call this method from the <code>boot</code> method of one of your application's <a href="/docs/{{version}}/providers">service providers</a>, such as the <code>App\Providers\AppServiceProvider</code> service provider:</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Response::macro('caps', function ($value) {
+            return Response::make(strtoupper($value));
+        });
+    }
+}
+</code></pre>
+<p>The <code>macro</code> function accepts a name as its first argument and a closure as its second argument. The macro's closure will be executed when calling the macro name from a <code>ResponseFactory</code> implementation or the <code>response</code> helper:</p>
+<pre><code>return response()-&gt;caps('foo');
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../requests/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Requestlar" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Requestlar
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../views/" class="md-footer__link md-footer__link--next" aria-label="Next: Viewlar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Viewlar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4962 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/validation/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Validatsiya - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#validation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Validatsiya
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Validatsiya
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Validatsiya
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-quickstart" class="md-nav__link">
+    Validation Quickstart
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Quickstart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-routes" class="md-nav__link">
+    Defining The Routes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-controller" class="md-nav__link">
+    Creating The Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-the-validation-logic" class="md-nav__link">
+    Writing The Validation Logic
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing The Validation Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stopping-on-first-validation-failure" class="md-nav__link">
+    Stopping On First Validation Failure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-note-on-nested-attributes" class="md-nav__link">
+    A Note On Nested Attributes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaying-the-validation-errors" class="md-nav__link">
+    Displaying The Validation Errors
+  </a>
+  
+    <nav class="md-nav" aria-label="Displaying The Validation Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-error-messages" class="md-nav__link">
+    Customizing The Error Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xhr-requests-validation" class="md-nav__link">
+    XHR Requests &amp; Validation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-error-directive" class="md-nav__link">
+    The @error Directive
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repopulating-forms" class="md-nav__link">
+    Repopulating Forms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-note-on-optional-fields" class="md-nav__link">
+    A Note On Optional Fields
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#form-request-validation" class="md-nav__link">
+    Form Request Validation
+  </a>
+  
+    <nav class="md-nav" aria-label="Form Request Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-form-requests" class="md-nav__link">
+    Creating Form Requests
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Form Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-after-hooks-to-form-requests" class="md-nav__link">
+    Adding After Hooks To Form Requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopping-on-first-validation-failure-attribute" class="md-nav__link">
+    Stopping On First Validation Failure Attribute
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizing-form-requests" class="md-nav__link">
+    Authorizing Form Requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-error-messages_1" class="md-nav__link">
+    Customizing The Error Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing The Error Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-validation-attributes" class="md-nav__link">
+    Customizing The Validation Attributes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparing-input-for-validation" class="md-nav__link">
+    Preparing Input For Validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manually-creating-validators" class="md-nav__link">
+    Manually Creating Validators
+  </a>
+  
+    <nav class="md-nav" aria-label="Manually Creating Validators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stopping-on-first-validation-failure_1" class="md-nav__link">
+    Stopping On First Validation Failure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-redirection" class="md-nav__link">
+    Automatic Redirection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-error-bags" class="md-nav__link">
+    Named Error Bags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-error-messages_2" class="md-nav__link">
+    Customizing The Error Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing The Error Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-a-custom-message-for-a-given-attribute" class="md-nav__link">
+    Specifying A Custom Message For A Given Attribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-custom-attribute-values" class="md-nav__link">
+    Specifying Custom Attribute Values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-validation-hook" class="md-nav__link">
+    After Validation Hook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-error-messages" class="md-nav__link">
+    Working With Error Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Working With Error Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-the-first-error-message-for-a-field" class="md-nav__link">
+    Retrieving The First Error Message For A Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-all-error-messages-for-a-field" class="md-nav__link">
+    Retrieving All Error Messages For A Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-all-error-messages-for-all-fields" class="md-nav__link">
+    Retrieving All Error Messages For All Fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determining-if-messages-exist-for-a-field" class="md-nav__link">
+    Determining If Messages Exist For A Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-custom-messages-in-language-files" class="md-nav__link">
+    Specifying Custom Messages In Language Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying Custom Messages In Language Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-messages-for-specific-attributes" class="md-nav__link">
+    Custom Messages For Specific Attributes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-attributes-in-language-files" class="md-nav__link">
+    Specifying Attributes In Language Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-values-in-language-files" class="md-nav__link">
+    Specifying Values In Language Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-validation-rules" class="md-nav__link">
+    Available Validation Rules
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Validation Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accepted" class="md-nav__link">
+    accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active_url" class="md-nav__link">
+    active_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afterdate" class="md-nav__link">
+    after:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after_or_equaldate" class="md-nav__link">
+    after_or_equal:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha" class="md-nav__link">
+    alpha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha_dash" class="md-nav__link">
+    alpha_dash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha_num" class="md-nav__link">
+    alpha_num
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bail" class="md-nav__link">
+    bail
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforedate" class="md-nav__link">
+    before:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#before_or_equaldate" class="md-nav__link">
+    before_or_equal:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#betweenminmax" class="md-nav__link">
+    between:min,max
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    boolean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirmed" class="md-nav__link">
+    confirmed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current_password" class="md-nav__link">
+    current_password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date_equalsdate" class="md-nav__link">
+    date_equals:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date_formatformat" class="md-nav__link">
+    date_format:format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differentfield" class="md-nav__link">
+    different:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digitsvalue" class="md-nav__link">
+    digits:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digits_betweenminmax" class="md-nav__link">
+    digits_between:min,max
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimensions" class="md-nav__link">
+    dimensions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distinct" class="md-nav__link">
+    distinct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email" class="md-nav__link">
+    email
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ends_withfoobar" class="md-nav__link">
+    ends_with:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_ifanotherfieldvalue" class="md-nav__link">
+    exclude_if:anotherfield,value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_unlessanotherfieldvalue" class="md-nav__link">
+    exclude_unless:anotherfield,value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#existstablecolumn" class="md-nav__link">
+    exists:table,column
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage-of-exists-rule" class="md-nav__link">
+    Basic Usage Of Exists Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-a-custom-column-name" class="md-nav__link">
+    Specifying A Custom Column Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file" class="md-nav__link">
+    file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filled" class="md-nav__link">
+    filled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gtfield" class="md-nav__link">
+    gt:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gtefield" class="md-nav__link">
+    gte:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infoobar" class="md-nav__link">
+    in:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_arrayanotherfield" class="md-nav__link">
+    in_array:anotherfield.*
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer" class="md-nav__link">
+    integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    ip
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv4" class="md-nav__link">
+    ipv4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv6" class="md-nav__link">
+    ipv6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ltfield" class="md-nav__link">
+    lt:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ltefield" class="md-nav__link">
+    lte:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxvalue" class="md-nav__link">
+    max:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mimetypestextplain" class="md-nav__link">
+    mimetypes:text/plain,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mimesfoobar" class="md-nav__link">
+    mimes:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage-of-mime-rule" class="md-nav__link">
+    Basic Usage Of MIME Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minvalue" class="md-nav__link">
+    min:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple_ofvalue" class="md-nav__link">
+    multiple_of:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not_infoobar" class="md-nav__link">
+    not_in:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not_regexpattern" class="md-nav__link">
+    not_regex:pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullable" class="md-nav__link">
+    nullable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numeric" class="md-nav__link">
+    numeric
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password" class="md-nav__link">
+    password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#present" class="md-nav__link">
+    present
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prohibited" class="md-nav__link">
+    prohibited
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prohibited_ifanotherfieldvalue" class="md-nav__link">
+    prohibited_if:anotherfield,value,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prohibited_unlessanotherfieldvalue" class="md-nav__link">
+    prohibited_unless:anotherfield,value,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regexpattern" class="md-nav__link">
+    regex:pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required" class="md-nav__link">
+    required
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_ifanotherfieldvalue" class="md-nav__link">
+    required_if:anotherfield,value,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_unlessanotherfieldvalue" class="md-nav__link">
+    required_unless:anotherfield,value,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_withfoobar" class="md-nav__link">
+    required_with:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_with_allfoobar" class="md-nav__link">
+    required_with_all:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_withoutfoobar" class="md-nav__link">
+    required_without:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_without_allfoobar" class="md-nav__link">
+    required_without_all:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samefield" class="md-nav__link">
+    same:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sizevalue" class="md-nav__link">
+    size:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starts_withfoobar" class="md-nav__link">
+    starts_with:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timezone" class="md-nav__link">
+    timezone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniquetablecolumnexceptidcolumn" class="md-nav__link">
+    unique:table,column,except,idColumn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    uuid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionally-adding-rules" class="md-nav__link">
+    Conditionally Adding Rules
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditionally Adding Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skipping-validation-when-fields-have-certain-values" class="md-nav__link">
+    Skipping Validation When Fields Have Certain Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-when-present" class="md-nav__link">
+    Validating When Present
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complex-conditional-validation" class="md-nav__link">
+    Complex Conditional Validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validating-arrays" class="md-nav__link">
+    Validating Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Validating Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#excluding-unvalidated-array-keys" class="md-nav__link">
+    Excluding Unvalidated Array Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-nested-array-input" class="md-nav__link">
+    Validating Nested Array Input
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validating-passwords" class="md-nav__link">
+    Validating Passwords
+  </a>
+  
+    <nav class="md-nav" aria-label="Validating Passwords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-default-password-rules" class="md-nav__link">
+    Defining Default Password Rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-validation-rules" class="md-nav__link">
+    Custom Validation Rules
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Validation Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-rule-objects" class="md-nav__link">
+    Using Rule Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-closures" class="md-nav__link">
+    Using Closures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implicit-rules" class="md-nav__link">
+    Implicit Rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-quickstart" class="md-nav__link">
+    Validation Quickstart
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Quickstart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-routes" class="md-nav__link">
+    Defining The Routes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-controller" class="md-nav__link">
+    Creating The Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-the-validation-logic" class="md-nav__link">
+    Writing The Validation Logic
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing The Validation Logic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stopping-on-first-validation-failure" class="md-nav__link">
+    Stopping On First Validation Failure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-note-on-nested-attributes" class="md-nav__link">
+    A Note On Nested Attributes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaying-the-validation-errors" class="md-nav__link">
+    Displaying The Validation Errors
+  </a>
+  
+    <nav class="md-nav" aria-label="Displaying The Validation Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-error-messages" class="md-nav__link">
+    Customizing The Error Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xhr-requests-validation" class="md-nav__link">
+    XHR Requests &amp; Validation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-error-directive" class="md-nav__link">
+    The @error Directive
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repopulating-forms" class="md-nav__link">
+    Repopulating Forms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-note-on-optional-fields" class="md-nav__link">
+    A Note On Optional Fields
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#form-request-validation" class="md-nav__link">
+    Form Request Validation
+  </a>
+  
+    <nav class="md-nav" aria-label="Form Request Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-form-requests" class="md-nav__link">
+    Creating Form Requests
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Form Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-after-hooks-to-form-requests" class="md-nav__link">
+    Adding After Hooks To Form Requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stopping-on-first-validation-failure-attribute" class="md-nav__link">
+    Stopping On First Validation Failure Attribute
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizing-form-requests" class="md-nav__link">
+    Authorizing Form Requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-error-messages_1" class="md-nav__link">
+    Customizing The Error Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing The Error Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-validation-attributes" class="md-nav__link">
+    Customizing The Validation Attributes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparing-input-for-validation" class="md-nav__link">
+    Preparing Input For Validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manually-creating-validators" class="md-nav__link">
+    Manually Creating Validators
+  </a>
+  
+    <nav class="md-nav" aria-label="Manually Creating Validators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stopping-on-first-validation-failure_1" class="md-nav__link">
+    Stopping On First Validation Failure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-redirection" class="md-nav__link">
+    Automatic Redirection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-error-bags" class="md-nav__link">
+    Named Error Bags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-error-messages_2" class="md-nav__link">
+    Customizing The Error Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing The Error Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-a-custom-message-for-a-given-attribute" class="md-nav__link">
+    Specifying A Custom Message For A Given Attribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-custom-attribute-values" class="md-nav__link">
+    Specifying Custom Attribute Values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-validation-hook" class="md-nav__link">
+    After Validation Hook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-error-messages" class="md-nav__link">
+    Working With Error Messages
+  </a>
+  
+    <nav class="md-nav" aria-label="Working With Error Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-the-first-error-message-for-a-field" class="md-nav__link">
+    Retrieving The First Error Message For A Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-all-error-messages-for-a-field" class="md-nav__link">
+    Retrieving All Error Messages For A Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-all-error-messages-for-all-fields" class="md-nav__link">
+    Retrieving All Error Messages For All Fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determining-if-messages-exist-for-a-field" class="md-nav__link">
+    Determining If Messages Exist For A Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-custom-messages-in-language-files" class="md-nav__link">
+    Specifying Custom Messages In Language Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying Custom Messages In Language Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-messages-for-specific-attributes" class="md-nav__link">
+    Custom Messages For Specific Attributes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-attributes-in-language-files" class="md-nav__link">
+    Specifying Attributes In Language Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-values-in-language-files" class="md-nav__link">
+    Specifying Values In Language Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-validation-rules" class="md-nav__link">
+    Available Validation Rules
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Validation Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accepted" class="md-nav__link">
+    accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active_url" class="md-nav__link">
+    active_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afterdate" class="md-nav__link">
+    after:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after_or_equaldate" class="md-nav__link">
+    after_or_equal:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha" class="md-nav__link">
+    alpha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha_dash" class="md-nav__link">
+    alpha_dash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha_num" class="md-nav__link">
+    alpha_num
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bail" class="md-nav__link">
+    bail
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforedate" class="md-nav__link">
+    before:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#before_or_equaldate" class="md-nav__link">
+    before_or_equal:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#betweenminmax" class="md-nav__link">
+    between:min,max
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    boolean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirmed" class="md-nav__link">
+    confirmed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current_password" class="md-nav__link">
+    current_password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date_equalsdate" class="md-nav__link">
+    date_equals:date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date_formatformat" class="md-nav__link">
+    date_format:format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differentfield" class="md-nav__link">
+    different:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digitsvalue" class="md-nav__link">
+    digits:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digits_betweenminmax" class="md-nav__link">
+    digits_between:min,max
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimensions" class="md-nav__link">
+    dimensions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distinct" class="md-nav__link">
+    distinct
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email" class="md-nav__link">
+    email
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ends_withfoobar" class="md-nav__link">
+    ends_with:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_ifanotherfieldvalue" class="md-nav__link">
+    exclude_if:anotherfield,value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude_unlessanotherfieldvalue" class="md-nav__link">
+    exclude_unless:anotherfield,value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#existstablecolumn" class="md-nav__link">
+    exists:table,column
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage-of-exists-rule" class="md-nav__link">
+    Basic Usage Of Exists Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-a-custom-column-name" class="md-nav__link">
+    Specifying A Custom Column Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file" class="md-nav__link">
+    file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filled" class="md-nav__link">
+    filled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gtfield" class="md-nav__link">
+    gt:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gtefield" class="md-nav__link">
+    gte:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infoobar" class="md-nav__link">
+    in:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_arrayanotherfield" class="md-nav__link">
+    in_array:anotherfield.*
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer" class="md-nav__link">
+    integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    ip
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv4" class="md-nav__link">
+    ipv4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv6" class="md-nav__link">
+    ipv6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ltfield" class="md-nav__link">
+    lt:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ltefield" class="md-nav__link">
+    lte:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxvalue" class="md-nav__link">
+    max:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mimetypestextplain" class="md-nav__link">
+    mimetypes:text/plain,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mimesfoobar" class="md-nav__link">
+    mimes:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage-of-mime-rule" class="md-nav__link">
+    Basic Usage Of MIME Rule
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minvalue" class="md-nav__link">
+    min:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple_ofvalue" class="md-nav__link">
+    multiple_of:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not_infoobar" class="md-nav__link">
+    not_in:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not_regexpattern" class="md-nav__link">
+    not_regex:pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullable" class="md-nav__link">
+    nullable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numeric" class="md-nav__link">
+    numeric
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password" class="md-nav__link">
+    password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#present" class="md-nav__link">
+    present
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prohibited" class="md-nav__link">
+    prohibited
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prohibited_ifanotherfieldvalue" class="md-nav__link">
+    prohibited_if:anotherfield,value,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prohibited_unlessanotherfieldvalue" class="md-nav__link">
+    prohibited_unless:anotherfield,value,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regexpattern" class="md-nav__link">
+    regex:pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required" class="md-nav__link">
+    required
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_ifanotherfieldvalue" class="md-nav__link">
+    required_if:anotherfield,value,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_unlessanotherfieldvalue" class="md-nav__link">
+    required_unless:anotherfield,value,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_withfoobar" class="md-nav__link">
+    required_with:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_with_allfoobar" class="md-nav__link">
+    required_with_all:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_withoutfoobar" class="md-nav__link">
+    required_without:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required_without_allfoobar" class="md-nav__link">
+    required_without_all:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samefield" class="md-nav__link">
+    same:field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sizevalue" class="md-nav__link">
+    size:value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starts_withfoobar" class="md-nav__link">
+    starts_with:foo,bar,...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    string
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timezone" class="md-nav__link">
+    timezone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniquetablecolumnexceptidcolumn" class="md-nav__link">
+    unique:table,column,except,idColumn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    uuid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionally-adding-rules" class="md-nav__link">
+    Conditionally Adding Rules
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditionally Adding Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skipping-validation-when-fields-have-certain-values" class="md-nav__link">
+    Skipping Validation When Fields Have Certain Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-when-present" class="md-nav__link">
+    Validating When Present
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complex-conditional-validation" class="md-nav__link">
+    Complex Conditional Validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validating-arrays" class="md-nav__link">
+    Validating Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Validating Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#excluding-unvalidated-array-keys" class="md-nav__link">
+    Excluding Unvalidated Array Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-nested-array-input" class="md-nav__link">
+    Validating Nested Array Input
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validating-passwords" class="md-nav__link">
+    Validating Passwords
+  </a>
+  
+    <nav class="md-nav" aria-label="Validating Passwords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-default-password-rules" class="md-nav__link">
+    Defining Default Password Rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-validation-rules" class="md-nav__link">
+    Custom Validation Rules
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Validation Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-rule-objects" class="md-nav__link">
+    Using Rule Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-closures" class="md-nav__link">
+    Using Closures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implicit-rules" class="md-nav__link">
+    Implicit Rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="validation">Validation</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#validation-quickstart">Validation Quickstart</a><ul>
+<li><a href="#quick-defining-the-routes">Defining The Routes</a></li>
+<li><a href="#quick-creating-the-controller">Creating The Controller</a></li>
+<li><a href="#quick-writing-the-validation-logic">Writing The Validation Logic</a></li>
+<li><a href="#quick-displaying-the-validation-errors">Displaying The Validation Errors</a></li>
+<li><a href="#repopulating-forms">Repopulating Forms</a></li>
+<li><a href="#a-note-on-optional-fields">A Note On Optional Fields</a></li>
+</ul>
+</li>
+<li><a href="#form-request-validation">Form Request Validation</a><ul>
+<li><a href="#creating-form-requests">Creating Form Requests</a></li>
+<li><a href="#authorizing-form-requests">Authorizing Form Requests</a></li>
+<li><a href="#customizing-the-error-messages">Customizing The Error Messages</a></li>
+<li><a href="#preparing-input-for-validation">Preparing Input For Validation</a></li>
+</ul>
+</li>
+<li><a href="#manually-creating-validators">Manually Creating Validators</a><ul>
+<li><a href="#automatic-redirection">Automatic Redirection</a></li>
+<li><a href="#named-error-bags">Named Error Bags</a></li>
+<li><a href="#manual-customizing-the-error-messages">Customizing The Error Messages</a></li>
+<li><a href="#after-validation-hook">After Validation Hook</a></li>
+</ul>
+</li>
+<li><a href="#working-with-error-messages">Working With Error Messages</a><ul>
+<li><a href="#specifying-custom-messages-in-language-files">Specifying Custom Messages In Language Files</a></li>
+<li><a href="#specifying-attribute-in-language-files">Specifying Attributes In Language Files</a></li>
+<li><a href="#specifying-values-in-language-files">Specifying Values In Language Files</a></li>
+</ul>
+</li>
+<li><a href="#available-validation-rules">Available Validation Rules</a></li>
+<li><a href="#conditionally-adding-rules">Conditionally Adding Rules</a></li>
+<li><a href="#validating-arrays">Validating Arrays</a><ul>
+<li><a href="#excluding-unvalidated-array-keys">Excluding Unvalidated Array Keys</a></li>
+<li><a href="#validating-nested-array-input">Validating Nested Array Input</a></li>
+</ul>
+</li>
+<li><a href="#validating-passwords">Validating Passwords</a></li>
+<li><a href="#custom-validation-rules">Custom Validation Rules</a><ul>
+<li><a href="#using-rule-objects">Using Rule Objects</a></li>
+<li><a href="#using-closures">Using Closures</a></li>
+<li><a href="#implicit-rules">Implicit Rules</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel provides several different approaches to validate your application's incoming data. It is most common to use the <code>validate</code> method available on all incoming HTTP requests. However, we will discuss other approaches to validation as well.</p>
+<p>Laravel includes a wide variety of convenient validation rules that you may apply to data, even providing the ability to validate if values are unique in a given database table. We'll cover each of these validation rules in detail so that you are familiar with all of Laravel's validation features.</p>
+<p><a name="validation-quickstart"></a></p>
+<h2 id="validation-quickstart">Validation Quickstart</h2>
+<p>To learn about Laravel's powerful validation features, let's look at a complete example of validating a form and displaying the error messages back to the user. By reading this high-level overview, you'll be able to gain a good general understanding of how to validate incoming request data using Laravel:</p>
+<p><a name="quick-defining-the-routes"></a></p>
+<h3 id="defining-the-routes">Defining The Routes</h3>
+<p>First, let's assume we have the following routes defined in our <code>routes/web.php</code> file:</p>
+<pre><code>use App\Http\Controllers\PostController;
+
+Route::get('/post/create', [PostController::class, 'create']);
+Route::post('/post', [PostController::class, 'store']);
+</code></pre>
+<p>The <code>GET</code> route will display a form for the user to create a new blog post, while the <code>POST</code> route will store the new blog post in the database.</p>
+<p><a name="quick-creating-the-controller"></a></p>
+<h3 id="creating-the-controller">Creating The Controller</h3>
+<p>Next, let's take a look at a simple controller that handles incoming requests to these routes. We'll leave the <code>store</code> method empty for now:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class PostController extends Controller
+{
+    /**
+     * Show the form to create a new blog post.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('post.create');
+    }
+
+    /**
+     * Store a new blog post.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // Validate and store the blog post...
+    }
+}
+</code></pre>
+<p><a name="quick-writing-the-validation-logic"></a></p>
+<h3 id="writing-the-validation-logic">Writing The Validation Logic</h3>
+<p>Now we are ready to fill in our <code>store</code> method with the logic to validate the new blog post. To do this, we will use the <code>validate</code> method provided by the <code>Illuminate\Http\Request</code> object. If the validation rules pass, your code will keep executing normally; however, if validation fails, an exception will be thrown and the proper error response will automatically be sent back to the user.</p>
+<p>If validation fails during a traditional HTTP request, a redirect response to the previous URL will be generated. If the incoming request is an XHR request, a JSON response containing the validation error messages will be returned.</p>
+<p>To get a better understanding of the <code>validate</code> method, let's jump back into the <code>store</code> method:</p>
+<pre><code>/**
+ * Store a new blog post.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function store(Request $request)
+{
+    $validated = $request-&gt;validate([
+        'title' =&gt; 'required|unique:posts|max:255',
+        'body' =&gt; 'required',
+    ]);
+
+    // The blog post is valid...
+}
+</code></pre>
+<p>As you can see, the validation rules are passed into the <code>validate</code> method. Don't worry - all available validation rules are <a href="#available-validation-rules">documented</a>. Again, if the validation fails, the proper response will automatically be generated. If the validation passes, our controller will continue executing normally.</p>
+<p>Alternatively, validation rules may be specified as arrays of rules instead of a single <code>|</code> delimited string:</p>
+<pre><code>$validatedData = $request-&gt;validate([
+    'title' =&gt; ['required', 'unique:posts', 'max:255'],
+    'body' =&gt; ['required'],
+]);
+</code></pre>
+<p>In addition, you may use the <code>validateWithBag</code> method to validate a request and store any error messages within a <a href="#named-error-bags">named error bag</a>:</p>
+<pre><code>$validatedData = $request-&gt;validateWithBag('post', [
+    'title' =&gt; ['required', 'unique:posts', 'max:255'],
+    'body' =&gt; ['required'],
+]);
+</code></pre>
+<p><a name="stopping-on-first-validation-failure"></a></p>
+<h4 id="stopping-on-first-validation-failure">Stopping On First Validation Failure</h4>
+<p>Sometimes you may wish to stop running validation rules on an attribute after the first validation failure. To do so, assign the <code>bail</code> rule to the attribute:</p>
+<pre><code>$request-&gt;validate([
+    'title' =&gt; 'bail|required|unique:posts|max:255',
+    'body' =&gt; 'required',
+]);
+</code></pre>
+<p>In this example, if the <code>unique</code> rule on the <code>title</code> attribute fails, the <code>max</code> rule will not be checked. Rules will be validated in the order they are assigned.</p>
+<p><a name="a-note-on-nested-attributes"></a></p>
+<h4 id="a-note-on-nested-attributes">A Note On Nested Attributes</h4>
+<p>If the incoming HTTP request contains "nested" field data, you may specify these fields in your validation rules using "dot" syntax:</p>
+<pre><code>$request-&gt;validate([
+    'title' =&gt; 'required|unique:posts|max:255',
+    'author.name' =&gt; 'required',
+    'author.description' =&gt; 'required',
+]);
+</code></pre>
+<p>On the other hand, if your field name contains a literal period, you can explicitly prevent this from being interpreted as "dot" syntax by escaping the period with a backslash:</p>
+<pre><code>$request-&gt;validate([
+    'title' =&gt; 'required|unique:posts|max:255',
+    'v1\.0' =&gt; 'required',
+]);
+</code></pre>
+<p><a name="quick-displaying-the-validation-errors"></a></p>
+<h3 id="displaying-the-validation-errors">Displaying The Validation Errors</h3>
+<p>So, what if the incoming request fields do not pass the given validation rules? As mentioned previously, Laravel will automatically redirect the user back to their previous location. In addition, all of the validation errors and <a href="/docs/{{version}}/requests#retrieving-old-input">request input</a> will automatically be <a href="/docs/{{version}}/session#flash-data">flashed to the session</a>.</p>
+<p>An <code>$errors</code> variable is shared with all of your application's views by the <code>Illuminate\View\Middleware\ShareErrorsFromSession</code> middleware, which is provided by the <code>web</code> middleware group. When this middleware is applied an <code>$errors</code> variable will always be available in your views, allowing you to conveniently assume the <code>$errors</code> variable is always defined and can be safely used. The <code>$errors</code> variable will be an instance of <code>Illuminate\Support\MessageBag</code>. For more information on working with this object, <a href="#working-with-error-messages">check out its documentation</a>.</p>
+<p>So, in our example, the user will be redirected to our controller's <code>create</code> method when validation fails, allowing us to display the error messages in the view:</p>
+<pre><code class="language-html">&lt;!-- /resources/views/post/create.blade.php --&gt;
+
+&lt;h1&gt;Create Post&lt;/h1&gt;
+
+@if ($errors-&gt;any())
+    &lt;div class=&quot;alert alert-danger&quot;&gt;
+        &lt;ul&gt;
+            @foreach ($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    &lt;/div&gt;
+@endif
+
+&lt;!-- Create Post Form --&gt;
+</code></pre>
+<p><a name="quick-customizing-the-error-messages"></a></p>
+<h4 id="customizing-the-error-messages">Customizing The Error Messages</h4>
+<p>Laravel's built-in validation rules each has an error message that is located in your application's <code>resources/lang/en/validation.php</code> file. Within this file, you will find a translation entry for each validation rule. You are free to change or modify these messages based on the needs of your application.</p>
+<p>In addition, you may copy this file to another translation language directory to translate the messages for your application's language. To learn more about Laravel localization, check out the complete <a href="/docs/{{version}}/localization">localization documentation</a>.</p>
+<p><a name="quick-xhr-requests-and-validation"></a></p>
+<h4 id="xhr-requests-validation">XHR Requests &amp; Validation</h4>
+<p>In this example, we used a traditional form to send data to the application. However, many applications receive XHR requests from a JavaScript powered frontend. When using the <code>validate</code> method during an XHR request, Laravel will not generate a redirect response. Instead, Laravel generates a JSON response containing all of the validation errors. This JSON response will be sent with a 422 HTTP status code.</p>
+<p><a name="the-at-error-directive"></a></p>
+<h4 id="the-error-directive">The <code>@error</code> Directive</h4>
+<p>You may use the <code>@error</code> <a href="/docs/{{version}}/blade">Blade</a> directive to quickly determine if validation error messages exist for a given attribute. Within an <code>@error</code> directive, you may echo the <code>$message</code> variable to display the error message:</p>
+<pre><code class="language-html">&lt;!-- /resources/views/post/create.blade.php --&gt;
+
+&lt;label for=&quot;title&quot;&gt;Post Title&lt;/label&gt;
+
+&lt;input id=&quot;title&quot; type=&quot;text&quot; name=&quot;title&quot; class=&quot;@error('title') is-invalid @enderror&quot;&gt;
+
+@error('title')
+    &lt;div class=&quot;alert alert-danger&quot;&gt;{{ $message }}&lt;/div&gt;
+@enderror
+</code></pre>
+<p>If you are using <a href="#named-error-bags">named error bags</a>, you may pass the name of the error bag as the second argument to the <code>@error</code> directive:</p>
+<pre><code class="language-html">&lt;input ... class=&quot;@error('title', 'post') is-invalid @enderror&quot;&gt;
+</code></pre>
+<p><a name="repopulating-forms"></a></p>
+<h3 id="repopulating-forms">Repopulating Forms</h3>
+<p>When Laravel generates a redirect response due to a validation error, the framework will automatically <a href="/docs/{{version}}/session#flash-data">flash all of the request's input to the session</a>. This is done so that you may conveniently access the input during the next request and repopulate the form that the user attempted to submit.</p>
+<p>To retrieve flashed input from the previous request, invoke the <code>old</code> method on an instance of <code>Illuminate\Http\Request</code>. The <code>old</code> method will pull the previously flashed input data from the <a href="/docs/{{version}}/session">session</a>:</p>
+<pre><code>$title = $request-&gt;old('title');
+</code></pre>
+<p>Laravel also provides a global <code>old</code> helper. If you are displaying old input within a <a href="/docs/{{version}}/blade">Blade template</a>, it is more convenient to use the <code>old</code> helper to repopulate the form. If no old input exists for the given field, <code>null</code> will be returned:</p>
+<pre><code>&lt;input type="text" name="title" value="{{ old('title') }}"&gt;
+</code></pre>
+<p><a name="a-note-on-optional-fields"></a></p>
+<h3 id="a-note-on-optional-fields">A Note On Optional Fields</h3>
+<p>By default, Laravel includes the <code>TrimStrings</code> and <code>ConvertEmptyStringsToNull</code> middleware in your application's global middleware stack. These middleware are listed in the stack by the <code>App\Http\Kernel</code> class. Because of this, you will often need to mark your "optional" request fields as <code>nullable</code> if you do not want the validator to consider <code>null</code> values as invalid. For example:</p>
+<pre><code>$request-&gt;validate([
+    'title' =&gt; 'required|unique:posts|max:255',
+    'body' =&gt; 'required',
+    'publish_at' =&gt; 'nullable|date',
+]);
+</code></pre>
+<p>In this example, we are specifying that the <code>publish_at</code> field may be either <code>null</code> or a valid date representation. If the <code>nullable</code> modifier is not added to the rule definition, the validator would consider <code>null</code> an invalid date.</p>
+<p><a name="form-request-validation"></a></p>
+<h2 id="form-request-validation">Form Request Validation</h2>
+<p><a name="creating-form-requests"></a></p>
+<h3 id="creating-form-requests">Creating Form Requests</h3>
+<p>For more complex validation scenarios, you may wish to create a "form request". Form requests are custom request classes that encapsulate their own validation and authorization logic. To create a form request class, you may use the <code>make:request</code> Artisan CLI command:</p>
+<pre><code>php artisan make:request StorePostRequest
+</code></pre>
+<p>The generated form request class will be placed in the <code>app/Http/Requests</code> directory. If this directory does not exist, it will be created when you run the <code>make:request</code> command. Each form request generated by Laravel has two methods: <code>authorize</code> and <code>rules</code>.</p>
+<p>As you might have guessed, the <code>authorize</code> method is responsible for determining if the currently authenticated user can perform the action represented by the request, while the <code>rules</code> method returns the validation rules that should apply to the request's data:</p>
+<pre><code>/**
+ * Get the validation rules that apply to the request.
+ *
+ * @return array
+ */
+public function rules()
+{
+    return [
+        'title' =&gt; 'required|unique:posts|max:255',
+        'body' =&gt; 'required',
+    ];
+}
+</code></pre>
+<blockquote>
+<p>{tip} You may type-hint any dependencies you require within the <code>rules</code> method's signature. They will automatically be resolved via the Laravel <a href="/docs/{{version}}/container">service container</a>.</p>
+</blockquote>
+<p>So, how are the validation rules evaluated? All you need to do is type-hint the request on your controller method. The incoming form request is validated before the controller method is called, meaning you do not need to clutter your controller with any validation logic:</p>
+<pre><code>/**
+ * Store a new blog post.
+ *
+ * @param  \App\Http\Requests\StorePostRequest  $request
+ * @return Illuminate\Http\Response
+ */
+public function store(StorePostRequest $request)
+{
+    // The incoming request is valid...
+
+    // Retrieve the validated input data...
+    $validated = $request-&gt;validated();
+}
+</code></pre>
+<p>If validation fails, a redirect response will be generated to send the user back to their previous location. The errors will also be flashed to the session so they are available for display. If the request was an XHR request, an HTTP response with a 422 status code will be returned to the user including a JSON representation of the validation errors.</p>
+<p><a name="adding-after-hooks-to-form-requests"></a></p>
+<h4 id="adding-after-hooks-to-form-requests">Adding After Hooks To Form Requests</h4>
+<p>If you would like to add an "after" validation hook to a form request, you may use the <code>withValidator</code> method. This method receives the fully constructed validator, allowing you to call any of its methods before the validation rules are actually evaluated:</p>
+<pre><code>/**
+ * Configure the validator instance.
+ *
+ * @param  \Illuminate\Validation\Validator  $validator
+ * @return void
+ */
+public function withValidator($validator)
+{
+    $validator-&gt;after(function ($validator) {
+        if ($this-&gt;somethingElseIsInvalid()) {
+            $validator-&gt;errors()-&gt;add('field', 'Something is wrong with this field!');
+        }
+    });
+}
+</code></pre>
+<p><a name="request-stopping-on-first-validation-rule-failure"></a></p>
+<h4 id="stopping-on-first-validation-failure-attribute">Stopping On First Validation Failure Attribute</h4>
+<p>By adding a <code>stopOnFirstFailure</code> property to your request class, you may inform the validator that it should stop validating all attributes once a single validation failure has occurred:</p>
+<pre><code>/**
+ * Indicates if the validator should stop on the first rule failure.
+ *
+ * @var bool
+ */
+protected $stopOnFirstFailure = true;
+</code></pre>
+<p><a name="authorizing-form-requests"></a></p>
+<h3 id="authorizing-form-requests">Authorizing Form Requests</h3>
+<p>The form request class also contains an <code>authorize</code> method. Within this method, you may determine if the authenticated user actually has the authority to update a given resource. For example, you may determine if a user actually owns a blog comment they are attempting to update. Most likely, you will interact with your <a href="/docs/{{version}}/authorization">authorization gates and policies</a> within this method:</p>
+<pre><code>use App\Models\Comment;
+
+/**
+ * Determine if the user is authorized to make this request.
+ *
+ * @return bool
+ */
+public function authorize()
+{
+    $comment = Comment::find($this-&gt;route('comment'));
+
+    return $comment &amp;&amp; $this-&gt;user()-&gt;can('update', $comment);
+}
+</code></pre>
+<p>Since all form requests extend the base Laravel request class, we may use the <code>user</code> method to access the currently authenticated user. Also, note the call to the <code>route</code> method in the example above. This method grants you access to the URI parameters defined on the route being called, such as the <code>{comment}</code> parameter in the example below:</p>
+<pre><code>Route::post('/comment/{comment}');
+</code></pre>
+<p>Therefore, if your application is taking advantage of <a href="/docs/{{version}}/routing#route-model-binding">route model binding</a>, your code may be made even more succinct by accessing the resolved model as a property of the request:</p>
+<pre><code>return $this-&gt;user()-&gt;can('update', $this-&gt;comment);
+</code></pre>
+<p>If the <code>authorize</code> method returns <code>false</code>, an HTTP response with a 403 status code will automatically be returned and your controller method will not execute.</p>
+<p>If you plan to handle authorization logic for the request in another part of your application, you may simply return <code>true</code> from the <code>authorize</code> method:</p>
+<pre><code>/**
+ * Determine if the user is authorized to make this request.
+ *
+ * @return bool
+ */
+public function authorize()
+{
+    return true;
+}
+</code></pre>
+<blockquote>
+<p>{tip} You may type-hint any dependencies you need within the <code>authorize</code> method's signature. They will automatically be resolved via the Laravel <a href="/docs/{{version}}/container">service container</a>.</p>
+</blockquote>
+<p><a name="customizing-the-error-messages"></a></p>
+<h3 id="customizing-the-error-messages_1">Customizing The Error Messages</h3>
+<p>You may customize the error messages used by the form request by overriding the <code>messages</code> method. This method should return an array of attribute / rule pairs and their corresponding error messages:</p>
+<pre><code>/**
+ * Get the error messages for the defined validation rules.
+ *
+ * @return array
+ */
+public function messages()
+{
+    return [
+        'title.required' =&gt; 'A title is required',
+        'body.required' =&gt; 'A message is required',
+    ];
+}
+</code></pre>
+<p><a name="customizing-the-validation-attributes"></a></p>
+<h4 id="customizing-the-validation-attributes">Customizing The Validation Attributes</h4>
+<p>Many of Laravel's built-in validation rule error messages contain an <code>:attribute</code> placeholder. If you would like the <code>:attribute</code> placeholder of your validation message to be replaced with a custom attribute name, you may specify the custom names by overriding the <code>attributes</code> method. This method should return an array of attribute / name pairs:</p>
+<pre><code>/**
+ * Get custom attributes for validator errors.
+ *
+ * @return array
+ */
+public function attributes()
+{
+    return [
+        'email' =&gt; 'email address',
+    ];
+}
+</code></pre>
+<p><a name="preparing-input-for-validation"></a></p>
+<h3 id="preparing-input-for-validation">Preparing Input For Validation</h3>
+<p>If you need to prepare or sanitize any data from the request before you apply your validation rules, you may use the <code>prepareForValidation</code> method:</p>
+<pre><code>use Illuminate\Support\Str;
+
+/**
+ * Prepare the data for validation.
+ *
+ * @return void
+ */
+protected function prepareForValidation()
+{
+    $this-&gt;merge([
+        'slug' =&gt; Str::slug($this-&gt;slug),
+    ]);
+}
+</code></pre>
+<p><a name="manually-creating-validators"></a></p>
+<h2 id="manually-creating-validators">Manually Creating Validators</h2>
+<p>If you do not want to use the <code>validate</code> method on the request, you may create a validator instance manually using the <code>Validator</code> <a href="/docs/{{version}}/facades">facade</a>. The <code>make</code> method on the facade generates a new validator instance:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class PostController extends Controller
+{
+    /**
+     * Store a new blog post.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request-&gt;all(), [
+            'title' =&gt; 'required|unique:posts|max:255',
+            'body' =&gt; 'required',
+        ]);
+
+        if ($validator-&gt;fails()) {
+            return redirect('post/create')
+                        -&gt;withErrors($validator)
+                        -&gt;withInput();
+        }
+
+        // Store the blog post...
+    }
+}
+</code></pre>
+<p>The first argument passed to the <code>make</code> method is the data under validation. The second argument is an array of the validation rules that should be applied to the data.</p>
+<p>After determining whether the request validation failed, you may use the <code>withErrors</code> method to flash the error messages to the session. When using this method, the <code>$errors</code> variable will automatically be shared with your views after redirection, allowing you to easily display them back to the user. The <code>withErrors</code> method accepts a validator, a <code>MessageBag</code>, or a PHP <code>array</code>.</p>
+<h4 id="stopping-on-first-validation-failure_1">Stopping On First Validation Failure</h4>
+<p>The <code>stopOnFirstFailure</code> method will inform the validator that it should stop validating all attributes once a single validation failure has occurred:</p>
+<pre><code>if ($validator-&gt;stopOnFirstFailure()-&gt;fails()) {
+    // ...
+}
+</code></pre>
+<p><a name="automatic-redirection"></a></p>
+<h3 id="automatic-redirection">Automatic Redirection</h3>
+<p>If you would like to create a validator instance manually but still take advantage of the automatic redirection offered by the HTTP request's <code>validate</code> method, you may call the <code>validate</code> method on an existing validator instance. If validation fails, the user will automatically be redirected or, in the case of an XHR request, a JSON response will be returned:</p>
+<pre><code>Validator::make($request-&gt;all(), [
+    'title' =&gt; 'required|unique:posts|max:255',
+    'body' =&gt; 'required',
+])-&gt;validate();
+</code></pre>
+<p>You may use the <code>validateWithBag</code> method to store the error messages in a <a href="#named-error-bags">named error bag</a> if validation fails:</p>
+<pre><code>Validator::make($request-&gt;all(), [
+    'title' =&gt; 'required|unique:posts|max:255',
+    'body' =&gt; 'required',
+])-&gt;validateWithBag('post');
+</code></pre>
+<p><a name="named-error-bags"></a></p>
+<h3 id="named-error-bags">Named Error Bags</h3>
+<p>If you have multiple forms on a single page, you may wish to name the <code>MessageBag</code> containing the validation errors, allowing you to retrieve the error messages for a specific form. To achieve this, pass a name as the second argument to <code>withErrors</code>:</p>
+<pre><code>return redirect('register')-&gt;withErrors($validator, 'login');
+</code></pre>
+<p>You may then access the named <code>MessageBag</code> instance from the <code>$errors</code> variable:</p>
+<pre><code>{{ $errors-&gt;login-&gt;first('email') }}
+</code></pre>
+<p><a name="manual-customizing-the-error-messages"></a></p>
+<h3 id="customizing-the-error-messages_2">Customizing The Error Messages</h3>
+<p>If needed, you may provide custom error messages that a validator instance should use instead of the default error messages provided by Laravel. There are several ways to specify custom messages. First, you may pass the custom messages as the third argument to the <code>Validator::make</code> method:</p>
+<pre><code>$validator = Validator::make($input, $rules, $messages = [
+    'required' =&gt; 'The :attribute field is required.',
+]);
+</code></pre>
+<p>In this example, the <code>:attribute</code> placeholder will be replaced by the actual name of the field under validation. You may also utilize other placeholders in validation messages. For example:</p>
+<pre><code>$messages = [
+    'same' =&gt; 'The :attribute and :other must match.',
+    'size' =&gt; 'The :attribute must be exactly :size.',
+    'between' =&gt; 'The :attribute value :input is not between :min - :max.',
+    'in' =&gt; 'The :attribute must be one of the following types: :values',
+];
+</code></pre>
+<p><a name="specifying-a-custom-message-for-a-given-attribute"></a></p>
+<h4 id="specifying-a-custom-message-for-a-given-attribute">Specifying A Custom Message For A Given Attribute</h4>
+<p>Sometimes you may wish to specify a custom error message only for a specific attribute. You may do so using "dot" notation. Specify the attribute's name first, followed by the rule:</p>
+<pre><code>$messages = [
+    'email.required' =&gt; 'We need to know your email address!',
+];
+</code></pre>
+<p><a name="specifying-custom-attribute-values"></a></p>
+<h4 id="specifying-custom-attribute-values">Specifying Custom Attribute Values</h4>
+<p>Many of Laravel's built-in error messages include an <code>:attribute</code> placeholder that is replaced with the name of the field or attribute under validation. To customize the values used to replace these placeholders for specific fields, you may pass an array of custom attributes as the fourth argument to the <code>Validator::make</code> method:</p>
+<pre><code>$validator = Validator::make($input, $rules, $messages, [
+    'email' =&gt; 'email address',
+]);
+</code></pre>
+<p><a name="after-validation-hook"></a></p>
+<h3 id="after-validation-hook">After Validation Hook</h3>
+<p>You may also attach callbacks to be run after validation is completed. This allows you to easily perform further validation and even add more error messages to the message collection. To get started, call the <code>after</code> method on a validator instance:</p>
+<pre><code>$validator = Validator::make(...);
+
+$validator-&gt;after(function ($validator) {
+    if ($this-&gt;somethingElseIsInvalid()) {
+        $validator-&gt;errors()-&gt;add(
+            'field', 'Something is wrong with this field!'
+        );
+    }
+});
+
+if ($validator-&gt;fails()) {
+    //
+}
+</code></pre>
+<p><a name="working-with-error-messages"></a></p>
+<h2 id="working-with-error-messages">Working With Error Messages</h2>
+<p>After calling the <code>errors</code> method on a <code>Validator</code> instance, you will receive an <code>Illuminate\Support\MessageBag</code> instance, which has a variety of convenient methods for working with error messages. The <code>$errors</code> variable that is automatically made available to all views is also an instance of the <code>MessageBag</code> class.</p>
+<p><a name="retrieving-the-first-error-message-for-a-field"></a></p>
+<h4 id="retrieving-the-first-error-message-for-a-field">Retrieving The First Error Message For A Field</h4>
+<p>To retrieve the first error message for a given field, use the <code>first</code> method:</p>
+<pre><code>$errors = $validator-&gt;errors();
+
+echo $errors-&gt;first('email');
+</code></pre>
+<p><a name="retrieving-all-error-messages-for-a-field"></a></p>
+<h4 id="retrieving-all-error-messages-for-a-field">Retrieving All Error Messages For A Field</h4>
+<p>If you need to retrieve an array of all the messages for a given field, use the <code>get</code> method:</p>
+<pre><code>foreach ($errors-&gt;get('email') as $message) {
+    //
+}
+</code></pre>
+<p>If you are validating an array form field, you may retrieve all of the messages for each of the array elements using the <code>*</code> character:</p>
+<pre><code>foreach ($errors-&gt;get('attachments.*') as $message) {
+    //
+}
+</code></pre>
+<p><a name="retrieving-all-error-messages-for-all-fields"></a></p>
+<h4 id="retrieving-all-error-messages-for-all-fields">Retrieving All Error Messages For All Fields</h4>
+<p>To retrieve an array of all messages for all fields, use the <code>all</code> method:</p>
+<pre><code>foreach ($errors-&gt;all() as $message) {
+    //
+}
+</code></pre>
+<p><a name="determining-if-messages-exist-for-a-field"></a></p>
+<h4 id="determining-if-messages-exist-for-a-field">Determining If Messages Exist For A Field</h4>
+<p>The <code>has</code> method may be used to determine if any error messages exist for a given field:</p>
+<pre><code>if ($errors-&gt;has('email')) {
+    //
+}
+</code></pre>
+<p><a name="specifying-custom-messages-in-language-files"></a></p>
+<h3 id="specifying-custom-messages-in-language-files">Specifying Custom Messages In Language Files</h3>
+<p>Laravel's built-in validation rules each has an error message that is located in your application's <code>resources/lang/en/validation.php</code> file. Within this file, you will find a translation entry for each validation rule. You are free to change or modify these messages based on the needs of your application.</p>
+<p>In addition, you may copy this file to another translation language directory to translate the messages for your application's language. To learn more about Laravel localization, check out the complete <a href="/docs/{{version}}/localization">localization documentation</a>.</p>
+<p><a name="custom-messages-for-specific-attributes"></a></p>
+<h4 id="custom-messages-for-specific-attributes">Custom Messages For Specific Attributes</h4>
+<p>You may customize the error messages used for specified attribute and rule combinations within your application's validation language files. To do so, add your message customizations to the <code>custom</code> array of your application's <code>resources/lang/xx/validation.php</code> language file:</p>
+<pre><code>'custom' =&gt; [
+    'email' =&gt; [
+        'required' =&gt; 'We need to know your email address!',
+        'max' =&gt; 'Your email address is too long!'
+    ],
+],
+</code></pre>
+<p><a name="specifying-attribute-in-language-files"></a></p>
+<h3 id="specifying-attributes-in-language-files">Specifying Attributes In Language Files</h3>
+<p>Many of Laravel's built-in error messages include an <code>:attribute</code> placeholder that is replaced with the name of the field or attribute under validation. If you would like the <code>:attribute</code> portion of your validation message to be replaced with a custom value, you may specify the custom attribute name in the <code>attributes</code> array of your <code>resources/lang/xx/validation.php</code> language file:</p>
+<pre><code>'attributes' =&gt; [
+    'email' =&gt; 'email address',
+],
+</code></pre>
+<p><a name="specifying-values-in-language-files"></a></p>
+<h3 id="specifying-values-in-language-files">Specifying Values In Language Files</h3>
+<p>Some of Laravel's built-in validation rule error messages contain a <code>:value</code> placeholder that is replaced with the current value of the request attribute. However, you may occasionally need the <code>:value</code> portion of your validation message to be replaced with a custom representation of the value. For example, consider the following rule that specifies that a credit card number is required if the <code>payment_type</code> has a value of <code>cc</code>:</p>
+<pre><code>Validator::make($request-&gt;all(), [
+    'credit_card_number' =&gt; 'required_if:payment_type,cc'
+]);
+</code></pre>
+<p>If this validation rule fails, it will produce the following error message:</p>
+<pre><code>The credit card number field is required when payment type is cc.
+</code></pre>
+<p>Instead of displaying <code>cc</code> as the payment type value, you may specify a more user-friendly value representation in your <code>resources/lang/xx/validation.php</code> language file by defining a <code>values</code> array:</p>
+<pre><code>'values' =&gt; [
+    'payment_type' =&gt; [
+        'cc' =&gt; 'credit card'
+    ],
+],
+</code></pre>
+<p>After defining this value, the validation rule will produce the following error message:</p>
+<pre><code>The credit card number field is required when payment type is credit card.
+</code></pre>
+<p><a name="available-validation-rules"></a></p>
+<h2 id="available-validation-rules">Available Validation Rules</h2>
+<p>Below is a list of all available validation rules and their function:</p>
+<style>
+    .collection-method-list > p {
+        column-count: 3; -moz-column-count: 3; -webkit-column-count: 3;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    .collection-method-list a {
+        display: block;
+    }
+</style>
+
+<div class="collection-method-list" markdown="1">
+
+[Accepted](#rule-accepted)
+[Active URL](#rule-active-url)
+[After (Date)](#rule-after)
+[After Or Equal (Date)](#rule-after-or-equal)
+[Alpha](#rule-alpha)
+[Alpha Dash](#rule-alpha-dash)
+[Alpha Numeric](#rule-alpha-num)
+[Array](#rule-array)
+[Bail](#rule-bail)
+[Before (Date)](#rule-before)
+[Before Or Equal (Date)](#rule-before-or-equal)
+[Between](#rule-between)
+[Boolean](#rule-boolean)
+[Confirmed](#rule-confirmed)
+[Current Password](#rule-current-password)
+[Date](#rule-date)
+[Date Equals](#rule-date-equals)
+[Date Format](#rule-date-format)
+[Different](#rule-different)
+[Digits](#rule-digits)
+[Digits Between](#rule-digits-between)
+[Dimensions (Image Files)](#rule-dimensions)
+[Distinct](#rule-distinct)
+[Email](#rule-email)
+[Ends With](#rule-ends-with)
+[Exclude If](#rule-exclude-if)
+[Exclude Unless](#rule-exclude-unless)
+[Exists (Database)](#rule-exists)
+[File](#rule-file)
+[Filled](#rule-filled)
+[Greater Than](#rule-gt)
+[Greater Than Or Equal](#rule-gte)
+[Image (File)](#rule-image)
+[In](#rule-in)
+[In Array](#rule-in-array)
+[Integer](#rule-integer)
+[IP Address](#rule-ip)
+[JSON](#rule-json)
+[Less Than](#rule-lt)
+[Less Than Or Equal](#rule-lte)
+[Max](#rule-max)
+[MIME Types](#rule-mimetypes)
+[MIME Type By File Extension](#rule-mimes)
+[Min](#rule-min)
+[Multiple Of](#multiple-of)
+[Not In](#rule-not-in)
+[Not Regex](#rule-not-regex)
+[Nullable](#rule-nullable)
+[Numeric](#rule-numeric)
+[Password](#rule-password)
+[Present](#rule-present)
+[Prohibited](#rule-prohibited)
+[Prohibited If](#rule-prohibited-if)
+[Prohibited Unless](#rule-prohibited-unless)
+[Regular Expression](#rule-regex)
+[Required](#rule-required)
+[Required If](#rule-required-if)
+[Required Unless](#rule-required-unless)
+[Required With](#rule-required-with)
+[Required With All](#rule-required-with-all)
+[Required Without](#rule-required-without)
+[Required Without All](#rule-required-without-all)
+[Same](#rule-same)
+[Size](#rule-size)
+[Sometimes](#validating-when-present)
+[Starts With](#rule-starts-with)
+[String](#rule-string)
+[Timezone](#rule-timezone)
+[Unique (Database)](#rule-unique)
+[URL](#rule-url)
+[UUID](#rule-uuid)
+
+</div>
+
+<p><a name="rule-accepted"></a></p>
+<h4 id="accepted">accepted</h4>
+<p>The field under validation must be <code>"yes"</code>, <code>"on"</code>, <code>1</code>, or <code>true</code>. This is useful for validating "Terms of Service" acceptance or similar fields.</p>
+<p><a name="rule-active-url"></a></p>
+<h4 id="active_url">active_url</h4>
+<p>The field under validation must have a valid A or AAAA record according to the <code>dns_get_record</code> PHP function. The hostname of the provided URL is extracted using the <code>parse_url</code> PHP function before being passed to <code>dns_get_record</code>.</p>
+<p><a name="rule-after"></a></p>
+<h4 id="afterdate">after:<em>date</em></h4>
+<p>The field under validation must be a value after a given date. The dates will be passed into the <code>strtotime</code> PHP function in order to be converted to a valid <code>DateTime</code> instance:</p>
+<pre><code>'start_date' =&gt; 'required|date|after:tomorrow'
+</code></pre>
+<p>Instead of passing a date string to be evaluated by <code>strtotime</code>, you may specify another field to compare against the date:</p>
+<pre><code>'finish_date' =&gt; 'required|date|after:start_date'
+</code></pre>
+<p><a name="rule-after-or-equal"></a></p>
+<h4 id="after_or_equaldate">after_or_equal:<em>date</em></h4>
+<p>The field under validation must be a value after or equal to the given date. For more information, see the <a href="#rule-after">after</a> rule.</p>
+<p><a name="rule-alpha"></a></p>
+<h4 id="alpha">alpha</h4>
+<p>The field under validation must be entirely alphabetic characters.</p>
+<p><a name="rule-alpha-dash"></a></p>
+<h4 id="alpha_dash">alpha_dash</h4>
+<p>The field under validation may have alpha-numeric characters, as well as dashes and underscores.</p>
+<p><a name="rule-alpha-num"></a></p>
+<h4 id="alpha_num">alpha_num</h4>
+<p>The field under validation must be entirely alpha-numeric characters.</p>
+<p><a name="rule-array"></a></p>
+<h4 id="array">array</h4>
+<p>The field under validation must be a PHP <code>array</code>.</p>
+<p>When additional values are provided to the <code>array</code> rule, each key in the input array must be present within the list of values provided to the rule. In the following example, the <code>admin</code> key in the input array is invalid since it is not contained in the list of values provided to the <code>array</code> rule:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+
+$input = [
+    'user' =&gt; [
+        'name' =&gt; 'Taylor Otwell',
+        'username' =&gt; 'taylorotwell',
+        'admin' =&gt; true,
+    ],
+];
+
+Validator::make($input, [
+    'user' =&gt; 'array:username,locale',
+]);
+</code></pre>
+<p>In general, you should always specify the array keys that are allowed to be present within your array. Otherwise, the validator's <code>validate</code> and <code>validated</code> methods will return all of the validated data, including the array and all of its keys, even if those keys were not validated by other nested array validation rules.</p>
+<p>If you would like, you may instruct Laravel's validator to never include unvalidated array keys in the "validated" data it returns, even if you use the <code>array</code> rule without specifying a list of allowed keys. To accomplish this, you may call the validator's <code>excludeUnvalidatedArrayKeys</code> method in the <code>boot</code> method of your application's <code>AppServiceProvider</code>. After doing so, the validator will include array keys in the "validated" data it returns only when those keys were specifically validated by <a href="#validating-arrays">nested array rules</a>:</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Validator;
+
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Validator::excludeUnvalidatedArrayKeys();
+}
+</code></pre>
+<p><a name="rule-bail"></a></p>
+<h4 id="bail">bail</h4>
+<p>Stop running validation rules for the field after the first validation failure.</p>
+<p>While the <code>bail</code> rule will only stop validating a specific field when it encounters a validation failure, the <code>stopOnFirstFailure</code> method will inform the validator that it should stop validating all attributes once a single validation failure has occurred:</p>
+<pre><code>if ($validator-&gt;stopOnFirstFailure()-&gt;fails()) {
+    // ...
+}
+</code></pre>
+<p><a name="rule-before"></a></p>
+<h4 id="beforedate">before:<em>date</em></h4>
+<p>The field under validation must be a value preceding the given date. The dates will be passed into the PHP <code>strtotime</code> function in order to be converted into a valid <code>DateTime</code> instance. In addition, like the <a href="#rule-after"><code>after</code></a> rule, the name of another field under validation may be supplied as the value of <code>date</code>.</p>
+<p><a name="rule-before-or-equal"></a></p>
+<h4 id="before_or_equaldate">before_or_equal:<em>date</em></h4>
+<p>The field under validation must be a value preceding or equal to the given date. The dates will be passed into the PHP <code>strtotime</code> function in order to be converted into a valid <code>DateTime</code> instance. In addition, like the <a href="#rule-after"><code>after</code></a> rule, the name of another field under validation may be supplied as the value of <code>date</code>.</p>
+<p><a name="rule-between"></a></p>
+<h4 id="betweenminmax">between:<em>min</em>,<em>max</em></h4>
+<p>The field under validation must have a size between the given <em>min</em> and <em>max</em>. Strings, numerics, arrays, and files are evaluated in the same fashion as the <a href="#rule-size"><code>size</code></a> rule.</p>
+<p><a name="rule-boolean"></a></p>
+<h4 id="boolean">boolean</h4>
+<p>The field under validation must be able to be cast as a boolean. Accepted input are <code>true</code>, <code>false</code>, <code>1</code>, <code>0</code>, <code>"1"</code>, and <code>"0"</code>.</p>
+<p><a name="rule-confirmed"></a></p>
+<h4 id="confirmed">confirmed</h4>
+<p>The field under validation must have a matching field of <code>{field}_confirmation</code>. For example, if the field under validation is <code>password</code>, a matching <code>password_confirmation</code> field must be present in the input.</p>
+<p><a name="rule-current-password"></a></p>
+<h4 id="current_password">current_password</h4>
+<p>The field under validation must match the authenticated user's password. You may specify an <a href="/docs/{{version}}/authentication">authentication guard</a> using the rule's first parameter:</p>
+<pre><code>'password' =&gt; 'current_password:api'
+</code></pre>
+<p><a name="rule-date"></a></p>
+<h4 id="date">date</h4>
+<p>The field under validation must be a valid, non-relative date according to the <code>strtotime</code> PHP function.</p>
+<p><a name="rule-date-equals"></a></p>
+<h4 id="date_equalsdate">date_equals:<em>date</em></h4>
+<p>The field under validation must be equal to the given date. The dates will be passed into the PHP <code>strtotime</code> function in order to be converted into a valid <code>DateTime</code> instance.</p>
+<p><a name="rule-date-format"></a></p>
+<h4 id="date_formatformat">date_format:<em>format</em></h4>
+<p>The field under validation must match the given <em>format</em>. You should use <strong>either</strong> <code>date</code> or <code>date_format</code> when validating a field, not both. This validation rule supports all formats supported by PHP's <a href="https://www.php.net/manual/en/class.datetime.php">DateTime</a> class.</p>
+<p><a name="rule-different"></a></p>
+<h4 id="differentfield">different:<em>field</em></h4>
+<p>The field under validation must have a different value than <em>field</em>.</p>
+<p><a name="rule-digits"></a></p>
+<h4 id="digitsvalue">digits:<em>value</em></h4>
+<p>The field under validation must be <em>numeric</em> and must have an exact length of <em>value</em>.</p>
+<p><a name="rule-digits-between"></a></p>
+<h4 id="digits_betweenminmax">digits_between:<em>min</em>,<em>max</em></h4>
+<p>The field under validation must be <em>numeric</em> and must have a length between the given <em>min</em> and <em>max</em>.</p>
+<p><a name="rule-dimensions"></a></p>
+<h4 id="dimensions">dimensions</h4>
+<p>The file under validation must be an image meeting the dimension constraints as specified by the rule's parameters:</p>
+<pre><code>'avatar' =&gt; 'dimensions:min_width=100,min_height=200'
+</code></pre>
+<p>Available constraints are: <em>min_width</em>, <em>max_width</em>, <em>min_height</em>, <em>max_height</em>, <em>width</em>, <em>height</em>, <em>ratio</em>.</p>
+<p>A <em>ratio</em> constraint should be represented as width divided by height. This can be specified either by a fraction like <code>3/2</code> or a float like <code>1.5</code>:</p>
+<pre><code>'avatar' =&gt; 'dimensions:ratio=3/2'
+</code></pre>
+<p>Since this rule requires several arguments, you may use the <code>Rule::dimensions</code> method to fluently construct the rule:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'avatar' =&gt; [
+        'required',
+        Rule::dimensions()-&gt;maxWidth(1000)-&gt;maxHeight(500)-&gt;ratio(3 / 2),
+    ],
+]);
+</code></pre>
+<p><a name="rule-distinct"></a></p>
+<h4 id="distinct">distinct</h4>
+<p>When validating arrays, the field under validation must not have any duplicate values:</p>
+<pre><code>'foo.*.id' =&gt; 'distinct'
+</code></pre>
+<p>Distinct uses loose variable comparisons by default. To use strict comparisons, you may add the <code>strict</code> parameter to your validation rule definition:</p>
+<pre><code>'foo.*.id' =&gt; 'distinct:strict'
+</code></pre>
+<p>You may add <code>ignore_case</code> to the validation rule's arguments to make the rule ignore capitalization differences:</p>
+<pre><code>'foo.*.id' =&gt; 'distinct:ignore_case'
+</code></pre>
+<p><a name="rule-email"></a></p>
+<h4 id="email">email</h4>
+<p>The field under validation must be formatted as an email address. This validation rule utilizes the <a href="https://github.com/egulias/EmailValidator"><code>egulias/email-validator</code></a> package for validating the email address. By default, the <code>RFCValidation</code> validator is applied, but you can apply other validation styles as well:</p>
+<pre><code>'email' =&gt; 'email:rfc,dns'
+</code></pre>
+<p>The example above will apply the <code>RFCValidation</code> and <code>DNSCheckValidation</code> validations. Here's a full list of validation styles you can apply:</p>
+<div class="content-list" markdown="1">
+- `rfc`: `RFCValidation`
+- `strict`: `NoRFCWarningsValidation`
+- `dns`: `DNSCheckValidation`
+- `spoof`: `SpoofCheckValidation`
+- `filter`: `FilterEmailValidation`
+</div>
+
+<p>The <code>filter</code> validator, which uses PHP's <code>filter_var</code> function, ships with Laravel and was Laravel's default email validation behavior prior to Laravel version 5.8.</p>
+<blockquote>
+<p>{note} The <code>dns</code> and <code>spoof</code> validators require the PHP <code>intl</code> extension.</p>
+</blockquote>
+<p><a name="rule-ends-with"></a></p>
+<h4 id="ends_withfoobar">ends_with:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must end with one of the given values.</p>
+<p><a name="rule-exclude-if"></a></p>
+<h4 id="exclude_ifanotherfieldvalue">exclude_if:<em>anotherfield</em>,<em>value</em></h4>
+<p>The field under validation will be excluded from the request data returned by the <code>validate</code> and <code>validated</code> methods if the <em>anotherfield</em> field is equal to <em>value</em>.</p>
+<p><a name="rule-exclude-unless"></a></p>
+<h4 id="exclude_unlessanotherfieldvalue">exclude_unless:<em>anotherfield</em>,<em>value</em></h4>
+<p>The field under validation will be excluded from the request data returned by the <code>validate</code> and <code>validated</code> methods unless <em>anotherfield</em>'s field is equal to <em>value</em>. If <em>value</em> is <code>null</code> (<code>exclude_unless:name,null</code>), the field under validation will be excluded unless the comparison field is <code>null</code> or the comparison field is missing from the request data.</p>
+<p><a name="rule-exists"></a></p>
+<h4 id="existstablecolumn">exists:<em>table</em>,<em>column</em></h4>
+<p>The field under validation must exist in a given database table.</p>
+<p><a name="basic-usage-of-exists-rule"></a></p>
+<h4 id="basic-usage-of-exists-rule">Basic Usage Of Exists Rule</h4>
+<pre><code>'state' =&gt; 'exists:states'
+</code></pre>
+<p>If the <code>column</code> option is not specified, the field name will be used. So, in this case, the rule will validate that the <code>states</code> database table contains a record with a <code>state</code> column value matching the request's <code>state</code> attribute value.</p>
+<p><a name="specifying-a-custom-column-name"></a></p>
+<h4 id="specifying-a-custom-column-name">Specifying A Custom Column Name</h4>
+<p>You may explicitly specify the database column name that should be used by the validation rule by placing it after the database table name:</p>
+<pre><code>'state' =&gt; 'exists:states,abbreviation'
+</code></pre>
+<p>Occasionally, you may need to specify a specific database connection to be used for the <code>exists</code> query. You can accomplish this by prepending the connection name to the table name:</p>
+<pre><code>'email' =&gt; 'exists:connection.staff,email'
+</code></pre>
+<p>Instead of specifying the table name directly, you may specify the Eloquent model which should be used to determine the table name:</p>
+<pre><code>'user_id' =&gt; 'exists:App\Models\User,id'
+</code></pre>
+<p>If you would like to customize the query executed by the validation rule, you may use the <code>Rule</code> class to fluently define the rule. In this example, we'll also specify the validation rules as an array instead of using the <code>|</code> character to delimit them:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'email' =&gt; [
+        'required',
+        Rule::exists('staff')-&gt;where(function ($query) {
+            return $query-&gt;where('account_id', 1);
+        }),
+    ],
+]);
+</code></pre>
+<p><a name="rule-file"></a></p>
+<h4 id="file">file</h4>
+<p>The field under validation must be a successfully uploaded file.</p>
+<p><a name="rule-filled"></a></p>
+<h4 id="filled">filled</h4>
+<p>The field under validation must not be empty when it is present.</p>
+<p><a name="rule-gt"></a></p>
+<h4 id="gtfield">gt:<em>field</em></h4>
+<p>The field under validation must be greater than the given <em>field</em>. The two fields must be of the same type. Strings, numerics, arrays, and files are evaluated using the same conventions as the <a href="#rule-size"><code>size</code></a> rule.</p>
+<p><a name="rule-gte"></a></p>
+<h4 id="gtefield">gte:<em>field</em></h4>
+<p>The field under validation must be greater than or equal to the given <em>field</em>. The two fields must be of the same type. Strings, numerics, arrays, and files are evaluated using the same conventions as the <a href="#rule-size"><code>size</code></a> rule.</p>
+<p><a name="rule-image"></a></p>
+<h4 id="image">image</h4>
+<p>The file under validation must be an image (jpg, jpeg, png, bmp, gif, svg, or webp).</p>
+<p><a name="rule-in"></a></p>
+<h4 id="infoobar">in:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be included in the given list of values. Since this rule often requires you to <code>implode</code> an array, the <code>Rule::in</code> method may be used to fluently construct the rule:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'zones' =&gt; [
+        'required',
+        Rule::in(['first-zone', 'second-zone']),
+    ],
+]);
+</code></pre>
+<p>When the <code>in</code> rule is combined with the <code>array</code> rule, each value in the input array must be present within the list of values provided to the <code>in</code> rule. In the following example, the <code>LAS</code> airport code in the input array is invalid since it is not contained in the list of airports provided to the <code>in</code> rule:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+$input = [
+    'airports' =&gt; ['NYC', 'LAS'],
+];
+
+Validator::make($input, [
+    'airports' =&gt; [
+        'required',
+        'array',
+        Rule::in(['NYC', 'LIT']),
+    ],
+]);
+</code></pre>
+<p><a name="rule-in-array"></a></p>
+<h4 id="in_arrayanotherfield">in_array:<em>anotherfield</em>.*</h4>
+<p>The field under validation must exist in <em>anotherfield</em>'s values.</p>
+<p><a name="rule-integer"></a></p>
+<h4 id="integer">integer</h4>
+<p>The field under validation must be an integer.</p>
+<blockquote>
+<p>{note} This validation rule does not verify that the input is of the "integer" variable type, only that the input is of a type accepted by PHP's <code>FILTER_VALIDATE_INT</code> rule. If you need to validate the input as being a number please use this rule in combination with <a href="#rule-numeric">the <code>numeric</code> validation rule</a>.</p>
+</blockquote>
+<p><a name="rule-ip"></a></p>
+<h4 id="ip">ip</h4>
+<p>The field under validation must be an IP address.</p>
+<p><a name="ipv4"></a></p>
+<h4 id="ipv4">ipv4</h4>
+<p>The field under validation must be an IPv4 address.</p>
+<p><a name="ipv6"></a></p>
+<h4 id="ipv6">ipv6</h4>
+<p>The field under validation must be an IPv6 address.</p>
+<p><a name="rule-json"></a></p>
+<h4 id="json">json</h4>
+<p>The field under validation must be a valid JSON string.</p>
+<p><a name="rule-lt"></a></p>
+<h4 id="ltfield">lt:<em>field</em></h4>
+<p>The field under validation must be less than the given <em>field</em>. The two fields must be of the same type. Strings, numerics, arrays, and files are evaluated using the same conventions as the <a href="#rule-size"><code>size</code></a> rule.</p>
+<p><a name="rule-lte"></a></p>
+<h4 id="ltefield">lte:<em>field</em></h4>
+<p>The field under validation must be less than or equal to the given <em>field</em>. The two fields must be of the same type. Strings, numerics, arrays, and files are evaluated using the same conventions as the <a href="#rule-size"><code>size</code></a> rule.</p>
+<p><a name="rule-max"></a></p>
+<h4 id="maxvalue">max:<em>value</em></h4>
+<p>The field under validation must be less than or equal to a maximum <em>value</em>. Strings, numerics, arrays, and files are evaluated in the same fashion as the <a href="#rule-size"><code>size</code></a> rule.</p>
+<p><a name="rule-mimetypes"></a></p>
+<h4 id="mimetypestextplain">mimetypes:<em>text/plain</em>,...</h4>
+<p>The file under validation must match one of the given MIME types:</p>
+<pre><code>'video' =&gt; 'mimetypes:video/avi,video/mpeg,video/quicktime'
+</code></pre>
+<p>To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client's provided MIME type.</p>
+<p><a name="rule-mimes"></a></p>
+<h4 id="mimesfoobar">mimes:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The file under validation must have a MIME type corresponding to one of the listed extensions.</p>
+<p><a name="basic-usage-of-mime-rule"></a></p>
+<h4 id="basic-usage-of-mime-rule">Basic Usage Of MIME Rule</h4>
+<pre><code>'photo' =&gt; 'mimes:jpg,bmp,png'
+</code></pre>
+<p>Even though you only need to specify the extensions, this rule actually validates the MIME type of the file by reading the file's contents and guessing its MIME type. A full listing of MIME types and their corresponding extensions may be found at the following location:</p>
+<p><a href="https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types">https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types</a></p>
+<p><a name="rule-min"></a></p>
+<h4 id="minvalue">min:<em>value</em></h4>
+<p>The field under validation must have a minimum <em>value</em>. Strings, numerics, arrays, and files are evaluated in the same fashion as the <a href="#rule-size"><code>size</code></a> rule.</p>
+<p><a name="multiple-of"></a></p>
+<h4 id="multiple_ofvalue">multiple_of:<em>value</em></h4>
+<p>The field under validation must be a multiple of <em>value</em>.</p>
+<p><a name="rule-not-in"></a></p>
+<h4 id="not_infoobar">not_in:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must not be included in the given list of values. The <code>Rule::notIn</code> method may be used to fluently construct the rule:</p>
+<pre><code>use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'toppings' =&gt; [
+        'required',
+        Rule::notIn(['sprinkles', 'cherries']),
+    ],
+]);
+</code></pre>
+<p><a name="rule-not-regex"></a></p>
+<h4 id="not_regexpattern">not_regex:<em>pattern</em></h4>
+<p>The field under validation must not match the given regular expression.</p>
+<p>Internally, this rule uses the PHP <code>preg_match</code> function. The pattern specified should obey the same formatting required by <code>preg_match</code> and thus also include valid delimiters. For example: <code>'email' =&gt; 'not_regex:/^.+$/i'</code>.</p>
+<blockquote>
+<p>{note} When using the <code>regex</code> / <code>not_regex</code> patterns, it may be necessary to specify your validation rules using an array instead of using <code>|</code> delimiters, especially if the regular expression contains a <code>|</code> character.</p>
+</blockquote>
+<p><a name="rule-nullable"></a></p>
+<h4 id="nullable">nullable</h4>
+<p>The field under validation may be <code>null</code>.</p>
+<p><a name="rule-numeric"></a></p>
+<h4 id="numeric">numeric</h4>
+<p>The field under validation must be <a href="https://www.php.net/manual/en/function.is-numeric.php">numeric</a>.</p>
+<p><a name="rule-password"></a></p>
+<h4 id="password">password</h4>
+<p>The field under validation must match the authenticated user's password.</p>
+<blockquote>
+<p>{note} This rule was renamed to <code>current_password</code> with the intention of removing it in Laravel 9. Please use the <a href="#rule-current-password">Current Password</a> rule instead.</p>
+</blockquote>
+<p><a name="rule-present"></a></p>
+<h4 id="present">present</h4>
+<p>The field under validation must be present in the input data but can be empty.</p>
+<p><a name="rule-prohibited"></a></p>
+<h4 id="prohibited">prohibited</h4>
+<p>The field under validation must be empty or not present.</p>
+<p><a name="rule-prohibited-if"></a></p>
+<h4 id="prohibited_ifanotherfieldvalue">prohibited_if:<em>anotherfield</em>,<em>value</em>,...</h4>
+<p>The field under validation must be empty or not present if the <em>anotherfield</em> field is equal to any <em>value</em>.</p>
+<p><a name="rule-prohibited-unless"></a></p>
+<h4 id="prohibited_unlessanotherfieldvalue">prohibited_unless:<em>anotherfield</em>,<em>value</em>,...</h4>
+<p>The field under validation must be empty or not present unless the <em>anotherfield</em> field is equal to any <em>value</em>.</p>
+<p><a name="rule-regex"></a></p>
+<h4 id="regexpattern">regex:<em>pattern</em></h4>
+<p>The field under validation must match the given regular expression.</p>
+<p>Internally, this rule uses the PHP <code>preg_match</code> function. The pattern specified should obey the same formatting required by <code>preg_match</code> and thus also include valid delimiters. For example: <code>'email' =&gt; 'regex:/^.+@.+$/i'</code>.</p>
+<blockquote>
+<p>{note} When using the <code>regex</code> / <code>not_regex</code> patterns, it may be necessary to specify rules in an array instead of using <code>|</code> delimiters, especially if the regular expression contains a <code>|</code> character.</p>
+</blockquote>
+<p><a name="rule-required"></a></p>
+<h4 id="required">required</h4>
+<p>The field under validation must be present in the input data and not empty. A field is considered "empty" if one of the following conditions are true:</p>
+<div class="content-list" markdown="1">
+
+- The value is `null`.
+- The value is an empty string.
+- The value is an empty array or empty `Countable` object.
+- The value is an uploaded file with no path.
+
+</div>
+
+<p><a name="rule-required-if"></a></p>
+<h4 id="required_ifanotherfieldvalue">required_if:<em>anotherfield</em>,<em>value</em>,...</h4>
+<p>The field under validation must be present and not empty if the <em>anotherfield</em> field is equal to any <em>value</em>.</p>
+<p>If you would like to construct a more complex condition for the <code>required_if</code> rule, you may use the <code>Rule::requiredIf</code> method. This method accepts a boolean or a closure. When passed a closure, the closure should return <code>true</code> or <code>false</code> to indicate if the field under validation is required:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+Validator::make($request-&gt;all(), [
+    'role_id' =&gt; Rule::requiredIf($request-&gt;user()-&gt;is_admin),
+]);
+
+Validator::make($request-&gt;all(), [
+    'role_id' =&gt; Rule::requiredIf(function () use ($request) {
+        return $request-&gt;user()-&gt;is_admin;
+    }),
+]);
+</code></pre>
+<p><a name="rule-required-unless"></a></p>
+<h4 id="required_unlessanotherfieldvalue">required_unless:<em>anotherfield</em>,<em>value</em>,...</h4>
+<p>The field under validation must be present and not empty unless the <em>anotherfield</em> field is equal to any <em>value</em>. This also means <em>anotherfield</em> must be present in the request data unless <em>value</em> is <code>null</code>. If <em>value</em> is <code>null</code> (<code>required_unless:name,null</code>), the field under validation will be required unless the comparison field is <code>null</code> or the comparison field is missing from the request data.</p>
+<p><a name="rule-required-with"></a></p>
+<h4 id="required_withfoobar">required_with:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be present and not empty <em>only if</em> any of the other specified fields are present and not empty.</p>
+<p><a name="rule-required-with-all"></a></p>
+<h4 id="required_with_allfoobar">required_with_all:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be present and not empty <em>only if</em> all of the other specified fields are present and not empty.</p>
+<p><a name="rule-required-without"></a></p>
+<h4 id="required_withoutfoobar">required_without:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be present and not empty <em>only when</em> any of the other specified fields are empty or not present.</p>
+<p><a name="rule-required-without-all"></a></p>
+<h4 id="required_without_allfoobar">required_without_all:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be present and not empty <em>only when</em> all of the other specified fields are empty or not present.</p>
+<p><a name="rule-same"></a></p>
+<h4 id="samefield">same:<em>field</em></h4>
+<p>The given <em>field</em> must match the field under validation.</p>
+<p><a name="rule-size"></a></p>
+<h4 id="sizevalue">size:<em>value</em></h4>
+<p>The field under validation must have a size matching the given <em>value</em>. For string data, <em>value</em> corresponds to the number of characters. For numeric data, <em>value</em> corresponds to a given integer value (the attribute must also have the <code>numeric</code> or <code>integer</code> rule). For an array, <em>size</em> corresponds to the <code>count</code> of the array. For files, <em>size</em> corresponds to the file size in kilobytes. Let's look at some examples:</p>
+<pre><code>// Validate that a string is exactly 12 characters long...
+'title' =&gt; 'size:12';
+
+// Validate that a provided integer equals 10...
+'seats' =&gt; 'integer|size:10';
+
+// Validate that an array has exactly 5 elements...
+'tags' =&gt; 'array|size:5';
+
+// Validate that an uploaded file is exactly 512 kilobytes...
+'image' =&gt; 'file|size:512';
+</code></pre>
+<p><a name="rule-starts-with"></a></p>
+<h4 id="starts_withfoobar">starts_with:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must start with one of the given values.</p>
+<p><a name="rule-string"></a></p>
+<h4 id="string">string</h4>
+<p>The field under validation must be a string. If you would like to allow the field to also be <code>null</code>, you should assign the <code>nullable</code> rule to the field.</p>
+<p><a name="rule-timezone"></a></p>
+<h4 id="timezone">timezone</h4>
+<p>The field under validation must be a valid timezone identifier according to the <code>timezone_identifiers_list</code> PHP function.</p>
+<p><a name="rule-unique"></a></p>
+<h4 id="uniquetablecolumnexceptidcolumn">unique:<em>table</em>,<em>column</em>,<em>except</em>,<em>idColumn</em></h4>
+<p>The field under validation must not exist within the given database table.</p>
+<p><strong>Specifying A Custom Table / Column Name:</strong></p>
+<p>Instead of specifying the table name directly, you may specify the Eloquent model which should be used to determine the table name:</p>
+<pre><code>'email' =&gt; 'unique:App\Models\User,email_address'
+</code></pre>
+<p>The <code>column</code> option may be used to specify the field's corresponding database column. If the <code>column</code> option is not specified, the name of the field under validation will be used.</p>
+<pre><code>'email' =&gt; 'unique:users,email_address'
+</code></pre>
+<p><strong>Specifying A Custom Database Connection</strong></p>
+<p>Occasionally, you may need to set a custom connection for database queries made by the Validator. To accomplish this, you may prepend the connection name to the table name:</p>
+<pre><code>'email' =&gt; 'unique:connection.users,email_address'
+</code></pre>
+<p><strong>Forcing A Unique Rule To Ignore A Given ID:</strong></p>
+<p>Sometimes, you may wish to ignore a given ID during unique validation. For example, consider an "update profile" screen that includes the user's name, email address, and location. You will probably want to verify that the email address is unique. However, if the user only changes the name field and not the email field, you do not want a validation error to be thrown because the user is already the owner of the email address in question.</p>
+<p>To instruct the validator to ignore the user's ID, we'll use the <code>Rule</code> class to fluently define the rule. In this example, we'll also specify the validation rules as an array instead of using the <code>|</code> character to delimit the rules:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'email' =&gt; [
+        'required',
+        Rule::unique('users')-&gt;ignore($user-&gt;id),
+    ],
+]);
+</code></pre>
+<blockquote>
+<p>{note} You should never pass any user controlled request input into the <code>ignore</code> method. Instead, you should only pass a system generated unique ID such as an auto-incrementing ID or UUID from an Eloquent model instance. Otherwise, your application will be vulnerable to an SQL injection attack.</p>
+</blockquote>
+<p>Instead of passing the model key's value to the <code>ignore</code> method, you may also pass the entire model instance. Laravel will automatically extract the key from the model:</p>
+<pre><code>Rule::unique('users')-&gt;ignore($user)
+</code></pre>
+<p>If your table uses a primary key column name other than <code>id</code>, you may specify the name of the column when calling the <code>ignore</code> method:</p>
+<pre><code>Rule::unique('users')-&gt;ignore($user-&gt;id, 'user_id')
+</code></pre>
+<p>By default, the <code>unique</code> rule will check the uniqueness of the column matching the name of the attribute being validated. However, you may pass a different column name as the second argument to the <code>unique</code> method:</p>
+<pre><code>Rule::unique('users', 'email_address')-&gt;ignore($user-&gt;id),
+</code></pre>
+<p><strong>Adding Additional Where Clauses:</strong></p>
+<p>You may specify additional query conditions by customizing the query using the <code>where</code> method. For example, let's add a query condition that scopes the query to only search records that have an <code>account_id</code> column value of <code>1</code>:</p>
+<pre><code>'email' =&gt; Rule::unique('users')-&gt;where(function ($query) {
+    return $query-&gt;where('account_id', 1);
+})
+</code></pre>
+<p><a name="rule-url"></a></p>
+<h4 id="url">url</h4>
+<p>The field under validation must be a valid URL.</p>
+<p><a name="rule-uuid"></a></p>
+<h4 id="uuid">uuid</h4>
+<p>The field under validation must be a valid RFC 4122 (version 1, 3, 4, or 5) universally unique identifier (UUID).</p>
+<p><a name="conditionally-adding-rules"></a></p>
+<h2 id="conditionally-adding-rules">Conditionally Adding Rules</h2>
+<p><a name="skipping-validation-when-fields-have-certain-values"></a></p>
+<h4 id="skipping-validation-when-fields-have-certain-values">Skipping Validation When Fields Have Certain Values</h4>
+<p>You may occasionally wish to not validate a given field if another field has a given value. You may accomplish this using the <code>exclude_if</code> validation rule. In this example, the <code>appointment_date</code> and <code>doctor_name</code> fields will not be validated if the <code>has_appointment</code> field has a value of <code>false</code>:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+
+$validator = Validator::make($data, [
+    'has_appointment' =&gt; 'required|boolean',
+    'appointment_date' =&gt; 'exclude_if:has_appointment,false|required|date',
+    'doctor_name' =&gt; 'exclude_if:has_appointment,false|required|string',
+]);
+</code></pre>
+<p>Alternatively, you may use the <code>exclude_unless</code> rule to not validate a given field unless another field has a given value:</p>
+<pre><code>$validator = Validator::make($data, [
+    'has_appointment' =&gt; 'required|boolean',
+    'appointment_date' =&gt; 'exclude_unless:has_appointment,true|required|date',
+    'doctor_name' =&gt; 'exclude_unless:has_appointment,true|required|string',
+]);
+</code></pre>
+<p><a name="validating-when-present"></a></p>
+<h4 id="validating-when-present">Validating When Present</h4>
+<p>In some situations, you may wish to run validation checks against a field <strong>only</strong> if that field is present in the data being validated. To quickly accomplish this, add the <code>sometimes</code> rule to your rule list:</p>
+<pre><code>$v = Validator::make($request-&gt;all(), [
+    'email' =&gt; 'sometimes|required|email',
+]);
+</code></pre>
+<p>In the example above, the <code>email</code> field will only be validated if it is present in the <code>$data</code> array.</p>
+<blockquote>
+<p>{tip} If you are attempting to validate a field that should always be present but may be empty, check out <a href="#a-note-on-optional-fields">this note on optional fields</a>.</p>
+</blockquote>
+<p><a name="complex-conditional-validation"></a></p>
+<h4 id="complex-conditional-validation">Complex Conditional Validation</h4>
+<p>Sometimes you may wish to add validation rules based on more complex conditional logic. For example, you may wish to require a given field only if another field has a greater value than 100. Or, you may need two fields to have a given value only when another field is present. Adding these validation rules doesn't have to be a pain. First, create a <code>Validator</code> instance with your <em>static rules</em> that never change:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+
+$validator = Validator::make($request-&gt;all(), [
+    'email' =&gt; 'required|email',
+    'games' =&gt; 'required|numeric',
+]);
+</code></pre>
+<p>Let's assume our web application is for game collectors. If a game collector registers with our application and they own more than 100 games, we want them to explain why they own so many games. For example, perhaps they run a game resale shop, or maybe they just enjoy collecting games. To conditionally add this requirement, we can use the <code>sometimes</code> method on the <code>Validator</code> instance.</p>
+<pre><code>$v-&gt;sometimes('reason', 'required|max:500', function ($input) {
+    return $input-&gt;games &gt;= 100;
+});
+</code></pre>
+<p>The first argument passed to the <code>sometimes</code> method is the name of the field we are conditionally validating. The second argument is a list of the rules we want to add. If the closure passed as the third argument returns <code>true</code>, the rules will be added. This method makes it a breeze to build complex conditional validations. You may even add conditional validations for several fields at once:</p>
+<pre><code>$v-&gt;sometimes(['reason', 'cost'], 'required', function ($input) {
+    return $input-&gt;games &gt;= 100;
+});
+</code></pre>
+<blockquote>
+<p>{tip} The <code>$input</code> parameter passed to your closure will be an instance of <code>Illuminate\Support\Fluent</code> and may be used to access your input and files under validation.</p>
+</blockquote>
+<p><a name="validating-arrays"></a></p>
+<h2 id="validating-arrays">Validating Arrays</h2>
+<p>As discussed in the <a href="#rule-array"><code>array</code> validation rule documentation</a>, the <code>array</code> rule accepts a list of allowed array keys. If any additional keys are present within the array, validation will fail:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+
+$input = [
+    'user' =&gt; [
+        'name' =&gt; 'Taylor Otwell',
+        'username' =&gt; 'taylorotwell',
+        'admin' =&gt; true,
+    ],
+];
+
+Validator::make($input, [
+    'user' =&gt; 'array:username,locale',
+]);
+</code></pre>
+<p>In general, you should always specify the array keys that are allowed to be present within your array. Otherwise, the validator's <code>validate</code> and <code>validated</code> methods will return all of the validated data, including the array and all of its keys, even if those keys were not validated by other nested array validation rules.</p>
+<p><a name="excluding-unvalidated-array-keys"></a></p>
+<h3 id="excluding-unvalidated-array-keys">Excluding Unvalidated Array Keys</h3>
+<p>If you would like, you may instruct Laravel's validator to never include unvalidated array keys in the "validated" data it returns, even if you use the <code>array</code> rule without specifying a list of allowed keys. To accomplish this, you may call the validator's <code>excludeUnvalidatedArrayKeys</code> method in the <code>boot</code> method of your application's <code>AppServiceProvider</code>. After doing so, the validator will include array keys in the "validated" data it returns only when those keys were specifically validated by <a href="#validating-arrays">nested array rules</a>:</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Validator;
+
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Validator::excludeUnvalidatedArrayKeys();
+}
+</code></pre>
+<p><a name="validating-nested-array-input"></a></p>
+<h3 id="validating-nested-array-input">Validating Nested Array Input</h3>
+<p>Validating nested array based form input fields doesn't have to be a pain. You may use "dot notation" to validate attributes within an array. For example, if the incoming HTTP request contains a <code>photos[profile]</code> field, you may validate it like so:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+
+$validator = Validator::make($request-&gt;all(), [
+    'photos.profile' =&gt; 'required|image',
+]);
+</code></pre>
+<p>You may also validate each element of an array. For example, to validate that each email in a given array input field is unique, you may do the following:</p>
+<pre><code>$validator = Validator::make($request-&gt;all(), [
+    'person.*.email' =&gt; 'email|unique:users',
+    'person.*.first_name' =&gt; 'required_with:person.*.last_name',
+]);
+</code></pre>
+<p>Likewise, you may use the <code>*</code> character when specifying <a href="#custom-messages-for-specific-attributes">custom validation messages in your language files</a>, making it a breeze to use a single validation message for array based fields:</p>
+<pre><code>'custom' =&gt; [
+    'person.*.email' =&gt; [
+        'unique' =&gt; 'Each person must have a unique email address',
+    ]
+],
+</code></pre>
+<p><a name="validating-passwords"></a></p>
+<h2 id="validating-passwords">Validating Passwords</h2>
+<p>To ensure that passwords have an adequate level of complexity, you may use Laravel's <code>Password</code> rule object:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
+
+$validator = Validator::make($request-&gt;all(), [
+    'password' =&gt; ['required', 'confirmed', Password::min(8)],
+]);
+</code></pre>
+<p>The <code>Password</code> rule object allows you to easily customize the password complexity requirements for your application, such as specifying that passwords require at least one letter, number, symbol, or characters with mixed casing:</p>
+<pre><code>// Require at least 8 characters...
+Password::min(8)
+
+// Require at least one letter...
+Password::min(8)-&gt;letters()
+
+// Require at least one uppercase and one lowercase letter...
+Password::min(8)-&gt;mixedCase()
+
+// Require at least one number...
+Password::min(8)-&gt;numbers()
+
+// Require at least one symbol...
+Password::min(8)-&gt;symbols()
+</code></pre>
+<p>In addition, you may ensure that a password has not been compromised in a public password data breach leak using the <code>uncompromised</code> method:</p>
+<pre><code>Password::min(8)-&gt;uncompromised()
+</code></pre>
+<p>Internally, the <code>Password</code> rule object uses the <a href="https://en.wikipedia.org/wiki/K-anonymity">k-Anonymity</a> model to determine if a password has been leaked via the <a href="https://haveibeenpwned.com">haveibeenpwned.com</a> service without sacrificing the user's privacy or security.</p>
+<p>By default, if a password appears at least once in a data leak, it will be considered compromised. You can customize this threshold using the first argument of the <code>uncompromised</code> method:</p>
+<pre><code>// Ensure the password appears less than 3 times in the same data leak...
+Password::min(8)-&gt;uncompromised(3);
+</code></pre>
+<p>Of course, you may chain all the methods in the examples above:</p>
+<pre><code>Password::min(8)
+    -&gt;letters()
+    -&gt;mixedCase()
+    -&gt;numbers()
+    -&gt;symbols()
+    -&gt;uncompromised()
+</code></pre>
+<p><a name="defining-default-password-rules"></a></p>
+<h4 id="defining-default-password-rules">Defining Default Password Rules</h4>
+<p>You may find it convenient to specify the default validation rules for passwords in a single location of your application. You can easily accomplish this using the <code>Password::defaults</code> method, which accepts a closure. The closure given to the <code>defaults</code> method should return the default configuration of the Password rule. Typically, the <code>defaults</code> rule should be called within the <code>boot</code> method of one of your application's service providers:</p>
+<pre><code class="language-php">use Illuminate\Validation\Rules\Password;
+
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Password::defaults(function () {
+        $rule = Password::min(8);
+
+        return $this-&gt;app-&gt;isProduction()
+                    ? $rule-&gt;mixedCase()-&gt;uncompromised()
+                    : $rule;
+    });
+}
+</code></pre>
+<p>Then, when you would like to apply the default rules to a particular password undergoing validation, you may invoke the <code>defaults</code> method with no arguments:</p>
+<pre><code>'password' =&gt; ['required', Password::defaults()],
+</code></pre>
+<p><a name="custom-validation-rules"></a></p>
+<h2 id="custom-validation-rules">Custom Validation Rules</h2>
+<p><a name="using-rule-objects"></a></p>
+<h3 id="using-rule-objects">Using Rule Objects</h3>
+<p>Laravel provides a variety of helpful validation rules; however, you may wish to specify some of your own. One method of registering custom validation rules is using rule objects. To generate a new rule object, you may use the <code>make:rule</code> Artisan command. Let's use this command to generate a rule that verifies a string is uppercase. Laravel will place the new rule in the <code>app/Rules</code> directory. If this directory does not exist, Laravel will create it when you execute the Artisan command to create your rule:</p>
+<pre><code>php artisan make:rule Uppercase
+</code></pre>
+<p>Once the rule has been created, we are ready to define its behavior. A rule object contains two methods: <code>passes</code> and <code>message</code>. The <code>passes</code> method receives the attribute value and name, and should return <code>true</code> or <code>false</code> depending on whether the attribute value is valid or not. The <code>message</code> method should return the validation error message that should be used when validation fails:</p>
+<pre><code>&lt;?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class Uppercase implements Rule
+{
+    /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+        return strtoupper($value) === $value;
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return 'The :attribute must be uppercase.';
+    }
+}
+</code></pre>
+<p>You may call the <code>trans</code> helper from your <code>message</code> method if you would like to return an error message from your translation files:</p>
+<pre><code>/**
+ * Get the validation error message.
+ *
+ * @return string
+ */
+public function message()
+{
+    return trans('validation.uppercase');
+}
+</code></pre>
+<p>Once the rule has been defined, you may attach it to a validator by passing an instance of the rule object with your other validation rules:</p>
+<pre><code>use App\Rules\Uppercase;
+
+$request-&gt;validate([
+    'name' =&gt; ['required', 'string', new Uppercase],
+]);
+</code></pre>
+<p><a name="using-closures"></a></p>
+<h3 id="using-closures">Using Closures</h3>
+<p>If you only need the functionality of a custom rule once throughout your application, you may use a closure instead of a rule object. The closure receives the attribute's name, the attribute's value, and a <code>$fail</code> callback that should be called if validation fails:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+
+$validator = Validator::make($request-&gt;all(), [
+    'title' =&gt; [
+        'required',
+        'max:255',
+        function ($attribute, $value, $fail) {
+            if ($value === 'foo') {
+                $fail('The '.$attribute.' is invalid.');
+            }
+        },
+    ],
+]);
+</code></pre>
+<p><a name="implicit-rules"></a></p>
+<h3 id="implicit-rules">Implicit Rules</h3>
+<p>By default, when an attribute being validated is not present or contains an empty string, normal validation rules, including custom rules, are not run. For example, the <a href="#rule-unique"><code>unique</code></a> rule will not be run against an empty string:</p>
+<pre><code>use Illuminate\Support\Facades\Validator;
+
+$rules = ['name' =&gt; 'unique:users,name'];
+
+$input = ['name' =&gt; ''];
+
+Validator::make($input, $rules)-&gt;passes(); // true
+</code></pre>
+<p>For a custom rule to run even when an attribute is empty, the rule must imply that the attribute is required. To create an "implicit" rule, implement the <code>Illuminate\Contracts\Validation\ImplicitRule</code> interface. This interface serves as a "marker interface" for the validator; therefore, it does not contain any additional methods you need to implement beyond the methods required by the typical <code>Rule</code> interface.</p>
+<blockquote>
+<p>{note} An "implicit" rule only <em>implies</em> that the attribute is required. Whether it actually invalidates a missing or empty attribute is up to you.</p>
+</blockquote>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../session/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sessiyalar" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Sessiyalar
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../errors/" class="md-footer__link md-footer__link--next" aria-label="Next: Xatoliklarni aniqlash" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Xatoliklarni aniqlash
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

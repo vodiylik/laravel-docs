@@ -1,0 +1,3340 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/broadcasting/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Broadcasting - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#broadcasting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Broadcasting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Broadcasting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Broadcasting
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-drivers" class="md-nav__link">
+    Supported Drivers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-side-installation" class="md-nav__link">
+    Server Side Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Side Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-service-provider" class="md-nav__link">
+    Broadcast Service Provider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-configuration" class="md-nav__link">
+    Queue Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pusher-channels" class="md-nav__link">
+    Pusher Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Pusher Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pusher-compatible-laravel-websockets" class="md-nav__link">
+    Pusher Compatible Laravel Websockets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ably" class="md-nav__link">
+    Ably
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-source-alternatives" class="md-nav__link">
+    Open Source Alternatives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side-installation" class="md-nav__link">
+    Client Side Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Client Side Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pusher-channels_1" class="md-nav__link">
+    Pusher Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Pusher Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-an-existing-client-instance" class="md-nav__link">
+    Using An Existing Client Instance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ably_1" class="md-nav__link">
+    Ably
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-overview" class="md-nav__link">
+    Concept Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-an-example-application" class="md-nav__link">
+    Using An Example Application
+  </a>
+  
+    <nav class="md-nav" aria-label="Using An Example Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-shouldbroadcast-interface" class="md-nav__link">
+    The ShouldBroadcast Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizing-channels" class="md-nav__link">
+    Authorizing Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-event-broadcasts" class="md-nav__link">
+    Listening For Event Broadcasts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-broadcast-events" class="md-nav__link">
+    Defining Broadcast Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Broadcast Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-name" class="md-nav__link">
+    Broadcast Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-data" class="md-nav__link">
+    Broadcast Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-queue" class="md-nav__link">
+    Broadcast Queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-conditions" class="md-nav__link">
+    Broadcast Conditions
+  </a>
+  
+    <nav class="md-nav" aria-label="Broadcast Conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcasting-database-transactions" class="md-nav__link">
+    Broadcasting &amp; Database Transactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorizing-channels_1" class="md-nav__link">
+    Authorizing Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Authorizing Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-authorization-routes" class="md-nav__link">
+    Defining Authorization Routes
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Authorization Routes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-authorization-endpoint" class="md-nav__link">
+    Customizing The Authorization Endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-authorization-request" class="md-nav__link">
+    Customizing The Authorization Request
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-authorization-callbacks" class="md-nav__link">
+    Defining Authorization Callbacks
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Authorization Callbacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorization-callback-model-binding" class="md-nav__link">
+    Authorization Callback Model Binding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization-callback-authentication" class="md-nav__link">
+    Authorization Callback Authentication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-channel-classes" class="md-nav__link">
+    Defining Channel Classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broadcasting-events" class="md-nav__link">
+    Broadcasting Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Broadcasting Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#only-to-others" class="md-nav__link">
+    Only To Others
+  </a>
+  
+    <nav class="md-nav" aria-label="Only To Others">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receiving-broadcasts" class="md-nav__link">
+    Receiving Broadcasts
+  </a>
+  
+    <nav class="md-nav" aria-label="Receiving Broadcasts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-events" class="md-nav__link">
+    Listening For Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaving-a-channel" class="md-nav__link">
+    Leaving A Channel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presence-channels" class="md-nav__link">
+    Presence Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Presence Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorizing-presence-channels" class="md-nav__link">
+    Authorizing Presence Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joining-presence-channels" class="md-nav__link">
+    Joining Presence Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcasting-to-presence-channels" class="md-nav__link">
+    Broadcasting To Presence Channels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-broadcasting" class="md-nav__link">
+    Model Broadcasting
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Broadcasting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-broadcasting-conventions" class="md-nav__link">
+    Model Broadcasting Conventions
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Broadcasting Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-conventions" class="md-nav__link">
+    Channel Conventions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-conventions" class="md-nav__link">
+    Event Conventions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-model-broadcasts" class="md-nav__link">
+    Listening For Model Broadcasts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-events" class="md-nav__link">
+    Client Events
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    Notifications
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-drivers" class="md-nav__link">
+    Supported Drivers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-side-installation" class="md-nav__link">
+    Server Side Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Side Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-service-provider" class="md-nav__link">
+    Broadcast Service Provider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-configuration" class="md-nav__link">
+    Queue Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pusher-channels" class="md-nav__link">
+    Pusher Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Pusher Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pusher-compatible-laravel-websockets" class="md-nav__link">
+    Pusher Compatible Laravel Websockets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ably" class="md-nav__link">
+    Ably
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-source-alternatives" class="md-nav__link">
+    Open Source Alternatives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-side-installation" class="md-nav__link">
+    Client Side Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Client Side Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pusher-channels_1" class="md-nav__link">
+    Pusher Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Pusher Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-an-existing-client-instance" class="md-nav__link">
+    Using An Existing Client Instance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ably_1" class="md-nav__link">
+    Ably
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concept-overview" class="md-nav__link">
+    Concept Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-an-example-application" class="md-nav__link">
+    Using An Example Application
+  </a>
+  
+    <nav class="md-nav" aria-label="Using An Example Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-shouldbroadcast-interface" class="md-nav__link">
+    The ShouldBroadcast Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizing-channels" class="md-nav__link">
+    Authorizing Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-event-broadcasts" class="md-nav__link">
+    Listening For Event Broadcasts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-broadcast-events" class="md-nav__link">
+    Defining Broadcast Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Broadcast Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-name" class="md-nav__link">
+    Broadcast Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-data" class="md-nav__link">
+    Broadcast Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-queue" class="md-nav__link">
+    Broadcast Queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcast-conditions" class="md-nav__link">
+    Broadcast Conditions
+  </a>
+  
+    <nav class="md-nav" aria-label="Broadcast Conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcasting-database-transactions" class="md-nav__link">
+    Broadcasting &amp; Database Transactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorizing-channels_1" class="md-nav__link">
+    Authorizing Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Authorizing Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-authorization-routes" class="md-nav__link">
+    Defining Authorization Routes
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Authorization Routes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-authorization-endpoint" class="md-nav__link">
+    Customizing The Authorization Endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-authorization-request" class="md-nav__link">
+    Customizing The Authorization Request
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-authorization-callbacks" class="md-nav__link">
+    Defining Authorization Callbacks
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Authorization Callbacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorization-callback-model-binding" class="md-nav__link">
+    Authorization Callback Model Binding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization-callback-authentication" class="md-nav__link">
+    Authorization Callback Authentication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-channel-classes" class="md-nav__link">
+    Defining Channel Classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broadcasting-events" class="md-nav__link">
+    Broadcasting Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Broadcasting Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#only-to-others" class="md-nav__link">
+    Only To Others
+  </a>
+  
+    <nav class="md-nav" aria-label="Only To Others">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#receiving-broadcasts" class="md-nav__link">
+    Receiving Broadcasts
+  </a>
+  
+    <nav class="md-nav" aria-label="Receiving Broadcasts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-events" class="md-nav__link">
+    Listening For Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leaving-a-channel" class="md-nav__link">
+    Leaving A Channel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#presence-channels" class="md-nav__link">
+    Presence Channels
+  </a>
+  
+    <nav class="md-nav" aria-label="Presence Channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorizing-presence-channels" class="md-nav__link">
+    Authorizing Presence Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joining-presence-channels" class="md-nav__link">
+    Joining Presence Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broadcasting-to-presence-channels" class="md-nav__link">
+    Broadcasting To Presence Channels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-broadcasting" class="md-nav__link">
+    Model Broadcasting
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Broadcasting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-broadcasting-conventions" class="md-nav__link">
+    Model Broadcasting Conventions
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Broadcasting Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-conventions" class="md-nav__link">
+    Channel Conventions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-conventions" class="md-nav__link">
+    Event Conventions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listening-for-model-broadcasts" class="md-nav__link">
+    Listening For Model Broadcasts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-events" class="md-nav__link">
+    Client Events
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    Notifications
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="broadcasting">Broadcasting</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#server-side-installation">Server Side Installation</a><ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#pusher-channels">Pusher Channels</a></li>
+<li><a href="#ably">Ably</a></li>
+<li><a href="#open-source-alternatives">Open Source Alternatives</a></li>
+</ul>
+</li>
+<li><a href="#client-side-installation">Client Side Installation</a><ul>
+<li><a href="#client-pusher-channels">Pusher Channels</a></li>
+<li><a href="#client-ably">Ably</a></li>
+</ul>
+</li>
+<li><a href="#concept-overview">Concept Overview</a><ul>
+<li><a href="#using-example-application">Using An Example Application</a></li>
+</ul>
+</li>
+<li><a href="#defining-broadcast-events">Defining Broadcast Events</a><ul>
+<li><a href="#broadcast-name">Broadcast Name</a></li>
+<li><a href="#broadcast-data">Broadcast Data</a></li>
+<li><a href="#broadcast-queue">Broadcast Queue</a></li>
+<li><a href="#broadcast-conditions">Broadcast Conditions</a></li>
+<li><a href="#broadcasting-and-database-transactions">Broadcasting &amp; Database Transactions</a></li>
+</ul>
+</li>
+<li><a href="#authorizing-channels">Authorizing Channels</a><ul>
+<li><a href="#defining-authorization-routes">Defining Authorization Routes</a></li>
+<li><a href="#defining-authorization-callbacks">Defining Authorization Callbacks</a></li>
+<li><a href="#defining-channel-classes">Defining Channel Classes</a></li>
+</ul>
+</li>
+<li><a href="#broadcasting-events">Broadcasting Events</a><ul>
+<li><a href="#only-to-others">Only To Others</a></li>
+</ul>
+</li>
+<li><a href="#receiving-broadcasts">Receiving Broadcasts</a><ul>
+<li><a href="#listening-for-events">Listening For Events</a></li>
+<li><a href="#leaving-a-channel">Leaving A Channel</a></li>
+<li><a href="#namespaces">Namespaces</a></li>
+</ul>
+</li>
+<li><a href="#presence-channels">Presence Channels</a><ul>
+<li><a href="#authorizing-presence-channels">Authorizing Presence Channels</a></li>
+<li><a href="#joining-presence-channels">Joining Presence Channels</a></li>
+<li><a href="#broadcasting-to-presence-channels">Broadcasting To Presence Channels</a></li>
+</ul>
+</li>
+<li><a href="#model-broadcasting">Model Broadcasting</a><ul>
+<li><a href="#model-broadcasting-conventions">Model Broadcasting Conventions</a></li>
+<li><a href="#listening-for-model-broadcasts">Listening For Model Broadcasts</a></li>
+</ul>
+</li>
+<li><a href="#client-events">Client Events</a></li>
+<li><a href="#notifications">Notifications</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>In many modern web applications, WebSockets are used to implement realtime, live-updating user interfaces. When some data is updated on the server, a message is typically sent over a WebSocket connection to be handled by the client. WebSockets provide a more efficient alternative to continually polling your application's server for data changes that should be reflected in your UI.</p>
+<p>For example, imagine your application is able to export a user's data to a CSV file and email it to them. However, creating this CSV file takes several minutes so you choose to create and mail the CSV within a <a href="/docs/{{version}}/queues">queued job</a>. When the CSV has been created and mailed to the user, we can use event broadcasting to dispatch a <code>App\Events\UserDataExported</code> event that is received by our application's JavaScript. Once the event is received, we can display a message to the user that their CSV has been emailed to them without them ever needing to refresh the page.</p>
+<p>To assist you in building these types of features, Laravel makes it easy to "broadcast" your server-side Laravel <a href="/docs/{{version}}/events">events</a> over a WebSocket connection. Broadcasting your Laravel events allows you to share the same event names and data between your server-side Laravel application and your client-side JavaScript application.</p>
+<p>The core concepts behind broadcasting are simple: clients connect to named channels on the frontend, while your Laravel application broadcasts events to these channels on the backend. These events can contain any additional data you wish to make available to the frontend.</p>
+<p><a name="supported-drivers"></a></p>
+<h4 id="supported-drivers">Supported Drivers</h4>
+<p>By default, Laravel includes two server-side broadcasting drivers for you to choose from: <a href="https://pusher.com/channels">Pusher Channels</a> and <a href="https://ably.io">Ably</a>. However, community driven packages such as <a href="https://beyondco.de/docs/laravel-websockets/getting-started/introduction">laravel-websockets</a> provide additional broadcasting drivers that do not require commercial broadcasting providers.</p>
+<blockquote>
+<p>{tip} Before diving into event broadcasting, make sure you have read Laravel's documentation on <a href="/docs/{{version}}/events">events and listeners</a>.</p>
+</blockquote>
+<p><a name="server-side-installation"></a></p>
+<h2 id="server-side-installation">Server Side Installation</h2>
+<p>To get started using Laravel's event broadcasting, we need to do some configuration within the Laravel application as well as install a few packages.</p>
+<p>Event broadcasting is accomplished by a server-side broadcasting driver that broadcasts your Laravel events so that Laravel Echo (a JavaScript library) can receive them within the browser client. Don't worry - we'll walk through each part of the installation process step-by-step.</p>
+<p><a name="configuration"></a></p>
+<h3 id="configuration">Configuration</h3>
+<p>All of your application's event broadcasting configuration is stored in the <code>config/broadcasting.php</code> configuration file. Laravel supports several broadcast drivers out of the box: <a href="https://pusher.com/channels">Pusher Channels</a>, <a href="/docs/{{version}}/redis">Redis</a>, and a <code>log</code> driver for local development and debugging. Additionally, a <code>null</code> driver is included which allows you to totally disable broadcasting during testing. A configuration example is included for each of these drivers in the <code>config/broadcasting.php</code> configuration file.</p>
+<p><a name="broadcast-service-provider"></a></p>
+<h4 id="broadcast-service-provider">Broadcast Service Provider</h4>
+<p>Before broadcasting any events, you will first need to register the <code>App\Providers\BroadcastServiceProvider</code>. In new Laravel applications, you only need to uncomment this provider in the <code>providers</code> array of your <code>config/app.php</code> configuration file. This <code>BroadcastServiceProvider</code> contains the code necessary to register the broadcast authorization routes and callbacks.</p>
+<p><a name="queue-configuration"></a></p>
+<h4 id="queue-configuration">Queue Configuration</h4>
+<p>You will also need to configure and run a <a href="/docs/{{version}}/queues">queue worker</a>. All event broadcasting is done via queued jobs so that the response time of your application is not seriously affected by events being broadcast.</p>
+<p><a name="pusher-channels"></a></p>
+<h3 id="pusher-channels">Pusher Channels</h3>
+<p>If you plan to broadcast your events using <a href="https://pusher.com/channels">Pusher Channels</a>, you should install the Pusher Channels PHP SDK using the Composer package manager:</p>
+<pre><code>composer require pusher/pusher-php-server
+</code></pre>
+<p>Next, you should configure your Pusher Channels credentials in the <code>config/broadcasting.php</code> configuration file. An example Pusher Channels configuration is already included in this file, allowing you to quickly specify your key, secret, and application ID. Typically, these values should be set via the <code>PUSHER_APP_KEY</code>, <code>PUSHER_APP_SECRET</code>, and <code>PUSHER_APP_ID</code> <a href="/docs/{{version}}/configuration#environment-configuration">environment variables</a>:</p>
+<pre><code>PUSHER_APP_ID=your-pusher-app-id
+PUSHER_APP_KEY=your-pusher-key
+PUSHER_APP_SECRET=your-pusher-secret
+PUSHER_APP_CLUSTER=mt1
+</code></pre>
+<p>The <code>config/broadcasting.php</code> file's <code>pusher</code> configuration also allows you to specify additional <code>options</code> that are supported by Channels, such as the cluster.</p>
+<p>Next, you will need to change your broadcast driver to <code>pusher</code> in your <code>.env</code> file:</p>
+<pre><code>BROADCAST_DRIVER=pusher
+</code></pre>
+<p>Finally, you are ready to install and configure <a href="#client-side-installation">Laravel Echo</a>, which will receive the broadcast events on the client-side.</p>
+<p><a name="pusher-compatible-laravel-websockets"></a></p>
+<h4 id="pusher-compatible-laravel-websockets">Pusher Compatible Laravel Websockets</h4>
+<p>The <a href="https://github.com/beyondcode/laravel-websockets">laravel-websockets</a> package is a pure PHP, Pusher compatible WebSocket package for Laravel. This package allows you to leverage the full power of Laravel broadcasting without a commercial WebSocket provider. For more information on installing and using this package, please consult its <a href="https://beyondco.de/docs/laravel-websockets">official documentation</a>.</p>
+<p><a name="ably"></a></p>
+<h3 id="ably">Ably</h3>
+<p>If you plan to broadcast your events using <a href="https://ably.io">Ably</a>, you should install the Ably PHP SDK using the Composer package manager:</p>
+<pre><code>composer require ably/ably-php
+</code></pre>
+<p>Next, you should configure your Ably credentials in the <code>config/broadcasting.php</code> configuration file. An example Ably configuration is already included in this file, allowing you to quickly specify your key. Typically, this value should be set via the <code>ABLY_KEY</code> <a href="/docs/{{version}}/configuration#environment-configuration">environment variable</a>:</p>
+<pre><code>ABLY_KEY=your-ably-key
+</code></pre>
+<p>Next, you will need to change your broadcast driver to <code>ably</code> in your <code>.env</code> file:</p>
+<pre><code>BROADCAST_DRIVER=ably
+</code></pre>
+<p>Finally, you are ready to install and configure <a href="#client-side-installation">Laravel Echo</a>, which will receive the broadcast events on the client-side.</p>
+<p><a name="open-source-alternatives"></a></p>
+<h3 id="open-source-alternatives">Open Source Alternatives</h3>
+<p>The <a href="https://github.com/beyondcode/laravel-websockets">laravel-websockets</a> package is a pure PHP, Pusher compatible WebSocket package for Laravel. This package allows you to leverage the full power of Laravel broadcasting without a commercial WebSocket provider. For more information on installing and using this package, please consult its <a href="https://beyondco.de/docs/laravel-websockets">official documentation</a>.</p>
+<p><a name="client-side-installation"></a></p>
+<h2 id="client-side-installation">Client Side Installation</h2>
+<p><a name="client-pusher-channels"></a></p>
+<h3 id="pusher-channels_1">Pusher Channels</h3>
+<p>Laravel Echo is a JavaScript library that makes it painless to subscribe to channels and listen for events broadcast by your server-side broadcasting driver. You may install Echo via the NPM package manager. In this example, we will also install the <code>pusher-js</code> package since we will be using the Pusher Channels broadcaster:</p>
+<pre><code class="language-bash">npm install --save-dev laravel-echo pusher-js
+</code></pre>
+<p>Once Echo is installed, you are ready to create a fresh Echo instance in your application's JavaScript. A great place to do this is at the bottom of the <code>resources/js/bootstrap.js</code> file that is included with the Laravel framework. By default, an example Echo configuration is already included in this file - you simply need to uncomment it:</p>
+<pre><code class="language-js">import Echo from 'laravel-echo';
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    forceTLS: true
+});
+</code></pre>
+<p>Once you have uncommented and adjusted the Echo configuration according to your needs, you may compile your application's assets:</p>
+<pre><code>npm run dev
+</code></pre>
+<blockquote>
+<p>{tip} To learn more about compiling your application's JavaScript assets, please consult the documentation on <a href="/docs/{{version}}/mix">Laravel Mix</a>.</p>
+</blockquote>
+<p><a name="using-an-existing-client-instance"></a></p>
+<h4 id="using-an-existing-client-instance">Using An Existing Client Instance</h4>
+<p>If you already have a pre-configured Pusher Channels client instance that you would like Echo to utilize, you may pass it to Echo via the <code>client</code> configuration option:</p>
+<pre><code class="language-js">import Echo from 'laravel-echo';
+
+const client = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: 'your-pusher-channels-key',
+    client: client
+});
+</code></pre>
+<p><a name="client-ably"></a></p>
+<h3 id="ably_1">Ably</h3>
+<p>Laravel Echo is a JavaScript library that makes it painless to subscribe to channels and listen for events broadcast by your server-side broadcasting driver. You may install Echo via the NPM package manager. In this example, we will also install the <code>pusher-js</code> package.</p>
+<p>You may wonder why we would install the <code>pusher-js</code> JavaScript library even though we are using Ably to broadcast our events. Thankfully, Ably includes a Pusher compatibility mode which lets us use the Pusher protocol when listening for events in our client-side application:</p>
+<pre><code class="language-bash">npm install --save-dev laravel-echo pusher-js
+</code></pre>
+<p><strong>Before continuing, you should enable Pusher protocol support in your Ably application settings. You may enable this feature within the "Protocol Adapter Settings" portion of your Ably application's settings dashboard.</strong></p>
+<p>Once Echo is installed, you are ready to create a fresh Echo instance in your application's JavaScript. A great place to do this is at the bottom of the <code>resources/js/bootstrap.js</code> file that is included with the Laravel framework. By default, an example Echo configuration is already included in this file; however, the default configuration in the <code>bootstrap.js</code> file is intended for Pusher. You may copy the configuration below to transition your configuration to Ably:</p>
+<pre><code class="language-js">import Echo from 'laravel-echo';
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: process.env.MIX_ABLY_PUBLIC_KEY,
+    wsHost: 'realtime-pusher.ably.io',
+    wsPort: 443,
+    disableStats: true,
+    encrypted: true,
+});
+</code></pre>
+<p>Note that our Ably Echo configuration references a <code>MIX_ABLY_PUBLIC_KEY</code> environment variable. This variable's value should be your Ably public key. Your public key is the portion of your Ably key that occurs before the <code>:</code> character.</p>
+<p>Once you have uncommented and adjusted the Echo configuration according to your needs, you may compile your application's assets:</p>
+<pre><code>npm run dev
+</code></pre>
+<blockquote>
+<p>{tip} To learn more about compiling your application's JavaScript assets, please consult the documentation on <a href="/docs/{{version}}/mix">Laravel Mix</a>.</p>
+</blockquote>
+<p><a name="concept-overview"></a></p>
+<h2 id="concept-overview">Concept Overview</h2>
+<p>Laravel's event broadcasting allows you to broadcast your server-side Laravel events to your client-side JavaScript application using a driver-based approach to WebSockets. Currently, Laravel ships with <a href="https://pusher.com/channels">Pusher Channels</a> and <a href="https://ably.io">Ably</a> drivers. The events may be easily consumed on the client-side using the <a href="#client-side-installation">Laravel Echo</a> JavaScript package.</p>
+<p>Events are broadcast over "channels", which may be specified as public or private. Any visitor to your application may subscribe to a public channel without any authentication or authorization; however, in order to subscribe to a private channel, a user must be authenticated and authorized to listen on that channel.</p>
+<blockquote>
+<p>{tip} If you would like to use an open source, PHP driven alternative to Pusher, check out the <a href="https://github.com/beyondcode/laravel-websockets">laravel-websockets</a> package.</p>
+</blockquote>
+<p><a name="using-example-application"></a></p>
+<h3 id="using-an-example-application">Using An Example Application</h3>
+<p>Before diving into each component of event broadcasting, let's take a high level overview using an e-commerce store as an example.</p>
+<p>In our application, let's assume we have a page that allows users to view the shipping status for their orders. Let's also assume that a <code>OrderShipmentStatusUpdated</code> event is fired when a shipping status update is processed by the application:</p>
+<pre><code>use App\Events\OrderShipmentStatusUpdated;
+
+OrderShipmentStatusUpdated::dispatch($order);
+</code></pre>
+<p><a name="the-shouldbroadcast-interface"></a></p>
+<h4 id="the-shouldbroadcast-interface">The <code>ShouldBroadcast</code> Interface</h4>
+<p>When a user is viewing one of their orders, we don't want them to have to refresh the page to view status updates. Instead, we want to broadcast the updates to the application as they are created. So, we need to mark the <code>OrderShipmentStatusUpdated</code> event with the <code>ShouldBroadcast</code> interface. This will instruct Laravel to broadcast the event when it is fired:</p>
+<pre><code>&lt;?php
+
+namespace App\Events;
+
+use App\Order;
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Queue\SerializesModels;
+
+class OrderShipmentStatusUpdated implements ShouldBroadcast
+{
+    /**
+     * The order instance.
+     *
+     * @var \App\Order
+     */
+    public $order;
+}
+</code></pre>
+<p>The <code>ShouldBroadcast</code> interface requires our event to define a <code>broadcastOn</code> method. This method is responsible for returning the channels that the event should broadcast on. An empty stub of this method is already defined on generated event classes, so we only need to fill in its details. We only want the creator of the order to be able to view status updates, so we will broadcast the event on a private channel that is tied to the order:</p>
+<pre><code>/**
+ * Get the channels the event should broadcast on.
+ *
+ * @return \Illuminate\Broadcasting\PrivateChannel
+ */
+public function broadcastOn()
+{
+    return new PrivateChannel('orders.'.$this-&gt;order-&gt;id);
+}
+</code></pre>
+<p><a name="example-application-authorizing-channels"></a></p>
+<h4 id="authorizing-channels">Authorizing Channels</h4>
+<p>Remember, users must be authorized to listen on private channels. We may define our channel authorization rules in our application's <code>routes/channels.php</code> file. In this example, we need to verify that any user attempting to listen on the private <code>order.1</code> channel is actually the creator of the order:</p>
+<pre><code>use App\Models\Order;
+
+Broadcast::channel('orders.{orderId}', function ($user, $orderId) {
+    return $user-&gt;id === Order::findOrNew($orderId)-&gt;user_id;
+});
+</code></pre>
+<p>The <code>channel</code> method accepts two arguments: the name of the channel and a callback which returns <code>true</code> or <code>false</code> indicating whether the user is authorized to listen on the channel.</p>
+<p>All authorization callbacks receive the currently authenticated user as their first argument and any additional wildcard parameters as their subsequent arguments. In this example, we are using the <code>{orderId}</code> placeholder to indicate that the "ID" portion of the channel name is a wildcard.</p>
+<p><a name="listening-for-event-broadcasts"></a></p>
+<h4 id="listening-for-event-broadcasts">Listening For Event Broadcasts</h4>
+<p>Next, all that remains is to listen for the event in our JavaScript application. We can do this using Laravel Echo. First, we'll use the <code>private</code> method to subscribe to the private channel. Then, we may use the <code>listen</code> method to listen for the <code>OrderShipmentStatusUpdated</code> event. By default, all of the event's public properties will be included on the broadcast event:</p>
+<pre><code class="language-js">Echo.private(`orders.${orderId}`)
+    .listen('OrderShipmentStatusUpdated', (e) =&gt; {
+        console.log(e.order);
+    });
+</code></pre>
+<p><a name="defining-broadcast-events"></a></p>
+<h2 id="defining-broadcast-events">Defining Broadcast Events</h2>
+<p>To inform Laravel that a given event should be broadcast, you must implement the <code>Illuminate\Contracts\Broadcasting\ShouldBroadcast</code> interface on the event class. This interface is already imported into all event classes generated by the framework so you may easily add it to any of your events.</p>
+<p>The <code>ShouldBroadcast</code> interface requires you to implement a single method: <code>broadcastOn</code>. The <code>broadcastOn</code> method should return a channel or array of channels that the event should broadcast on. The channels should be instances of <code>Channel</code>, <code>PrivateChannel</code>, or <code>PresenceChannel</code>. Instances of <code>Channel</code> represent public channels that any user may subscribe to, while <code>PrivateChannels</code> and <code>PresenceChannels</code> represent private channels that require <a href="#authorizing-channels">channel authorization</a>:</p>
+<pre><code>&lt;?php
+
+namespace App\Events;
+
+use App\Models\User;
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Queue\SerializesModels;
+
+class ServerCreated implements ShouldBroadcast
+{
+    use SerializesModels;
+
+    /**
+     * The user that created the server.
+     *
+     * @var \App\Models\User
+     */
+    public $user;
+
+    /**
+     * Create a new event instance.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function __construct(User $user)
+    {
+        $this-&gt;user = $user;
+    }
+
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return Channel|array
+     */
+    public function broadcastOn()
+    {
+        return new PrivateChannel('user.'.$this-&gt;user-&gt;id);
+    }
+}
+</code></pre>
+<p>After implementing the <code>ShouldBroadcast</code> interface, you only need to <a href="/docs/{{version}}/events">fire the event</a> as you normally would. Once the event has been fired, a <a href="/docs/{{version}}/queues">queued job</a> will automatically broadcast the event using your specified broadcast driver.</p>
+<p><a name="broadcast-name"></a></p>
+<h3 id="broadcast-name">Broadcast Name</h3>
+<p>By default, Laravel will broadcast the event using the event's class name. However, you may customize the broadcast name by defining a <code>broadcastAs</code> method on the event:</p>
+<pre><code>/**
+ * The event's broadcast name.
+ *
+ * @return string
+ */
+public function broadcastAs()
+{
+    return 'server.created';
+}
+</code></pre>
+<p>If you customize the broadcast name using the <code>broadcastAs</code> method, you should make sure to register your listener with a leading <code>.</code> character. This will instruct Echo to not prepend the application's namespace to the event:</p>
+<pre><code>.listen('.server.created', function (e) {
+    ....
+});
+</code></pre>
+<p><a name="broadcast-data"></a></p>
+<h3 id="broadcast-data">Broadcast Data</h3>
+<p>When an event is broadcast, all of its <code>public</code> properties are automatically serialized and broadcast as the event's payload, allowing you to access any of its public data from your JavaScript application. So, for example, if your event has a single public <code>$user</code> property that contains an Eloquent model, the event's broadcast payload would be:</p>
+<pre><code>{
+    "user": {
+        "id": 1,
+        "name": "Patrick Stewart"
+        ...
+    }
+}
+</code></pre>
+<p>However, if you wish to have more fine-grained control over your broadcast payload, you may add a <code>broadcastWith</code> method to your event. This method should return the array of data that you wish to broadcast as the event payload:</p>
+<pre><code>/**
+ * Get the data to broadcast.
+ *
+ * @return array
+ */
+public function broadcastWith()
+{
+    return ['id' =&gt; $this-&gt;user-&gt;id];
+}
+</code></pre>
+<p><a name="broadcast-queue"></a></p>
+<h3 id="broadcast-queue">Broadcast Queue</h3>
+<p>By default, each broadcast event is placed on the default queue for the default queue connection specified in your <code>queue.php</code> configuration file. You may customize the queue connection and name used by the broadcaster by defining <code>connection</code> and <code>queue</code> properties on your event class:</p>
+<pre><code>/**
+ * The name of the queue connection to use when broadcasting the event.
+ *
+ * @var string
+ */
+public $connection = 'redis';
+
+/**
+ * The name of the queue on which to place the broadcasting job.
+ *
+ * @var string
+ */
+public $queue = 'default';
+</code></pre>
+<p>If you want to broadcast your event using the <code>sync</code> queue instead of the default queue driver, you can implement the <code>ShouldBroadcastNow</code> interface instead of <code>ShouldBroadcast</code>:</p>
+<pre><code>&lt;?php
+
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
+
+class OrderShipmentStatusUpdated implements ShouldBroadcastNow
+{
+    //
+}
+</code></pre>
+<p><a name="broadcast-conditions"></a></p>
+<h3 id="broadcast-conditions">Broadcast Conditions</h3>
+<p>Sometimes you want to broadcast your event only if a given condition is true. You may define these conditions by adding a <code>broadcastWhen</code> method to your event class:</p>
+<pre><code>/**
+ * Determine if this event should broadcast.
+ *
+ * @return bool
+ */
+public function broadcastWhen()
+{
+    return $this-&gt;order-&gt;value &gt; 100;
+}
+</code></pre>
+<p><a name="broadcasting-and-database-transactions"></a></p>
+<h4 id="broadcasting-database-transactions">Broadcasting &amp; Database Transactions</h4>
+<p>When broadcast events are dispatched within database transactions, they may be processed by the queue before the database transaction has committed. When this happens, any updates you have made to models or database records during the database transaction may not yet be reflected in the database. In addition, any models or database records created within the transaction may not exist in the database. If your event depends on these models, unexpected errors can occur when the job that broadcasts the event is processed.</p>
+<p>If your queue connection's <code>after_commit</code> configuration option is set to <code>false</code>, you may still indicate that a particular broadcast event should be dispatched after all open database transactions have been committed by defining an <code>$afterCommit</code> property on the event class:</p>
+<pre><code>&lt;?php
+
+namespace App\Events;
+
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Queue\SerializesModels;
+
+class ServerCreated implements ShouldBroadcast
+{
+    use SerializesModels;
+
+    public $afterCommit = true;
+}
+</code></pre>
+<blockquote>
+<p>{tip} To learn more about working around these issues, please review the documentation regarding <a href="/docs/{{version}}/queues#jobs-and-database-transactions">queued jobs and database transactions</a>.</p>
+</blockquote>
+<p><a name="authorizing-channels"></a></p>
+<h2 id="authorizing-channels_1">Authorizing Channels</h2>
+<p>Private channels require you to authorize that the currently authenticated user can actually listen on the channel. This is accomplished by making an HTTP request to your Laravel application with the channel name and allowing your application to determine if the user can listen on that channel. When using <a href="#client-side-installation">Laravel Echo</a>, the HTTP request to authorize subscriptions to private channels will be made automatically; however, you do need to define the proper routes to respond to these requests.</p>
+<p><a name="defining-authorization-routes"></a></p>
+<h3 id="defining-authorization-routes">Defining Authorization Routes</h3>
+<p>Thankfully, Laravel makes it easy to define the routes to respond to channel authorization requests. In the <code>App\Providers\BroadcastServiceProvider</code> included with your Laravel application, you will see a call to the <code>Broadcast::routes</code> method. This method will register the <code>/broadcasting/auth</code> route to handle authorization requests:</p>
+<pre><code>Broadcast::routes();
+</code></pre>
+<p>The <code>Broadcast::routes</code> method will automatically place its routes within the <code>web</code> middleware group; however, you may pass an array of route attributes to the method if you would like to customize the assigned attributes:</p>
+<pre><code>Broadcast::routes($attributes);
+</code></pre>
+<p><a name="customizing-the-authorization-endpoint"></a></p>
+<h4 id="customizing-the-authorization-endpoint">Customizing The Authorization Endpoint</h4>
+<p>By default, Echo will use the <code>/broadcasting/auth</code> endpoint to authorize channel access. However, you may specify your own authorization endpoint by passing the <code>authEndpoint</code> configuration option to your Echo instance:</p>
+<pre><code>window.Echo = new Echo({
+    broadcaster: 'pusher',
+    // ...
+    authEndpoint: '/custom/endpoint/auth'
+});
+</code></pre>
+<p><a name="customizing-the-authorization-request"></a></p>
+<h4 id="customizing-the-authorization-request">Customizing The Authorization Request</h4>
+<p>You can customize how Laravel Echo performs authorization requests by providing a custom authorizer when initializing Echo:</p>
+<pre><code>window.Echo = new Echo({
+    // ...
+    authorizer: (channel, options) =&gt; {
+        return {
+            authorize: (socketId, callback) =&gt; {
+                axios.post('/api/broadcasting/auth', {
+                    socket_id: socketId,
+                    channel_name: channel.name
+                })
+                .then(response =&gt; {
+                    callback(false, response.data);
+                })
+                .catch(error =&gt; {
+                    callback(true, error);
+                });
+            }
+        };
+    },
+})
+</code></pre>
+<p><a name="defining-authorization-callbacks"></a></p>
+<h3 id="defining-authorization-callbacks">Defining Authorization Callbacks</h3>
+<p>Next, we need to define the logic that will actually determine if the currently authenticated user can listen to a given channel. This is done in the <code>routes/channels.php</code> file that is included with your application. In this file, you may use the <code>Broadcast::channel</code> method to register channel authorization callbacks:</p>
+<pre><code>Broadcast::channel('orders.{orderId}', function ($user, $orderId) {
+    return $user-&gt;id === Order::findOrNew($orderId)-&gt;user_id;
+});
+</code></pre>
+<p>The <code>channel</code> method accepts two arguments: the name of the channel and a callback which returns <code>true</code> or <code>false</code> indicating whether the user is authorized to listen on the channel.</p>
+<p>All authorization callbacks receive the currently authenticated user as their first argument and any additional wildcard parameters as their subsequent arguments. In this example, we are using the <code>{orderId}</code> placeholder to indicate that the "ID" portion of the channel name is a wildcard.</p>
+<p><a name="authorization-callback-model-binding"></a></p>
+<h4 id="authorization-callback-model-binding">Authorization Callback Model Binding</h4>
+<p>Just like HTTP routes, channel routes may also take advantage of implicit and explicit <a href="/docs/{{version}}/routing#route-model-binding">route model binding</a>. For example, instead of receiving a string or numeric order ID, you may request an actual <code>Order</code> model instance:</p>
+<pre><code>use App\Models\Order;
+
+Broadcast::channel('orders.{order}', function ($user, Order $order) {
+    return $user-&gt;id === $order-&gt;user_id;
+});
+</code></pre>
+<blockquote>
+<p>{note} Unlike HTTP route model binding, channel model binding does not support automatic <a href="/docs/{{version}}/routing#implicit-model-binding-scoping">implicit model binding scoping</a>. However, this is rarely a problem because most channels can be scoped based on a single model's unique, primary key.</p>
+</blockquote>
+<p><a name="authorization-callback-authentication"></a></p>
+<h4 id="authorization-callback-authentication">Authorization Callback Authentication</h4>
+<p>Private and presence broadcast channels authenticate the current user via your application's default authentication guard. If the user is not authenticated, channel authorization is automatically denied and the authorization callback is never executed. However, you may assign multiple, custom guards that should authenticate the incoming request if necessary:</p>
+<pre><code>Broadcast::channel('channel', function () {
+    // ...
+}, ['guards' =&gt; ['web', 'admin']]);
+</code></pre>
+<p><a name="defining-channel-classes"></a></p>
+<h3 id="defining-channel-classes">Defining Channel Classes</h3>
+<p>If your application is consuming many different channels, your <code>routes/channels.php</code> file could become bulky. So, instead of using closures to authorize channels, you may use channel classes. To generate a channel class, use the <code>make:channel</code> Artisan command. This command will place a new channel class in the <code>App/Broadcasting</code> directory.</p>
+<pre><code>php artisan make:channel OrderChannel
+</code></pre>
+<p>Next, register your channel in your <code>routes/channels.php</code> file:</p>
+<pre><code>use App\Broadcasting\OrderChannel;
+
+Broadcast::channel('orders.{order}', OrderChannel::class);
+</code></pre>
+<p>Finally, you may place the authorization logic for your channel in the channel class' <code>join</code> method. This <code>join</code> method will house the same logic you would have typically placed in your channel authorization closure. You may also take advantage of channel model binding:</p>
+<pre><code>&lt;?php
+
+namespace App\Broadcasting;
+
+use App\Models\Order;
+use App\Models\User;
+
+class OrderChannel
+{
+    /**
+     * Create a new channel instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Authenticate the user's access to the channel.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Order  $order
+     * @return array|bool
+     */
+    public function join(User $user, Order $order)
+    {
+        return $user-&gt;id === $order-&gt;user_id;
+    }
+}
+</code></pre>
+<blockquote>
+<p>{tip} Like many other classes in Laravel, channel classes will automatically be resolved by the <a href="/docs/{{version}}/container">service container</a>. So, you may type-hint any dependencies required by your channel in its constructor.</p>
+</blockquote>
+<p><a name="broadcasting-events"></a></p>
+<h2 id="broadcasting-events">Broadcasting Events</h2>
+<p>Once you have defined an event and marked it with the <code>ShouldBroadcast</code> interface, you only need to fire the event using the event's dispatch method. The event dispatcher will notice that the event is marked with the <code>ShouldBroadcast</code> interface and will queue the event for broadcasting:</p>
+<pre><code>use App\Events\OrderShipmentStatusUpdated;
+
+OrderShipmentStatusUpdated::dispatch($order);
+</code></pre>
+<p><a name="only-to-others"></a></p>
+<h3 id="only-to-others">Only To Others</h3>
+<p>When building an application that utilizes event broadcasting, you may occasionally need to broadcast an event to all subscribers to a given channel except for the current user. You may accomplish this using the <code>broadcast</code> helper and the <code>toOthers</code> method:</p>
+<pre><code>use App\Events\OrderShipmentStatusUpdated;
+
+broadcast(new OrderShipmentStatusUpdated($update))-&gt;toOthers();
+</code></pre>
+<p>To better understand when you may want to use the <code>toOthers</code> method, let's imagine a task list application where a user may create a new task by entering a task name. To create a task, your application might make a request to a <code>/task</code> URL which broadcasts the task's creation and returns a JSON representation of the new task. When your JavaScript application receives the response from the end-point, it might directly insert the new task into its task list like so:</p>
+<pre><code>axios.post('/task', task)
+    .then((response) =&gt; {
+        this.tasks.push(response.data);
+    });
+</code></pre>
+<p>However, remember that we also broadcast the task's creation. If your JavaScript application is also listening for this event in order to add tasks to the task list, you will have duplicate tasks in your list: one from the end-point and one from the broadcast. You may solve this by using the <code>toOthers</code> method to instruct the broadcaster to not broadcast the event to the current user.</p>
+<blockquote>
+<p>{note} Your event must use the <code>Illuminate\Broadcasting\InteractsWithSockets</code> trait in order to call the <code>toOthers</code> method.</p>
+</blockquote>
+<p><a name="only-to-others-configuration"></a></p>
+<h4 id="configuration_1">Configuration</h4>
+<p>When you initialize a Laravel Echo instance, a socket ID is assigned to the connection. If you are using a global <a href="https://github.com/mzabriskie/axios">Axios</a> instance to make HTTP requests from your JavaScript application, the socket ID will automatically be attached to every outgoing request as a <code>X-Socket-ID</code> header. Then, when you call the <code>toOthers</code> method, Laravel will extract the socket ID from the header and instruct the broadcaster to not broadcast to any connections with that socket ID.</p>
+<p>If you are not using a global Axios instance, you will need to manually configure your JavaScript application to send the <code>X-Socket-ID</code> header with all outgoing requests. You may retrieve the socket ID using the <code>Echo.socketId</code> method:</p>
+<pre><code>var socketId = Echo.socketId();
+</code></pre>
+<p><a name="receiving-broadcasts"></a></p>
+<h2 id="receiving-broadcasts">Receiving Broadcasts</h2>
+<p><a name="listening-for-events"></a></p>
+<h3 id="listening-for-events">Listening For Events</h3>
+<p>Once you have <a href="#client-side-installation">installed and instantiated Laravel Echo</a>, you are ready to start listening for events that are broadcast from your Laravel application. First, use the <code>channel</code> method to retrieve an instance of a channel, then call the <code>listen</code> method to listen for a specified event:</p>
+<pre><code class="language-js">Echo.channel(`orders.${this.order.id}`)
+    .listen('OrderShipmentStatusUpdated', (e) =&gt; {
+        console.log(e.order.name);
+    });
+</code></pre>
+<p>If you would like to listen for events on a private channel, use the <code>private</code> method instead. You may continue to chain calls to the <code>listen</code> method to listen for multiple events on a single channel:</p>
+<pre><code class="language-js">Echo.private(`orders.${this.order.id}`)
+    .listen(...)
+    .listen(...)
+    .listen(...);
+</code></pre>
+<p><a name="leaving-a-channel"></a></p>
+<h3 id="leaving-a-channel">Leaving A Channel</h3>
+<p>To leave a channel, you may call the <code>leaveChannel</code> method on your Echo instance:</p>
+<pre><code class="language-js">Echo.leaveChannel(`orders.${this.order.id}`);
+</code></pre>
+<p>If you would like to leave a channel and also its associated private and presence channels, you may call the <code>leave</code> method:</p>
+<pre><code class="language-js">Echo.leave(`orders.${this.order.id}`);
+</code></pre>
+<p><a name="namespaces"></a></p>
+<h3 id="namespaces">Namespaces</h3>
+<p>You may have noticed in the examples above that we did not specify the full <code>App\Events</code> namespace for the event classes. This is because Echo will automatically assume the events are located in the <code>App\Events</code> namespace. However, you may configure the root namespace when you instantiate Echo by passing a <code>namespace</code> configuration option:</p>
+<pre><code class="language-js">window.Echo = new Echo({
+    broadcaster: 'pusher',
+    // ...
+    namespace: 'App.Other.Namespace'
+});
+</code></pre>
+<p>Alternatively, you may prefix event classes with a <code>.</code> when subscribing to them using Echo. This will allow you to always specify the fully-qualified class name:</p>
+<pre><code class="language-js">Echo.channel('orders')
+    .listen('.Namespace\\Event\\Class', (e) =&gt; {
+        //
+    });
+</code></pre>
+<p><a name="presence-channels"></a></p>
+<h2 id="presence-channels">Presence Channels</h2>
+<p>Presence channels build on the security of private channels while exposing the additional feature of awareness of who is subscribed to the channel. This makes it easy to build powerful, collaborative application features such as notifying users when another user is viewing the same page or listing the inhabitants of a chat room.</p>
+<p><a name="authorizing-presence-channels"></a></p>
+<h3 id="authorizing-presence-channels">Authorizing Presence Channels</h3>
+<p>All presence channels are also private channels; therefore, users must be <a href="#authorizing-channels">authorized to access them</a>. However, when defining authorization callbacks for presence channels, you will not return <code>true</code> if the user is authorized to join the channel. Instead, you should return an array of data about the user.</p>
+<p>The data returned by the authorization callback will be made available to the presence channel event listeners in your JavaScript application. If the user is not authorized to join the presence channel, you should return <code>false</code> or <code>null</code>:</p>
+<pre><code>Broadcast::channel('chat.{roomId}', function ($user, $roomId) {
+    if ($user-&gt;canJoinRoom($roomId)) {
+        return ['id' =&gt; $user-&gt;id, 'name' =&gt; $user-&gt;name];
+    }
+});
+</code></pre>
+<p><a name="joining-presence-channels"></a></p>
+<h3 id="joining-presence-channels">Joining Presence Channels</h3>
+<p>To join a presence channel, you may use Echo's <code>join</code> method. The <code>join</code> method will return a <code>PresenceChannel</code> implementation which, along with exposing the <code>listen</code> method, allows you to subscribe to the <code>here</code>, <code>joining</code>, and <code>leaving</code> events.</p>
+<pre><code>Echo.join(`chat.${roomId}`)
+    .here((users) =&gt; {
+        //
+    })
+    .joining((user) =&gt; {
+        console.log(user.name);
+    })
+    .leaving((user) =&gt; {
+        console.log(user.name);
+    })
+    .error((error) =&gt; {
+        console.error(error);
+    });
+</code></pre>
+<p>The <code>here</code> callback will be executed immediately once the channel is joined successfully, and will receive an array containing the user information for all of the other users currently subscribed to the channel. The <code>joining</code> method will be executed when a new user joins a channel, while the <code>leaving</code> method will be executed when a user leaves the channel. The <code>error</code> method will be executed when the authentication endpoint returns a HTTP status code other than 200 or if there is a problem parsing the returned JSON.</p>
+<p><a name="broadcasting-to-presence-channels"></a></p>
+<h3 id="broadcasting-to-presence-channels">Broadcasting To Presence Channels</h3>
+<p>Presence channels may receive events just like public or private channels. Using the example of a chatroom, we may want to broadcast <code>NewMessage</code> events to the room's presence channel. To do so, we'll return an instance of <code>PresenceChannel</code> from the event's <code>broadcastOn</code> method:</p>
+<pre><code>/**
+ * Get the channels the event should broadcast on.
+ *
+ * @return Channel|array
+ */
+public function broadcastOn()
+{
+    return new PresenceChannel('room.'.$this-&gt;message-&gt;room_id);
+}
+</code></pre>
+<p>As with other events, you may use the <code>broadcast</code> helper and the <code>toOthers</code> method to exclude the current user from receiving the broadcast:</p>
+<pre><code>broadcast(new NewMessage($message));
+
+broadcast(new NewMessage($message))-&gt;toOthers();
+</code></pre>
+<p>As typical of other types of events, you may listen for events sent to presence channels using Echo's <code>listen</code> method:</p>
+<pre><code>Echo.join(`chat.${roomId}`)
+    .here(...)
+    .joining(...)
+    .leaving(...)
+    .listen('NewMessage', (e) =&gt; {
+        //
+    });
+</code></pre>
+<p><a name="model-broadcasting"></a></p>
+<h2 id="model-broadcasting">Model Broadcasting</h2>
+<blockquote>
+<p>{note} Before reading the following documentation about model broadcasting, we recommend you become familiar with the general concepts of Laravel's model broadcasting services as well as how to manually create and listen to broadcast events.</p>
+</blockquote>
+<p>It is common to broadcast events when your application's <a href="/docs/{{version}}/eloquent">Eloquent models</a> are created, updated, or deleted. Of course, this can easily be accomplished by manually <a href="/docs/{{version}}/eloquent#events">defining custom events for Eloquent model state changes</a> and marking those events with the <code>ShouldBroadcast</code> interface.</p>
+<p>However, if you are not using these events for any other purposes in your application, it can be cumbersome to create event classes for the sole purpose of broadcasting them. To remedy this, Laravel allows you to indicate that an Eloquent model should automatically broadcast its state changes.</p>
+<p>To get started, your Eloquent model should use the <code>Illuminate\Database\Eloquent\BroadcastsEvents</code> trait. In addition, the model should define a <code>broadcastsOn</code> method, which will return an array of channels that the model's events should broadcast on:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Database\Eloquent\BroadcastsEvents;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    use BroadcastsEvents, HasFactory;
+
+    /**
+     * Get the user that the post belongs to.
+     */
+    public function user()
+    {
+        return $this-&gt;belongsTo(User::class);
+    }
+
+    /**
+     * Get the channels that model events should broadcast on.
+     *
+     * @param  string  $event
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn($event)
+    {
+        return [$this, $this-&gt;user];
+    }
+}
+</code></pre>
+<p>Once your model includes this trait and defines its broadcast channels, it will begin automatically broadcasting events when a model instance is created, updated, deleted, trashed, or restored.</p>
+<p>In addition, you may have noticed that the <code>broadcastOn</code> method receives a string <code>$event</code> argument. This argument contains the type of event that has occurred on the model and will have a value of <code>created</code>, <code>updated</code>, <code>deleted</code>, <code>trashed</code>, or <code>restored</code>. By inspecting the value of this variable, you may determine which channels (if any) the model should broadcast to for a particular event:</p>
+<pre><code class="language-php">/**
+ * Get the channels that model events should broadcast on.
+ *
+ * @param  string  $event
+ * @return \Illuminate\Broadcasting\Channel|array
+ */
+public function broadcastOn($event)
+{
+    return match($event) {
+        'deleted' =&gt; [],
+        default =&gt; [$this, $this-&gt;user],
+    };
+}
+</code></pre>
+<p><a name="model-broadcasting-conventions"></a></p>
+<h3 id="model-broadcasting-conventions">Model Broadcasting Conventions</h3>
+<p><a name="model-broadcasting-channel-conventions"></a></p>
+<h4 id="channel-conventions">Channel Conventions</h4>
+<p>As you may have noticed, the <code>broadcastOn</code> method in the model example above did not return <code>Channel</code> instances. Instead, Eloquent models were returned directly. If an Eloquent model instance is returned by your model's <code>broadcastOn</code> method (or is contained in an array returned by the method), Laravel will automatically instantiate a private channel instance for the model using the model's class name and primary key identifier as the channel name.</p>
+<p>So, an <code>App\Models\User</code> model with an <code>id</code> of <code>1</code> would be converted into a <code>Illuminate\Broadcasting\PrivateChannel</code> instance with a name of <code>App.Models.User.1</code>. Of course, in addition to returning Eloquent model instances from your model's <code>broadcastOn</code> method, you may return complete <code>Channel</code> instances in order to have full control over the model's channel names:</p>
+<pre><code class="language-php">use Illuminate\Broadcasting\PrivateChannel;
+
+/**
+ * Get the channels that model events should broadcast on.
+ *
+ * @param  string  $event
+ * @return \Illuminate\Broadcasting\Channel|array
+ */
+public function broadcastOn($event)
+{
+    return [new PrivateChannel('user.'.$this-&gt;id)];
+}
+</code></pre>
+<p>If you plan to explicitly return a channel instance from your model's <code>broadcastOn</code> method, you may pass an Eloquent model instance to the channel's constructor. When doing so, Laravel will use the model channel conventions discussed above to convert the Eloquent model into a channel name string:</p>
+<pre><code class="language-php">return [new Channel($this-&gt;user)];
+</code></pre>
+<p>If you need to determine the channel name of a model, you may call the <code>broadcastChannel</code> method on any model instance. For example, this method returns the string <code>App.Models.User.1</code> for a <code>App\Models\User</code> model with an <code>id</code> of <code>1</code>:</p>
+<pre><code class="language-php">$user-&gt;broadcastChannel()
+</code></pre>
+<p><a name="model-broadcasting-event-conventions"></a></p>
+<h4 id="event-conventions">Event Conventions</h4>
+<p>Since model broadcast events are not associated with an "actual" event within your application's <code>App\Events</code> directory, they are assigned a name based on convention. Laravel's convention is to broadcast the event using the class name of the model (not including the namespace) and the name of the model event that triggered the broadcast.</p>
+<p>So, for example, an update to the <code>App\Models\Post</code> model would broadcast an event to your client-side application as <code>PostUpdated</code>, while the deletion of an <code>App\Models\User</code> model would broadcast an event named <code>UserDeleted</code>.</p>
+<p><a name="listening-for-model-broadcasts"></a></p>
+<h3 id="listening-for-model-broadcasts">Listening For Model Broadcasts</h3>
+<p>Once you have added the <code>BroadcastsEvents</code> trait to your model and defined your model's <code>broadcastOn</code> method, you are ready to start listening for broadcasted model events within your client-side application. Before getting started, you may wish to consult the complete documentation on <a href="#listening-for-events">listening for events</a>.</p>
+<p>First, use the <code>private</code> method to retrieve an instance of a channel, then call the <code>listen</code> method to listen for a specified event. Typically, the channel name given to the <code>private</code> method should correspond to Laravel's <a href="#model-broadcasting-conventions">model broadcasting conventions</a>.</p>
+<p>Once you have obtained a channel instance, you may use the <code>listen</code> method to listen for a particular event. Since model broadcast events are not associated with an "actual" event within your application's <code>App\Events</code> directory, the <a href="#model-broadcasting-event-conventions">event name</a> must be prefixed with a <code>.</code> to indicate it does not belong to a particular namespace. Each model broadcast event has a <code>model</code> property which contains all of the broadcastable properties of the model:</p>
+<pre><code class="language-js">Echo.private(`App.Models.User.${this.user.id}`)
+    .listen('.PostUpdated', (e) =&gt; {
+        console.log(e.model);
+    });
+</code></pre>
+<p><a name="client-events"></a></p>
+<h2 id="client-events">Client Events</h2>
+<blockquote>
+<p>{tip} When using <a href="https://pusher.com/channels">Pusher Channels</a>, you must enable the "Client Events" option in the "App Settings" section of your <a href="https://dashboard.pusher.com/">application dashboard</a> in order to send client events.</p>
+</blockquote>
+<p>Sometimes you may wish to broadcast an event to other connected clients without hitting your Laravel application at all. This can be particularly useful for things like "typing" notifications, where you want to alert users of your application that another user is typing a message on a given screen.</p>
+<p>To broadcast client events, you may use Echo's <code>whisper</code> method:</p>
+<pre><code>Echo.private(`chat.${roomId}`)
+    .whisper('typing', {
+        name: this.user.name
+    });
+</code></pre>
+<p>To listen for client events, you may use the <code>listenForWhisper</code> method:</p>
+<pre><code>Echo.private(`chat.${roomId}`)
+    .listenForWhisper('typing', (e) =&gt; {
+        console.log(e.name);
+    });
+</code></pre>
+<p><a name="notifications"></a></p>
+<h2 id="notifications">Notifications</h2>
+<p>By pairing event broadcasting with <a href="/docs/{{version}}/notifications">notifications</a>, your JavaScript application may receive new notifications as they occur without needing to refresh the page. Before getting started, be sure to read over the documentation on using <a href="/docs/{{version}}/notifications#broadcast-notifications">the broadcast notification channel</a>.</p>
+<p>Once you have configured a notification to use the broadcast channel, you may listen for the broadcast events using Echo's <code>notification</code> method. Remember, the channel name should match the class name of the entity receiving the notifications:</p>
+<pre><code>Echo.private(`App.Models.User.${userId}`)
+    .notification((notification) =&gt; {
+        console.log(notification.type);
+    });
+</code></pre>
+<p>In this example, all notifications sent to <code>App\Models\User</code> instances via the <code>broadcast</code> channel would be received by the callback. A channel authorization callback for the <code>App.Models.User.{id}</code> channel is included in the default <code>BroadcastServiceProvider</code> that ships with the Laravel framework.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../artisan/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Artisan konsoli" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Artisan konsoli
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../cache/" class="md-footer__link md-footer__link--next" aria-label="Next: Kesh" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Kesh
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2362 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/pagination/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Paginatsiya - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-pagination" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Paginatsiya
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Paginatsiya
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Paginatsiya
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    Basic Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paginating-query-builder-results" class="md-nav__link">
+    Paginating Query Builder Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Paginating Query Builder Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-pagination" class="md-nav__link">
+    Simple Pagination
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paginating-eloquent-results" class="md-nav__link">
+    Paginating Eloquent Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cursor-pagination" class="md-nav__link">
+    Cursor Pagination
+  </a>
+  
+    <nav class="md-nav" aria-label="Cursor Pagination">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cursor-vs-offset-pagination" class="md-nav__link">
+    Cursor vs. Offset Pagination
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-creating-a-paginator" class="md-nav__link">
+    Manually Creating A Paginator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-pagination-urls" class="md-nav__link">
+    Customizing Pagination URLs
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Pagination URLs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appending-query-string-values" class="md-nav__link">
+    Appending Query String Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appending-hash-fragments" class="md-nav__link">
+    Appending Hash Fragments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-pagination-results" class="md-nav__link">
+    Displaying Pagination Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Displaying Pagination Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-the-pagination-link-window" class="md-nav__link">
+    Adjusting The Pagination Link Window
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converting-results-to-json" class="md-nav__link">
+    Converting Results To JSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-the-pagination-view" class="md-nav__link">
+    Customizing The Pagination View
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing The Pagination View">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-bootstrap" class="md-nav__link">
+    Using Bootstrap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paginator-lengthawarepaginator-instance-methods" class="md-nav__link">
+    Paginator / LengthAwarePaginator Instance Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cursor-paginator-instance-methods" class="md-nav__link">
+    Cursor Paginator Instance Methods
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    Basic Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paginating-query-builder-results" class="md-nav__link">
+    Paginating Query Builder Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Paginating Query Builder Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-pagination" class="md-nav__link">
+    Simple Pagination
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paginating-eloquent-results" class="md-nav__link">
+    Paginating Eloquent Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cursor-pagination" class="md-nav__link">
+    Cursor Pagination
+  </a>
+  
+    <nav class="md-nav" aria-label="Cursor Pagination">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cursor-vs-offset-pagination" class="md-nav__link">
+    Cursor vs. Offset Pagination
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-creating-a-paginator" class="md-nav__link">
+    Manually Creating A Paginator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-pagination-urls" class="md-nav__link">
+    Customizing Pagination URLs
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing Pagination URLs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appending-query-string-values" class="md-nav__link">
+    Appending Query String Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appending-hash-fragments" class="md-nav__link">
+    Appending Hash Fragments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-pagination-results" class="md-nav__link">
+    Displaying Pagination Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Displaying Pagination Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-the-pagination-link-window" class="md-nav__link">
+    Adjusting The Pagination Link Window
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converting-results-to-json" class="md-nav__link">
+    Converting Results To JSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customizing-the-pagination-view" class="md-nav__link">
+    Customizing The Pagination View
+  </a>
+  
+    <nav class="md-nav" aria-label="Customizing The Pagination View">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-bootstrap" class="md-nav__link">
+    Using Bootstrap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paginator-lengthawarepaginator-instance-methods" class="md-nav__link">
+    Paginator / LengthAwarePaginator Instance Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cursor-paginator-instance-methods" class="md-nav__link">
+    Cursor Paginator Instance Methods
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="database-pagination">Database: Pagination</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#basic-usage">Basic Usage</a><ul>
+<li><a href="#paginating-query-builder-results">Paginating Query Builder Results</a></li>
+<li><a href="#paginating-eloquent-results">Paginating Eloquent Results</a></li>
+<li><a href="#cursor-pagination">Cursor Pagination</a></li>
+<li><a href="#manually-creating-a-paginator">Manually Creating A Paginator</a></li>
+<li><a href="#customizing-pagination-urls">Customizing Pagination URLs</a></li>
+</ul>
+</li>
+<li><a href="#displaying-pagination-results">Displaying Pagination Results</a><ul>
+<li><a href="#adjusting-the-pagination-link-window">Adjusting The Pagination Link Window</a></li>
+<li><a href="#converting-results-to-json">Converting Results To JSON</a></li>
+</ul>
+</li>
+<li><a href="#customizing-the-pagination-view">Customizing The Pagination View</a><ul>
+<li><a href="#using-bootstrap">Using Bootstrap</a></li>
+</ul>
+</li>
+<li><a href="#paginator-instance-methods">Paginator and LengthAwarePaginator Instance Methods</a></li>
+<li><a href="#cursor-paginator-instance-methods">Cursor Paginator Instance Methods</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>In other frameworks, pagination can be very painful. We hope Laravel's approach to pagination will be a breath of fresh air. Laravel's paginator is integrated with the <a href="/docs/{{version}}/queries">query builder</a> and <a href="/docs/{{version}}/eloquent">Eloquent ORM</a> and provides convenient, easy-to-use pagination of database records with zero configuration.</p>
+<p>By default, the HTML generated by the paginator is compatible with the <a href="https://tailwindcss.com/">Tailwind CSS framework</a>; however, Bootstrap pagination support is also available.</p>
+<p><a name="basic-usage"></a></p>
+<h2 id="basic-usage">Basic Usage</h2>
+<p><a name="paginating-query-builder-results"></a></p>
+<h3 id="paginating-query-builder-results">Paginating Query Builder Results</h3>
+<p>There are several ways to paginate items. The simplest is by using the <code>paginate</code> method on the <a href="/docs/{{version}}/queries">query builder</a> or an <a href="/docs/{{version}}/eloquent">Eloquent query</a>. The <code>paginate</code> method automatically takes care of setting the query's "limit" and "offset" based on the current page being viewed by the user. By default, the current page is detected by the value of the <code>page</code> query string argument on the HTTP request. This value is automatically detected by Laravel, and is also automatically inserted into links generated by the paginator.</p>
+<p>In this example, the only argument passed to the <code>paginate</code> method is the number of items you would like displayed "per page". In this case, let's specify that we would like to display <code>15</code> items per page:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+class UserController extends Controller
+{
+    /**
+     * Show all of the users for the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('user.index', [
+            'users' =&gt; DB::table('users')-&gt;paginate(15)
+        ]);
+    }
+}
+</code></pre>
+<p><a name="simple-pagination"></a></p>
+<h4 id="simple-pagination">Simple Pagination</h4>
+<p>The <code>paginate</code> method counts the total number of records matched by the query before retrieving the records from the database. This is done so that the paginator knows how many pages of records there are in total. However, if you do not plan to show the total number of pages in your application's UI then the record count query is unnecessary.</p>
+<p>Therefore, if you only need to display simple "Next" and "Previous" links in your application's UI, you may use the <code>simplePaginate</code> method to perform a single, efficient query:</p>
+<pre><code>$users = DB::table('users')-&gt;simplePaginate(15);
+</code></pre>
+<p><a name="paginating-eloquent-results"></a></p>
+<h3 id="paginating-eloquent-results">Paginating Eloquent Results</h3>
+<p>You may also paginate <a href="/docs/{{version}}/eloquent">Eloquent</a> queries. In this example, we will paginate the <code>App\Models\User</code> model and indicate that we plan to display 15 records per page. As you can see, the syntax is nearly identical to paginating query builder results:</p>
+<pre><code>use App\Models\User;
+
+$users = User::paginate(15);
+</code></pre>
+<p>Of course, you may call the <code>paginate</code> method after setting other constraints on the query, such as <code>where</code> clauses:</p>
+<pre><code>$users = User::where('votes', '&gt;', 100)-&gt;paginate(15);
+</code></pre>
+<p>You may also use the <code>simplePaginate</code> method when paginating Eloquent models:</p>
+<pre><code>$users = User::where('votes', '&gt;', 100)-&gt;simplePaginate(15);
+</code></pre>
+<p>Similarly, you may use the <code>cursorPaginate</code> method to cursor paginate Eloquent models:</p>
+<pre><code>$users = User::where('votes', '&gt;', 100)-&gt;cursorPaginate(15);
+</code></pre>
+<p><a name="cursor-pagination"></a></p>
+<h3 id="cursor-pagination">Cursor Pagination</h3>
+<p>While <code>paginate</code> and <code>simplePaginate</code> create queries using the SQL "offset" clause, cursor pagination works by constructing "where" clauses that compare the values of the ordered columns contained in the query, providing the most efficient database performance available amongst all of Laravel's pagination methods. This method of pagination is particularly well-suited for large data-sets and "infinite" scrolling user interfaces.</p>
+<p>Unlike offset based pagination, which includes a page number in the query string of the URLs generated by the paginator, cursor based pagination places a "cursor" string in the query string. The cursor is an encoded string containing the location that the next paginated query should start paginating and the direction that it should paginate:</p>
+<pre><code class="language-nothing">http://localhost/users?cursor=eyJpZCI6MTUsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0
+</code></pre>
+<p>You may create a cursor based paginator instance via the <code>cursorPaginate</code> method offered by the query builder. This method returns an instance of <code>Illuminate\Pagination\CursorPaginator</code>:</p>
+<pre><code>$users = DB::table('users')-&gt;orderBy('id')-&gt;cursorPaginate(15);
+</code></pre>
+<p>Once you have retrieved a cursor paginator instance, you may <a href="#displaying-pagination-results">display the pagination results</a> as you typically would when using the <code>paginate</code> and <code>simplePaginate</code> methods. For more information on the instance methods offered by the cursor paginator, please consult the <a href="#cursor-paginator-instance-methods">cursor paginator instance method documentation</a>.</p>
+<blockquote>
+<p>{note} Your query must contain an "order by" clause in order to take advantage of cursor pagination.</p>
+</blockquote>
+<p><a name="cursor-vs-offset-pagination"></a></p>
+<h4 id="cursor-vs-offset-pagination">Cursor vs. Offset Pagination</h4>
+<p>To illustrate the differences between offset pagination and cursor pagination, let's examine some example SQL queries. Both of the following queries will both display the "second page" of results for a <code>users</code> table ordered by <code>id</code>:</p>
+<pre><code class="language-sql"># Offset Pagination...
+select * from users order by id asc limit 15 offset 15;
+
+# Cursor Pagination...
+select * from users where id &gt; 15 order by id asc limit 15;
+</code></pre>
+<p>The cursor pagination query offers the following advantages over offset pagination:</p>
+<ul>
+<li>For large data-sets, cursor pagination will offer better performance if the "order by" columns are indexed. This is because the "offset" clause scans through all previously matched data.</li>
+<li>For data-sets with frequent writes, offset pagination may skip records or show duplicates if results have been recently added to or deleted from the page a user is currently viewing.</li>
+</ul>
+<p>However, cursor pagination has the following limitations:</p>
+<ul>
+<li>Like <code>simplePaginate</code>, cursor pagination can only be used to display "Next" and "Previous" links and does not support generating links with page numbers.</li>
+<li>It requires that the ordering is based on at least one unique column or a combination of columns that are unique.</li>
+<li>Query expressions in "order by" clauses are supported only if they are aliased and added to the "select" clause as well.</li>
+</ul>
+<p><a name="manually-creating-a-paginator"></a></p>
+<h3 id="manually-creating-a-paginator">Manually Creating A Paginator</h3>
+<p>Sometimes you may wish to create a pagination instance manually, passing it an array of items that you already have in memory. You may do so by creating either an <code>Illuminate\Pagination\Paginator</code>, <code>Illuminate\Pagination\LengthAwarePaginator</code> or <code>Illuminate\Pagination\CursorPaginator</code> instance, depending on your needs.</p>
+<p>The <code>Paginator</code> and <code>CursorPaginator</code> classes do not need to know the total number of items in the result set; however, because of this, these classes do not have methods for retrieving the index of the last page. The <code>LengthAwarePaginator</code> accepts almost the same arguments as the <code>Paginator</code>; however, it requires a count of the total number of items in the result set.</p>
+<p>In other words, the <code>Paginator</code> corresponds to the <code>simplePaginate</code> method on the query builder, the <code>CursorPaginator</code> corresponds to the <code>cursorPaginate</code> method, and the <code>LengthAwarePaginator</code> corresponds to the <code>paginate</code> method.</p>
+<blockquote>
+<p>{note} When manually creating a paginator instance, you should manually "slice" the array of results you pass to the paginator. If you're unsure how to do this, check out the <a href="https://secure.php.net/manual/en/function.array-slice.php">array_slice</a> PHP function.</p>
+</blockquote>
+<p><a name="customizing-pagination-urls"></a></p>
+<h3 id="customizing-pagination-urls">Customizing Pagination URLs</h3>
+<p>By default, links generated by the paginator will match the current request's URI. However, the paginator's <code>withPath</code> method allows you to customize the URI used by the paginator when generating links. For example, if you want the paginator to generate links like <code>http://example.com/admin/users?page=N</code>, you should pass <code>/admin/users</code> to the <code>withPath</code> method:</p>
+<pre><code>use App\Models\User;
+
+Route::get('/users', function () {
+    $users = User::paginate(15);
+
+    $users-&gt;withPath('/admin/users');
+
+    //
+});
+</code></pre>
+<p><a name="appending-query-string-values"></a></p>
+<h4 id="appending-query-string-values">Appending Query String Values</h4>
+<p>You may append to the query string of pagination links using the <code>appends</code> method. For example, to append <code>sort=votes</code> to each pagination link, you should make the following call to <code>appends</code>:</p>
+<pre><code>use App\Models\User;
+
+Route::get('/users', function () {
+    $users = User::paginate(15);
+
+    $users-&gt;appends(['sort' =&gt; 'votes']);
+
+    //
+});
+</code></pre>
+<p>You may use the <code>withQueryString</code> method if you would like to append all of the current request's query string values to the pagination links:</p>
+<pre><code>$users = User::paginate(15)-&gt;withQueryString();
+</code></pre>
+<p><a name="appending-hash-fragments"></a></p>
+<h4 id="appending-hash-fragments">Appending Hash Fragments</h4>
+<p>If you need to append a "hash fragment" to URLs generated by the paginator, you may use the <code>fragment</code> method. For example, to append <code>#users</code> to the end of each pagination link, you should invoke the <code>fragment</code> method like so:</p>
+<pre><code>$users = User::paginate(15)-&gt;fragment('users');
+</code></pre>
+<p><a name="displaying-pagination-results"></a></p>
+<h2 id="displaying-pagination-results">Displaying Pagination Results</h2>
+<p>When calling the <code>paginate</code> method, you will receive an instance of <code>Illuminate\Pagination\LengthAwarePaginator</code>, while calling the <code>simplePaginate</code> method returns an instance of <code>Illuminate\Pagination\Paginator</code>. And, finally, calling the <code>cursorPaginate</code> method returns an instance of <code>Illuminate\Pagination\CursorPaginator</code>.</p>
+<p>These objects provide several methods that describe the result set. In addition to these helpers methods, the paginator instances are iterators and may be looped as an array. So, once you have retrieved the results, you may display the results and render the page links using <a href="/docs/{{version}}/blade">Blade</a>:</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    @foreach ($users as $user)
+        {{ $user-&gt;name }}
+    @endforeach
+&lt;/div&gt;
+
+{{ $users-&gt;links() }}
+</code></pre>
+<p>The <code>links</code> method will render the links to the rest of the pages in the result set. Each of these links will already contain the proper <code>page</code> query string variable. Remember, the HTML generated by the <code>links</code> method is compatible with the <a href="https://tailwindcss.com">Tailwind CSS framework</a>.</p>
+<p><a name="adjusting-the-pagination-link-window"></a></p>
+<h3 id="adjusting-the-pagination-link-window">Adjusting The Pagination Link Window</h3>
+<p>When the paginator displays pagination links, the current page number is displayed as well as links for the three pages before and after the current page. Using the <code>onEachSide</code> method, you may control how many additional links are displayed on each side of the current page within the middle, sliding window of links generated by the paginator:</p>
+<pre><code>{{ $users-&gt;onEachSide(5)-&gt;links() }}
+</code></pre>
+<p><a name="converting-results-to-json"></a></p>
+<h3 id="converting-results-to-json">Converting Results To JSON</h3>
+<p>The Laravel paginator classes implement the <code>Illuminate\Contracts\Support\Jsonable</code> Interface contract and expose the <code>toJson</code> method, so it's very easy to convert your pagination results to JSON. You may also convert a paginator instance to JSON by returning it from a route or controller action:</p>
+<pre><code>use App\Models\User;
+
+Route::get('/users', function () {
+    return User::paginate();
+});
+</code></pre>
+<p>The JSON from the paginator will include meta information such as <code>total</code>, <code>current_page</code>, <code>last_page</code>, and more. The result records are available via the <code>data</code> key in the JSON array. Here is an example of the JSON created by returning a paginator instance from a route:</p>
+<pre><code>{
+   "total": 50,
+   "per_page": 15,
+   "current_page": 1,
+   "last_page": 4,
+   "first_page_url": "http://laravel.app?page=1",
+   "last_page_url": "http://laravel.app?page=4",
+   "next_page_url": "http://laravel.app?page=2",
+   "prev_page_url": null,
+   "path": "http://laravel.app",
+   "from": 1,
+   "to": 15,
+   "data":[
+        {
+            // Record...
+        },
+        {
+            // Record...
+        }
+   ]
+}
+</code></pre>
+<p><a name="customizing-the-pagination-view"></a></p>
+<h2 id="customizing-the-pagination-view">Customizing The Pagination View</h2>
+<p>By default, the views rendered to display the pagination links are compatible with the <a href="https://tailwindcss.com">Tailwind CSS</a> framework. However, if you are not using Tailwind, you are free to define your own views to render these links. When calling the <code>links</code> method on a paginator instance, you may pass the view name as the first argument to the method:</p>
+<pre><code>{{ $paginator-&gt;links('view.name') }}
+
+// Passing additional data to the view...
+{{ $paginator-&gt;links('view.name', ['foo' =&gt; 'bar']) }}
+</code></pre>
+<p>However, the easiest way to customize the pagination views is by exporting them to your <code>resources/views/vendor</code> directory using the <code>vendor:publish</code> command:</p>
+<pre><code>php artisan vendor:publish --tag=laravel-pagination
+</code></pre>
+<p>This command will place the views in your application's <code>resources/views/vendor/pagination</code> directory. The <code>tailwind.blade.php</code> file within this directory corresponds to the default pagination view. You may edit this file to modify the pagination HTML.</p>
+<p>If you would like to designate a different file as the default pagination view, you may invoke the paginator's <code>defaultView</code> and <code>defaultSimpleView</code> methods within the <code>boot</code> method of your <code>App\Providers\AppServiceProvider</code> class:</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Paginator::defaultView('view-name');
+
+        Paginator::defaultSimpleView('view-name');
+    }
+}
+</code></pre>
+<p><a name="using-bootstrap"></a></p>
+<h3 id="using-bootstrap">Using Bootstrap</h3>
+<p>Laravel includes pagination views built using <a href="https://getbootstrap.com/">Bootstrap CSS</a>. To use these views instead of the default Tailwind views, you may call the paginator's <code>useBootstrap</code> method within the <code>boot</code> method of your <code>App\Providers\AppServiceProvider</code> class:</p>
+<pre><code>use Illuminate\Pagination\Paginator;
+
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Paginator::useBootstrap();
+}
+</code></pre>
+<p><a name="paginator-instance-methods"></a></p>
+<h2 id="paginator-lengthawarepaginator-instance-methods">Paginator / LengthAwarePaginator Instance Methods</h2>
+<p>Each paginator instance provides additional pagination information via the following methods:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$paginator-&gt;count()</code></td>
+<td>Get the number of items for the current page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;currentPage()</code></td>
+<td>Get the current page number.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;firstItem()</code></td>
+<td>Get the result number of the first item in the results.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;getOptions()</code></td>
+<td>Get the paginator options.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;getUrlRange($start, $end)</code></td>
+<td>Create a range of pagination URLs.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;hasPages()</code></td>
+<td>Determine if there are enough items to split into multiple pages.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;hasMorePages()</code></td>
+<td>Determine if there are more items in the data store.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;items()</code></td>
+<td>Get the items for the current page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;lastItem()</code></td>
+<td>Get the result number of the last item in the results.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;lastPage()</code></td>
+<td>Get the page number of the last available page. (Not available when using <code>simplePaginate</code>).</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;nextPageUrl()</code></td>
+<td>Get the URL for the next page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;onFirstPage()</code></td>
+<td>Determine if the paginator is on the first page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;perPage()</code></td>
+<td>The number of items to be shown per page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;previousPageUrl()</code></td>
+<td>Get the URL for the previous page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;total()</code></td>
+<td>Determine the total number of matching items in the data store. (Not available when using <code>simplePaginate</code>).</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;url($page)</code></td>
+<td>Get the URL for a given page number.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;getPageName()</code></td>
+<td>Get the query string variable used to store the page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;setPageName($name)</code></td>
+<td>Set the query string variable used to store the page.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="cursor-paginator-instance-methods"></a></p>
+<h2 id="cursor-paginator-instance-methods">Cursor Paginator Instance Methods</h2>
+<p>Each cursor paginator instance provides additional pagination information via the following methods:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$paginator-&gt;count()</code></td>
+<td>Get the number of items for the current page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;cursor()</code></td>
+<td>Get the current cursor instance.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;getOptions()</code></td>
+<td>Get the paginator options.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;hasPages()</code></td>
+<td>Determine if there are enough items to split into multiple pages.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;hasMorePages()</code></td>
+<td>Determine if there are more items in the data store.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;getCursorName()</code></td>
+<td>Get the query string variable used to store the cursor.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;items()</code></td>
+<td>Get the items for the current page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;nextCursor()</code></td>
+<td>Get the cursor instance for the next set of items.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;nextPageUrl()</code></td>
+<td>Get the URL for the next page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;onFirstPage()</code></td>
+<td>Determine if the paginator is on the first page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;perPage()</code></td>
+<td>The number of items to be shown per page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;previousCursor()</code></td>
+<td>Get the cursor instance for the previous set of items.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;previousPageUrl()</code></td>
+<td>Get the URL for the previous page.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;setCursorName()</code></td>
+<td>Set the query string variable used to store the cursor.</td>
+</tr>
+<tr>
+<td><code>$paginator-&gt;url($cursor)</code></td>
+<td>Get the URL for a given cursor instance.</td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../queries/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Query Builder" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Query Builder
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../migrations/" class="md-footer__link md-footer__link--next" aria-label="Next: Migratsiyalar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Migratsiyalar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

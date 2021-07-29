@@ -1,0 +1,2039 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/mix/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Compiling Assets (Mix) - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#compiling-assets-mix" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Compiling Assets (Mix)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-setup" class="md-nav__link">
+    Installation &amp; Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation &amp; Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-node" class="md-nav__link">
+    Installing Node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-laravel-mix" class="md-nav__link">
+    Installing Laravel Mix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-mix" class="md-nav__link">
+    Running Mix
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Mix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watching-assets-for-changes" class="md-nav__link">
+    Watching Assets For Changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-stylesheets" class="md-nav__link">
+    Working With Stylesheets
+  </a>
+  
+    <nav class="md-nav" aria-label="Working With Stylesheets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tailwind-css" class="md-nav__link">
+    Tailwind CSS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postcss" class="md-nav__link">
+    PostCSS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sass" class="md-nav__link">
+    Sass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-processing" class="md-nav__link">
+    URL Processing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-maps" class="md-nav__link">
+    Source Maps
+  </a>
+  
+    <nav class="md-nav" aria-label="Source Maps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#style-of-source-mapping" class="md-nav__link">
+    Style Of Source Mapping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-javascript" class="md-nav__link">
+    Working With JavaScript
+  </a>
+  
+    <nav class="md-nav" aria-label="Working With JavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vue" class="md-nav__link">
+    Vue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react" class="md-nav__link">
+    React
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vendor-extraction" class="md-nav__link">
+    Vendor Extraction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-webpack-configuration" class="md-nav__link">
+    Custom Webpack Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning-cache-busting" class="md-nav__link">
+    Versioning / Cache Busting
+  </a>
+  
+    <nav class="md-nav" aria-label="Versioning / Cache Busting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-mix-base-urls" class="md-nav__link">
+    Custom Mix Base URLs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browsersync-reloading" class="md-nav__link">
+    Browsersync Reloading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    Notifications
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="compiling-assets-mix">Compiling Assets (Mix)</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installation">Installation &amp; Setup</a></li>
+<li><a href="#running-mix">Running Mix</a></li>
+<li><a href="#working-with-stylesheets">Working With Stylesheets</a><ul>
+<li><a href="#tailwindcss">Tailwind CSS</a></li>
+<li><a href="#postcss">PostCSS</a></li>
+<li><a href="#sass">Sass</a></li>
+<li><a href="#url-processing">URL Processing</a></li>
+<li><a href="#css-source-maps">Source Maps</a></li>
+</ul>
+</li>
+<li><a href="#working-with-scripts">Working With JavaScript</a><ul>
+<li><a href="#vue">Vue</a></li>
+<li><a href="#react">React</a></li>
+<li><a href="#vendor-extraction">Vendor Extraction</a></li>
+<li><a href="#custom-webpack-configuration">Custom Webpack Configuration</a></li>
+</ul>
+</li>
+<li><a href="#versioning-and-cache-busting">Versioning / Cache Busting</a></li>
+<li><a href="#browsersync-reloading">Browsersync Reloading</a></li>
+<li><a href="#environment-variables">Environment Variables</a></li>
+<li><a href="#notifications">Notifications</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p><a href="https://github.com/JeffreyWay/laravel-mix">Laravel Mix</a>, a package developed by <a href="https://laracasts.com">Laracasts</a> creator Jeffrey Way, provides a fluent API for defining <a href="https://webpack.js.org">webpack</a> build steps for your Laravel application using several common CSS and JavaScript pre-processors.</p>
+<p>In other words, Mix makes it a cinch to compile and minify your application's CSS and JavaScript files. Through simple method chaining, you can fluently define your asset pipeline. For example:</p>
+<pre><code>mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css');
+</code></pre>
+<p>If you've ever been confused and overwhelmed about getting started with webpack and asset compilation, you will love Laravel Mix. However, you are not required to use it while developing your application; you are free to use any asset pipeline tool you wish, or even none at all.</p>
+<blockquote>
+<p>{tip} If you need a head start building your application with Laravel and <a href="https://tailwindcss.com">Tailwind CSS</a>, check out one of our <a href="/docs/{{version}}/starter-kits">application starter kits</a>.</p>
+</blockquote>
+<p><a name="installation"></a></p>
+<h2 id="installation-setup">Installation &amp; Setup</h2>
+<p><a name="installing-node"></a></p>
+<h4 id="installing-node">Installing Node</h4>
+<p>Before running Mix, you must first ensure that Node.js and NPM are installed on your machine:</p>
+<pre><code>node -v
+npm -v
+</code></pre>
+<p>You can easily install the latest version of Node and NPM using simple graphical installers from <a href="https://nodejs.org/en/download/">the official Node website</a>. Or, if you are using <a href="/docs/{{version}}/sail">Laravel Sail</a>, you may invoke Node and NPM through Sail:</p>
+<pre><code>./sail node -v
+./sail npm -v
+</code></pre>
+<p><a name="installing-laravel-mix"></a></p>
+<h4 id="installing-laravel-mix">Installing Laravel Mix</h4>
+<p>The only remaining step is to install Laravel Mix. Within a fresh installation of Laravel, you'll find a <code>package.json</code> file in the root of your directory structure. The default <code>package.json</code> file already includes everything you need to get started using Laravel Mix. Think of this file like your <code>composer.json</code> file, except it defines Node dependencies instead of PHP dependencies. You may install the dependencies it references by running:</p>
+<pre><code>npm install
+</code></pre>
+<p><a name="running-mix"></a></p>
+<h2 id="running-mix">Running Mix</h2>
+<p>Mix is a configuration layer on top of <a href="https://webpack.js.org">webpack</a>, so to run your Mix tasks you only need to execute one of the NPM scripts that are included in the default Laravel <code>package.json</code> file. When you run the <code>dev</code> or <code>production</code> scripts, all of your application's CSS and JavaScript assets will be compiled and placed in your application's <code>public</code> directory:</p>
+<pre><code>// Run all Mix tasks...
+npm run dev
+
+// Run all Mix tasks and minify output...
+npm run prod
+</code></pre>
+<p><a name="watching-assets-for-changes"></a></p>
+<h4 id="watching-assets-for-changes">Watching Assets For Changes</h4>
+<p>The <code>npm run watch</code> command will continue running in your terminal and watch all relevant CSS and JavaScript files for changes. Webpack will automatically recompile your assets when it detects a change to one of these files:</p>
+<pre><code>npm run watch
+</code></pre>
+<p>Webpack may not be able to detect your file changes in certain local development environments. If this is the case on your system, consider using the <code>watch-poll</code> command:</p>
+<pre><code>npm run watch-poll
+</code></pre>
+<p><a name="working-with-stylesheets"></a></p>
+<h2 id="working-with-stylesheets">Working With Stylesheets</h2>
+<p>Your application's <code>webpack.mix.js</code> file is your entry point for all asset compilation. Think of it as a light configuration wrapper around <a href="https://webpack.js.org">webpack</a>. Mix tasks can be chained together to define exactly how your assets should be compiled.</p>
+<p><a name="tailwindcss"></a></p>
+<h3 id="tailwind-css">Tailwind CSS</h3>
+<p><a href="https://tailwindcss.com">Tailwind CSS</a> is a modern, utility-first framework for building amazing sites without ever leaving your HTML. Let's dig into how to start using it in a Laravel project with Laravel Mix. First, we should install Tailwind using NPM and generate our Tailwind configuration file:</p>
+<pre><code>npm install
+
+npm install -D tailwindcss
+
+npx tailwindcss init
+</code></pre>
+<p>The <code>init</code> command will generate a <code>tailwind.config.js</code> file. Within this file, you may configure the paths to all of your application's templates and JavaScript so that Tailwind can tree-shake unused styles when optimizing your CSS for production:</p>
+<pre><code class="language-js">purge: [
+    './storage/framework/views/*.php',
+    './resources/**/*.blade.php',
+    './resources/**/*.js',
+    './resources/**/*.vue',
+],
+</code></pre>
+<p>Next, you should add each of Tailwind's "layers" to your application's <code>resources/css/app.css</code> file:</p>
+<pre><code class="language-css">@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</code></pre>
+<p>Once you have configured Tailwind's layers, you are ready to update your application's <code>webpack.mix.js</code> file to compile your Tailwind powered CSS:</p>
+<pre><code class="language-js">mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        require('tailwindcss'),
+    ]);
+</code></pre>
+<p>Finally, you should reference your stylesheet in your application's primary layout template. Many applications choose to store this template at <code>resources/views/layouts/app.blade.php</code>. In addition, ensure you add the responsive viewport <code>meta</code> tag if it's not already present:</p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;link href=&quot;/css/app.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+</code></pre>
+<p><a name="postcss"></a></p>
+<h3 id="postcss">PostCSS</h3>
+<p><a href="https://postcss.org/">PostCSS</a>, a powerful tool for transforming your CSS, is included with Laravel Mix out of the box. By default, Mix leverages the popular <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> plugin to automatically apply all necessary CSS3 vendor prefixes. However, you're free to add any additional plugins that are appropriate for your application.</p>
+<p>First, install the desired plugin through NPM and include it in your array of plugins when calling Mix's <code>postCss</code> method. The <code>postCss</code> method accepts the path to your CSS file as its first argument and the directory where the compiled file should be placed as its second argument:</p>
+<pre><code>mix.postCss('resources/css/app.css', 'public/css', [
+    require('postcss-custom-properties')
+]);
+</code></pre>
+<p>Or, you may execute <code>postCss</code> with no additional plugins in order to achieve simple CSS compilation and minification:</p>
+<pre><code>mix.postCss('resources/css/app.css', 'public/css');
+</code></pre>
+<p><a name="sass"></a></p>
+<h3 id="sass">Sass</h3>
+<p>The <code>sass</code> method allows you to compile <a href="https://sass-lang.com/">Sass</a> into CSS that can be understood by web browsers. The <code>sass</code> method accepts the path to your Sass file as its first argument and the directory where the compiled file should be placed as its second argument:</p>
+<pre><code>mix.sass('resources/sass/app.scss', 'public/css');
+</code></pre>
+<p>You may compile multiple Sass files into their own respective CSS files and even customize the output directory of the resulting CSS by calling the <code>sass</code> method multiple times:</p>
+<pre><code>mix.sass('resources/sass/app.sass', 'public/css')
+    .sass('resources/sass/admin.sass', 'public/css/admin');
+</code></pre>
+<p><a name="url-processing"></a></p>
+<h3 id="url-processing">URL Processing</h3>
+<p>Because Laravel Mix is built on top of webpack, it's important to understand a few webpack concepts. For CSS compilation, webpack will rewrite and optimize any <code>url()</code> calls within your stylesheets. While this might initially sound strange, it's an incredibly powerful piece of functionality. Imagine that we want to compile Sass that includes a relative URL to an image:</p>
+<pre><code>.example {
+    background: url('../images/example.png');
+}
+</code></pre>
+<blockquote>
+<p>{note} Absolute paths for any given <code>url()</code> will be excluded from URL-rewriting. For example, <code>url('/images/thing.png')</code> or <code>url('http://example.com/images/thing.png')</code> won't be modified.</p>
+</blockquote>
+<p>By default, Laravel Mix and webpack will find <code>example.png</code>, copy it to your <code>public/images</code> folder, and then rewrite the <code>url()</code> within your generated stylesheet. As such, your compiled CSS will be:</p>
+<pre><code>.example {
+    background: url(/images/example.png?d41d8cd98f00b204e9800998ecf8427e);
+}
+</code></pre>
+<p>As useful as this feature may be, your existing folder structure may already be configured in a way you like. If this is the case, you may disable <code>url()</code> rewriting like so:</p>
+<pre><code>mix.sass('resources/sass/app.scss', 'public/css').options({
+    processCssUrls: false
+});
+</code></pre>
+<p>With this addition to your <code>webpack.mix.js</code> file, Mix will no longer match any <code>url()</code> or copy assets to your public directory. In other words, the compiled CSS will look just like how you originally typed it:</p>
+<pre><code>.example {
+    background: url("../images/thing.png");
+}
+</code></pre>
+<p><a name="css-source-maps"></a></p>
+<h3 id="source-maps">Source Maps</h3>
+<p>Though disabled by default, source maps may be activated by calling the <code>mix.sourceMaps()</code> method in your <code>webpack.mix.js</code> file. Though it comes with a compile/performance cost, this will provide extra debugging information to your browser's developer tools when using compiled assets:</p>
+<pre><code>mix.js('resources/js/app.js', 'public/js')
+    .sourceMaps();
+</code></pre>
+<p><a name="style-of-source-mapping"></a></p>
+<h4 id="style-of-source-mapping">Style Of Source Mapping</h4>
+<p>Webpack offers a variety of <a href="https://webpack.js.org/configuration/devtool/#devtool">source mapping styles</a>. By default, Mix's source mapping style is set to <code>eval-source-map</code>, which provides a fast rebuild time. If you want to change the mapping style, you may do so using the <code>sourceMaps</code> method:</p>
+<pre><code>let productionSourceMaps = false;
+
+mix.js('resources/js/app.js', 'public/js')
+    .sourceMaps(productionSourceMaps, 'source-map');
+</code></pre>
+<p><a name="working-with-scripts"></a></p>
+<h2 id="working-with-javascript">Working With JavaScript</h2>
+<p>Mix provides several features to help you work with your JavaScript files, such as compiling modern ECMAScript, module bundling, minification, and concatenating plain JavaScript files. Even better, this all works seamlessly, without requiring an ounce of custom configuration:</p>
+<pre><code>mix.js('resources/js/app.js', 'public/js');
+</code></pre>
+<p>With this single line of code, you may now take advantage of:</p>
+<div class="content-list" markdown="1">
+- The latest EcmaScript syntax.
+- Modules
+- Minification for production environments.
+</div>
+
+<p><a name="vue"></a></p>
+<h3 id="vue">Vue</h3>
+<p>Mix will automatically install the Babel plugins necessary for Vue single-file component compilation support when using the <code>vue</code> method. No further configuration is required:</p>
+<pre><code>mix.js('resources/js/app.js', 'public/js')
+   .vue();
+</code></pre>
+<p>Once your JavaScript has been compiled, you can reference it in your application:</p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;!-- ... --&gt;
+
+    &lt;script src=&quot;/js/app.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+<p><a name="react"></a></p>
+<h3 id="react">React</h3>
+<p>Mix can automatically install the Babel plugins necessary for React support. To get started, add a call to the <code>react</code> method:</p>
+<pre><code>mix.js('resources/js/app.jsx', 'public/js')
+   .react();
+</code></pre>
+<p>Behind the scenes, Mix will download and include the appropriate <code>babel-preset-react</code> Babel plugin. Once your JavaScript has been compiled, you can reference it in your application:</p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;!-- ... --&gt;
+
+    &lt;script src=&quot;/js/app.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+<p><a name="vendor-extraction"></a></p>
+<h3 id="vendor-extraction">Vendor Extraction</h3>
+<p>One potential downside to bundling all of your application-specific JavaScript with your vendor libraries such as React and Vue is that it makes long-term caching more difficult. For example, a single update to your application code will force the browser to re-download all of your vendor libraries even if they haven't changed.</p>
+<p>If you intend to make frequent updates to your application's JavaScript, you should consider extracting all of your vendor libraries into their own file. This way, a change to your application code will not affect the caching of your large <code>vendor.js</code> file. Mix's <code>extract</code> method makes this a breeze:</p>
+<pre><code>mix.js('resources/js/app.js', 'public/js')
+    .extract(['vue'])
+</code></pre>
+<p>The <code>extract</code> method accepts an array of all libraries or modules that you wish to extract into a <code>vendor.js</code> file. Using the snippet above as an example, Mix will generate the following files:</p>
+<div class="content-list" markdown="1">
+- `public/js/manifest.js`: *The Webpack manifest runtime*
+- `public/js/vendor.js`: *Your vendor libraries*
+- `public/js/app.js`: *Your application code*
+</div>
+
+<p>To avoid JavaScript errors, be sure to load these files in the proper order:</p>
+<pre><code>&lt;script src="/js/manifest.js"&gt;&lt;/script&gt;
+&lt;script src="/js/vendor.js"&gt;&lt;/script&gt;
+&lt;script src="/js/app.js"&gt;&lt;/script&gt;
+</code></pre>
+<p><a name="custom-webpack-configuration"></a></p>
+<h3 id="custom-webpack-configuration">Custom Webpack Configuration</h3>
+<p>Occasionally, you may need to manually modify the underlying Webpack configuration. For example, you might have a special loader or plugin that needs to be referenced.</p>
+<p>Mix provides a useful <code>webpackConfig</code> method that allows you to merge any short Webpack configuration overrides. This is particularly appealing, as it doesn't require you to copy and maintain your own copy of the <code>webpack.config.js</code> file. The <code>webpackConfig</code> method accepts an object, which should contain any <a href="https://webpack.js.org/configuration/">Webpack-specific configuration</a> that you wish to apply.</p>
+<pre><code>mix.webpackConfig({
+    resolve: {
+        modules: [
+            path.resolve(__dirname, 'vendor/laravel/spark/resources/assets/js')
+        ]
+    }
+});
+</code></pre>
+<p><a name="versioning-and-cache-busting"></a></p>
+<h2 id="versioning-cache-busting">Versioning / Cache Busting</h2>
+<p>Many developers suffix their compiled assets with a timestamp or unique token to force browsers to load the fresh assets instead of serving stale copies of the code. Mix can automatically handle this for you using the <code>version</code> method.</p>
+<p>The <code>version</code> method will append a unique hash to the filenames of all compiled files, allowing for more convenient cache busting:</p>
+<pre><code>mix.js('resources/js/app.js', 'public/js')
+    .version();
+</code></pre>
+<p>After generating the versioned file, you won't know the exact filename. So, you should use Laravel's global <code>mix</code> function within your <a href="/docs/{{version}}/views">views</a> to load the appropriately hashed asset. The <code>mix</code> function will automatically determine the current name of the hashed file:</p>
+<pre><code>&lt;script src="{{ mix('/js/app.js') }}"&gt;&lt;/script&gt;
+</code></pre>
+<p>Because versioned files are usually unnecessary in development, you may instruct the versioning process to only run during <code>npm run prod</code>:</p>
+<pre><code>mix.js('resources/js/app.js', 'public/js');
+
+if (mix.inProduction()) {
+    mix.version();
+}
+</code></pre>
+<p><a name="custom-mix-base-urls"></a></p>
+<h4 id="custom-mix-base-urls">Custom Mix Base URLs</h4>
+<p>If your Mix compiled assets are deployed to a CDN separate from your application, you will need to change the base URL generated by the <code>mix</code> function. You may do so by adding a <code>mix_url</code> configuration option to your application's <code>config/app.php</code> configuration file:</p>
+<pre><code>'mix_url' =&gt; env('MIX_ASSET_URL', null)
+</code></pre>
+<p>After configuring the Mix URL, The <code>mix</code> function will prefix the configured URL when generating URLs to assets:</p>
+<pre><code class="language-bash">https://cdn.example.com/js/app.js?id=1964becbdd96414518cd
+</code></pre>
+<p><a name="browsersync-reloading"></a></p>
+<h2 id="browsersync-reloading">Browsersync Reloading</h2>
+<p><a href="https://browsersync.io/">BrowserSync</a> can automatically monitor your files for changes, and inject your changes into the browser without requiring a manual refresh. You may enable support for this by calling the <code>mix.browserSync()</code> method:</p>
+<pre><code class="language-js">mix.browserSync('laravel.test');
+</code></pre>
+<p><a href="https://browsersync.io/docs/options">BrowserSync options</a> may be specified by passing a JavaScript object to the <code>browserSync</code> method:</p>
+<pre><code class="language-js">mix.browserSync({
+    proxy: 'laravel.test'
+});
+</code></pre>
+<p>Next, start webpack's development server using the <code>npm run watch</code> command. Now, when you modify a script or PHP file you can watch as the browser instantly refreshes the page to reflect your changes.</p>
+<p><a name="environment-variables"></a></p>
+<h2 id="environment-variables">Environment Variables</h2>
+<p>You may inject environment variables into your <code>webpack.mix.js</code> script by prefixing one of the environment variables in your <code>.env</code> file with <code>MIX_</code>:</p>
+<pre><code>MIX_SENTRY_DSN_PUBLIC=http://example.com
+</code></pre>
+<p>After the variable has been defined in your <code>.env</code> file, you may access it via the <code>process.env</code> object. However, you will need to restart the task if the environment variable's value changes while the task is running:</p>
+<pre><code>process.env.MIX_SENTRY_DSN_PUBLIC
+</code></pre>
+<p><a name="notifications"></a></p>
+<h2 id="notifications">Notifications</h2>
+<p>When available, Mix will automatically display OS notifications when compiling, giving you instant feedback as to whether the compilation was successful or not. However, there may be instances when you would prefer to disable these notifications. One such example might be triggering Mix on your production server. Notifications may be deactivated using the <code>disableNotifications</code> method:</p>
+<pre><code>mix.disableNotifications();
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

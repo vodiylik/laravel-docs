@@ -1,0 +1,2618 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/scout/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Scout - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#laravel-scout" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scout
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Scout
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Scout
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#driver-prerequisites" class="md-nav__link">
+    Driver Prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Driver Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algolia" class="md-nav__link">
+    Algolia
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meilisearch" class="md-nav__link">
+    MeiliSearch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queueing" class="md-nav__link">
+    Queueing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-model-indexes" class="md-nav__link">
+    Configuring Model Indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-searchable-data" class="md-nav__link">
+    Configuring Searchable Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-model-id" class="md-nav__link">
+    Configuring The Model ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifying-users" class="md-nav__link">
+    Identifying Users
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    Local Development
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexing" class="md-nav__link">
+    Indexing
+  </a>
+  
+    <nav class="md-nav" aria-label="Indexing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch-import" class="md-nav__link">
+    Batch Import
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch Import">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modifying-the-import-query" class="md-nav__link">
+    Modifying The Import Query
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-records" class="md-nav__link">
+    Adding Records
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding Records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-records-via-query" class="md-nav__link">
+    Adding Records Via Query
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-records" class="md-nav__link">
+    Updating Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-records" class="md-nav__link">
+    Removing Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pausing-indexing" class="md-nav__link">
+    Pausing Indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditionally-searchable-model-instances" class="md-nav__link">
+    Conditionally Searchable Model Instances
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searching" class="md-nav__link">
+    Searching
+  </a>
+  
+    <nav class="md-nav" aria-label="Searching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-indexes" class="md-nav__link">
+    Custom Indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-clauses" class="md-nav__link">
+    Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+    Pagination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soft-deleting" class="md-nav__link">
+    Soft Deleting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-engine-searches" class="md-nav__link">
+    Customizing Engine Searches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-engines" class="md-nav__link">
+    Custom Engines
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Engines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-the-engine" class="md-nav__link">
+    Writing The Engine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-the-engine" class="md-nav__link">
+    Registering The Engine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#builder-macros" class="md-nav__link">
+    Builder Macros
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#driver-prerequisites" class="md-nav__link">
+    Driver Prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Driver Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algolia" class="md-nav__link">
+    Algolia
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meilisearch" class="md-nav__link">
+    MeiliSearch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queueing" class="md-nav__link">
+    Queueing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-model-indexes" class="md-nav__link">
+    Configuring Model Indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-searchable-data" class="md-nav__link">
+    Configuring Searchable Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-model-id" class="md-nav__link">
+    Configuring The Model ID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifying-users" class="md-nav__link">
+    Identifying Users
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    Local Development
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexing" class="md-nav__link">
+    Indexing
+  </a>
+  
+    <nav class="md-nav" aria-label="Indexing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch-import" class="md-nav__link">
+    Batch Import
+  </a>
+  
+    <nav class="md-nav" aria-label="Batch Import">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modifying-the-import-query" class="md-nav__link">
+    Modifying The Import Query
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-records" class="md-nav__link">
+    Adding Records
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding Records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-records-via-query" class="md-nav__link">
+    Adding Records Via Query
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-records" class="md-nav__link">
+    Updating Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-records" class="md-nav__link">
+    Removing Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pausing-indexing" class="md-nav__link">
+    Pausing Indexing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditionally-searchable-model-instances" class="md-nav__link">
+    Conditionally Searchable Model Instances
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searching" class="md-nav__link">
+    Searching
+  </a>
+  
+    <nav class="md-nav" aria-label="Searching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-indexes" class="md-nav__link">
+    Custom Indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-clauses" class="md-nav__link">
+    Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+    Pagination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soft-deleting" class="md-nav__link">
+    Soft Deleting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-engine-searches" class="md-nav__link">
+    Customizing Engine Searches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-engines" class="md-nav__link">
+    Custom Engines
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Engines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-the-engine" class="md-nav__link">
+    Writing The Engine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-the-engine" class="md-nav__link">
+    Registering The Engine
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#builder-macros" class="md-nav__link">
+    Builder Macros
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="laravel-scout">Laravel Scout</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#driver-prerequisites">Driver Prerequisites</a></li>
+<li><a href="#queueing">Queueing</a></li>
+</ul>
+</li>
+<li><a href="#configuration">Configuration</a><ul>
+<li><a href="#configuring-model-indexes">Configuring Model Indexes</a></li>
+<li><a href="#configuring-searchable-data">Configuring Searchable Data</a></li>
+<li><a href="#configuring-the-model-id">Configuring The Model ID</a></li>
+<li><a href="#identifying-users">Identifying Users</a></li>
+</ul>
+</li>
+<li><a href="#local-development">Local Development</a></li>
+<li><a href="#indexing">Indexing</a><ul>
+<li><a href="#batch-import">Batch Import</a></li>
+<li><a href="#adding-records">Adding Records</a></li>
+<li><a href="#updating-records">Updating Records</a></li>
+<li><a href="#removing-records">Removing Records</a></li>
+<li><a href="#pausing-indexing">Pausing Indexing</a></li>
+<li><a href="#conditionally-searchable-model-instances">Conditionally Searchable Model Instances</a></li>
+</ul>
+</li>
+<li><a href="#searching">Searching</a><ul>
+<li><a href="#where-clauses">Where Clauses</a></li>
+<li><a href="#pagination">Pagination</a></li>
+<li><a href="#soft-deleting">Soft Deleting</a></li>
+<li><a href="#customizing-engine-searches">Customizing Engine Searches</a></li>
+</ul>
+</li>
+<li><a href="#custom-engines">Custom Engines</a></li>
+<li><a href="#builder-macros">Builder Macros</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel Scout provides a simple, driver based solution for adding full-text search to your <a href="/docs/{{version}}/eloquent">Eloquent models</a>. Using model observers, Scout will automatically keep your search indexes in sync with your Eloquent records.</p>
+<p>Currently, Scout ships with <a href="https://www.algolia.com/">Algolia</a> and <a href="https://www.meilisearch.com">MeiliSearch</a> drivers. In addition, Scout includes a "collection" driver that is designed for local development usage and does not require any external dependencies or third-party services. Furthermore, writing custom drivers is simple and you are free to extend Scout with your own search implementations.</p>
+<p><a name="installation"></a></p>
+<h2 id="installation">Installation</h2>
+<p>First, install Scout via the Composer package manager:</p>
+<pre><code>composer require laravel/scout
+</code></pre>
+<p>After installing Scout, you should publish the Scout configuration file using the <code>vendor:publish</code> Artisan command. This command will publish the <code>scout.php</code> configuration file to your application's <code>config</code> directory:</p>
+<pre><code>php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"
+</code></pre>
+<p>Finally, add the <code>Laravel\Scout\Searchable</code> trait to the model you would like to make searchable. This trait will register a model observer that will automatically keep the model in sync with your search driver:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
+class Post extends Model
+{
+    use Searchable;
+}
+</code></pre>
+<p><a name="driver-prerequisites"></a></p>
+<h3 id="driver-prerequisites">Driver Prerequisites</h3>
+<p><a name="algolia"></a></p>
+<h4 id="algolia">Algolia</h4>
+<p>When using the Algolia driver, you should configure your Algolia <code>id</code> and <code>secret</code> credentials in your <code>config/scout.php</code> configuration file. Once your credentials have been configured, you will also need to install the Algolia PHP SDK via the Composer package manager:</p>
+<pre><code>composer require algolia/algoliasearch-client-php
+</code></pre>
+<p><a name="meilisearch"></a></p>
+<h4 id="meilisearch">MeiliSearch</h4>
+<p>When using the MeiliSearch driver you will need to install the MeiliSearch PHP SDK via the Composer package manager:</p>
+<pre><code>composer require meilisearch/meilisearch-php http-interop/http-factory-guzzle
+</code></pre>
+<p>Then, set the <code>SCOUT_DRIVER</code> environment variable as well as your MeiliSearch <code>host</code> and <code>key</code> credentials within your application's <code>.env</code> file:</p>
+<pre><code>SCOUT_DRIVER=meilisearch
+MEILISEARCH_HOST=http://127.0.0.1:7700
+MEILISEARCH_KEY=masterKey
+</code></pre>
+<p>For more information regarding MeiliSearch, please consult the <a href="https://docs.meilisearch.com/learn/getting_started/quick_start.html">MeiliSearch documentation</a>.</p>
+<blockquote>
+<p>{tip} If you aren't sure how to install MeiliSearch on your local machine, you may use <a href="/docs/{{version}}/sail#meilisearch">Laravel Sail</a>, Laravel's officially supported Docker development environment.</p>
+</blockquote>
+<p><a name="queueing"></a></p>
+<h3 id="queueing">Queueing</h3>
+<p>While not strictly required to use Scout, you should strongly consider configuring a <a href="/docs/{{version}}/queues">queue driver</a> before using the library. Running a queue worker will allow Scout to queue all operations that sync your model information to your search indexes, providing much better response times for your application's web interface.</p>
+<p>Once you have configured a queue driver, set the value of the <code>queue</code> option in your <code>config/scout.php</code> configuration file to <code>true</code>:</p>
+<pre><code>'queue' =&gt; true,
+</code></pre>
+<p><a name="configuration"></a></p>
+<h2 id="configuration">Configuration</h2>
+<p><a name="configuring-model-indexes"></a></p>
+<h3 id="configuring-model-indexes">Configuring Model Indexes</h3>
+<p>Each Eloquent model is synced with a given search "index", which contains all of the searchable records for that model. In other words, you can think of each index like a MySQL table. By default, each model will be persisted to an index matching the model's typical "table" name. Typically, this is the plural form of the model name; however, you are free to customize the model's index by overriding the <code>searchableAs</code> method on the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
+class Post extends Model
+{
+    use Searchable;
+
+    /**
+     * Get the name of the index associated with the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'posts_index';
+    }
+}
+</code></pre>
+<p><a name="configuring-searchable-data"></a></p>
+<h3 id="configuring-searchable-data">Configuring Searchable Data</h3>
+<p>By default, the entire <code>toArray</code> form of a given model will be persisted to its search index. If you would like to customize the data that is synchronized to the search index, you may override the <code>toSearchableArray</code> method on the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
+class Post extends Model
+{
+    use Searchable;
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this-&gt;toArray();
+
+        // Customize the data array...
+
+        return $array;
+    }
+}
+</code></pre>
+<p><a name="configuring-the-model-id"></a></p>
+<h3 id="configuring-the-model-id">Configuring The Model ID</h3>
+<p>By default, Scout will use the primary key of the model as model's unique ID / key that is stored in the search index. If you need to customize this behavior, you may override the <code>getScoutKey</code> and the <code>getScoutKeyName</code> methods on the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
+class User extends Model
+{
+    use Searchable;
+
+    /**
+     * Get the value used to index the model.
+     *
+     * @return mixed
+     */
+    public function getScoutKey()
+    {
+        return $this-&gt;email;
+    }
+
+    /**
+     * Get the key name used to index the model.
+     *
+     * @return mixed
+     */
+    public function getScoutKeyName()
+    {
+        return 'email';
+    }
+}
+</code></pre>
+<p><a name="identifying-users"></a></p>
+<h3 id="identifying-users">Identifying Users</h3>
+<p>Scout also allows you to auto identify users when using <a href="https://algolia.com">Algolia</a>. Associating the authenticated user with search operations may be helpful when viewing your search analytics within Algolia's dashboard. You can enable user identification by defining a <code>SCOUT_IDENTIFY</code> environment variable as <code>true</code> in your application's <code>.env</code> file:</p>
+<pre><code>SCOUT_IDENTIFY=true
+</code></pre>
+<p>Enabling this feature this will also pass the request's IP address and your authenticated user's primary identifier to Algolia so this data is associated with any search request that is made by the user.</p>
+<p><a name="local-development"></a></p>
+<h2 id="local-development">Local Development</h2>
+<p>While you are free to use the Algolia or MeiliSearch search engines during local development, you may find it more convenient to get started with the "collection" engine. The collection engine will use "where" clauses and collection filtering on results from your existing database to determine the applicable search results for your query. When using this engine, it is not necessary to "index" your searchable models, as they will simply be retrieved from your local database.</p>
+<p>To use the collection engine, you may simply set the value of the <code>SCOUT_DRIVER</code> environment variable to <code>collection</code>, or specify the <code>collection</code> driver directly in your application's <code>scout</code> configuration file:</p>
+<pre><code class="language-ini">SCOUT_DRIVER=collection
+</code></pre>
+<p>Once you have specified the collection driver as your preferred driver, you may start <a href="#searching">executing search queries</a> against your models. Search engine indexing, such as the indexing needed to seed Algolia or MeiliSearch indexes, is unnecessary when using the collection engine.</p>
+<p><a name="indexing"></a></p>
+<h2 id="indexing">Indexing</h2>
+<p><a name="batch-import"></a></p>
+<h3 id="batch-import">Batch Import</h3>
+<p>If you are installing Scout into an existing project, you may already have database records you need to import into your indexes. Scout provides a <code>scout:import</code> Artisan command that you may use to import all of your existing records into your search indexes:</p>
+<pre><code>php artisan scout:import "App\Models\Post"
+</code></pre>
+<p>The <code>flush</code> command may be used to remove all of a model's records from your search indexes:</p>
+<pre><code>php artisan scout:flush "App\Models\Post"
+</code></pre>
+<p><a name="modifying-the-import-query"></a></p>
+<h4 id="modifying-the-import-query">Modifying The Import Query</h4>
+<p>If you would like to modify the query that is used to retrieve all of your models for batch importing, you may define a <code>makeAllSearchableUsing</code> method on your model. This is a great place to add any eager relationship loading that may be necessary before importing your models:</p>
+<pre><code>/**
+ * Modify the query used to retrieve models when making all of the models searchable.
+ *
+ * @param  \Illuminate\Database\Eloquent\Builder  $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+protected function makeAllSearchableUsing($query)
+{
+    return $query-&gt;with('author');
+}
+</code></pre>
+<p><a name="adding-records"></a></p>
+<h3 id="adding-records">Adding Records</h3>
+<p>Once you have added the <code>Laravel\Scout\Searchable</code> trait to a model, all you need to do is <code>save</code> or <code>create</code> a model instance and it will automatically be added to your search index. If you have configured Scout to <a href="#queueing">use queues</a> this operation will be performed in the background by your queue worker:</p>
+<pre><code>use App\Models\Order;
+
+$order = new Order;
+
+// ...
+
+$order-&gt;save();
+</code></pre>
+<p><a name="adding-records-via-query"></a></p>
+<h4 id="adding-records-via-query">Adding Records Via Query</h4>
+<p>If you would like to add a collection of models to your search index via an Eloquent query, you may chain the <code>searchable</code> method onto the Eloquent query. The <code>searchable</code> method will <a href="/docs/{{version}}/eloquent#chunking-results">chunk the results</a> of the query and add the records to your search index. Again, if you have configured Scout to use queues, all of the chunks will be imported in the background by your queue workers:</p>
+<pre><code>use App\Models\Order;
+
+Order::where('price', '&gt;', 100)-&gt;searchable();
+</code></pre>
+<p>You may also call the <code>searchable</code> method on an Eloquent relationship instance:</p>
+<pre><code>$user-&gt;orders()-&gt;searchable();
+</code></pre>
+<p>Or, if you already have a collection of Eloquent models in memory, you may call the <code>searchable</code> method on the collection instance to add the model instances to their corresponding index:</p>
+<pre><code>$orders-&gt;searchable();
+</code></pre>
+<blockquote>
+<p>{tip} The <code>searchable</code> method can be considered an "upsert" operation. In other words, if the model record is already in your index, it will be updated. If it does not exist in the search index, it will be added to the index.</p>
+</blockquote>
+<p><a name="updating-records"></a></p>
+<h3 id="updating-records">Updating Records</h3>
+<p>To update a searchable model, you only need to update the model instance's properties and <code>save</code> the model to your database. Scout will automatically persist the changes to your search index:</p>
+<pre><code>use App\Models\Order;
+
+$order = Order::find(1);
+
+// Update the order...
+
+$order-&gt;save();
+</code></pre>
+<p>You may also invoke the <code>searchable</code> method on an Eloquent query instance to update a collection of models. If the models do not exist in your search index, they will be created:</p>
+<pre><code>Order::where('price', '&gt;', 100)-&gt;searchable();
+</code></pre>
+<p>If you would like to update the search index records for all of the models in a relationship, you may invoke the <code>searchable</code> on the relationship instance:</p>
+<pre><code>$user-&gt;orders()-&gt;searchable();
+</code></pre>
+<p>Or, if you already have a collection of Eloquent models in memory, you may call the <code>searchable</code> method on the collection instance to update the model instances in their corresponding index:</p>
+<pre><code>$orders-&gt;searchable();
+</code></pre>
+<p><a name="removing-records"></a></p>
+<h3 id="removing-records">Removing Records</h3>
+<p>To remove a record from your index you may simply <code>delete</code> the model from the database. This may be done even if you are using <a href="/docs/{{version}}/eloquent#soft-deleting">soft deleted</a> models:</p>
+<pre><code>use App\Models\Order;
+
+$order = Order::find(1);
+
+$order-&gt;delete();
+</code></pre>
+<p>If you do not want to retrieve the model before deleting the record, you may use the <code>unsearchable</code> method on an Eloquent query instance:</p>
+<pre><code>Order::where('price', '&gt;', 100)-&gt;unsearchable();
+</code></pre>
+<p>If you would like to remove the search index records for all of the models in a relationship, you may invoke the <code>unsearchable</code> on the relationship instance:</p>
+<pre><code>$user-&gt;orders()-&gt;unsearchable();
+</code></pre>
+<p>Or, if you already have a collection of Eloquent models in memory, you may call the <code>unsearchable</code> method on the collection instance to remove the model instances from their corresponding index:</p>
+<pre><code>$orders-&gt;unsearchable();
+</code></pre>
+<p><a name="pausing-indexing"></a></p>
+<h3 id="pausing-indexing">Pausing Indexing</h3>
+<p>Sometimes you may need to perform a batch of Eloquent operations on a model without syncing the model data to your search index. You may do this using the <code>withoutSyncingToSearch</code> method. This method accepts a single closure which will be immediately executed. Any model operations that occur within the closure will not be synced to the model's index:</p>
+<pre><code>use App\Models\Order;
+
+Order::withoutSyncingToSearch(function () {
+    // Perform model actions...
+});
+</code></pre>
+<p><a name="conditionally-searchable-model-instances"></a></p>
+<h3 id="conditionally-searchable-model-instances">Conditionally Searchable Model Instances</h3>
+<p>Sometimes you may need to only make a model searchable under certain conditions. For example, imagine you have <code>App\Models\Post</code> model that may be in one of two states: "draft" and "published". You may only want to allow "published" posts to be searchable. To accomplish this, you may define a <code>shouldBeSearchable</code> method on your model:</p>
+<pre><code>/**
+ * Determine if the model should be searchable.
+ *
+ * @return bool
+ */
+public function shouldBeSearchable()
+{
+    return $this-&gt;isPublished();
+}
+</code></pre>
+<p>The <code>shouldBeSearchable</code> method is only applied when manipulating models through the <code>save</code> and <code>create</code> methods, queries, or relationships. Directly making models or collections searchable using the <code>searchable</code> method will override the result of the <code>shouldBeSearchable</code> method.</p>
+<p><a name="searching"></a></p>
+<h2 id="searching">Searching</h2>
+<p>You may begin searching a model using the <code>search</code> method. The search method accepts a single string that will be used to search your models. You should then chain the <code>get</code> method onto the search query to retrieve the Eloquent models that match the given search query:</p>
+<pre><code>use App\Models\Order;
+
+$orders = Order::search('Star Trek')-&gt;get();
+</code></pre>
+<p>Since Scout searches return a collection of Eloquent models, you may even return the results directly from a route or controller and they will automatically be converted to JSON:</p>
+<pre><code>use App\Models\Order;
+use Illuminate\Http\Request;
+
+Route::get('/search', function (Request $request) {
+    return Order::search($request-&gt;search)-&gt;get();
+});
+</code></pre>
+<p>If you would like to get the raw search results before they are converted to Eloquent models, you may use the <code>raw</code> method:</p>
+<pre><code>$orders = Order::search('Star Trek')-&gt;raw();
+</code></pre>
+<p><a name="custom-indexes"></a></p>
+<h4 id="custom-indexes">Custom Indexes</h4>
+<p>Search queries will typically be performed on the index specified by the model's <a href="#configuring-model-indexes"><code>searchableAs</code></a> method. However, you may use the <code>within</code> method to specify a custom index that should be searched instead:</p>
+<pre><code>$orders = Order::search('Star Trek')
+    -&gt;within('tv_shows_popularity_desc')
+    -&gt;get();
+</code></pre>
+<p><a name="where-clauses"></a></p>
+<h3 id="where-clauses">Where Clauses</h3>
+<p>Scout allows you to add simple "where" clauses to your search queries. Currently, these clauses only support basic numeric equality checks and are primarily useful for scoping search queries by an owner ID. Since a search index is not a relational database, more advanced "where" clauses are not currently supported:</p>
+<pre><code>use App\Models\Order;
+
+$orders = Order::search('Star Trek')-&gt;where('user_id', 1)-&gt;get();
+</code></pre>
+<p><a name="pagination"></a></p>
+<h3 id="pagination">Pagination</h3>
+<p>In addition to retrieving a collection of models, you may paginate your search results using the <code>paginate</code> method. This method will return an <code>Illuminate\Pagination\LengthAwarePaginator</code> instance just as if you had <a href="/docs/{{version}}/pagination">paginated a traditional Eloquent query</a>:</p>
+<pre><code>use App\Models\Order;
+
+$orders = Order::search('Star Trek')-&gt;paginate();
+</code></pre>
+<p>You may specify how many models to retrieve per page by passing the amount as the first argument to the <code>paginate</code> method:</p>
+<pre><code>$orders = Order::search('Star Trek')-&gt;paginate(15);
+</code></pre>
+<p>Once you have retrieved the results, you may display the results and render the page links using <a href="/docs/{{version}}/blade">Blade</a> just as if you had paginated a traditional Eloquent query:</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    @foreach ($orders as $order)
+        {{ $order-&gt;price }}
+    @endforeach
+&lt;/div&gt;
+
+{{ $orders-&gt;links() }}
+</code></pre>
+<p>Of course, if you would like to retrieve the pagination results as JSON, you may return the paginator instance directly from a route or controller:</p>
+<pre><code>use App\Models\Order;
+use Illuminate\Http\Request;
+
+Route::get('/orders', function (Request $request) {
+    return Order::search($request-&gt;input('query'))-&gt;paginate(15);
+});
+</code></pre>
+<p><a name="soft-deleting"></a></p>
+<h3 id="soft-deleting">Soft Deleting</h3>
+<p>If your indexed models are <a href="/docs/{{version}}/eloquent#soft-deleting">soft deleting</a> and you need to search your soft deleted models, set the <code>soft_delete</code> option of the <code>config/scout.php</code> configuration file to <code>true</code>:</p>
+<pre><code>'soft_delete' =&gt; true,
+</code></pre>
+<p>When this configuration option is <code>true</code>, Scout will not remove soft deleted models from the search index. Instead, it will set a hidden <code>__soft_deleted</code> attribute on the indexed record. Then, you may use the <code>withTrashed</code> or <code>onlyTrashed</code> methods to retrieve the soft deleted records when searching:</p>
+<pre><code>use App\Models\Order;
+
+// Include trashed records when retrieving results...
+$orders = Order::search('Star Trek')-&gt;withTrashed()-&gt;get();
+
+// Only include trashed records when retrieving results...
+$orders = Order::search('Star Trek')-&gt;onlyTrashed()-&gt;get();
+</code></pre>
+<blockquote>
+<p>{tip} When a soft deleted model is permanently deleted using <code>forceDelete</code>, Scout will remove it from the search index automatically.</p>
+</blockquote>
+<p><a name="customizing-engine-searches"></a></p>
+<h3 id="customizing-engine-searches">Customizing Engine Searches</h3>
+<p>If you need to perform advanced customization of the search behavior of an engine you may pass a closure as the second argument to the <code>search</code> method. For example, you could use this callback to add geo-location data to your search options before the search query is passed to Algolia:</p>
+<pre><code>use Algolia\AlgoliaSearch\SearchIndex;
+use App\Models\Order;
+
+Order::search(
+    'Star Trek',
+    function (SearchIndex $algolia, string $query, array $options) {
+        $options['body']['query']['bool']['filter']['geo_distance'] = [
+            'distance' =&gt; '1000km',
+            'location' =&gt; ['lat' =&gt; 36, 'lon' =&gt; 111],
+        ];
+
+        return $algolia-&gt;search($query, $options);
+    }
+)-&gt;get();
+</code></pre>
+<p><a name="custom-engines"></a></p>
+<h2 id="custom-engines">Custom Engines</h2>
+<p><a name="writing-the-engine"></a></p>
+<h4 id="writing-the-engine">Writing The Engine</h4>
+<p>If one of the built-in Scout search engines doesn't fit your needs, you may write your own custom engine and register it with Scout. Your engine should extend the <code>Laravel\Scout\Engines\Engine</code> abstract class. This abstract class contains eight methods your custom engine must implement:</p>
+<pre><code>use Laravel\Scout\Builder;
+
+abstract public function update($models);
+abstract public function delete($models);
+abstract public function search(Builder $builder);
+abstract public function paginate(Builder $builder, $perPage, $page);
+abstract public function mapIds($results);
+abstract public function map(Builder $builder, $results, $model);
+abstract public function getTotalCount($results);
+abstract public function flush($model);
+</code></pre>
+<p>You may find it helpful to review the implementations of these methods on the <code>Laravel\Scout\Engines\AlgoliaEngine</code> class. This class will provide you with a good starting point for learning how to implement each of these methods in your own engine.</p>
+<p><a name="registering-the-engine"></a></p>
+<h4 id="registering-the-engine">Registering The Engine</h4>
+<p>Once you have written your custom engine, you may register it with Scout using the <code>extend</code> method of the Scout engine manager. Scout's engine manager may be resolved from the Laravel service container. You should call the <code>extend</code> method from the <code>boot</code> method of your <code>App\Providers\AppServiceProvider</code> class or any other service provider used by your application:</p>
+<pre><code>use App\ScoutExtensions\MySqlSearchEngine
+use Laravel\Scout\EngineManager;
+
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    resolve(EngineManager::class)-&gt;extend('mysql', function () {
+        return new MySqlSearchEngine;
+    });
+}
+</code></pre>
+<p>Once your engine has been registered, you may specify it as your default Scout <code>driver</code> in your application's <code>config/scout.php</code> configuration file:</p>
+<pre><code>'driver' =&gt; 'mysql',
+</code></pre>
+<p><a name="builder-macros"></a></p>
+<h2 id="builder-macros">Builder Macros</h2>
+<p>If you would like to define a custom Scout search builder method, you may use the <code>macro</code> method on the <code>Laravel\Scout\Builder</code> class. Typically, "macros" should be defined within a <a href="/docs/{{version}}/providers">service provider's</a> <code>boot</code> method:</p>
+<pre><code>use Illuminate\Support\Facades\Response;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Scout\Builder;
+
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Builder::macro('count', function () {
+        return $this-&gt;engine()-&gt;getTotalCount(
+            $this-&gt;engine()-&gt;search($this)
+        );
+    });
+}
+</code></pre>
+<p>The <code>macro</code> function accepts a macro name as its first argument and a closure as its second argument. The macro's closure will be executed when calling the macro name from a <code>Laravel\Scout\Builder</code> implementation:</p>
+<pre><code>use App\Models\Order;
+
+Order::search('Star Trek')-&gt;count();
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../sanctum/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sanctum" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Sanctum
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../socialite/" class="md-footer__link md-footer__link--next" aria-label="Next: Socialite" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Socialite
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

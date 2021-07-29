@@ -1,0 +1,3114 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/homestead/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Homestead - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#laravel-homestead" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Homestead
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" checked>
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Homestead
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Homestead
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#included-software" class="md-nav__link">
+    Included Software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-software" class="md-nav__link">
+    Optional Software
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-setup" class="md-nav__link">
+    Installation &amp; Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation &amp; Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-steps" class="md-nav__link">
+    First Steps
+  </a>
+  
+    <nav class="md-nav" aria-label="First Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-homestead" class="md-nav__link">
+    Installing Homestead
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-homestead" class="md-nav__link">
+    Configuring Homestead
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Homestead">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-your-provider" class="md-nav__link">
+    Setting Your Provider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-shared-folders" class="md-nav__link">
+    Configuring Shared Folders
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-nginx-sites" class="md-nav__link">
+    Configuring Nginx Sites
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Nginx Sites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hostname-resolution" class="md-nav__link">
+    Hostname Resolution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-services" class="md-nav__link">
+    Configuring Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-the-vagrant-box" class="md-nav__link">
+    Launching The Vagrant Box
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-project-installation" class="md-nav__link">
+    Per Project Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-optional-features" class="md-nav__link">
+    Installing Optional Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Optional Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elasticsearch" class="md-nav__link">
+    Elasticsearch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadb" class="md-nav__link">
+    MariaDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    MongoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neo4j" class="md-nav__link">
+    Neo4j
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    Aliases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-homestead" class="md-nav__link">
+    Updating Homestead
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daily-usage" class="md-nav__link">
+    Daily Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Daily Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-via-ssh" class="md-nav__link">
+    Connecting Via SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-additional-sites" class="md-nav__link">
+    Adding Additional Sites
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding Additional Sites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#site-types" class="md-nav__link">
+    Site Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site-parameters" class="md-nav__link">
+    Site Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
+    Ports
+  </a>
+  
+    <nav class="md-nav" aria-label="Ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forwarding-additional-ports" class="md-nav__link">
+    Forwarding Additional Ports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php-versions" class="md-nav__link">
+    PHP Versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-databases" class="md-nav__link">
+    Connecting To Databases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-backups" class="md-nav__link">
+    Database Backups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-snapshots" class="md-nav__link">
+    Database Snapshots
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-cron-schedules" class="md-nav__link">
+    Configuring Cron Schedules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-mailhog" class="md-nav__link">
+    Configuring MailHog
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-minio" class="md-nav__link">
+    Configuring Minio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laravel-dusk" class="md-nav__link">
+    Laravel Dusk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-your-environment" class="md-nav__link">
+    Sharing Your Environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-profiling" class="md-nav__link">
+    Debugging &amp; Profiling
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging &amp; Profiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debugging-web-requests-with-xdebug" class="md-nav__link">
+    Debugging Web Requests With Xdebug
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Web Requests With Xdebug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autostarting-xdebug" class="md-nav__link">
+    Autostarting Xdebug
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-cli-applications" class="md-nav__link">
+    Debugging CLI Applications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling-applications-with-blackfire" class="md-nav__link">
+    Profiling Applications with Blackfire
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-interfaces" class="md-nav__link">
+    Network Interfaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extending-homestead" class="md-nav__link">
+    Extending Homestead
+  </a>
+  
+    <nav class="md-nav" aria-label="Extending Homestead">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-customizations" class="md-nav__link">
+    User Customizations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-specific-settings" class="md-nav__link">
+    Provider Specific Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Specific Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#virtualbox" class="md-nav__link">
+    VirtualBox
+  </a>
+  
+    <nav class="md-nav" aria-label="VirtualBox">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#natdnshostresolver" class="md-nav__link">
+    natdnshostresolver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbolic-links-on-windows" class="md-nav__link">
+    Symbolic Links On Windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#included-software" class="md-nav__link">
+    Included Software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-software" class="md-nav__link">
+    Optional Software
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-setup" class="md-nav__link">
+    Installation &amp; Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation &amp; Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-steps" class="md-nav__link">
+    First Steps
+  </a>
+  
+    <nav class="md-nav" aria-label="First Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-homestead" class="md-nav__link">
+    Installing Homestead
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-homestead" class="md-nav__link">
+    Configuring Homestead
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Homestead">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-your-provider" class="md-nav__link">
+    Setting Your Provider
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-shared-folders" class="md-nav__link">
+    Configuring Shared Folders
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-nginx-sites" class="md-nav__link">
+    Configuring Nginx Sites
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Nginx Sites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hostname-resolution" class="md-nav__link">
+    Hostname Resolution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-services" class="md-nav__link">
+    Configuring Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-the-vagrant-box" class="md-nav__link">
+    Launching The Vagrant Box
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-project-installation" class="md-nav__link">
+    Per Project Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-optional-features" class="md-nav__link">
+    Installing Optional Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Optional Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elasticsearch" class="md-nav__link">
+    Elasticsearch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadb" class="md-nav__link">
+    MariaDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    MongoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neo4j" class="md-nav__link">
+    Neo4j
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    Aliases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-homestead" class="md-nav__link">
+    Updating Homestead
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daily-usage" class="md-nav__link">
+    Daily Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Daily Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connecting-via-ssh" class="md-nav__link">
+    Connecting Via SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-additional-sites" class="md-nav__link">
+    Adding Additional Sites
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding Additional Sites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#site-types" class="md-nav__link">
+    Site Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site-parameters" class="md-nav__link">
+    Site Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
+    Ports
+  </a>
+  
+    <nav class="md-nav" aria-label="Ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forwarding-additional-ports" class="md-nav__link">
+    Forwarding Additional Ports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php-versions" class="md-nav__link">
+    PHP Versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-databases" class="md-nav__link">
+    Connecting To Databases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-backups" class="md-nav__link">
+    Database Backups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-snapshots" class="md-nav__link">
+    Database Snapshots
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-cron-schedules" class="md-nav__link">
+    Configuring Cron Schedules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-mailhog" class="md-nav__link">
+    Configuring MailHog
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-minio" class="md-nav__link">
+    Configuring Minio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laravel-dusk" class="md-nav__link">
+    Laravel Dusk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-your-environment" class="md-nav__link">
+    Sharing Your Environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-profiling" class="md-nav__link">
+    Debugging &amp; Profiling
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging &amp; Profiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debugging-web-requests-with-xdebug" class="md-nav__link">
+    Debugging Web Requests With Xdebug
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Web Requests With Xdebug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autostarting-xdebug" class="md-nav__link">
+    Autostarting Xdebug
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-cli-applications" class="md-nav__link">
+    Debugging CLI Applications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling-applications-with-blackfire" class="md-nav__link">
+    Profiling Applications with Blackfire
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-interfaces" class="md-nav__link">
+    Network Interfaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extending-homestead" class="md-nav__link">
+    Extending Homestead
+  </a>
+  
+    <nav class="md-nav" aria-label="Extending Homestead">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-customizations" class="md-nav__link">
+    User Customizations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-specific-settings" class="md-nav__link">
+    Provider Specific Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Provider Specific Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#virtualbox" class="md-nav__link">
+    VirtualBox
+  </a>
+  
+    <nav class="md-nav" aria-label="VirtualBox">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#natdnshostresolver" class="md-nav__link">
+    natdnshostresolver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbolic-links-on-windows" class="md-nav__link">
+    Symbolic Links On Windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="laravel-homestead">Laravel Homestead</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#installation-and-setup">Installation &amp; Setup</a><ul>
+<li><a href="#first-steps">First Steps</a></li>
+<li><a href="#configuring-homestead">Configuring Homestead</a></li>
+<li><a href="#configuring-nginx-sites">Configuring Nginx Sites</a></li>
+<li><a href="#configuring-services">Configuring Services</a></li>
+<li><a href="#launching-the-vagrant-box">Launching The Vagrant Box</a></li>
+<li><a href="#per-project-installation">Per Project Installation</a></li>
+<li><a href="#installing-optional-features">Installing Optional Features</a></li>
+<li><a href="#aliases">Aliases</a></li>
+</ul>
+</li>
+<li><a href="#updating-homestead">Updating Homestead</a></li>
+<li><a href="#daily-usage">Daily Usage</a><ul>
+<li><a href="#connecting-via-ssh">Connecting Via SSH</a></li>
+<li><a href="#adding-additional-sites">Adding Additional Sites</a></li>
+<li><a href="#environment-variables">Environment Variables</a></li>
+<li><a href="#ports">Ports</a></li>
+<li><a href="#php-versions">PHP Versions</a></li>
+<li><a href="#connecting-to-databases">Connecting To Databases</a></li>
+<li><a href="#database-backups">Database Backups</a></li>
+<li><a href="#database-snapshots">Database Snapshots</a></li>
+<li><a href="#configuring-cron-schedules">Configuring Cron Schedules</a></li>
+<li><a href="#configuring-mailhog">Configuring MailHog</a></li>
+<li><a href="#configuring-minio">Configuring Minio</a></li>
+<li><a href="#laravel-dusk">Laravel Dusk</a></li>
+<li><a href="#sharing-your-environment">Sharing Your Environment</a></li>
+</ul>
+</li>
+<li><a href="#debugging-and-profiling">Debugging &amp; Profiling</a><ul>
+<li><a href="#debugging-web-requests">Debugging Web Requests With Xdebug</a></li>
+<li><a href="#debugging-cli-applications">Debugging CLI Applications</a></li>
+<li><a href="#profiling-applications-with-blackfire">Profiling Applications with Blackfire</a></li>
+</ul>
+</li>
+<li><a href="#network-interfaces">Network Interfaces</a></li>
+<li><a href="#extending-homestead">Extending Homestead</a></li>
+<li><a href="#provider-specific-settings">Provider Specific Settings</a><ul>
+<li><a href="#provider-specific-virtualbox">VirtualBox</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel strives to make the entire PHP development experience delightful, including your local development environment. Laravel Homestead is an official, pre-packaged Vagrant box that provides you a wonderful development environment without requiring you to install PHP, a web server, and any other server software on your local machine.</p>
+<p><a href="https://www.vagrantup.com">Vagrant</a> provides a simple, elegant way to manage and provision Virtual Machines. Vagrant boxes are completely disposable. If something goes wrong, you can destroy and re-create the box in minutes!</p>
+<p>Homestead runs on any Windows, macOS, or Linux system and includes Nginx, PHP, MySQL, PostgreSQL, Redis, Memcached, Node, and all of the other software you need to develop amazing Laravel applications.</p>
+<blockquote>
+<p>{note} If you are using Windows, you may need to enable hardware virtualization (VT-x). It can usually be enabled via your BIOS. If you are using Hyper-V on a UEFI system you may additionally need to disable Hyper-V in order to access VT-x.</p>
+</blockquote>
+<p><a name="included-software"></a></p>
+<h3 id="included-software">Included Software</h3>
+<style>
+    #software-list > ul {
+        column-count: 2; -moz-column-count: 2; -webkit-column-count: 2;
+        column-gap: 5em; -moz-column-gap: 5em; -webkit-column-gap: 5em;
+        line-height: 1.9;
+    }
+</style>
+
+<div id="software-list" markdown="1">
+- Ubuntu 20.04
+- Git
+- PHP 8.0
+- PHP 7.4
+- PHP 7.3
+- PHP 7.2
+- PHP 7.1
+- PHP 7.0
+- PHP 5.6
+- Nginx
+- MySQL (8.0)
+- lmm
+- Sqlite3
+- PostgreSQL (9.6, 10, 11, 12, 13)
+- Composer
+- Node (With Yarn, Bower, Grunt, and Gulp)
+- Redis
+- Memcached
+- Beanstalkd
+- Mailhog
+- avahi
+- ngrok
+- Xdebug
+- XHProf / Tideways / XHGui
+- wp-cli
+</div>
+
+<p><a name="optional-software"></a></p>
+<h3 id="optional-software">Optional Software</h3>
+<style>
+    #software-list > ul {
+        column-count: 2; -moz-column-count: 2; -webkit-column-count: 2;
+        column-gap: 5em; -moz-column-gap: 5em; -webkit-column-gap: 5em;
+        line-height: 1.9;
+    }
+</style>
+
+<div id="software-list" markdown="1">
+- Apache
+- Blackfire
+- Cassandra
+- Chronograf
+- CouchDB
+- Crystal & Lucky Framework
+- Docker
+- Elasticsearch
+- EventStoreDB
+- Gearman
+- Go
+- Grafana
+- InfluxDB
+- MariaDB
+- Meilisearch
+- MinIO
+- MongoDB
+- Neo4j
+- Oh My Zsh
+- Open Resty
+- PM2
+- Python
+- R
+- RabbitMQ
+- RVM (Ruby Version Manager)
+- Solr
+- TimescaleDB
+- Trader <small>(PHP extension)</small>
+- Webdriver & Laravel Dusk Utilities
+</div>
+
+<p><a name="installation-and-setup"></a></p>
+<h2 id="installation-setup">Installation &amp; Setup</h2>
+<p><a name="first-steps"></a></p>
+<h3 id="first-steps">First Steps</h3>
+<p>Before launching your Homestead environment, you must install <a href="https://www.vagrantup.com/downloads.html">Vagrant</a> as well as one of the following supported providers:</p>
+<ul>
+<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox 6.1.x</a></li>
+<li><a href="https://www.parallels.com/products/desktop/">Parallels</a></li>
+</ul>
+<p>All of these software packages provide easy-to-use visual installers for all popular operating systems.</p>
+<p>To use the Parallels provider, you will need to install <a href="https://github.com/Parallels/vagrant-parallels">Parallels Vagrant plug-in</a>. It is free of charge.</p>
+<p><a name="installing-homestead"></a></p>
+<h4 id="installing-homestead">Installing Homestead</h4>
+<p>You may install Homestead by cloning the Homestead repository onto your host machine. Consider cloning the repository into a <code>Homestead</code> folder within your "home" directory, as the Homestead virtual machine will serve as the host to all of your Laravel applications. Throughout this documentation, we will refer to this directory as your "Homestead directory":</p>
+<pre><code class="language-bash">git clone https://github.com/laravel/homestead.git ~/Homestead
+</code></pre>
+<p>After cloning the Laravel Homestead repository, you should checkout the <code>release</code> branch. This branch always contains the latest stable release of Homestead:</p>
+<pre><code>cd ~/Homestead
+
+git checkout release
+</code></pre>
+<p>Next, execute the <code>bash init.sh</code> command from the Homestead directory to create the <code>Homestead.yaml</code> configuration file. The <code>Homestead.yaml</code> file is where you will configure all of the settings for your Homestead installation. This file will be placed in the Homestead directory:</p>
+<pre><code>// macOS / Linux...
+bash init.sh
+
+// Windows...
+init.bat
+</code></pre>
+<p><a name="configuring-homestead"></a></p>
+<h3 id="configuring-homestead">Configuring Homestead</h3>
+<p><a name="setting-your-provider"></a></p>
+<h4 id="setting-your-provider">Setting Your Provider</h4>
+<p>The <code>provider</code> key in your <code>Homestead.yaml</code> file indicates which Vagrant provider should be used: <code>virtualbox</code> or <code>parallels</code>:</p>
+<pre><code>provider: virtualbox
+</code></pre>
+<p><a name="configuring-shared-folders"></a></p>
+<h4 id="configuring-shared-folders">Configuring Shared Folders</h4>
+<p>The <code>folders</code> property of the <code>Homestead.yaml</code> file lists all of the folders you wish to share with your Homestead environment. As files within these folders are changed, they will be kept in sync between your local machine and the Homestead virtual environment. You may configure as many shared folders as necessary:</p>
+<pre><code class="language-yaml">folders:
+    - map: ~/code/project1
+      to: /home/vagrant/project1
+</code></pre>
+<blockquote>
+<p>{note} Windows users should not use the <code>~/</code> path syntax and instead should use the full path to their project, such as <code>C:\Users\user\Code\project1</code>.</p>
+</blockquote>
+<p>You should always map individual applications to their own folder mapping instead of mapping a single large directory that contains all of your applications. When you map a folder, the virtual machine must keep track of all disk IO for <em>every</em> file in the folder. You may experience reduced performance if you have a large number of files in a folder:</p>
+<pre><code class="language-yaml">folders:
+    - map: ~/code/project1
+      to: /home/vagrant/project1
+    - map: ~/code/project2
+      to: /home/vagrant/project2
+</code></pre>
+<blockquote>
+<p>{note} You should never mount <code>.</code> (the current directory) when using Homestead. This causes Vagrant to not map the current folder to <code>/vagrant</code> and will break optional features and cause unexpected results while provisioning.</p>
+</blockquote>
+<p>To enable <a href="https://www.vagrantup.com/docs/synced-folders/nfs.html">NFS</a>, you may add a <code>type</code> option to your folder mapping:</p>
+<pre><code>folders:
+    - map: ~/code/project1
+      to: /home/vagrant/project1
+      type: "nfs"
+</code></pre>
+<blockquote>
+<p>{note} When using NFS on Windows, you should consider installing the <a href="https://github.com/winnfsd/vagrant-winnfsd">vagrant-winnfsd</a> plug-in. This plug-in will maintain the correct user / group permissions for files and directories within the Homestead virtual machine.</p>
+</blockquote>
+<p>You may also pass any options supported by Vagrant's <a href="https://www.vagrantup.com/docs/synced-folders/basic_usage.html">Synced Folders</a> by listing them under the <code>options</code> key:</p>
+<pre><code>folders:
+    - map: ~/code/project1
+      to: /home/vagrant/project1
+      type: "rsync"
+      options:
+          rsync__args: ["--verbose", "--archive", "--delete", "-zz"]
+          rsync__exclude: ["node_modules"]
+</code></pre>
+<p><a name="configuring-nginx-sites"></a></p>
+<h3 id="configuring-nginx-sites">Configuring Nginx Sites</h3>
+<p>Not familiar with Nginx? No problem. Your <code>Homestead.yaml</code> file's <code>sites</code> property allows you to easily map a "domain" to a folder on your Homestead environment. A sample site configuration is included in the <code>Homestead.yaml</code> file. Again, you may add as many sites to your Homestead environment as necessary. Homestead can serve as a convenient, virtualized environment for every Laravel application you are working on:</p>
+<pre><code>sites:
+    - map: homestead.test
+      to: /home/vagrant/project1/public
+</code></pre>
+<p>If you change the <code>sites</code> property after provisioning the Homestead virtual machine, you should execute the <code>vagrant reload --provision</code> command in your terminal to update the Nginx configuration on the virtual machine.</p>
+<blockquote>
+<p>{note} Homestead scripts are built to be as idempotent as possible. However, if you are experiencing issues while provisioning you should destroy and rebuild the machine by executing the <code>vagrant destroy &amp;&amp; vagrant up</code> command.</p>
+</blockquote>
+<p><a name="hostname-resolution"></a></p>
+<h4 id="hostname-resolution">Hostname Resolution</h4>
+<p>Homestead publishes hostnames using <code>mDNS</code> for automatic host resolution. If you set <code>hostname: homestead</code> in your <code>Homestead.yaml</code> file, the host will be available at <code>homestead.local</code>. macOS, iOS, and Linux desktop distributions include <code>mDNS</code> support by default. If you are using Windows, you must install <a href="https://support.apple.com/kb/DL999?viewlocale=en_US&amp;locale=en_US">Bonjour Print Services for Windows</a>.</p>
+<p>Using automatic hostnames works best for <a href="#per-project-installation">per project installations</a> of Homestead. If you host multiple sites on a single Homestead instance, you may add the "domains" for your web sites to the <code>hosts</code> file on your machine. The <code>hosts</code> file will redirect requests for your Homestead sites into your Homestead virtual machine. On macOS and Linux, this file is located at <code>/etc/hosts</code>. On Windows, it is located at <code>C:\Windows\System32\drivers\etc\hosts</code>. The lines you add to this file will look like the following:</p>
+<pre><code>192.168.10.10  homestead.test
+</code></pre>
+<p>Make sure the IP address listed is the one set in your <code>Homestead.yaml</code> file. Once you have added the domain to your <code>hosts</code> file and launched the Vagrant box you will be able to access the site via your web browser:</p>
+<pre><code class="language-bash">http://homestead.test
+</code></pre>
+<p><a name="configuring-services"></a></p>
+<h3 id="configuring-services">Configuring Services</h3>
+<p>Homestead starts several services by default; however, you may customize which services are enabled or disabled during provisioning. For example, you may enable PostgreSQL and disable MySQL by modifying the <code>services</code> option within your <code>Homestead.yaml</code> file:</p>
+<pre><code class="language-yaml">services:
+    - enabled:
+        - &quot;postgresql@12-main&quot;
+    - disabled:
+        - &quot;mysql&quot;
+</code></pre>
+<p>The specified services will be started or stopped based on their order in the <code>enabled</code> and <code>disabled</code> directives.</p>
+<p><a name="launching-the-vagrant-box"></a></p>
+<h3 id="launching-the-vagrant-box">Launching The Vagrant Box</h3>
+<p>Once you have edited the <code>Homestead.yaml</code> to your liking, run the <code>vagrant up</code> command from your Homestead directory. Vagrant will boot the virtual machine and automatically configure your shared folders and Nginx sites.</p>
+<p>To destroy the machine, you may use the <code>vagrant destroy</code> command.</p>
+<p><a name="per-project-installation"></a></p>
+<h3 id="per-project-installation">Per Project Installation</h3>
+<p>Instead of installing Homestead globally and sharing the same Homestead virtual machine across all of your projects, you may instead configure a Homestead instance for each project you manage. Installing Homestead per project may be beneficial if you wish to ship a <code>Vagrantfile</code> with your project, allowing others working on the project to <code>vagrant up</code> immediately after cloning the project's repository.</p>
+<p>You may install Homestead into your project using the Composer package manager:</p>
+<pre><code class="language-bash">composer require laravel/homestead --dev
+</code></pre>
+<p>Once Homestead has been installed, invoke Homestead's <code>make</code> command to generate the <code>Vagrantfile</code> and <code>Homestead.yaml</code> file for your project. These files will be placed in the root of your project. The <code>make</code> command will automatically configure the <code>sites</code> and <code>folders</code> directives in the <code>Homestead.yaml</code> file:</p>
+<pre><code>// macOS / Linux...
+php vendor/bin/homestead make
+
+// Windows...
+vendor\\bin\\homestead make
+</code></pre>
+<p>Next, run the <code>vagrant up</code> command in your terminal and access your project at <code>http://homestead.test</code> in your browser. Remember, you will still need to add an <code>/etc/hosts</code> file entry for <code>homestead.test</code> or the domain of your choice if you are not using automatic <a href="#hostname-resolution">hostname resolution</a>.</p>
+<p><a name="installing-optional-features"></a></p>
+<h3 id="installing-optional-features">Installing Optional Features</h3>
+<p>Optional software is installed using the <code>features</code> option within your <code>Homestead.yaml</code> file. Most features can be enabled or disabled with a boolean value, while some features allow multiple configuration options:</p>
+<pre><code>features:
+    - blackfire:
+        server_id: "server_id"
+        server_token: "server_value"
+        client_id: "client_id"
+        client_token: "client_value"
+    - cassandra: true
+    - chronograf: true
+    - couchdb: true
+    - crystal: true
+    - docker: true
+    - elasticsearch:
+        version: 7.9.0
+    - eventstore: true
+        version: 21.2.0
+    - gearman: true
+    - golang: true
+    - grafana: true
+    - influxdb: true
+    - mariadb: true
+    - meilisearch: true
+    - minio: true
+    - mongodb: true
+    - neo4j: true
+    - ohmyzsh: true
+    - openresty: true
+    - pm2: true
+    - python: true
+    - r-base: true
+    - rabbitmq: true
+    - rvm: true
+    - solr: true
+    - timescaledb: true
+    - trader: true
+    - webdriver: true
+</code></pre>
+<p><a name="elasticsearch"></a></p>
+<h4 id="elasticsearch">Elasticsearch</h4>
+<p>You may specify a supported version of Elasticsearch, which must be an exact version number (major.minor.patch). The default installation will create a cluster named 'homestead'. You should never give Elasticsearch more than half of the operating system's memory, so make sure your Homestead virtual machine has at least twice the Elasticsearch allocation.</p>
+<blockquote>
+<p>{tip} Check out the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current">Elasticsearch documentation</a> to learn how to customize your configuration.</p>
+</blockquote>
+<p><a name="mariadb"></a></p>
+<h4 id="mariadb">MariaDB</h4>
+<p>Enabling MariaDB will remove MySQL and install MariaDB. MariaDB typically serves as a drop-in replacement for MySQL, so you should still use the <code>mysql</code> database driver in your application's database configuration.</p>
+<p><a name="mongodb"></a></p>
+<h4 id="mongodb">MongoDB</h4>
+<p>The default MongoDB installation will set the database username to <code>homestead</code> and the corresponding password to <code>secret</code>.</p>
+<p><a name="neo4j"></a></p>
+<h4 id="neo4j">Neo4j</h4>
+<p>The default Neo4j installation will set the database username to <code>homestead</code> and the corresponding password to <code>secret</code>. To access the Neo4j browser, visit <code>http://homestead.test:7474</code> via your web browser. The ports <code>7687</code> (Bolt), <code>7474</code> (HTTP), and <code>7473</code> (HTTPS) are ready to serve requests from the Neo4j client.</p>
+<p><a name="aliases"></a></p>
+<h3 id="aliases">Aliases</h3>
+<p>You may add Bash aliases to your Homestead virtual machine by modifying the <code>aliases</code> file within your Homestead directory:</p>
+<pre><code>alias c='clear'
+alias ..='cd ..'
+</code></pre>
+<p>After you have updated the <code>aliases</code> file, you should re-provision the Homestead virtual machine using the <code>vagrant reload --provision</code> command. This will ensure that your new aliases are available on the machine.</p>
+<p><a name="updating-homestead"></a></p>
+<h2 id="updating-homestead">Updating Homestead</h2>
+<p>Before you begin updating Homestead you should ensure you have removed your current virtual machine by running the following command in your Homestead directory:</p>
+<pre><code>vagrant destroy
+</code></pre>
+<p>Next, you need to update the Homestead source code. If you cloned the repository, you can execute the following commands at the location you originally cloned the repository:</p>
+<pre><code>git fetch
+
+git pull origin release
+</code></pre>
+<p>These commands pull the latest Homestead code from the GitHub repository, fetch the latest tags, and then check out the latest tagged release. You can find the latest stable release version on Homestead's <a href="https://github.com/laravel/homestead/releases">GitHub releases page</a>.</p>
+<p>If you have installed Homestead via your project's <code>composer.json</code> file, you should ensure your <code>composer.json</code> file contains <code>"laravel/homestead": "^12"</code> and update your dependencies:</p>
+<pre><code>composer update
+</code></pre>
+<p>Next, you should update the Vagrant box using the <code>vagrant box update</code> command:</p>
+<pre><code>vagrant box update
+</code></pre>
+<p>After updating the Vagrant box, you should run the <code>bash init.sh</code> command from the Homestead directory in order to update Homestead's additional configuration files. You will be asked whether you wish to overwrite your existing <code>Homestead.yaml</code>, <code>after.sh</code>, and <code>aliases</code> files:</p>
+<pre><code>// macOS / Linux...
+bash init.sh
+
+// Windows...
+init.bat
+</code></pre>
+<p>Finally, you will need to regenerate your Homestead virtual machine to utilize the latest Vagrant installation:</p>
+<pre><code>vagrant up
+</code></pre>
+<p><a name="daily-usage"></a></p>
+<h2 id="daily-usage">Daily Usage</h2>
+<p><a name="connecting-via-ssh"></a></p>
+<h3 id="connecting-via-ssh">Connecting Via SSH</h3>
+<p>You can SSH into your virtual machine by executing the <code>vagrant ssh</code> terminal command from your Homestead directory.</p>
+<p><a name="adding-additional-sites"></a></p>
+<h3 id="adding-additional-sites">Adding Additional Sites</h3>
+<p>Once your Homestead environment is provisioned and running, you may want to add additional Nginx sites for your other Laravel projects. You can run as many Laravel projects as you wish on a single Homestead environment. To add an additional site, add the site to your <code>Homestead.yaml</code> file.</p>
+<pre><code>sites:
+    - map: homestead.test
+      to: /home/vagrant/project1/public
+    - map: another.test
+      to: /home/vagrant/project2/public
+</code></pre>
+<blockquote>
+<p>{note} You should ensure that you have configured a <a href="#configuring-shared-folders">folder mapping</a> for the project's directory before adding the site.</p>
+</blockquote>
+<p>If Vagrant is not automatically managing your "hosts" file, you may need to add the new site to that file as well. On macOS and Linux, this file is located at <code>/etc/hosts</code>. On Windows, it is located at <code>C:\Windows\System32\drivers\etc\hosts</code>:</p>
+<pre><code>192.168.10.10  homestead.test
+192.168.10.10  another.test
+</code></pre>
+<p>Once the site has been added, execute the <code>vagrant reload --provision</code> terminal command from your Homestead directory.</p>
+<p><a name="site-types"></a></p>
+<h4 id="site-types">Site Types</h4>
+<p>Homestead supports several "types" of sites which allow you to easily run projects that are not based on Laravel. For example, we may easily add a Statamic application to Homestead using the <code>statamic</code> site type:</p>
+<pre><code class="language-yaml">sites:
+    - map: statamic.test
+      to: /home/vagrant/my-symfony-project/web
+      type: &quot;statamic&quot;
+</code></pre>
+<p>The available site types are: <code>apache</code>, <code>apigility</code>, <code>expressive</code>, <code>laravel</code> (the default), <code>proxy</code>, <code>silverstripe</code>, <code>statamic</code>, <code>symfony2</code>, <code>symfony4</code>, and <code>zf</code>.</p>
+<p><a name="site-parameters"></a></p>
+<h4 id="site-parameters">Site Parameters</h4>
+<p>You may add additional Nginx <code>fastcgi_param</code> values to your site via the <code>params</code> site directive:</p>
+<pre><code>sites:
+    - map: homestead.test
+      to: /home/vagrant/project1/public
+      params:
+          - key: FOO
+            value: BAR
+</code></pre>
+<p><a name="environment-variables"></a></p>
+<h3 id="environment-variables">Environment Variables</h3>
+<p>You can define global environment variables by adding them to your <code>Homestead.yaml</code> file:</p>
+<pre><code>variables:
+    - key: APP_ENV
+      value: local
+    - key: FOO
+      value: bar
+</code></pre>
+<p>After updating the <code>Homestead.yaml</code> file, be sure to re-provision the machine by executing the <code>vagrant reload --provision</code> command. This will update the PHP-FPM configuration for all of the installed PHP versions and also update the environment for the <code>vagrant</code> user.</p>
+<p><a name="ports"></a></p>
+<h3 id="ports">Ports</h3>
+<p>By default, the following ports are forwarded to your Homestead environment:</p>
+<div class="content-list" markdown="1">
+- **SSH:** 2222 &rarr; Forwards To 22
+- **ngrok UI:** 4040 &rarr; Forwards To 4040
+- **HTTP:** 8000 &rarr; Forwards To 80
+- **HTTPS:** 44300 &rarr; Forwards To 443
+- **MySQL:** 33060 &rarr; Forwards To 3306
+- **PostgreSQL:** 54320 &rarr; Forwards To 5432
+- **MongoDB:** 27017 &rarr; Forwards To 27017
+- **Mailhog:** 8025 &rarr; Forwards To 8025
+- **Minio:** 9600 &rarr; Forwards To 9600
+</div>
+
+<p><a name="forwarding-additional-ports"></a></p>
+<h4 id="forwarding-additional-ports">Forwarding Additional Ports</h4>
+<p>If you wish, you may forward additional ports to the Vagrant box by defining a <code>ports</code> configuration entry within your <code>Homestead.yaml</code> file. After updating the <code>Homestead.yaml</code> file, be sure to re-provision the machine by executing the <code>vagrant reload --provision</code> command:</p>
+<pre><code>ports:
+    - send: 50000
+      to: 5000
+    - send: 7777
+      to: 777
+      protocol: udp
+</code></pre>
+<p><a name="php-versions"></a></p>
+<h3 id="php-versions">PHP Versions</h3>
+<p>Homestead 6 introduced support for running multiple versions of PHP on the same virtual machine. You may specify which version of PHP to use for a given site within your <code>Homestead.yaml</code> file. The available PHP versions are: "5.6", "7.0", "7.1", "7.2", "7.3", "7.4", and "8.0" (the default):</p>
+<pre><code>sites:
+    - map: homestead.test
+      to: /home/vagrant/project1/public
+      php: "7.1"
+</code></pre>
+<p><a href="#connecting-via-ssh">Within your Homestead virtual machine</a>, you may use any of the supported PHP versions via the CLI:</p>
+<pre><code>php5.6 artisan list
+php7.0 artisan list
+php7.1 artisan list
+php7.2 artisan list
+php7.3 artisan list
+php7.4 artisan list
+php8.0 artisan list
+</code></pre>
+<p>You may change the default version of PHP used by the CLI by issuing the following commands from within your Homestead virtual machine:</p>
+<pre><code>php56
+php70
+php71
+php72
+php73
+php74
+php80
+</code></pre>
+<p><a name="connecting-to-databases"></a></p>
+<h3 id="connecting-to-databases">Connecting To Databases</h3>
+<p>A <code>homestead</code> database is configured for both MySQL and PostgreSQL out of the box. To connect to your MySQL or PostgreSQL database from your host machine's database client, you should connect to <code>127.0.0.1</code> on port <code>33060</code> (MySQL) or <code>54320</code> (PostgreSQL). The username and password for both databases is <code>homestead</code> / <code>secret</code>.</p>
+<blockquote>
+<p>{note} You should only use these non-standard ports when connecting to the databases from your host machine. You will use the default 3306 and 5432 ports in your Laravel application's <code>database</code> configuration file since Laravel is running <em>within</em> the virtual machine.</p>
+</blockquote>
+<p><a name="database-backups"></a></p>
+<h3 id="database-backups">Database Backups</h3>
+<p>Homestead can automatically backup your database when your Homestead virtual machine is destroyed. To utilize this feature, you must be using Vagrant 2.1.0 or greater. Or, if you are using an older version of Vagrant, you must install the <code>vagrant-triggers</code> plug-in. To enable automatic database backups, add the following line to your <code>Homestead.yaml</code> file:</p>
+<pre><code>backup: true
+</code></pre>
+<p>Once configured, Homestead will export your databases to <code>mysql_backup</code> and <code>postgres_backup</code> directories when the <code>vagrant destroy</code> command is executed. These directories can be found in the folder where you installed Homestead or in the root of your project if you are using the <a href="#per-project-installation">per project installation</a> method.</p>
+<p><a name="database-snapshots"></a></p>
+<h3 id="database-snapshots">Database Snapshots</h3>
+<p>Homestead supports freezing the state of MySQL and MariaDB databases and branching between them using <a href="https://github.com/Lullabot/lmm">Logical MySQL Manager</a>. For example, imagine working on a site with a multi-gigabyte database. You can import the database and take a snapshot. After doing some work and creating some test content locally, you may quickly restore back to the original state.</p>
+<p>Under the hood, LMM uses LVM's thin snapshot functionality with copy-on-write support. In practice, this means that changing a single row in a table will only cause the changes you made to be written to disk, saving significant time and disk space during restores.</p>
+<p>Since LMM interacts with LVM, it must be run as <code>root</code>. To see all available commands, run the <code>sudo lmm</code> command within Vagrant box. A common workflow looks like the following:</p>
+<ul>
+<li>Import a database into the default <code>master</code> lmm branch.</li>
+<li>Save a snapshot of the unchanged database using <code>sudo lmm branch prod-YYYY-MM-DD</code>.</li>
+<li>Modify the database.</li>
+<li>Run <code>sudo lmm merge prod-YYYY-MM-DD</code> to undo all changes.</li>
+<li>Run <code>sudo lmm delete &lt;branch&gt;</code> to delete unneeded branches.</li>
+</ul>
+<p><a name="configuring-cron-schedules"></a></p>
+<h3 id="configuring-cron-schedules">Configuring Cron Schedules</h3>
+<p>Laravel provides a convenient way to <a href="/docs/{{version}}/scheduling">schedule cron jobs</a> by scheduling a single <code>schedule:run</code> Artisan command to run every minute. The <code>schedule:run</code> command will examine the job schedule defined in your <code>App\Console\Kernel</code> class to determine which scheduled tasks to run.</p>
+<p>If you would like the <code>schedule:run</code> command to be run for a Homestead site, you may set the <code>schedule</code> option to <code>true</code> when defining the site:</p>
+<pre><code class="language-yaml">sites:
+    - map: homestead.test
+      to: /home/vagrant/project1/public
+      schedule: true
+</code></pre>
+<p>The cron job for the site will be defined in the <code>/etc/cron.d</code> directory of the Homestead virtual machine.</p>
+<p><a name="configuring-mailhog"></a></p>
+<h3 id="configuring-mailhog">Configuring MailHog</h3>
+<p><a href="https://github.com/mailhog/MailHog">MailHog</a> allows you to intercept your outgoing email and examine it without actually sending the mail to its recipients. To get started, update your application's <code>.env</code> file to use the following mail settings:</p>
+<pre><code>MAIL_MAILER=smtp
+MAIL_HOST=localhost
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+</code></pre>
+<p>Once MailHog has been configured, you may access the MailHog dashboard at <code>http://localhost:8025</code>.</p>
+<p><a name="configuring-minio"></a></p>
+<h3 id="configuring-minio">Configuring Minio</h3>
+<p><a href="https://github.com/minio/minio">Minio</a> is an open source object storage server with an Amazon S3 compatible API. To install Minio, update your <code>Homestead.yaml</code> file with the following configuration option in the <a href="#installing-optional-features">features</a> section:</p>
+<pre><code>minio: true
+</code></pre>
+<p>By default, Minio is available on port 9600. You may access the Minio control panel by visiting <code>http://localhost:9600</code>. The default access key is <code>homestead</code>, while the default secret key is <code>secretkey</code>. When accessing Minio, you should always use region <code>us-east-1</code>.</p>
+<p>In order to use Minio, you will need to adjust the S3 disk configuration in your application's <code>config/filesystems.php</code> configuration file. You will need to add the <code>use_path_style_endpoint</code> option to the disk configuration as well as change the <code>url</code> key to <code>endpoint</code>:</p>
+<pre><code>'s3' =&gt; [
+    'driver' =&gt; 's3',
+    'key' =&gt; env('AWS_ACCESS_KEY_ID'),
+    'secret' =&gt; env('AWS_SECRET_ACCESS_KEY'),
+    'region' =&gt; env('AWS_DEFAULT_REGION'),
+    'bucket' =&gt; env('AWS_BUCKET'),
+    'endpoint' =&gt; env('AWS_URL'),
+    'use_path_style_endpoint' =&gt; true,
+]
+</code></pre>
+<p>Finally, ensure your <code>.env</code> file has the following options:</p>
+<pre><code class="language-bash">AWS_ACCESS_KEY_ID=homestead
+AWS_SECRET_ACCESS_KEY=secretkey
+AWS_DEFAULT_REGION=us-east-1
+AWS_URL=http://localhost:9600
+</code></pre>
+<p>To provision Minio powered "S3" buckets, add a <code>buckets</code> directive to your <code>Homestead.yaml</code> file. After defining your buckets, you should execute the <code>vagrant reload --provision</code> command in your terminal:</p>
+<pre><code class="language-yaml">buckets:
+    - name: your-bucket
+      policy: public
+    - name: your-private-bucket
+      policy: none
+</code></pre>
+<p>Supported <code>policy</code> values include: <code>none</code>, <code>download</code>, <code>upload</code>, and <code>public</code>.</p>
+<p><a name="laravel-dusk"></a></p>
+<h3 id="laravel-dusk">Laravel Dusk</h3>
+<p>In order to run <a href="/docs/{{version}}/dusk">Laravel Dusk</a> tests within Homestead, you should enable the <a href="#installing-optional-features"><code>webdriver</code> feature</a> in your Homestead configuration:</p>
+<pre><code class="language-yaml">features:
+    - webdriver: true
+</code></pre>
+<p>After enabling the <code>webdriver</code> feature, you should execute the <code>vagrant reload --provision</code> command in your terminal.</p>
+<p><a name="sharing-your-environment"></a></p>
+<h3 id="sharing-your-environment">Sharing Your Environment</h3>
+<p>Sometimes you may wish to share what you're currently working on with coworkers or a client. Vagrant has built-in support for this via the <code>vagrant share</code> command; however, this will not work if you have multiple sites configured in your <code>Homestead.yaml</code> file.</p>
+<p>To solve this problem, Homestead includes its own <code>share</code> command. To get started, <a href="#connecting-via-ssh">SSH into your Homestead virtual machine</a> via <code>vagrant ssh</code> and execute the <code>share homestead.test</code> command. This command will share the <code>homestead.test</code> site from your <code>Homestead.yaml</code> configuration file. You may substitute any of your other configured sites for <code>homestead.test</code>:</p>
+<pre><code>share homestead.test
+</code></pre>
+<p>After running the command, you will see an Ngrok screen appear which contains the activity log and the publicly accessible URLs for the shared site. If you would like to specify a custom region, subdomain, or other Ngrok runtime option, you may add them to your <code>share</code> command:</p>
+<pre><code>share homestead.test -region=eu -subdomain=laravel
+</code></pre>
+<blockquote>
+<p>{note} Remember, Vagrant is inherently insecure and you are exposing your virtual machine to the Internet when running the <code>share</code> command.</p>
+</blockquote>
+<p><a name="debugging-and-profiling"></a></p>
+<h2 id="debugging-profiling">Debugging &amp; Profiling</h2>
+<p><a name="debugging-web-requests"></a></p>
+<h3 id="debugging-web-requests-with-xdebug">Debugging Web Requests With Xdebug</h3>
+<p>Homestead includes support for step debugging using <a href="https://xdebug.org">Xdebug</a>. For example, you can access a page in your browser and PHP will connect to your IDE to allow inspection and modification of the running code.</p>
+<p>By default, Xdebug is already running and ready to accept connections. If you need to enable Xdebug on the CLI, execute the <code>sudo phpenmod xdebug</code> command within your Homestead virtual machine. Next, follow your IDE's instructions to enable debugging. Finally, configure your browser to trigger Xdebug with an extension or <a href="https://www.jetbrains.com/phpstorm/marklets/">bookmarklet</a>.</p>
+<blockquote>
+<p>{note} Xdebug causes PHP to run significantly slower. To disable Xdebug, run <code>sudo phpdismod xdebug</code> within your Homestead virtual machine and restart the FPM service.</p>
+</blockquote>
+<p><a name="autostarting-xdebug"></a></p>
+<h4 id="autostarting-xdebug">Autostarting Xdebug</h4>
+<p>When debugging functional tests that make requests to the web server, it is easier to autostart debugging rather than modifying tests to pass through a custom header or cookie to trigger debugging. To force Xdebug to start automatically, modify the <code>/etc/php/7.x/fpm/conf.d/20-xdebug.ini</code> file inside your Homestead virtual machine and add the following configuration:</p>
+<pre><code class="language-ini">; If Homestead.yaml contains a different subnet for the IP address, this address may be different...
+xdebug.remote_host = 192.168.10.1
+xdebug.remote_autostart = 1
+</code></pre>
+<p><a name="debugging-cli-applications"></a></p>
+<h3 id="debugging-cli-applications">Debugging CLI Applications</h3>
+<p>To debug a PHP CLI application, use the <code>xphp</code> shell alias inside your Homestead virtual machine:</p>
+<pre><code>xphp /path/to/script
+</code></pre>
+<p><a name="profiling-applications-with-blackfire"></a></p>
+<h3 id="profiling-applications-with-blackfire">Profiling Applications with Blackfire</h3>
+<p><a href="https://blackfire.io/docs/introduction">Blackfire</a> is a service for profiling web requests and CLI applications. It offers an interactive user interface which displays profile data in call-graphs and timelines. It is built for use in development, staging, and production, with no overhead for end users. In addition, Blackfire provides performance, quality, and security checks on code and <code>php.ini</code> configuration settings.</p>
+<p>The <a href="https://blackfire.io/docs/player/index">Blackfire Player</a> is an open-source Web Crawling, Web Testing, and Web Scraping application which can work jointly with Blackfire in order to script profiling scenarios.</p>
+<p>To enable Blackfire, use the "features" setting in your Homestead configuration file:</p>
+<pre><code class="language-yaml">features:
+    - blackfire:
+        server_id: &quot;server_id&quot;
+        server_token: &quot;server_value&quot;
+        client_id: &quot;client_id&quot;
+        client_token: &quot;client_value&quot;
+</code></pre>
+<p>Blackfire server credentials and client credentials <a href="https://blackfire.io/signup">require a Blackfire account</a>. Blackfire offers various options to profile an application, including a CLI tool and browser extension. Please <a href="https://blackfire.io/docs/cookbooks/index">review the Blackfire documentation for more details</a>.</p>
+<p><a name="network-interfaces"></a></p>
+<h2 id="network-interfaces">Network Interfaces</h2>
+<p>The <code>networks</code> property of the <code>Homestead.yaml</code> file configures network interfaces for your Homestead virtual machine. You may configure as many interfaces as necessary:</p>
+<pre><code class="language-yaml">networks:
+    - type: &quot;private_network&quot;
+      ip: &quot;192.168.10.20&quot;
+</code></pre>
+<p>To enable a <a href="https://www.vagrantup.com/docs/networking/public_network.html">bridged</a> interface, configure a <code>bridge</code> setting for the network and change the network type to <code>public_network</code>:</p>
+<pre><code class="language-yaml">networks:
+    - type: &quot;public_network&quot;
+      ip: &quot;192.168.10.20&quot;
+      bridge: &quot;en1: Wi-Fi (AirPort)&quot;
+</code></pre>
+<p>To enable <a href="https://www.vagrantup.com/docs/networking/public_network.html">DHCP</a>, just remove the <code>ip</code> option from your configuration:</p>
+<pre><code class="language-yaml">networks:
+    - type: &quot;public_network&quot;
+      bridge: &quot;en1: Wi-Fi (AirPort)&quot;
+</code></pre>
+<p><a name="extending-homestead"></a></p>
+<h2 id="extending-homestead">Extending Homestead</h2>
+<p>You may extend Homestead using the <code>after.sh</code> script in the root of your Homestead directory. Within this file, you may add any shell commands that are necessary to properly configure and customize your virtual machine.</p>
+<p>When customizing Homestead, Ubuntu may ask you if you would like to keep a package's original configuration or overwrite it with a new configuration file. To avoid this, you should use the following command when installing packages in order to avoid overwriting any configuration previously written by Homestead:</p>
+<pre><code>sudo apt-get -y \
+    -o Dpkg::Options::="--force-confdef" \
+    -o Dpkg::Options::="--force-confold" \
+    install package-name
+</code></pre>
+<p><a name="user-customizations"></a></p>
+<h3 id="user-customizations">User Customizations</h3>
+<p>When using Homestead with your team, you may want to tweak Homestead to better fit your personal development style. To accomplish this, you may create a <code>user-customizations.sh</code> file in the root of your Homestead directory (the same directory containing your <code>Homestead.yaml</code> file). Within this file, you may make any customization you would like; however, the <code>user-customizations.sh</code> should not be version controlled.</p>
+<p><a name="provider-specific-settings"></a></p>
+<h2 id="provider-specific-settings">Provider Specific Settings</h2>
+<p><a name="provider-specific-virtualbox"></a></p>
+<h3 id="virtualbox">VirtualBox</h3>
+<p><a name="natdnshostresolver"></a></p>
+<h4 id="natdnshostresolver"><code>natdnshostresolver</code></h4>
+<p>By default, Homestead configures the <code>natdnshostresolver</code> setting to <code>on</code>. This allows Homestead to use your host operating system's DNS settings. If you would like to override this behavior, add the following configuration options to your <code>Homestead.yaml</code> file:</p>
+<pre><code class="language-yaml">provider: virtualbox
+natdnshostresolver: 'off'
+</code></pre>
+<p><a name="symbolic-links-on-windows"></a></p>
+<h4 id="symbolic-links-on-windows">Symbolic Links On Windows</h4>
+<p>If symbolic links are not working properly on your Windows machine, you may need to add the following block to your <code>Vagrantfile</code>:</p>
+<pre><code class="language-ruby">config.vm.provider &quot;virtualbox&quot; do |v|
+    v.customize [&quot;setextradata&quot;, :id, &quot;VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root&quot;, &quot;1&quot;]
+end
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../fortify/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fortify" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Fortify
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../horizon/" class="md-footer__link md-footer__link--next" aria-label="Next: Horizon" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Horizon
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

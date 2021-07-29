@@ -1,0 +1,2502 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/mocking/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Mocking - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mocking" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mocking
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" checked>
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Mocking
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Mocking
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mocking-objects" class="md-nav__link">
+    Mocking Objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mocking-facades" class="md-nav__link">
+    Mocking Facades
+  </a>
+  
+    <nav class="md-nav" aria-label="Mocking Facades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#facade-spies" class="md-nav__link">
+    Facade Spies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bus-fake" class="md-nav__link">
+    Bus Fake
+  </a>
+  
+    <nav class="md-nav" aria-label="Bus Fake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-chains" class="md-nav__link">
+    Job Chains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-batches" class="md-nav__link">
+    Job Batches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-fake" class="md-nav__link">
+    Event Fake
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Fake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#faking-a-subset-of-events" class="md-nav__link">
+    Faking A Subset Of Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoped-event-fakes" class="md-nav__link">
+    Scoped Event Fakes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-fake" class="md-nav__link">
+    HTTP Fake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mail-fake" class="md-nav__link">
+    Mail Fake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notification-fake" class="md-nav__link">
+    Notification Fake
+  </a>
+  
+    <nav class="md-nav" aria-label="Notification Fake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-demand-notifications" class="md-nav__link">
+    On-Demand Notifications
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queue-fake" class="md-nav__link">
+    Queue Fake
+  </a>
+  
+    <nav class="md-nav" aria-label="Queue Fake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-chains_1" class="md-nav__link">
+    Job Chains
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-fake" class="md-nav__link">
+    Storage Fake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-time" class="md-nav__link">
+    Interacting With Time
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mocking-objects" class="md-nav__link">
+    Mocking Objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mocking-facades" class="md-nav__link">
+    Mocking Facades
+  </a>
+  
+    <nav class="md-nav" aria-label="Mocking Facades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#facade-spies" class="md-nav__link">
+    Facade Spies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bus-fake" class="md-nav__link">
+    Bus Fake
+  </a>
+  
+    <nav class="md-nav" aria-label="Bus Fake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-chains" class="md-nav__link">
+    Job Chains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-batches" class="md-nav__link">
+    Job Batches
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-fake" class="md-nav__link">
+    Event Fake
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Fake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#faking-a-subset-of-events" class="md-nav__link">
+    Faking A Subset Of Events
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoped-event-fakes" class="md-nav__link">
+    Scoped Event Fakes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-fake" class="md-nav__link">
+    HTTP Fake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mail-fake" class="md-nav__link">
+    Mail Fake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notification-fake" class="md-nav__link">
+    Notification Fake
+  </a>
+  
+    <nav class="md-nav" aria-label="Notification Fake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-demand-notifications" class="md-nav__link">
+    On-Demand Notifications
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queue-fake" class="md-nav__link">
+    Queue Fake
+  </a>
+  
+    <nav class="md-nav" aria-label="Queue Fake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-chains_1" class="md-nav__link">
+    Job Chains
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-fake" class="md-nav__link">
+    Storage Fake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-time" class="md-nav__link">
+    Interacting With Time
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="mocking">Mocking</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#mocking-objects">Mocking Objects</a></li>
+<li><a href="#mocking-facades">Mocking Facades</a><ul>
+<li><a href="#facade-spies">Facade Spies</a></li>
+</ul>
+</li>
+<li><a href="#bus-fake">Bus Fake</a><ul>
+<li><a href="#bus-job-chains">Job Chains</a></li>
+<li><a href="#job-batches">Job Batches</a></li>
+</ul>
+</li>
+<li><a href="#event-fake">Event Fake</a><ul>
+<li><a href="#scoped-event-fakes">Scoped Event Fakes</a></li>
+</ul>
+</li>
+<li><a href="#http-fake">HTTP Fake</a></li>
+<li><a href="#mail-fake">Mail Fake</a></li>
+<li><a href="#notification-fake">Notification Fake</a></li>
+<li><a href="#queue-fake">Queue Fake</a><ul>
+<li><a href="#job-chains">Job Chains</a></li>
+</ul>
+</li>
+<li><a href="#storage-fake">Storage Fake</a></li>
+<li><a href="#interacting-with-time">Interacting With Time</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>When testing Laravel applications, you may wish to "mock" certain aspects of your application so they are not actually executed during a given test. For example, when testing a controller that dispatches an event, you may wish to mock the event listeners so they are not actually executed during the test. This allows you to only test the controller's HTTP response without worrying about the execution of the event listeners since the event listeners can be tested in their own test case.</p>
+<p>Laravel provides helpful methods for mocking events, jobs, and other facades out of the box. These helpers primarily provide a convenience layer over Mockery so you do not have to manually make complicated Mockery method calls.</p>
+<p><a name="mocking-objects"></a></p>
+<h2 id="mocking-objects">Mocking Objects</h2>
+<p>When mocking an object that is going to be injected into your application via Laravel's <a href="/docs/{{version}}/container">service container</a>, you will need to bind your mocked instance into the container as an <code>instance</code> binding. This will instruct the container to use your mocked instance of the object instead of constructing the object itself:</p>
+<pre><code>use App\Service;
+use Mockery;
+use Mockery\MockInterface;
+
+public function test_something_can_be_mocked()
+{
+    $this-&gt;instance(
+        Service::class,
+        Mockery::mock(Service::class, function (MockInterface $mock) {
+            $mock-&gt;shouldReceive('process')-&gt;once();
+        })
+    );
+}
+</code></pre>
+<p>In order to make this more convenient, you may use the <code>mock</code> method that is provided by Laravel's base test case class. For example, the following example is equivalent to the example above:</p>
+<pre><code>use App\Service;
+use Mockery\MockInterface;
+
+$mock = $this-&gt;mock(Service::class, function (MockInterface $mock) {
+    $mock-&gt;shouldReceive('process')-&gt;once();
+});
+</code></pre>
+<p>You may use the <code>partialMock</code> method when you only need to mock a few methods of an object. The methods that are not mocked will be executed normally when called:</p>
+<pre><code>use App\Service;
+use Mockery\MockInterface;
+
+$mock = $this-&gt;partialMock(Service::class, function (MockInterface $mock) {
+    $mock-&gt;shouldReceive('process')-&gt;once();
+});
+</code></pre>
+<p>Similarly, if you want to <a href="http://docs.mockery.io/en/latest/reference/spies.html">spy</a> on an object, Laravel's base test case class offers a <code>spy</code> method as a convenient wrapper around the <code>Mockery::spy</code> method. Spies are similar to mocks; however, spies record any interaction between the spy and the code being tested, allowing you to make assertions after the code is executed:</p>
+<pre><code>use App\Service;
+
+$spy = $this-&gt;spy(Service::class);
+
+// ...
+
+$spy-&gt;shouldHaveReceived('process');
+</code></pre>
+<p><a name="mocking-facades"></a></p>
+<h2 id="mocking-facades">Mocking Facades</h2>
+<p>Unlike traditional static method calls, <a href="/docs/{{version}}/facades">facades</a> (including <a href="/docs/{{version}}/facades#real-time-facades">real-time facades</a>) may be mocked. This provides a great advantage over traditional static methods and grants you the same testability that you would have if you were using traditional dependency injection. When testing, you may often want to mock a call to a Laravel facade that occurs in one of your controllers. For example, consider the following controller action:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Cache;
+
+class UserController extends Controller
+{
+    /**
+     * Retrieve a list of all users of the application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $value = Cache::get('key');
+
+        //
+    }
+}
+</code></pre>
+<p>We can mock the call to the <code>Cache</code> facade by using the <code>shouldReceive</code> method, which will return an instance of a <a href="https://github.com/padraic/mockery">Mockery</a> mock. Since facades are actually resolved and managed by the Laravel <a href="/docs/{{version}}/container">service container</a>, they have much more testability than a typical static class. For example, let's mock our call to the <code>Cache</code> facade's <code>get</code> method:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Facades\Cache;
+use Tests\TestCase;
+
+class UserControllerTest extends TestCase
+{
+    public function testGetIndex()
+    {
+        Cache::shouldReceive('get')
+                    -&gt;once()
+                    -&gt;with('key')
+                    -&gt;andReturn('value');
+
+        $response = $this-&gt;get('/users');
+
+        // ...
+    }
+}
+</code></pre>
+<blockquote>
+<p>{note} You should not mock the <code>Request</code> facade. Instead, pass the input you desire into the <a href="/docs/{{version}}/http-tests">HTTP testing methods</a> such as <code>get</code> and <code>post</code> when running your test. Likewise, instead of mocking the <code>Config</code> facade, call the <code>Config::set</code> method in your tests.</p>
+</blockquote>
+<p><a name="facade-spies"></a></p>
+<h3 id="facade-spies">Facade Spies</h3>
+<p>If you would like to <a href="http://docs.mockery.io/en/latest/reference/spies.html">spy</a> on a facade, you may call the <code>spy</code> method on the corresponding facade. Spies are similar to mocks; however, spies record any interaction between the spy and the code being tested, allowing you to make assertions after the code is executed:</p>
+<pre><code>use Illuminate\Support\Facades\Cache;
+
+public function test_values_are_be_stored_in_cache()
+{
+    Cache::spy();
+
+    $response = $this-&gt;get('/');
+
+    $response-&gt;assertStatus(200);
+
+    Cache::shouldHaveReceived('put')-&gt;once()-&gt;with('name', 'Taylor', 10);
+}
+</code></pre>
+<p><a name="bus-fake"></a></p>
+<h2 id="bus-fake">Bus Fake</h2>
+<p>When testing code that dispatches jobs, you typically want to assert that a given job was dispatched but not actually queue or execute the job. This is because the job's execution can normally be tested in a separate test class.</p>
+<p>You may use the <code>Bus</code> facade's <code>fake</code> method to prevent jobs from being dispatched to the queue. Then, after executing the code under test, you may inspect which jobs the application attempted to dispatch using the <code>assertDispatched</code> and <code>assertNotDispatched</code> methods:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Jobs\ShipOrder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Facades\Bus;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_orders_can_be_shipped()
+    {
+        Bus::fake();
+
+        // Perform order shipping...
+
+        // Assert that a job was dispatched...
+        Bus::assertDispatched(ShipOrder::class);
+
+        // Assert a job was not dispatched...
+        Bus::assertNotDispatched(AnotherJob::class);
+    }
+}
+</code></pre>
+<p>You may pass a closure to the <code>assertDispatched</code> or <code>assertNotDispatched</code> methods in order to assert that a job was dispatched that passes a given "truth test". If at least one job was dispatched that passes the given truth test then the assertion will be successful. For example, you may wish to assert that a job was dispatched for a specific order:</p>
+<pre><code>Bus::assertDispatched(function (ShipOrder $job) use ($order) {
+    return $job-&gt;order-&gt;id === $order-&gt;id;
+});
+</code></pre>
+<p><a name="bus-job-chains"></a></p>
+<h3 id="job-chains">Job Chains</h3>
+<p>The <code>Bus</code> facade's <code>assertChained</code> method may be used to assert that a <a href="/docs/{{version}}/queues#job-chaining">chain of jobs</a> was dispatched. The <code>assertChained</code> method accepts an array of chained jobs as its first argument:</p>
+<pre><code>use App\Jobs\RecordShipment;
+use App\Jobs\ShipOrder;
+use App\Jobs\UpdateInventory;
+use Illuminate\Support\Facades\Bus;
+
+Bus::assertChained([
+    ShipOrder::class,
+    RecordShipment::class,
+    UpdateInventory::class
+]);
+</code></pre>
+<p>As you can see in the example above, the array of chained jobs may be an array of the job's class names. However, you may also provide an array of actual job instances. When doing so, Laravel will ensure that the job instances are of the same class and have the same property values of the chained jobs dispatched by your application:</p>
+<pre><code>Bus::assertChained([
+    new ShipOrder,
+    new RecordShipment,
+    new UpdateInventory,
+]);
+</code></pre>
+<p><a name="job-batches"></a></p>
+<h3 id="job-batches">Job Batches</h3>
+<p>The <code>Bus</code> facade's <code>assertBatched</code> method may be used to assert that a <a href="/docs/{{version}}/queues#job-batches">batch of jobs</a> was dispatched. The closure given to the <code>assertBatched</code> method receives an instance of <code>Illuminate\Bus\PendingBatch</code>, which may be used to inspect the jobs within the batch:</p>
+<pre><code>use Illuminate\Bus\PendingBatch;
+use Illuminate\Support\Facades\Bus;
+
+Bus::assertBatched(function (PendingBatch $batch) {
+    return $batch-&gt;name == 'import-csv' &amp;&amp;
+           $batch-&gt;jobs-&gt;count() === 10;
+});
+</code></pre>
+<p><a name="event-fake"></a></p>
+<h2 id="event-fake">Event Fake</h2>
+<p>When testing code that dispatches events, you may wish to instruct Laravel to not actually execute the event's listeners. Using the <code>Event</code> facade's <code>fake</code> method, you may prevent listeners from executing, execute the code under test, and then assert which events were dispatched by your application using the <code>assertDispatched</code>, <code>assertNotDispatched</code>, and <code>assertNothingDispatched</code> methods:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Events\OrderFailedToShip;
+use App\Events\OrderShipped;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Facades\Event;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * Test order shipping.
+     */
+    public function test_orders_can_be_shipped()
+    {
+        Event::fake();
+
+        // Perform order shipping...
+
+        // Assert that an event was dispatched...
+        Event::assertDispatched(OrderShipped::class);
+
+        // Assert an event was dispatched twice...
+        Event::assertDispatched(OrderShipped::class, 2);
+
+        // Assert an event was not dispatched...
+        Event::assertNotDispatched(OrderFailedToShip::class);
+
+        // Assert that no events were dispatched...
+        Event::assertNothingDispatched();
+    }
+}
+</code></pre>
+<p>You may pass a closure to the <code>assertDispatched</code> or <code>assertNotDispatched</code> methods in order to assert that an event was dispatched that passes a given "truth test". If at least one event was dispatched that passes the given truth test then the assertion will be successful:</p>
+<pre><code>Event::assertDispatched(function (OrderShipped $event) use ($order) {
+    return $event-&gt;order-&gt;id === $order-&gt;id;
+});
+</code></pre>
+<p>If you would simply like to assert that an event listener is listening to a given event, you may use the <code>assertListening</code> method:</p>
+<pre><code>Event::assertListening(
+    OrderShipped::class,
+    SendShipmentNotification::class
+);
+</code></pre>
+<blockquote>
+<p>{note} After calling <code>Event::fake()</code>, no event listeners will be executed. So, if your tests use model factories that rely on events, such as creating a UUID during a model's <code>creating</code> event, you should call <code>Event::fake()</code> <strong>after</strong> using your factories.</p>
+</blockquote>
+<p><a name="faking-a-subset-of-events"></a></p>
+<h4 id="faking-a-subset-of-events">Faking A Subset Of Events</h4>
+<p>If you only want to fake event listeners for a specific set of events, you may pass them to the <code>fake</code> or <code>fakeFor</code> method:</p>
+<pre><code>/**
+ * Test order process.
+ */
+public function test_orders_can_be_processed()
+{
+    Event::fake([
+        OrderCreated::class,
+    ]);
+
+    $order = Order::factory()-&gt;create();
+
+    Event::assertDispatched(OrderCreated::class);
+
+    // Other events are dispatched as normal...
+    $order-&gt;update([...]);
+}
+</code></pre>
+<p><a name="scoped-event-fakes"></a></p>
+<h3 id="scoped-event-fakes">Scoped Event Fakes</h3>
+<p>If you only want to fake event listeners for a portion of your test, you may use the <code>fakeFor</code> method:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Events\OrderCreated;
+use App\Models\Order;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * Test order process.
+     */
+    public function test_orders_can_be_processed()
+    {
+        $order = Event::fakeFor(function () {
+            $order = Order::factory()-&gt;create();
+
+            Event::assertDispatched(OrderCreated::class);
+
+            return $order;
+        });
+
+        // Events are dispatched as normal and observers will run ...
+        $order-&gt;update([...]);
+    }
+}
+</code></pre>
+<p><a name="http-fake"></a></p>
+<h2 id="http-fake">HTTP Fake</h2>
+<p>The <code>Http</code> facade's <code>fake</code> method allows you to instruct the HTTP client to return stubbed / dummy responses when requests are made. For more information on faking outgoing HTTP requests, please consult the <a href="/docs/{{version}}/http-client#testing">HTTP Client testing documentation</a>.</p>
+<p><a name="mail-fake"></a></p>
+<h2 id="mail-fake">Mail Fake</h2>
+<p>You may use the <code>Mail</code> facade's <code>fake</code> method to prevent mail from being sent. Typically, sending mail is unrelated to the code you are actually testing. Most likely, it is sufficient to simply assert that Laravel was instructed to send a given mailable.</p>
+<p>After calling the <code>Mail</code> facade's <code>fake</code> method, you may then assert that <a href="/docs/{{version}}/mail">mailables</a> were instructed to be sent to users and even inspect the data the mailables received:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Mail\OrderShipped;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Facades\Mail;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_orders_can_be_shipped()
+    {
+        Mail::fake();
+
+        // Perform order shipping...
+
+        // Assert that no mailables were sent...
+        Mail::assertNothingSent();
+
+        // Assert that a mailable was sent...
+        Mail::assertSent(OrderShipped::class);
+
+        // Assert a mailable was sent twice...
+        Mail::assertSent(OrderShipped::class, 2);
+
+        // Assert a mailable was not sent...
+        Mail::assertNotSent(AnotherMailable::class);
+    }
+}
+</code></pre>
+<p>If you are queueing mailables for delivery in the background, you should use the <code>assertQueued</code> method instead of <code>assertSent</code>:</p>
+<pre><code>Mail::assertQueued(OrderShipped::class);
+
+Mail::assertNotQueued(OrderShipped::class);
+
+Mail::assertNothingQueued();
+</code></pre>
+<p>You may pass a closure to the <code>assertSent</code> or <code>assertNotSent</code> methods in order to assert that a mailable was sent that passes a given "truth test". If at least one mailable was sent that passes the given truth test then the assertion will be successful:</p>
+<pre><code>Mail::assertSent(function (OrderShipped $mail) use ($order) {
+    return $mail-&gt;order-&gt;id === $order-&gt;id;
+});
+</code></pre>
+<p>When calling the <code>Mail</code> facade's assertion methods, the mailable instance accepted by the provided closure exposes helpful methods for examining the recipients of the mailable:</p>
+<pre><code>Mail::assertSent(OrderShipped::class, function ($mail) use ($user) {
+    return $mail-&gt;hasTo($user-&gt;email) &amp;&amp;
+           $mail-&gt;hasCc('...') &amp;&amp;
+           $mail-&gt;hasBcc('...');
+});
+</code></pre>
+<p><a name="notification-fake"></a></p>
+<h2 id="notification-fake">Notification Fake</h2>
+<p>You may use the <code>Notification</code> facade's <code>fake</code> method to prevent notifications from being sent. Typically, sending notifications is unrelated to the code you are actually testing. Most likely, it is sufficient to simply assert that Laravel was instructed to send a given notification.</p>
+<p>After calling the <code>Notification</code> facade's <code>fake</code> method, you may then assert that <a href="/docs/{{version}}/notifications">notifications</a> were instructed to be sent to users and even inspect the data the notifications received:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Notifications\OrderShipped;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Facades\Notification;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_orders_can_be_shipped()
+    {
+        Notification::fake();
+
+        // Perform order shipping...
+
+        // Assert that no notifications were sent...
+        Notification::assertNothingSent();
+
+        // Assert a notification was sent to the given users...
+        Notification::assertSentTo(
+            [$user], OrderShipped::class
+        );
+
+        // Assert a notification was not sent...
+        Notification::assertNotSentTo(
+            [$user], AnotherNotification::class
+        );
+    }
+}
+</code></pre>
+<p>You may pass a closure to the <code>assertSentTo</code> or <code>assertNotSentTo</code> methods in order to assert that a notification was sent that passes a given "truth test". If at least one notification was sent that passes the given truth test then the assertion will be successful:</p>
+<pre><code>Notification::assertSentTo(
+    $user,
+    function (OrderShipped $notification, $channels) use ($order) {
+        return $notification-&gt;order-&gt;id === $order-&gt;id;
+    }
+);
+</code></pre>
+<p><a name="on-demand-notifications"></a></p>
+<h4 id="on-demand-notifications">On-Demand Notifications</h4>
+<p>If the code you are testing sends <a href="/docs/{{version}}/notifications#on-demand-notifications">on-demand notifications</a>, you will need to assert that the notification was sent to an <code>Illuminate\Notifications\AnonymousNotifiable</code> instance:</p>
+<pre><code>use Illuminate\Notifications\AnonymousNotifiable;
+
+Notification::assertSentTo(
+    new AnonymousNotifiable, OrderShipped::class
+);
+</code></pre>
+<p>By passing a closure as the third argument to the notification assertion methods, you may determine if an on-demand notification was sent to the correct "route" address:</p>
+<pre><code>Notification::assertSentTo(
+    new AnonymousNotifiable,
+    OrderShipped::class,
+    function ($notification, $channels, $notifiable) use ($user) {
+        return $notifiable-&gt;routes['mail'] === $user-&gt;email;
+    }
+);
+</code></pre>
+<p><a name="queue-fake"></a></p>
+<h2 id="queue-fake">Queue Fake</h2>
+<p>You may use the <code>Queue</code> facade's <code>fake</code> method to prevent queued jobs from being pushed to the queue. Most likely, it is sufficient to simply assert that Laravel was instructed to push a given job to the queue since the queued jobs themselves may be tested in another test class.</p>
+<p>After calling the <code>Queue</code> facade's <code>fake</code> method, you may then assert that the application attempted to push jobs to the queue:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Jobs\AnotherJob;
+use App\Jobs\FinalJob;
+use App\Jobs\ShipOrder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Facades\Queue;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_orders_can_be_shipped()
+    {
+        Queue::fake();
+
+        // Perform order shipping...
+
+        // Assert that no jobs were pushed...
+        Queue::assertNothingPushed();
+
+        // Assert a job was pushed to a given queue...
+        Queue::assertPushedOn('queue-name', ShipOrder::class);
+
+        // Assert a job was pushed twice...
+        Queue::assertPushed(ShipOrder::class, 2);
+
+        // Assert a job was not pushed...
+        Queue::assertNotPushed(AnotherJob::class);
+    }
+}
+</code></pre>
+<p>You may pass a closure to the <code>assertPushed</code> or <code>assertNotPushed</code> methods in order to assert that a job was pushed that passes a given "truth test". If at least one job was pushed that passes the given truth test then the assertion will be successful:</p>
+<pre><code>Queue::assertPushed(function (ShipOrder $job) use ($order) {
+    return $job-&gt;order-&gt;id === $order-&gt;id;
+});
+</code></pre>
+<p><a name="job-chains"></a></p>
+<h3 id="job-chains_1">Job Chains</h3>
+<p>The <code>Queue</code> facade's <code>assertPushedWithChain</code> and <code>assertPushedWithoutChain</code> methods may be used to inspect the job chain of a pushed job. The <code>assertPushedWithChain</code> method accepts the primary job as its first argument and an array of chained jobs as its second argument:</p>
+<pre><code>use App\Jobs\RecordShipment;
+use App\Jobs\ShipOrder;
+use App\Jobs\UpdateInventory;
+use Illuminate\Support\Facades\Queue;
+
+Queue::assertPushedWithChain(ShipOrder::class, [
+    RecordShipment::class,
+    UpdateInventory::class
+]);
+</code></pre>
+<p>As you can see in the example above, the array of chained jobs may be an array of the job's class names. However, you may also provide an array of actual job instances. When doing so, Laravel will ensure that the job instances are of the same class and have the same property values of the chained jobs dispatched by your application:</p>
+<pre><code>Queue::assertPushedWithChain(ShipOrder::class, [
+    new RecordShipment,
+    new UpdateInventory,
+]);
+</code></pre>
+<p>You may use the <code>assertPushedWithoutChain</code> method to assert that a job was pushed without a chain of jobs:</p>
+<pre><code>Queue::assertPushedWithoutChain(ShipOrder::class);
+</code></pre>
+<p><a name="storage-fake"></a></p>
+<h2 id="storage-fake">Storage Fake</h2>
+<p>The <code>Storage</code> facade's <code>fake</code> method allows you to easily generate a fake disk that, combined with the file generation utilities of the <code>Illuminate\Http\UploadedFile</code> class, greatly simplifies the testing of file uploads. For example:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_albums_can_be_uploaded()
+    {
+        Storage::fake('photos');
+
+        $response = $this-&gt;json('POST', '/photos', [
+            UploadedFile::fake()-&gt;image('photo1.jpg'),
+            UploadedFile::fake()-&gt;image('photo2.jpg')
+        ]);
+
+        // Assert one or more files were stored...
+        Storage::disk('photos')-&gt;assertExists('photo1.jpg');
+        Storage::disk('photos')-&gt;assertExists(['photo1.jpg', 'photo2.jpg']);
+
+        // Assert one or more files were not stored...
+        Storage::disk('photos')-&gt;assertMissing('missing.jpg');
+        Storage::disk('photos')-&gt;assertMissing(['missing.jpg', 'non-existing.jpg']);
+    }
+}
+</code></pre>
+<p>For more information on testing file uploads, you may consult the <a href="/docs/{{version}}/http-tests#testing-file-uploads">HTTP testing documentation's information on file uploads</a>.</p>
+<blockquote>
+<p>{tip} By default, the <code>fake</code> method will delete all files in its temporary directory. If you would like to keep these files, you may use the "persistentFake" method instead.</p>
+</blockquote>
+<p><a name="interacting-with-time"></a></p>
+<h2 id="interacting-with-time">Interacting With Time</h2>
+<p>When testing, you may occasionally need to modify the time returned by helpers such as <code>now</code> or <code>Illuminate\Support\Carbon::now()</code>. Thankfully, Laravel's base feature test class includes helpers that allow you to manipulate the current time:</p>
+<pre><code>public function testTimeCanBeManipulated()
+{
+    // Travel into the future...
+    $this-&gt;travel(5)-&gt;milliseconds();
+    $this-&gt;travel(5)-&gt;seconds();
+    $this-&gt;travel(5)-&gt;minutes();
+    $this-&gt;travel(5)-&gt;hours();
+    $this-&gt;travel(5)-&gt;days();
+    $this-&gt;travel(5)-&gt;weeks();
+    $this-&gt;travel(5)-&gt;years();
+
+    // Travel into the past...
+    $this-&gt;travel(-5)-&gt;hours();
+
+    // Travel to an explicit time...
+    $this-&gt;travelTo(now()-&gt;subHours(6));
+
+    // Return back to the present time...
+    $this-&gt;travelBack();
+}
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../database-testing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DB ni testlash" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              DB ni testlash
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../billing/" class="md-footer__link md-footer__link--next" aria-label="Next: Cashier (Stripe)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Cashier (Stripe)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

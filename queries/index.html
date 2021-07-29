@@ -1,0 +1,3361 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/queries/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Query Builder - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-query-builder" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Query Builder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Query Builder
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Query Builder
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-database-queries" class="md-nav__link">
+    Running Database Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Database Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-all-rows-from-a-table" class="md-nav__link">
+    Retrieving All Rows From A Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-a-single-row-column-from-a-table" class="md-nav__link">
+    Retrieving A Single Row / Column From A Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-a-list-of-column-values" class="md-nav__link">
+    Retrieving A List Of Column Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunking-results" class="md-nav__link">
+    Chunking Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-results-lazily" class="md-nav__link">
+    Streaming Results Lazily
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregates" class="md-nav__link">
+    Aggregates
+  </a>
+  
+    <nav class="md-nav" aria-label="Aggregates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#determining-if-records-exist" class="md-nav__link">
+    Determining If Records Exist
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select-statements" class="md-nav__link">
+    Select Statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Select Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-a-select-clause" class="md-nav__link">
+    Specifying A Select Clause
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raw-expressions" class="md-nav__link">
+    Raw Expressions
+  </a>
+  
+    <nav class="md-nav" aria-label="Raw Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raw-methods" class="md-nav__link">
+    Raw Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Raw Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selectraw" class="md-nav__link">
+    selectRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whereraw-orwhereraw" class="md-nav__link">
+    whereRaw / orWhereRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#havingraw-orhavingraw" class="md-nav__link">
+    havingRaw / orHavingRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderbyraw" class="md-nav__link">
+    orderByRaw
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupbyraw" class="md-nav__link">
+    groupByRaw
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joins" class="md-nav__link">
+    Joins
+  </a>
+  
+    <nav class="md-nav" aria-label="Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inner-join-clause" class="md-nav__link">
+    Inner Join Clause
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join-right-join-clause" class="md-nav__link">
+    Left Join / Right Join Clause
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-join-clause" class="md-nav__link">
+    Cross Join Clause
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-join-clauses" class="md-nav__link">
+    Advanced Join Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subquery-joins" class="md-nav__link">
+    Subquery Joins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unions" class="md-nav__link">
+    Unions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-where-clauses" class="md-nav__link">
+    Basic Where Clauses
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Where Clauses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-clauses" class="md-nav__link">
+    Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or-where-clauses" class="md-nav__link">
+    Or Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-where-clauses" class="md-nav__link">
+    JSON Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-where-clauses" class="md-nav__link">
+    Additional Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-grouping" class="md-nav__link">
+    Logical Grouping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-where-clauses" class="md-nav__link">
+    Advanced Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-exists-clauses" class="md-nav__link">
+    Where Exists Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subquery-where-clauses" class="md-nav__link">
+    Subquery Where Clauses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordering-grouping-limit-offset" class="md-nav__link">
+    Ordering, Grouping, Limit &amp; Offset
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordering, Grouping, Limit &amp; Offset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordering" class="md-nav__link">
+    Ordering
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-orderby-method" class="md-nav__link">
+    The orderBy Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-latest-oldest-methods" class="md-nav__link">
+    The latest &amp; oldest Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-ordering" class="md-nav__link">
+    Random Ordering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-existing-orderings" class="md-nav__link">
+    Removing Existing Orderings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping" class="md-nav__link">
+    Grouping
+  </a>
+  
+    <nav class="md-nav" aria-label="Grouping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-groupby-having-methods" class="md-nav__link">
+    The groupBy &amp; having Methods
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit-offset" class="md-nav__link">
+    Limit &amp; Offset
+  </a>
+  
+    <nav class="md-nav" aria-label="Limit &amp; Offset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-skip-take-methods" class="md-nav__link">
+    The skip &amp; take Methods
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-clauses" class="md-nav__link">
+    Conditional Clauses
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert-statements" class="md-nav__link">
+    Insert Statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Insert Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto-incrementing-ids" class="md-nav__link">
+    Auto-Incrementing IDs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upserts" class="md-nav__link">
+    Upserts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-statements" class="md-nav__link">
+    Update Statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Update Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-or-insert" class="md-nav__link">
+    Update Or Insert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-json-columns" class="md-nav__link">
+    Updating JSON Columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#increment-decrement" class="md-nav__link">
+    Increment &amp; Decrement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-statements" class="md-nav__link">
+    Delete Statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Delete Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-truncation-postgresql" class="md-nav__link">
+    Table Truncation &amp; PostgreSQL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pessimistic-locking" class="md-nav__link">
+    Pessimistic Locking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-database-queries" class="md-nav__link">
+    Running Database Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Database Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-all-rows-from-a-table" class="md-nav__link">
+    Retrieving All Rows From A Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-a-single-row-column-from-a-table" class="md-nav__link">
+    Retrieving A Single Row / Column From A Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-a-list-of-column-values" class="md-nav__link">
+    Retrieving A List Of Column Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunking-results" class="md-nav__link">
+    Chunking Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-results-lazily" class="md-nav__link">
+    Streaming Results Lazily
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregates" class="md-nav__link">
+    Aggregates
+  </a>
+  
+    <nav class="md-nav" aria-label="Aggregates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#determining-if-records-exist" class="md-nav__link">
+    Determining If Records Exist
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select-statements" class="md-nav__link">
+    Select Statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Select Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-a-select-clause" class="md-nav__link">
+    Specifying A Select Clause
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raw-expressions" class="md-nav__link">
+    Raw Expressions
+  </a>
+  
+    <nav class="md-nav" aria-label="Raw Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raw-methods" class="md-nav__link">
+    Raw Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Raw Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selectraw" class="md-nav__link">
+    selectRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whereraw-orwhereraw" class="md-nav__link">
+    whereRaw / orWhereRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#havingraw-orhavingraw" class="md-nav__link">
+    havingRaw / orHavingRaw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderbyraw" class="md-nav__link">
+    orderByRaw
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupbyraw" class="md-nav__link">
+    groupByRaw
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joins" class="md-nav__link">
+    Joins
+  </a>
+  
+    <nav class="md-nav" aria-label="Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inner-join-clause" class="md-nav__link">
+    Inner Join Clause
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join-right-join-clause" class="md-nav__link">
+    Left Join / Right Join Clause
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-join-clause" class="md-nav__link">
+    Cross Join Clause
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-join-clauses" class="md-nav__link">
+    Advanced Join Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subquery-joins" class="md-nav__link">
+    Subquery Joins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unions" class="md-nav__link">
+    Unions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-where-clauses" class="md-nav__link">
+    Basic Where Clauses
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Where Clauses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-clauses" class="md-nav__link">
+    Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or-where-clauses" class="md-nav__link">
+    Or Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-where-clauses" class="md-nav__link">
+    JSON Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-where-clauses" class="md-nav__link">
+    Additional Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-grouping" class="md-nav__link">
+    Logical Grouping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-where-clauses" class="md-nav__link">
+    Advanced Where Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-exists-clauses" class="md-nav__link">
+    Where Exists Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subquery-where-clauses" class="md-nav__link">
+    Subquery Where Clauses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordering-grouping-limit-offset" class="md-nav__link">
+    Ordering, Grouping, Limit &amp; Offset
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordering, Grouping, Limit &amp; Offset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordering" class="md-nav__link">
+    Ordering
+  </a>
+  
+    <nav class="md-nav" aria-label="Ordering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-orderby-method" class="md-nav__link">
+    The orderBy Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-latest-oldest-methods" class="md-nav__link">
+    The latest &amp; oldest Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-ordering" class="md-nav__link">
+    Random Ordering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-existing-orderings" class="md-nav__link">
+    Removing Existing Orderings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping" class="md-nav__link">
+    Grouping
+  </a>
+  
+    <nav class="md-nav" aria-label="Grouping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-groupby-having-methods" class="md-nav__link">
+    The groupBy &amp; having Methods
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit-offset" class="md-nav__link">
+    Limit &amp; Offset
+  </a>
+  
+    <nav class="md-nav" aria-label="Limit &amp; Offset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-skip-take-methods" class="md-nav__link">
+    The skip &amp; take Methods
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-clauses" class="md-nav__link">
+    Conditional Clauses
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insert-statements" class="md-nav__link">
+    Insert Statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Insert Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto-incrementing-ids" class="md-nav__link">
+    Auto-Incrementing IDs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upserts" class="md-nav__link">
+    Upserts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-statements" class="md-nav__link">
+    Update Statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Update Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-or-insert" class="md-nav__link">
+    Update Or Insert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-json-columns" class="md-nav__link">
+    Updating JSON Columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#increment-decrement" class="md-nav__link">
+    Increment &amp; Decrement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-statements" class="md-nav__link">
+    Delete Statements
+  </a>
+  
+    <nav class="md-nav" aria-label="Delete Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-truncation-postgresql" class="md-nav__link">
+    Table Truncation &amp; PostgreSQL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pessimistic-locking" class="md-nav__link">
+    Pessimistic Locking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="database-query-builder">Database: Query Builder</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#running-database-queries">Running Database Queries</a><ul>
+<li><a href="#chunking-results">Chunking Results</a></li>
+<li><a href="#streaming-results-lazily">Streaming Results Lazily</a></li>
+<li><a href="#aggregates">Aggregates</a></li>
+</ul>
+</li>
+<li><a href="#select-statements">Select Statements</a></li>
+<li><a href="#raw-expressions">Raw Expressions</a></li>
+<li><a href="#joins">Joins</a></li>
+<li><a href="#unions">Unions</a></li>
+<li><a href="#basic-where-clauses">Basic Where Clauses</a><ul>
+<li><a href="#where-clauses">Where Clauses</a></li>
+<li><a href="#or-where-clauses">Or Where Clauses</a></li>
+<li><a href="#json-where-clauses">JSON Where Clauses</a></li>
+<li><a href="#additional-where-clauses">Additional Where Clauses</a></li>
+<li><a href="#logical-grouping">Logical Grouping</a></li>
+</ul>
+</li>
+<li><a href="#advanced-where-clauses">Advanced Where Clauses</a><ul>
+<li><a href="#where-exists-clauses">Where Exists Clauses</a></li>
+<li><a href="#subquery-where-clauses">Subquery Where Clauses</a></li>
+</ul>
+</li>
+<li><a href="#ordering-grouping-limit-and-offset">Ordering, Grouping, Limit &amp; Offset</a><ul>
+<li><a href="#ordering">Ordering</a></li>
+<li><a href="#grouping">Grouping</a></li>
+<li><a href="#limit-and-offset">Limit &amp; Offset</a></li>
+</ul>
+</li>
+<li><a href="#conditional-clauses">Conditional Clauses</a></li>
+<li><a href="#insert-statements">Insert Statements</a><ul>
+<li><a href="#upserts">Upserts</a></li>
+</ul>
+</li>
+<li><a href="#update-statements">Update Statements</a><ul>
+<li><a href="#updating-json-columns">Updating JSON Columns</a></li>
+<li><a href="#increment-and-decrement">Increment &amp; Decrement</a></li>
+</ul>
+</li>
+<li><a href="#delete-statements">Delete Statements</a></li>
+<li><a href="#pessimistic-locking">Pessimistic Locking</a></li>
+<li><a href="#debugging">Debugging</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel's database query builder provides a convenient, fluent interface to creating and running database queries. It can be used to perform most database operations in your application and works perfectly with all of Laravel's supported database systems.</p>
+<p>The Laravel query builder uses PDO parameter binding to protect your application against SQL injection attacks. There is no need to clean or sanitize strings passed to the query builder as query bindings.</p>
+<blockquote>
+<p>{note} PDO does not support binding column names. Therefore, you should never allow user input to dictate the column names referenced by your queries, including "order by" columns.</p>
+</blockquote>
+<p><a name="running-database-queries"></a></p>
+<h2 id="running-database-queries">Running Database Queries</h2>
+<p><a name="retrieving-all-rows-from-a-table"></a></p>
+<h4 id="retrieving-all-rows-from-a-table">Retrieving All Rows From A Table</h4>
+<p>You may use the <code>table</code> method provided by the <code>DB</code> facade to begin a query. The <code>table</code> method returns a fluent query builder instance for the given table, allowing you to chain more constraints onto the query and then finally retrieve the results of the query using the <code>get</code> method:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+class UserController extends Controller
+{
+    /**
+     * Show a list of all of the application's users.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $users = DB::table('users')-&gt;get();
+
+        return view('user.index', ['users' =&gt; $users]);
+    }
+}
+</code></pre>
+<p>The <code>get</code> method returns an <code>Illuminate\Support\Collection</code> instance containing the results of the query where each result is an instance of the PHP <code>stdClass</code> object. You may access each column's value by accessing the column as a property of the object:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table('users')-&gt;get();
+
+foreach ($users as $user) {
+    echo $user-&gt;name;
+}
+</code></pre>
+<blockquote>
+<p>{tip} Laravel collections provide a variety of extremely powerful methods for mapping and reducing data. For more information on Laravel collections, check out the <a href="/docs/{{version}}/collections">collection documentation</a>.</p>
+</blockquote>
+<p><a name="retrieving-a-single-row-column-from-a-table"></a></p>
+<h4 id="retrieving-a-single-row-column-from-a-table">Retrieving A Single Row / Column From A Table</h4>
+<p>If you just need to retrieve a single row from a database table, you may use the <code>DB</code> facade's <code>first</code> method. This method will return a single <code>stdClass</code> object:</p>
+<pre><code>$user = DB::table('users')-&gt;where('name', 'John')-&gt;first();
+
+return $user-&gt;email;
+</code></pre>
+<p>If you don't need an entire row, you may extract a single value from a record using the <code>value</code> method. This method will return the value of the column directly:</p>
+<pre><code>$email = DB::table('users')-&gt;where('name', 'John')-&gt;value('email');
+</code></pre>
+<p>To retrieve a single row by its <code>id</code> column value, use the <code>find</code> method:</p>
+<pre><code>$user = DB::table('users')-&gt;find(3);
+</code></pre>
+<p><a name="retrieving-a-list-of-column-values"></a></p>
+<h4 id="retrieving-a-list-of-column-values">Retrieving A List Of Column Values</h4>
+<p>If you would like to retrieve an <code>Illuminate\Support\Collection</code> instance containing the values of a single column, you may use the <code>pluck</code> method. In this example, we'll retrieve a collection of user titles:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$titles = DB::table('users')-&gt;pluck('title');
+
+foreach ($titles as $title) {
+    echo $title;
+}
+</code></pre>
+<p>You may specify the column that the resulting collection should use as its keys by providing a second argument to the <code>pluck</code> method:</p>
+<pre><code>$titles = DB::table('users')-&gt;pluck('title', 'name');
+
+foreach ($titles as $name =&gt; $title) {
+    echo $title;
+}
+</code></pre>
+<p><a name="chunking-results"></a></p>
+<h3 id="chunking-results">Chunking Results</h3>
+<p>If you need to work with thousands of database records, consider using the <code>chunk</code> method provided by the <code>DB</code> facade. This method retrieves a small chunk of results at a time and feeds each chunk into a closure for processing. For example, let's retrieve the entire <code>users</code> table in chunks of 100 records at a time:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+DB::table('users')-&gt;orderBy('id')-&gt;chunk(100, function ($users) {
+    foreach ($users as $user) {
+        //
+    }
+});
+</code></pre>
+<p>You may stop further chunks from being processed by returning <code>false</code> from the closure:</p>
+<pre><code>DB::table('users')-&gt;orderBy('id')-&gt;chunk(100, function ($users) {
+    // Process the records...
+
+    return false;
+});
+</code></pre>
+<p>If you are updating database records while chunking results, your chunk results could change in unexpected ways. If you plan to update the retrieved records while chunking, it is always best to use the <code>chunkById</code> method instead. This method will automatically paginate the results based on the record's primary key:</p>
+<pre><code>DB::table('users')-&gt;where('active', false)
+    -&gt;chunkById(100, function ($users) {
+        foreach ($users as $user) {
+            DB::table('users')
+                -&gt;where('id', $user-&gt;id)
+                -&gt;update(['active' =&gt; true]);
+        }
+    });
+</code></pre>
+<blockquote>
+<p>{note} When updating or deleting records inside the chunk callback, any changes to the primary key or foreign keys could affect the chunk query. This could potentially result in records not being included in the chunked results.</p>
+</blockquote>
+<p><a name="streaming-results-lazily"></a></p>
+<h3 id="streaming-results-lazily">Streaming Results Lazily</h3>
+<p>The <code>lazy</code> method works similarly to <a href="#chunking-results">the <code>chunk</code> method</a> in the sense that it executes the query in chunks. However, instead of passing each chunk into a callback, the <code>lazy()</code> method returns a <a href="/docs/{{version}}/collections#lazy-collections"><code>LazyCollection</code></a>, which lets you interact with the results as a single stream:</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\DB;
+
+DB::table('users')-&gt;lazy()-&gt;each(function ($user) {
+    //
+});
+</code></pre>
+<p>Once again, if you plan to update the retrieved records while iterating over them, it is best to use the <code>lazyById</code> method instead. This method will automatically paginate the results based on the record's primary key:</p>
+<pre><code class="language-php">DB::table('users')-&gt;where('active', false)
+    -&gt;lazyById()-&gt;each(function ($user) {
+        DB::table('users')
+            -&gt;where('id', $user-&gt;id)
+            -&gt;update(['active' =&gt; true]);
+    });
+</code></pre>
+<blockquote>
+<p>{note} When updating or deleting records while iterating over them, any changes to the primary key or foreign keys could affect the chunk query. This could potentially result in records not being included in the results.</p>
+</blockquote>
+<p><a name="aggregates"></a></p>
+<h3 id="aggregates">Aggregates</h3>
+<p>The query builder also provides a variety of methods for retrieving aggregate values like <code>count</code>, <code>max</code>, <code>min</code>, <code>avg</code>, and <code>sum</code>. You may call any of these methods after constructing your query:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table('users')-&gt;count();
+
+$price = DB::table('orders')-&gt;max('price');
+</code></pre>
+<p>Of course, you may combine these methods with other clauses to fine-tune how your aggregate value is calculated:</p>
+<pre><code>$price = DB::table('orders')
+                -&gt;where('finalized', 1)
+                -&gt;avg('price');
+</code></pre>
+<p><a name="determining-if-records-exist"></a></p>
+<h4 id="determining-if-records-exist">Determining If Records Exist</h4>
+<p>Instead of using the <code>count</code> method to determine if any records exist that match your query's constraints, you may use the <code>exists</code> and <code>doesntExist</code> methods:</p>
+<pre><code>if (DB::table('orders')-&gt;where('finalized', 1)-&gt;exists()) {
+    // ...
+}
+
+if (DB::table('orders')-&gt;where('finalized', 1)-&gt;doesntExist()) {
+    // ...
+}
+</code></pre>
+<p><a name="select-statements"></a></p>
+<h2 id="select-statements">Select Statements</h2>
+<p><a name="specifying-a-select-clause"></a></p>
+<h4 id="specifying-a-select-clause">Specifying A Select Clause</h4>
+<p>You may not always want to select all columns from a database table. Using the <code>select</code> method, you can specify a custom "select" clause for the query:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table('users')
+            -&gt;select('name', 'email as user_email')
+            -&gt;get();
+</code></pre>
+<p>The <code>distinct</code> method allows you to force the query to return distinct results:</p>
+<pre><code>$users = DB::table('users')-&gt;distinct()-&gt;get();
+</code></pre>
+<p>If you already have a query builder instance and you wish to add a column to its existing select clause, you may use the <code>addSelect</code> method:</p>
+<pre><code>$query = DB::table('users')-&gt;select('name');
+
+$users = $query-&gt;addSelect('age')-&gt;get();
+</code></pre>
+<p><a name="raw-expressions"></a></p>
+<h2 id="raw-expressions">Raw Expressions</h2>
+<p>Sometimes you may need to insert an arbitrary string into a query. To create a raw string expression, you may use the <code>raw</code> method provided by the <code>DB</code> facade:</p>
+<pre><code>$users = DB::table('users')
+             -&gt;select(DB::raw('count(*) as user_count, status'))
+             -&gt;where('status', '&lt;&gt;', 1)
+             -&gt;groupBy('status')
+             -&gt;get();
+</code></pre>
+<blockquote>
+<p>{note} Raw statements will be injected into the query as strings, so you should be extremely careful to avoid creating SQL injection vulnerabilities.</p>
+</blockquote>
+<p><a name="raw-methods"></a></p>
+<h3 id="raw-methods">Raw Methods</h3>
+<p>Instead of using the <code>DB::raw</code> method, you may also use the following methods to insert a raw expression into various parts of your query. <strong>Remember, Laravel can not guarantee that any query using raw expressions is protected against SQL injection vulnerabilities.</strong></p>
+<p><a name="selectraw"></a></p>
+<h4 id="selectraw"><code>selectRaw</code></h4>
+<p>The <code>selectRaw</code> method can be used in place of <code>addSelect(DB::raw(...))</code>. This method accepts an optional array of bindings as its second argument:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;selectRaw('price * ? as price_with_tax', [1.0825])
+                -&gt;get();
+</code></pre>
+<p><a name="whereraw-orwhereraw"></a></p>
+<h4 id="whereraw-orwhereraw"><code>whereRaw / orWhereRaw</code></h4>
+<p>The <code>whereRaw</code> and <code>orWhereRaw</code> methods can be used to inject a raw "where" clause into your query. These methods accept an optional array of bindings as their second argument:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;whereRaw('price &gt; IF(state = "TX", ?, 100)', [200])
+                -&gt;get();
+</code></pre>
+<p><a name="havingraw-orhavingraw"></a></p>
+<h4 id="havingraw-orhavingraw"><code>havingRaw / orHavingRaw</code></h4>
+<p>The <code>havingRaw</code> and <code>orHavingRaw</code> methods may be used to provide a raw string as the value of the "having" clause. These methods accept an optional array of bindings as their second argument:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;select('department', DB::raw('SUM(price) as total_sales'))
+                -&gt;groupBy('department')
+                -&gt;havingRaw('SUM(price) &gt; ?', [2500])
+                -&gt;get();
+</code></pre>
+<p><a name="orderbyraw"></a></p>
+<h4 id="orderbyraw"><code>orderByRaw</code></h4>
+<p>The <code>orderByRaw</code> method may be used to provide a raw string as the value of the "order by" clause:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;orderByRaw('updated_at - created_at DESC')
+                -&gt;get();
+</code></pre>
+<p><a name="groupbyraw"></a></p>
+<h3 id="groupbyraw"><code>groupByRaw</code></h3>
+<p>The <code>groupByRaw</code> method may be used to provide a raw string as the value of the <code>group by</code> clause:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;select('city', 'state')
+                -&gt;groupByRaw('city, state')
+                -&gt;get();
+</code></pre>
+<p><a name="joins"></a></p>
+<h2 id="joins">Joins</h2>
+<p><a name="inner-join-clause"></a></p>
+<h4 id="inner-join-clause">Inner Join Clause</h4>
+<p>The query builder may also be used to add join clauses to your queries. To perform a basic "inner join", you may use the <code>join</code> method on a query builder instance. The first argument passed to the <code>join</code> method is the name of the table you need to join to, while the remaining arguments specify the column constraints for the join. You may even join multiple tables in a single query:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table('users')
+            -&gt;join('contacts', 'users.id', '=', 'contacts.user_id')
+            -&gt;join('orders', 'users.id', '=', 'orders.user_id')
+            -&gt;select('users.*', 'contacts.phone', 'orders.price')
+            -&gt;get();
+</code></pre>
+<p><a name="left-join-right-join-clause"></a></p>
+<h4 id="left-join-right-join-clause">Left Join / Right Join Clause</h4>
+<p>If you would like to perform a "left join" or "right join" instead of an "inner join", use the <code>leftJoin</code> or <code>rightJoin</code> methods. These methods have the same signature as the <code>join</code> method:</p>
+<pre><code>$users = DB::table('users')
+            -&gt;leftJoin('posts', 'users.id', '=', 'posts.user_id')
+            -&gt;get();
+
+$users = DB::table('users')
+            -&gt;rightJoin('posts', 'users.id', '=', 'posts.user_id')
+            -&gt;get();
+</code></pre>
+<p><a name="cross-join-clause"></a></p>
+<h4 id="cross-join-clause">Cross Join Clause</h4>
+<p>You may use the <code>crossJoin</code> method to perform a "cross join". Cross joins generate a cartesian product between the first table and the joined table:</p>
+<pre><code>$sizes = DB::table('sizes')
+            -&gt;crossJoin('colors')
+            -&gt;get();
+</code></pre>
+<p><a name="advanced-join-clauses"></a></p>
+<h4 id="advanced-join-clauses">Advanced Join Clauses</h4>
+<p>You may also specify more advanced join clauses. To get started, pass a closure as the second argument to the <code>join</code> method. The closure will receive a <code>Illuminate\Database\Query\JoinClause</code> instance which allows you to specify constraints on the "join" clause:</p>
+<pre><code>DB::table('users')
+        -&gt;join('contacts', function ($join) {
+            $join-&gt;on('users.id', '=', 'contacts.user_id')-&gt;orOn(...);
+        })
+        -&gt;get();
+</code></pre>
+<p>If you would like to use a "where" clause on your joins, you may use the <code>where</code> and <code>orWhere</code> methods provided by the <code>JoinClause</code> instance. Instead of comparing two columns, these methods will compare the column against a value:</p>
+<pre><code>DB::table('users')
+        -&gt;join('contacts', function ($join) {
+            $join-&gt;on('users.id', '=', 'contacts.user_id')
+                 -&gt;where('contacts.user_id', '&gt;', 5);
+        })
+        -&gt;get();
+</code></pre>
+<p><a name="subquery-joins"></a></p>
+<h4 id="subquery-joins">Subquery Joins</h4>
+<p>You may use the <code>joinSub</code>, <code>leftJoinSub</code>, and <code>rightJoinSub</code> methods to join a query to a subquery. Each of these methods receives three arguments: the subquery, its table alias, and a closure that defines the related columns. In this example, we will retrieve a collection of users where each user record also contains the <code>created_at</code> timestamp of the user's most recently published blog post:</p>
+<pre><code>$latestPosts = DB::table('posts')
+                   -&gt;select('user_id', DB::raw('MAX(created_at) as last_post_created_at'))
+                   -&gt;where('is_published', true)
+                   -&gt;groupBy('user_id');
+
+$users = DB::table('users')
+        -&gt;joinSub($latestPosts, 'latest_posts', function ($join) {
+            $join-&gt;on('users.id', '=', 'latest_posts.user_id');
+        })-&gt;get();
+</code></pre>
+<p><a name="unions"></a></p>
+<h2 id="unions">Unions</h2>
+<p>The query builder also provides a convenient method to "union" two or more queries together. For example, you may create an initial query and use the <code>union</code> method to union it with more queries:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$first = DB::table('users')
+            -&gt;whereNull('first_name');
+
+$users = DB::table('users')
+            -&gt;whereNull('last_name')
+            -&gt;union($first)
+            -&gt;get();
+</code></pre>
+<p>In addition to the <code>union</code> method, the query builder provides a <code>unionAll</code> method. Queries that are combined using the <code>unionAll</code> method will not have their duplicate results removed. The <code>unionAll</code> method has the same method signature as the <code>union</code> method.</p>
+<p><a name="basic-where-clauses"></a></p>
+<h2 id="basic-where-clauses">Basic Where Clauses</h2>
+<p><a name="where-clauses"></a></p>
+<h3 id="where-clauses">Where Clauses</h3>
+<p>You may use the query builder's <code>where</code> method to add "where" clauses to the query. The most basic call to the <code>where</code> method requires three arguments. The first argument is the name of the column. The second argument is an operator, which can be any of the database's supported operators. The third argument is the value to compare against the column's value.</p>
+<p>For example, the following query retrieves users where the value of the <code>votes</code> column is equal to <code>100</code> and the value of the <code>age</code> column is greater than <code>35</code>:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;where('votes', '=', 100)
+                -&gt;where('age', '&gt;', 35)
+                -&gt;get();
+</code></pre>
+<p>For convenience, if you want to verify that a column is <code>=</code> to a given value, you may pass the value as the second argument to the <code>where</code> method. Laravel will assume you would like to use the <code>=</code> operator:</p>
+<pre><code>$users = DB::table('users')-&gt;where('votes', 100)-&gt;get();
+</code></pre>
+<p>As previously mentioned, you may use any operator that is supported by your database system:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;where('votes', '&gt;=', 100)
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;where('votes', '&lt;&gt;', 100)
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;where('name', 'like', 'T%')
+                -&gt;get();
+</code></pre>
+<p>You may also pass an array of conditions to the <code>where</code> function. Each element of the array should be an array containing the three arguments typically passed to the <code>where</code> method:</p>
+<pre><code>$users = DB::table('users')-&gt;where([
+    ['status', '=', '1'],
+    ['subscribed', '&lt;&gt;', '1'],
+])-&gt;get();
+</code></pre>
+<blockquote>
+<p>{note} PDO does not support binding column names. Therefore, you should never allow user input to dictate the column names referenced by your queries, including "order by" columns.</p>
+</blockquote>
+<p><a name="or-where-clauses"></a></p>
+<h3 id="or-where-clauses">Or Where Clauses</h3>
+<p>When chaining together calls to the query builder's <code>where</code> method, the "where" clauses will be joined together using the <code>and</code> operator. However, you may use the <code>orWhere</code> method to join a clause to the query using the <code>or</code> operator. The <code>orWhere</code> method accepts the same arguments as the <code>where</code> method:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;where('votes', '&gt;', 100)
+                    -&gt;orWhere('name', 'John')
+                    -&gt;get();
+</code></pre>
+<p>If you need to group an "or" condition within parentheses, you may pass a closure as the first argument to the <code>orWhere</code> method:</p>
+<pre><code>$users = DB::table('users')
+            -&gt;where('votes', '&gt;', 100)
+            -&gt;orWhere(function($query) {
+                $query-&gt;where('name', 'Abigail')
+                      -&gt;where('votes', '&gt;', 50);
+            })
+            -&gt;get();
+</code></pre>
+<p>The example above will produce the following SQL:</p>
+<pre><code class="language-sql">select * from users where votes &gt; 100 or (name = 'Abigail' and votes &gt; 50)
+</code></pre>
+<blockquote>
+<p>{note} You should always group <code>orWhere</code> calls in order to avoid unexpected behavior when global scopes are applied.</p>
+</blockquote>
+<p><a name="json-where-clauses"></a></p>
+<h3 id="json-where-clauses">JSON Where Clauses</h3>
+<p>Laravel also supports querying JSON column types on databases that provide support for JSON column types. Currently, this includes MySQL 5.7+, PostgreSQL, SQL Server 2016, and SQLite 3.9.0 (with the <a href="https://www.sqlite.org/json1.html">JSON1 extension</a>). To query a JSON column, use the <code>-&gt;</code> operator:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;where('preferences-&gt;dining-&gt;meal', 'salad')
+                -&gt;get();
+</code></pre>
+<p>You may use <code>whereJsonContains</code> to query JSON arrays. This feature is not supported by the SQLite database:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereJsonContains('options-&gt;languages', 'en')
+                -&gt;get();
+</code></pre>
+<p>If your application uses the MySQL or PostgreSQL databases, you may pass an array of values to the <code>whereJsonContains</code> method:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereJsonContains('options-&gt;languages', ['en', 'de'])
+                -&gt;get();
+</code></pre>
+<p>You may use <code>whereJsonLength</code> method to query JSON arrays by their length:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereJsonLength('options-&gt;languages', 0)
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;whereJsonLength('options-&gt;languages', '&gt;', 1)
+                -&gt;get();
+</code></pre>
+<p><a name="additional-where-clauses"></a></p>
+<h3 id="additional-where-clauses">Additional Where Clauses</h3>
+<p><strong>whereBetween / orWhereBetween</strong></p>
+<p>The <code>whereBetween</code> method verifies that a column's value is between two values:</p>
+<pre><code>$users = DB::table('users')
+           -&gt;whereBetween('votes', [1, 100])
+           -&gt;get();
+</code></pre>
+<p><strong>whereNotBetween / orWhereNotBetween</strong></p>
+<p>The <code>whereNotBetween</code> method verifies that a column's value lies outside of two values:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereNotBetween('votes', [1, 100])
+                    -&gt;get();
+</code></pre>
+<p><strong>whereIn / whereNotIn / orWhereIn / orWhereNotIn</strong></p>
+<p>The <code>whereIn</code> method verifies that a given column's value is contained within the given array:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereIn('id', [1, 2, 3])
+                    -&gt;get();
+</code></pre>
+<p>The <code>whereNotIn</code> method verifies that the given column's value is not contained in the given array:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereNotIn('id', [1, 2, 3])
+                    -&gt;get();
+</code></pre>
+<blockquote>
+<p>{note} If you are adding a large array of integer bindings to your query, the <code>whereIntegerInRaw</code> or <code>whereIntegerNotInRaw</code> methods may be used to greatly reduce your memory usage.</p>
+</blockquote>
+<p><strong>whereNull / whereNotNull / orWhereNull / orWhereNotNull</strong></p>
+<p>The <code>whereNull</code> method verifies that the value of the given column is <code>NULL</code>:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereNull('updated_at')
+                -&gt;get();
+</code></pre>
+<p>The <code>whereNotNull</code> method verifies that the column's value is not <code>NULL</code>:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereNotNull('updated_at')
+                -&gt;get();
+</code></pre>
+<p><strong>whereDate / whereMonth / whereDay / whereYear / whereTime</strong></p>
+<p>The <code>whereDate</code> method may be used to compare a column's value against a date:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereDate('created_at', '2016-12-31')
+                -&gt;get();
+</code></pre>
+<p>The <code>whereMonth</code> method may be used to compare a column's value against a specific month:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereMonth('created_at', '12')
+                -&gt;get();
+</code></pre>
+<p>The <code>whereDay</code> method may be used to compare a column's value against a specific day of the month:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereDay('created_at', '31')
+                -&gt;get();
+</code></pre>
+<p>The <code>whereYear</code> method may be used to compare a column's value against a specific year:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereYear('created_at', '2016')
+                -&gt;get();
+</code></pre>
+<p>The <code>whereTime</code> method may be used to compare a column's value against a specific time:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereTime('created_at', '=', '11:20:45')
+                -&gt;get();
+</code></pre>
+<p><strong>whereColumn / orWhereColumn</strong></p>
+<p>The <code>whereColumn</code> method may be used to verify that two columns are equal:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereColumn('first_name', 'last_name')
+                -&gt;get();
+</code></pre>
+<p>You may also pass a comparison operator to the <code>whereColumn</code> method:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereColumn('updated_at', '&gt;', 'created_at')
+                -&gt;get();
+</code></pre>
+<p>You may also pass an array of column comparisons to the <code>whereColumn</code> method. These conditions will be joined using the <code>and</code> operator:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereColumn([
+                    ['first_name', '=', 'last_name'],
+                    ['updated_at', '&gt;', 'created_at'],
+                ])-&gt;get();
+</code></pre>
+<p><a name="logical-grouping"></a></p>
+<h3 id="logical-grouping">Logical Grouping</h3>
+<p>Sometimes you may need to group several "where" clauses within parentheses in order to achieve your query's desired logical grouping. In fact, you should generally always group calls to the <code>orWhere</code> method in parentheses in order to avoid unexpected query behavior. To accomplish this, you may pass a closure to the <code>where</code> method:</p>
+<pre><code>$users = DB::table('users')
+           -&gt;where('name', '=', 'John')
+           -&gt;where(function ($query) {
+               $query-&gt;where('votes', '&gt;', 100)
+                     -&gt;orWhere('title', '=', 'Admin');
+           })
+           -&gt;get();
+</code></pre>
+<p>As you can see, passing a closure into the <code>where</code> method instructs the query builder to begin a constraint group. The closure will receive a query builder instance which you can use to set the constraints that should be contained within the parenthesis group. The example above will produce the following SQL:</p>
+<pre><code class="language-sql">select * from users where name = 'John' and (votes &gt; 100 or title = 'Admin')
+</code></pre>
+<blockquote>
+<p>{note} You should always group <code>orWhere</code> calls in order to avoid unexpected behavior when global scopes are applied.</p>
+</blockquote>
+<p><a name="advanced-where-clauses"></a></p>
+<h3 id="advanced-where-clauses">Advanced Where Clauses</h3>
+<p><a name="where-exists-clauses"></a></p>
+<h3 id="where-exists-clauses">Where Exists Clauses</h3>
+<p>The <code>whereExists</code> method allows you to write "where exists" SQL clauses. The <code>whereExists</code> method accepts a closure which will receive a query builder instance, allowing you to define the query that should be placed inside of the "exists" clause:</p>
+<pre><code>$users = DB::table('users')
+           -&gt;whereExists(function ($query) {
+               $query-&gt;select(DB::raw(1))
+                     -&gt;from('orders')
+                     -&gt;whereColumn('orders.user_id', 'users.id');
+           })
+           -&gt;get();
+</code></pre>
+<p>The query above will produce the following SQL:</p>
+<pre><code class="language-sql">select * from users
+where exists (
+    select 1
+    from orders
+    where orders.user_id = users.id
+)
+</code></pre>
+<p><a name="subquery-where-clauses"></a></p>
+<h3 id="subquery-where-clauses">Subquery Where Clauses</h3>
+<p>Sometimes you may need to construct a "where" clause that compares the results of a subquery to a given value. You may accomplish this by passing a closure and a value to the <code>where</code> method. For example, the following query will retrieve all users who have a recent "membership" of a given type;</p>
+<pre><code>use App\Models\User;
+
+$users = User::where(function ($query) {
+    $query-&gt;select('type')
+        -&gt;from('membership')
+        -&gt;whereColumn('membership.user_id', 'users.id')
+        -&gt;orderByDesc('membership.start_date')
+        -&gt;limit(1);
+}, 'Pro')-&gt;get();
+</code></pre>
+<p>Or, you may need to construct a "where" clause that compares a column to the results of a subquery. You may accomplish this by passing a column, operator, and closure to the <code>where</code> method. For example, the following query will retrieve all income records where the amount is less than average;</p>
+<pre><code>use App\Models\Income;
+
+$incomes = Income::where('amount', '&lt;', function ($query) {
+    $query-&gt;selectRaw('avg(i.amount)')-&gt;from('incomes as i');
+})-&gt;get();
+</code></pre>
+<p><a name="ordering-grouping-limit-and-offset"></a></p>
+<h2 id="ordering-grouping-limit-offset">Ordering, Grouping, Limit &amp; Offset</h2>
+<p><a name="ordering"></a></p>
+<h3 id="ordering">Ordering</h3>
+<p><a name="orderby"></a></p>
+<h4 id="the-orderby-method">The <code>orderBy</code> Method</h4>
+<p>The <code>orderBy</code> method allows you to sort the results of the query by a given column. The first argument accepted by the <code>orderBy</code> method should be the column you wish to sort by, while the second argument determines the direction of the sort and may be either <code>asc</code> or <code>desc</code>:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;orderBy('name', 'desc')
+                -&gt;get();
+</code></pre>
+<p>To sort by multiple columns, you may simply invoke <code>orderBy</code> as many times as necessary:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;orderBy('name', 'desc')
+                -&gt;orderBy('email', 'asc')
+                -&gt;get();
+</code></pre>
+<p><a name="latest-oldest"></a></p>
+<h4 id="the-latest-oldest-methods">The <code>latest</code> &amp; <code>oldest</code> Methods</h4>
+<p>The <code>latest</code> and <code>oldest</code> methods allow you to easily order results by date. By default, the result will be ordered by the table's <code>created_at</code> column. Or, you may pass the column name that you wish to sort by:</p>
+<pre><code>$user = DB::table('users')
+                -&gt;latest()
+                -&gt;first();
+</code></pre>
+<p><a name="random-ordering"></a></p>
+<h4 id="random-ordering">Random Ordering</h4>
+<p>The <code>inRandomOrder</code> method may be used to sort the query results randomly. For example, you may use this method to fetch a random user:</p>
+<pre><code>$randomUser = DB::table('users')
+                -&gt;inRandomOrder()
+                -&gt;first();
+</code></pre>
+<p><a name="removing-existing-orderings"></a></p>
+<h4 id="removing-existing-orderings">Removing Existing Orderings</h4>
+<p>The <code>reorder</code> method removes all of the "order by" clauses that have previously been applied to the query:</p>
+<pre><code>$query = DB::table('users')-&gt;orderBy('name');
+
+$unorderedUsers = $query-&gt;reorder()-&gt;get();
+</code></pre>
+<p>You may pass a column and direction when calling the <code>reorder</code> method in order to remove all existing "order by" clauses and apply an entirely new order to the query:</p>
+<pre><code>$query = DB::table('users')-&gt;orderBy('name');
+
+$usersOrderedByEmail = $query-&gt;reorder('email', 'desc')-&gt;get();
+</code></pre>
+<p><a name="grouping"></a></p>
+<h3 id="grouping">Grouping</h3>
+<p><a name="groupby-having"></a></p>
+<h4 id="the-groupby-having-methods">The <code>groupBy</code> &amp; <code>having</code> Methods</h4>
+<p>As you might expect, the <code>groupBy</code> and <code>having</code> methods may be used to group the query results. The <code>having</code> method's signature is similar to that of the <code>where</code> method:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;groupBy('account_id')
+                -&gt;having('account_id', '&gt;', 100)
+                -&gt;get();
+</code></pre>
+<p>You may pass multiple arguments to the <code>groupBy</code> method to group by multiple columns:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;groupBy('first_name', 'status')
+                -&gt;having('account_id', '&gt;', 100)
+                -&gt;get();
+</code></pre>
+<p>To build more advanced <code>having</code> statements, see the <a href="#raw-methods"><code>havingRaw</code></a> method.</p>
+<p><a name="limit-and-offset"></a></p>
+<h3 id="limit-offset">Limit &amp; Offset</h3>
+<p><a name="skip-take"></a></p>
+<h4 id="the-skip-take-methods">The <code>skip</code> &amp; <code>take</code> Methods</h4>
+<p>You may use the <code>skip</code> and <code>take</code> methods to limit the number of results returned from the query or to skip a given number of results in the query:</p>
+<pre><code>$users = DB::table('users')-&gt;skip(10)-&gt;take(5)-&gt;get();
+</code></pre>
+<p>Alternatively, you may use the <code>limit</code> and <code>offset</code> methods. These methods are functionally equivalent to the <code>take</code> and <code>skip</code> methods, respectively:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;offset(10)
+                -&gt;limit(5)
+                -&gt;get();
+</code></pre>
+<p><a name="conditional-clauses"></a></p>
+<h2 id="conditional-clauses">Conditional Clauses</h2>
+<p>Sometimes you may want certain query clauses to apply to a query based on another condition. For instance, you may only want to apply a <code>where</code> statement if a given input value is present on the incoming HTTP request. You may accomplish this using the <code>when</code> method:</p>
+<pre><code>$role = $request-&gt;input('role');
+
+$users = DB::table('users')
+                -&gt;when($role, function ($query, $role) {
+                    return $query-&gt;where('role_id', $role);
+                })
+                -&gt;get();
+</code></pre>
+<p>The <code>when</code> method only executes the given closure when the first argument is <code>true</code>. If the first argument is <code>false</code>, the closure will not be executed. So, in the example above, the closure given to the <code>when</code> method will only be invoked if the <code>role</code> field is present on the incoming request and evaluates to <code>true</code>.</p>
+<p>You may pass another closure as the third argument to the <code>when</code> method. This closure will only execute if the first argument evaluates as <code>false</code>. To illustrate how this feature may be used, we will use it to configure the default ordering of a query:</p>
+<pre><code>$sortByVotes = $request-&gt;input('sort_by_votes');
+
+$users = DB::table('users')
+                -&gt;when($sortByVotes, function ($query, $sortByVotes) {
+                    return $query-&gt;orderBy('votes');
+                }, function ($query) {
+                    return $query-&gt;orderBy('name');
+                })
+                -&gt;get();
+</code></pre>
+<p><a name="insert-statements"></a></p>
+<h2 id="insert-statements">Insert Statements</h2>
+<p>The query builder also provides an <code>insert</code> method that may be used to insert records into the database table. The <code>insert</code> method accepts an array of column names and values:</p>
+<pre><code>DB::table('users')-&gt;insert([
+    'email' =&gt; 'kayla@example.com',
+    'votes' =&gt; 0
+]);
+</code></pre>
+<p>You may insert several records at once by passing an array of arrays. Each array represents a record that should be inserted into the table:</p>
+<pre><code>DB::table('users')-&gt;insert([
+    ['email' =&gt; 'picard@example.com', 'votes' =&gt; 0],
+    ['email' =&gt; 'janeway@example.com', 'votes' =&gt; 0],
+]);
+</code></pre>
+<p>The <code>insertOrIgnore</code> method will ignore duplicate record errors while inserting records into the database:</p>
+<pre><code>DB::table('users')-&gt;insertOrIgnore([
+    ['id' =&gt; 1, 'email' =&gt; 'sisko@example.com'],
+    ['id' =&gt; 2, 'email' =&gt; 'archer@example.com'],
+]);
+</code></pre>
+<p><a name="auto-incrementing-ids"></a></p>
+<h4 id="auto-incrementing-ids">Auto-Incrementing IDs</h4>
+<p>If the table has an auto-incrementing id, use the <code>insertGetId</code> method to insert a record and then retrieve the ID:</p>
+<pre><code>$id = DB::table('users')-&gt;insertGetId(
+    ['email' =&gt; 'john@example.com', 'votes' =&gt; 0]
+);
+</code></pre>
+<blockquote>
+<p>{note} When using PostgreSQL the <code>insertGetId</code> method expects the auto-incrementing column to be named <code>id</code>. If you would like to retrieve the ID from a different "sequence", you may pass the column name as the second parameter to the <code>insertGetId</code> method.</p>
+</blockquote>
+<p><a name="upserts"></a></p>
+<h3 id="upserts">Upserts</h3>
+<p>The <code>upsert</code> method will insert records that do not exist and update the records that already exist with new values that you may specify. The method's first argument consists of the values to insert or update, while the second argument lists the column(s) that uniquely identify records within the associated table. The method's third and final argument is an array of columns that should be updated if a matching record already exists in the database:</p>
+<pre><code>DB::table('flights')-&gt;upsert([
+    ['departure' =&gt; 'Oakland', 'destination' =&gt; 'San Diego', 'price' =&gt; 99],
+    ['departure' =&gt; 'Chicago', 'destination' =&gt; 'New York', 'price' =&gt; 150]
+], ['departure', 'destination'], ['price']);
+</code></pre>
+<p>In the example above, Laravel will attempt to insert two records. If a record already exists with the same <code>departure</code> and <code>destination</code> column values, Laravel will update that record's <code>price</code> column.</p>
+<blockquote>
+<p>{note} All databases except SQL Server require the columns in the second argument of the <code>upsert</code> method to have a "primary" or "unique" index. In addition, the MySQL database driver ignores the second argument of the <code>upsert</code> method and always uses the "primary" and "unique" indexes of the table to detect existing records.</p>
+</blockquote>
+<p><a name="update-statements"></a></p>
+<h2 id="update-statements">Update Statements</h2>
+<p>In addition to inserting records into the database, the query builder can also update existing records using the <code>update</code> method. The <code>update</code> method, like the <code>insert</code> method, accepts an array of column and value pairs indicating the columns to be updated. You may constrain the <code>update</code> query using <code>where</code> clauses:</p>
+<pre><code>$affected = DB::table('users')
+              -&gt;where('id', 1)
+              -&gt;update(['votes' =&gt; 1]);
+</code></pre>
+<p><a name="update-or-insert"></a></p>
+<h4 id="update-or-insert">Update Or Insert</h4>
+<p>Sometimes you may want to update an existing record in the database or create it if no matching record exists. In this scenario, the <code>updateOrInsert</code> method may be used. The <code>updateOrInsert</code> method accepts two arguments: an array of conditions by which to find the record, and an array of column and value pairs indicating the columns to be updated.</p>
+<p>The <code>updateOrInsert</code> method will attempt to locate a matching database record using the first argument's column and value pairs. If the record exists, it will be updated with the values in the second argument. If the record can not be found, a new record will be inserted with the merged attributes of both arguments:</p>
+<pre><code>DB::table('users')
+    -&gt;updateOrInsert(
+        ['email' =&gt; 'john@example.com', 'name' =&gt; 'John'],
+        ['votes' =&gt; '2']
+    );
+</code></pre>
+<p><a name="updating-json-columns"></a></p>
+<h3 id="updating-json-columns">Updating JSON Columns</h3>
+<p>When updating a JSON column, you should use <code>-&gt;</code> syntax to update the appropriate key in the JSON object. This operation is supported on MySQL 5.7+ and PostgreSQL 9.5+:</p>
+<pre><code>$affected = DB::table('users')
+              -&gt;where('id', 1)
+              -&gt;update(['options-&gt;enabled' =&gt; true]);
+</code></pre>
+<p><a name="increment-and-decrement"></a></p>
+<h3 id="increment-decrement">Increment &amp; Decrement</h3>
+<p>The query builder also provides convenient methods for incrementing or decrementing the value of a given column. Both of these methods accept at least one argument: the column to modify. A second argument may be provided to specify the amount by which the column should be incremented or decremented:</p>
+<pre><code>DB::table('users')-&gt;increment('votes');
+
+DB::table('users')-&gt;increment('votes', 5);
+
+DB::table('users')-&gt;decrement('votes');
+
+DB::table('users')-&gt;decrement('votes', 5);
+</code></pre>
+<p>You may also specify additional columns to update during the operation:</p>
+<pre><code>DB::table('users')-&gt;increment('votes', 1, ['name' =&gt; 'John']);
+</code></pre>
+<p><a name="delete-statements"></a></p>
+<h2 id="delete-statements">Delete Statements</h2>
+<p>The query builder's <code>delete</code> method may be used to delete records from the table. You may constrain <code>delete</code> statements by adding "where" clauses before calling the <code>delete</code> method:</p>
+<pre><code>DB::table('users')-&gt;delete();
+
+DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;delete();
+</code></pre>
+<p>If you wish to truncate an entire table, which will remove all records from the table and reset the auto-incrementing ID to zero, you may use the <code>truncate</code> method:</p>
+<pre><code>DB::table('users')-&gt;truncate();
+</code></pre>
+<p><a name="table-truncation-and-postgresql"></a></p>
+<h4 id="table-truncation-postgresql">Table Truncation &amp; PostgreSQL</h4>
+<p>When truncating a PostgreSQL database, the <code>CASCADE</code> behavior will be applied. This means that all foreign key related records in other tables will be deleted as well.</p>
+<p><a name="pessimistic-locking"></a></p>
+<h2 id="pessimistic-locking">Pessimistic Locking</h2>
+<p>The query builder also includes a few functions to help you achieve "pessimistic locking" when executing your <code>select</code> statements. To execute a statement with a "shared lock", you may call the <code>sharedLock</code> method. A shared lock prevents the selected rows from being modified until your transaction is committed:</p>
+<pre><code>DB::table('users')
+        -&gt;where('votes', '&gt;', 100)
+        -&gt;sharedLock()
+        -&gt;get();
+</code></pre>
+<p>Alternatively, you may use the <code>lockForUpdate</code> method. A "for update" lock prevents the selected records from being modified or from being selected with another shared lock:</p>
+<pre><code>DB::table('users')
+        -&gt;where('votes', '&gt;', 100)
+        -&gt;lockForUpdate()
+        -&gt;get();
+</code></pre>
+<p><a name="debugging"></a></p>
+<h2 id="debugging">Debugging</h2>
+<p>You may use the <code>dd</code> and <code>dump</code> methods while building a query to dump the current query bindings and SQL. The <code>dd</code> method will display the debug information and then stop executing the request. The <code>dump</code> method will display the debug information but allow the request to continue executing:</p>
+<pre><code>DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;dd();
+
+DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;dump();
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../database/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Boshlash" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Boshlash
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../pagination/" class="md-footer__link md-footer__link--next" aria-label="Next: Paginatsiya" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Paginatsiya
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

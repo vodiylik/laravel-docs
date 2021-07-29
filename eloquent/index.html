@@ -1,0 +1,3963 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/eloquent/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Boshlash - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#eloquent-getting-started" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Boshlash
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Boshlash
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Boshlash
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-model-classes" class="md-nav__link">
+    Generating Model Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eloquent-model-conventions" class="md-nav__link">
+    Eloquent Model Conventions
+  </a>
+  
+    <nav class="md-nav" aria-label="Eloquent Model Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-names" class="md-nav__link">
+    Table Names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-keys" class="md-nav__link">
+    Primary Keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#composite-primary-keys" class="md-nav__link">
+    "Composite" Primary Keys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamps" class="md-nav__link">
+    Timestamps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-connections" class="md-nav__link">
+    Database Connections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-attribute-values" class="md-nav__link">
+    Default Attribute Values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieving-models" class="md-nav__link">
+    Retrieving Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieving Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-queries" class="md-nav__link">
+    Building Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refreshing-models" class="md-nav__link">
+    Refreshing Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collections" class="md-nav__link">
+    Collections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunking-results" class="md-nav__link">
+    Chunking Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-results-lazily" class="md-nav__link">
+    Streaming Results Lazily
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cursors" class="md-nav__link">
+    Cursors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-subqueries" class="md-nav__link">
+    Advanced Subqueries
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Subqueries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subquery-selects" class="md-nav__link">
+    Subquery Selects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subquery-ordering" class="md-nav__link">
+    Subquery Ordering
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieving-single-models-aggregates" class="md-nav__link">
+    Retrieving Single Models / Aggregates
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieving Single Models / Aggregates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-found-exceptions" class="md-nav__link">
+    Not Found Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-or-creating-models" class="md-nav__link">
+    Retrieving Or Creating Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-aggregates" class="md-nav__link">
+    Retrieving Aggregates
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inserting-updating-models" class="md-nav__link">
+    Inserting &amp; Updating Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Inserting &amp; Updating Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inserts" class="md-nav__link">
+    Inserts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updates" class="md-nav__link">
+    Updates
+  </a>
+  
+    <nav class="md-nav" aria-label="Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-updates" class="md-nav__link">
+    Mass Updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examining-attribute-changes" class="md-nav__link">
+    Examining Attribute Changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mass-assignment" class="md-nav__link">
+    Mass Assignment
+  </a>
+  
+    <nav class="md-nav" aria-label="Mass Assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-assignment-json-columns" class="md-nav__link">
+    Mass Assignment &amp; JSON Columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowing-mass-assignment" class="md-nav__link">
+    Allowing Mass Assignment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upserts" class="md-nav__link">
+    Upserts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-models" class="md-nav__link">
+    Deleting Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Deleting Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deleting-an-existing-model-by-its-primary-key" class="md-nav__link">
+    Deleting An Existing Model By Its Primary Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-models-using-queries" class="md-nav__link">
+    Deleting Models Using Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soft-deleting" class="md-nav__link">
+    Soft Deleting
+  </a>
+  
+    <nav class="md-nav" aria-label="Soft Deleting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restoring-soft-deleted-models" class="md-nav__link">
+    Restoring Soft Deleted Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permanently-deleting-models" class="md-nav__link">
+    Permanently Deleting Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-soft-deleted-models" class="md-nav__link">
+    Querying Soft Deleted Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Querying Soft Deleted Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#including-soft-deleted-models" class="md-nav__link">
+    Including Soft Deleted Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-only-soft-deleted-models" class="md-nav__link">
+    Retrieving Only Soft Deleted Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruning-models" class="md-nav__link">
+    Pruning Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Pruning Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-pruning" class="md-nav__link">
+    Mass Pruning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replicating-models" class="md-nav__link">
+    Replicating Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-scopes" class="md-nav__link">
+    Query Scopes
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-scopes" class="md-nav__link">
+    Global Scopes
+  </a>
+  
+    <nav class="md-nav" aria-label="Global Scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-global-scopes" class="md-nav__link">
+    Writing Global Scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-global-scopes" class="md-nav__link">
+    Applying Global Scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anonymous-global-scopes" class="md-nav__link">
+    Anonymous Global Scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-global-scopes" class="md-nav__link">
+    Removing Global Scopes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-scopes" class="md-nav__link">
+    Local Scopes
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizing-a-local-scope" class="md-nav__link">
+    Utilizing A Local Scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-scopes" class="md-nav__link">
+    Dynamic Scopes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-models" class="md-nav__link">
+    Comparing Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-closures" class="md-nav__link">
+    Using Closures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observers" class="md-nav__link">
+    Observers
+  </a>
+  
+    <nav class="md-nav" aria-label="Observers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-observers" class="md-nav__link">
+    Defining Observers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observers-database-transactions" class="md-nav__link">
+    Observers &amp; Database Transactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muting-events" class="md-nav__link">
+    Muting Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Muting Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#saving-a-single-model-without-events" class="md-nav__link">
+    Saving A Single Model Without Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-model-classes" class="md-nav__link">
+    Generating Model Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eloquent-model-conventions" class="md-nav__link">
+    Eloquent Model Conventions
+  </a>
+  
+    <nav class="md-nav" aria-label="Eloquent Model Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#table-names" class="md-nav__link">
+    Table Names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#primary-keys" class="md-nav__link">
+    Primary Keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Primary Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#composite-primary-keys" class="md-nav__link">
+    "Composite" Primary Keys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamps" class="md-nav__link">
+    Timestamps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-connections" class="md-nav__link">
+    Database Connections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-attribute-values" class="md-nav__link">
+    Default Attribute Values
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieving-models" class="md-nav__link">
+    Retrieving Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieving Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-queries" class="md-nav__link">
+    Building Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refreshing-models" class="md-nav__link">
+    Refreshing Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collections" class="md-nav__link">
+    Collections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunking-results" class="md-nav__link">
+    Chunking Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-results-lazily" class="md-nav__link">
+    Streaming Results Lazily
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cursors" class="md-nav__link">
+    Cursors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-subqueries" class="md-nav__link">
+    Advanced Subqueries
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Subqueries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subquery-selects" class="md-nav__link">
+    Subquery Selects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subquery-ordering" class="md-nav__link">
+    Subquery Ordering
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieving-single-models-aggregates" class="md-nav__link">
+    Retrieving Single Models / Aggregates
+  </a>
+  
+    <nav class="md-nav" aria-label="Retrieving Single Models / Aggregates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-found-exceptions" class="md-nav__link">
+    Not Found Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-or-creating-models" class="md-nav__link">
+    Retrieving Or Creating Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-aggregates" class="md-nav__link">
+    Retrieving Aggregates
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inserting-updating-models" class="md-nav__link">
+    Inserting &amp; Updating Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Inserting &amp; Updating Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inserts" class="md-nav__link">
+    Inserts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updates" class="md-nav__link">
+    Updates
+  </a>
+  
+    <nav class="md-nav" aria-label="Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-updates" class="md-nav__link">
+    Mass Updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examining-attribute-changes" class="md-nav__link">
+    Examining Attribute Changes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mass-assignment" class="md-nav__link">
+    Mass Assignment
+  </a>
+  
+    <nav class="md-nav" aria-label="Mass Assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-assignment-json-columns" class="md-nav__link">
+    Mass Assignment &amp; JSON Columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowing-mass-assignment" class="md-nav__link">
+    Allowing Mass Assignment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upserts" class="md-nav__link">
+    Upserts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-models" class="md-nav__link">
+    Deleting Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Deleting Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deleting-an-existing-model-by-its-primary-key" class="md-nav__link">
+    Deleting An Existing Model By Its Primary Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-models-using-queries" class="md-nav__link">
+    Deleting Models Using Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soft-deleting" class="md-nav__link">
+    Soft Deleting
+  </a>
+  
+    <nav class="md-nav" aria-label="Soft Deleting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restoring-soft-deleted-models" class="md-nav__link">
+    Restoring Soft Deleted Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permanently-deleting-models" class="md-nav__link">
+    Permanently Deleting Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-soft-deleted-models" class="md-nav__link">
+    Querying Soft Deleted Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Querying Soft Deleted Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#including-soft-deleted-models" class="md-nav__link">
+    Including Soft Deleted Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-only-soft-deleted-models" class="md-nav__link">
+    Retrieving Only Soft Deleted Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruning-models" class="md-nav__link">
+    Pruning Models
+  </a>
+  
+    <nav class="md-nav" aria-label="Pruning Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-pruning" class="md-nav__link">
+    Mass Pruning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replicating-models" class="md-nav__link">
+    Replicating Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-scopes" class="md-nav__link">
+    Query Scopes
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-scopes" class="md-nav__link">
+    Global Scopes
+  </a>
+  
+    <nav class="md-nav" aria-label="Global Scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-global-scopes" class="md-nav__link">
+    Writing Global Scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-global-scopes" class="md-nav__link">
+    Applying Global Scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anonymous-global-scopes" class="md-nav__link">
+    Anonymous Global Scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-global-scopes" class="md-nav__link">
+    Removing Global Scopes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-scopes" class="md-nav__link">
+    Local Scopes
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizing-a-local-scope" class="md-nav__link">
+    Utilizing A Local Scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-scopes" class="md-nav__link">
+    Dynamic Scopes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-models" class="md-nav__link">
+    Comparing Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-closures" class="md-nav__link">
+    Using Closures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observers" class="md-nav__link">
+    Observers
+  </a>
+  
+    <nav class="md-nav" aria-label="Observers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-observers" class="md-nav__link">
+    Defining Observers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observers-database-transactions" class="md-nav__link">
+    Observers &amp; Database Transactions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muting-events" class="md-nav__link">
+    Muting Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Muting Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#saving-a-single-model-without-events" class="md-nav__link">
+    Saving A Single Model Without Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="eloquent-getting-started">Eloquent: Getting Started</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#generating-model-classes">Generating Model Classes</a></li>
+<li><a href="#eloquent-model-conventions">Eloquent Model Conventions</a><ul>
+<li><a href="#table-names">Table Names</a></li>
+<li><a href="#primary-keys">Primary Keys</a></li>
+<li><a href="#timestamps">Timestamps</a></li>
+<li><a href="#database-connections">Database Connections</a></li>
+<li><a href="#default-attribute-values">Default Attribute Values</a></li>
+</ul>
+</li>
+<li><a href="#retrieving-models">Retrieving Models</a><ul>
+<li><a href="#collections">Collections</a></li>
+<li><a href="#chunking-results">Chunking Results</a></li>
+<li><a href="#streaming-results-lazily">Streaming Results Lazily</a></li>
+<li><a href="#cursors">Cursors</a></li>
+<li><a href="#advanced-subqueries">Advanced Subqueries</a></li>
+</ul>
+</li>
+<li><a href="#retrieving-single-models">Retrieving Single Models / Aggregates</a><ul>
+<li><a href="#retrieving-or-creating-models">Retrieving Or Creating Models</a></li>
+<li><a href="#retrieving-aggregates">Retrieving Aggregates</a></li>
+</ul>
+</li>
+<li><a href="#inserting-and-updating-models">Inserting &amp; Updating Models</a><ul>
+<li><a href="#inserts">Inserts</a></li>
+<li><a href="#updates">Updates</a></li>
+<li><a href="#mass-assignment">Mass Assignment</a></li>
+<li><a href="#upserts">Upserts</a></li>
+</ul>
+</li>
+<li><a href="#deleting-models">Deleting Models</a><ul>
+<li><a href="#soft-deleting">Soft Deleting</a></li>
+<li><a href="#querying-soft-deleted-models">Querying Soft Deleted Models</a></li>
+</ul>
+</li>
+<li><a href="#pruning-models">Pruning Models</a></li>
+<li><a href="#replicating-models">Replicating Models</a></li>
+<li><a href="#query-scopes">Query Scopes</a><ul>
+<li><a href="#global-scopes">Global Scopes</a></li>
+<li><a href="#local-scopes">Local Scopes</a></li>
+</ul>
+</li>
+<li><a href="#comparing-models">Comparing Models</a></li>
+<li><a href="#events">Events</a><ul>
+<li><a href="#events-using-closures">Using Closures</a></li>
+<li><a href="#observers">Observers</a></li>
+<li><a href="#muting-events">Muting Events</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel includes Eloquent, an object-relational mapper (ORM) that makes it enjoyable to interact with your database. When using Eloquent, each database table has a corresponding "Model" that is used to interact with that table. In addition to retrieving records from the database table, Eloquent models allow you to insert, update, and delete records from the table as well.</p>
+<blockquote>
+<p>{tip} Before getting started, be sure to configure a database connection in your application's <code>config/database.php</code> configuration file. For more information on configuring your database, check out <a href="/docs/{{version}}/database#configuration">the database configuration documentation</a>.</p>
+</blockquote>
+<p><a name="generating-model-classes"></a></p>
+<h2 id="generating-model-classes">Generating Model Classes</h2>
+<p>To get started, let's create an Eloquent model. Models typically live in the <code>app\Models</code> directory and extend the <code>Illuminate\Database\Eloquent\Model</code> class. You may use the <code>make:model</code> <a href="/docs/{{version}}/artisan">Artisan command</a> to generate a new model:</p>
+<pre><code>php artisan make:model Flight
+</code></pre>
+<p>If you would like to generate a <a href="/docs/{{version}}/migrations">database migration</a> when you generate the model, you may use the <code>--migration</code> or <code>-m</code> option:</p>
+<pre><code>php artisan make:model Flight --migration
+</code></pre>
+<p>You may generate various other types of classes when generating a model, such as factories, seeders, and controllers. In addition, these options may be combined to create multiple classes at once:</p>
+<pre><code class="language-bash"># Generate a model and a FlightFactory class...
+php artisan make:model Flight --factory
+php artisan make:model Flight -f
+
+# Generate a model and a FlightSeeder class...
+php artisan make:model Flight --seed
+php artisan make:model Flight -s
+
+# Generate a model and a FlightController class...
+php artisan make:model Flight --controller
+php artisan make:model Flight -c
+
+# Generate a model and a migration, factory, seeder, and controller...
+php artisan make:model Flight -mfsc
+
+# Shortcut to generate a model, migration, factory, seeder, and controller...
+php artisan make:model Flight --all
+
+# Generate a pivot model...
+php artisan make:model Member --pivot
+</code></pre>
+<p><a name="eloquent-model-conventions"></a></p>
+<h2 id="eloquent-model-conventions">Eloquent Model Conventions</h2>
+<p>Models generated by the <code>make:model</code> command will be placed in the <code>app/Models</code> directory. Let's examine a basic model class and discuss some of Eloquent's key conventions:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    //
+}
+</code></pre>
+<p><a name="table-names"></a></p>
+<h3 id="table-names">Table Names</h3>
+<p>After glancing at the example above, you may have noticed that we did not tell Eloquent which database table corresponds to our <code>Flight</code> model. By convention, the "snake case", plural name of the class will be used as the table name unless another name is explicitly specified. So, in this case, Eloquent will assume the <code>Flight</code> model stores records in the <code>flights</code> table, while an <code>AirTrafficController</code> model would store records in an <code>air_traffic_controllers</code> table.</p>
+<p>If your model's corresponding database table does not fit this convention, you may manually specify the model's table name by defining a <code>table</code> property on the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'my_flights';
+}
+</code></pre>
+<p><a name="primary-keys"></a></p>
+<h3 id="primary-keys">Primary Keys</h3>
+<p>Eloquent will also assume that each model's corresponding database table has a primary key column named <code>id</code>. If necessary, you may define a protected <code>$primaryKey</code> property on your model to specify a different column that serves as your model's primary key:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'flight_id';
+}
+</code></pre>
+<p>In addition, Eloquent assumes that the primary key is an incrementing integer value, which means that Eloquent will automatically cast the primary key to an integer. If you wish to use a non-incrementing or a non-numeric primary key you must define a public <code>$incrementing</code> property on your model that is set to <code>false</code>:</p>
+<pre><code>&lt;?php
+
+class Flight extends Model
+{
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+}
+</code></pre>
+<p>If your model's primary key is not an integer, you should define a protected <code>$keyType</code> property on your model. This property should have a value of <code>string</code>:</p>
+<pre><code>&lt;?php
+
+class Flight extends Model
+{
+    /**
+     * The data type of the auto-incrementing ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+}
+</code></pre>
+<p><a name="composite-primary-keys"></a></p>
+<h4 id="composite-primary-keys">"Composite" Primary Keys</h4>
+<p>Eloquent requires each model to have at least one uniquely identifying "ID" that can serve as its primary key. "Composite" primary keys are not supported by Eloquent models. However, you are free to add additional multi-column, unique indexes to your database tables in addition to the table's uniquely identifying primary key.</p>
+<p><a name="timestamps"></a></p>
+<h3 id="timestamps">Timestamps</h3>
+<p>By default, Eloquent expects <code>created_at</code> and <code>updated_at</code> columns to exist on your model's corresponding database table.  Eloquent will automatically set these column's values when models are created or updated. If you do not want these columns to be automatically managed by Eloquent, you should define a <code>$timestamps</code> property on your model with a value of <code>false</code>:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+}
+</code></pre>
+<p>If you need to customize the format of your model's timestamps, set the <code>$dateFormat</code> property on your model. This property determines how date attributes are stored in the database as well as their format when the model is serialized to an array or JSON:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The storage format of the model's date columns.
+     *
+     * @var string
+     */
+    protected $dateFormat = 'U';
+}
+</code></pre>
+<p>If you need to customize the names of the columns used to store the timestamps, you may define <code>CREATED_AT</code> and <code>UPDATED_AT</code> constants on your model:</p>
+<pre><code>&lt;?php
+
+class Flight extends Model
+{
+    const CREATED_AT = 'creation_date';
+    const UPDATED_AT = 'updated_date';
+}
+</code></pre>
+<p><a name="database-connections"></a></p>
+<h3 id="database-connections">Database Connections</h3>
+<p>By default, all Eloquent models will use the default database connection that is configured for your application. If you would like to specify a different connection that should be used when interacting with a particular model, you should define a <code>$connection</code> property on the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The database connection that should be used by the model.
+     *
+     * @var string
+     */
+    protected $connection = 'sqlite';
+}
+</code></pre>
+<p><a name="default-attribute-values"></a></p>
+<h3 id="default-attribute-values">Default Attribute Values</h3>
+<p>By default, a newly instantiated model instance will not contain any attribute values. If you would like to define the default values for some of your model's attributes, you may define an <code>$attributes</code> property on your model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'delayed' =&gt; false,
+    ];
+}
+</code></pre>
+<p><a name="retrieving-models"></a></p>
+<h2 id="retrieving-models">Retrieving Models</h2>
+<p>Once you have created a model and <a href="/docs/{{version}}/migrations#writing-migrations">its associated database table</a>, you are ready to start retrieving data from your database. You can think of each Eloquent model as a powerful <a href="/docs/{{version}}/queries">query builder</a> allowing you to fluently query the database table associated with the model. The model's <code>all</code> method will retrieve all of the records from the model's associated database table:</p>
+<pre><code>use App\Models\Flight;
+
+foreach (Flight::all() as $flight) {
+    echo $flight-&gt;name;
+}
+</code></pre>
+<p><a name="building-queries"></a></p>
+<h4 id="building-queries">Building Queries</h4>
+<p>The Eloquent <code>all</code> method will return all of the results in the model's table. However, since each Eloquent model serves as a <a href="/docs/{{version}}/queries">query builder</a>, you may add additional constraints to queries and then invoke the <code>get</code> method to retrieve the results:</p>
+<pre><code>$flights = Flight::where('active', 1)
+               -&gt;orderBy('name')
+               -&gt;take(10)
+               -&gt;get();
+</code></pre>
+<blockquote>
+<p>{tip} Since Eloquent models are query builders, you should review all of the methods provided by Laravel's <a href="/docs/{{version}}/queries">query builder</a>. You may use any of these methods when writing your Eloquent queries.</p>
+</blockquote>
+<p><a name="refreshing-models"></a></p>
+<h4 id="refreshing-models">Refreshing Models</h4>
+<p>If you already have an instance of an Eloquent model that was retrieved from the database, you can "refresh" the model using the <code>fresh</code> and <code>refresh</code> methods. The <code>fresh</code> method will re-retrieve the model from the database. The existing model instance will not be affected:</p>
+<pre><code>$flight = Flight::where('number', 'FR 900')-&gt;first();
+
+$freshFlight = $flight-&gt;fresh();
+</code></pre>
+<p>The <code>refresh</code> method will re-hydrate the existing model using fresh data from the database. In addition, all of its loaded relationships will be refreshed as well:</p>
+<pre><code>$flight = Flight::where('number', 'FR 900')-&gt;first();
+
+$flight-&gt;number = 'FR 456';
+
+$flight-&gt;refresh();
+
+$flight-&gt;number; // "FR 900"
+</code></pre>
+<p><a name="collections"></a></p>
+<h3 id="collections">Collections</h3>
+<p>As we have seen, Eloquent methods like <code>all</code> and <code>get</code> retrieve multiple records from the database. However, these methods don't return a plain PHP array. Instead, an instance of <code>Illuminate\Database\Eloquent\Collection</code> is returned.</p>
+<p>The Eloquent <code>Collection</code> class extends Laravel's base <code>Illuminate\Support\Collection</code> class, which provides a <a href="/docs/{{version}}/collections#available-methods">variety of helpful methods</a> for interacting with data collections. For example, the <code>reject</code> method may be used to remove models from a collection based on the results of an invoked closure:</p>
+<pre><code class="language-php">$flights = Flight::where('destination', 'Paris')-&gt;get();
+
+$flights = $flights-&gt;reject(function ($flight) {
+    return $flight-&gt;cancelled;
+});
+</code></pre>
+<p>In addition to the methods provided by Laravel's base collection class, the Eloquent collection class provides <a href="/docs/{{version}}/eloquent-collections#available-methods">a few extra methods</a> that are specifically intended for interacting with collections of Eloquent models.</p>
+<p>Since all of Laravel's collections implement PHP's iterable interfaces, you may loop over collections as if they were an array:</p>
+<pre><code class="language-php">foreach ($flights as $flight) {
+    echo $flight-&gt;name;
+}
+</code></pre>
+<p><a name="chunking-results"></a></p>
+<h3 id="chunking-results">Chunking Results</h3>
+<p>Your application may run out of memory if you attempt to load tens of thousands of Eloquent records via the <code>all</code> or <code>get</code> methods. Instead of using these methods, the <code>chunk</code> method may be used to process large numbers of models more efficiently.</p>
+<p>The <code>chunk</code> method will retrieve a subset of Eloquent models, passing them to a closure for processing. Since only the current chunk of Eloquent models is retrieved at a time, the <code>chunk</code> method will provide significantly reduced memory usage when working with a large number of models:</p>
+<pre><code class="language-php">use App\Models\Flight;
+
+Flight::chunk(200, function ($flights) {
+    foreach ($flights as $flight) {
+        //
+    }
+});
+</code></pre>
+<p>The first argument passed to the <code>chunk</code> method is the number of records you wish to receive per "chunk". The closure passed as the second argument will be invoked for each chunk that is retrieved from the database. A database query will be executed to retrieve each chunk of records passed to the closure.</p>
+<p>If you are filtering the results of the <code>chunk</code> method based on a column that you will also be updating while iterating over the results, you should use the <code>chunkById</code> method. Using the <code>chunk</code> method in these scenarios could lead to unexpected and inconsistent results. Internally, the <code>chunkById</code> method will always retrieve models with an <code>id</code> column greater than the last model in the previous chunk:</p>
+<pre><code class="language-php">Flight::where('departed', true)
+    -&gt;chunkById(200, function ($flights) {
+        $flights-&gt;each-&gt;update(['departed' =&gt; false]);
+    }, $column = 'id');
+</code></pre>
+<p><a name="streaming-results-lazily"></a></p>
+<h3 id="streaming-results-lazily">Streaming Results Lazily</h3>
+<p>The <code>lazy</code> method works similarly to <a href="#chunking-results">the <code>chunk</code> method</a> in the sense that, behind the scenes, it executes the query in chunks. However, instead of passing each chunk directly into a callback as is, the <code>lazy</code> method returns a flattened <a href="/docs/{{version}}/collections#lazy-collections"><code>LazyCollection</code></a> of Eloquent models, which lets you interact with the results as a single stream:</p>
+<pre><code class="language-php">use App\Models\Flight;
+
+foreach (Flight::lazy() as $flight) {
+    //
+}
+</code></pre>
+<p>If you are filtering the results of the <code>lazy</code> method based on a column that you will also be updating while iterating over the results, you should use the <code>lazyById</code> method. Internally, the <code>lazyById</code> method will always retrieve models with an <code>id</code> column greater than the last model in the previous chunk:</p>
+<pre><code class="language-php">Flight::where('departed', true)
+    -&gt;lazyById(200, $column = 'id')
+    -&gt;each-&gt;update(['departed' =&gt; false]);
+</code></pre>
+<p><a name="cursors"></a></p>
+<h3 id="cursors">Cursors</h3>
+<p>Similar to the <code>lazy</code> method, the <code>cursor</code> method may be used to significantly reduce your application's memory consumption when iterating through tens of thousands of Eloquent model records.</p>
+<p>The <code>cursor</code> method will only execute a single database query; however, the individual Eloquent models will not be hydrated until they are actually iterated over. Therefore, only one Eloquent model is kept in memory at any given time while iterating over the cursor.</p>
+<blockquote>
+<p>{note} Since the <code>cursor</code> method only ever holds a single Eloquent model in memory at a time, it cannot eager load relationships. If you need to eager load relationships, consider using <a href="#streaming-results-lazily">the <code>lazy</code> method</a> instead.</p>
+</blockquote>
+<p>Internally, the <code>cursor</code> method uses PHP <a href="https://www.php.net/manual/en/language.generators.overview.php">generators</a> to implement this functionality:</p>
+<pre><code class="language-php">use App\Models\Flight;
+
+foreach (Flight::where('destination', 'Zurich')-&gt;cursor() as $flight) {
+    //
+}
+</code></pre>
+<p>The <code>cursor</code> returns an <code>Illuminate\Support\LazyCollection</code> instance. <a href="/docs/{{version}}/collections#lazy-collections">Lazy collections</a> allow you to use many of the collection methods available on typical Laravel collections while only loading a single model into memory at a time:</p>
+<pre><code class="language-php">use App\Models\User;
+
+$users = User::cursor()-&gt;filter(function ($user) {
+    return $user-&gt;id &gt; 500;
+});
+
+foreach ($users as $user) {
+    echo $user-&gt;id;
+}
+</code></pre>
+<p>Although the <code>cursor</code> method uses far less memory than a regular query (by only holding a single Eloquent model in memory at a time), it will still eventually run out of memory. This is <a href="https://www.php.net/manual/en/mysqlinfo.concepts.buffering.php">due to PHP's PDO driver internally caching all raw query results in its buffer</a>. If you're dealing with a very large number of Eloquent records, consider using <a href="#streaming-results-lazily">the <code>lazy</code> method</a> instead.</p>
+<p><a name="advanced-subqueries"></a></p>
+<h3 id="advanced-subqueries">Advanced Subqueries</h3>
+<p><a name="subquery-selects"></a></p>
+<h4 id="subquery-selects">Subquery Selects</h4>
+<p>Eloquent also offers advanced subquery support, which allows you to pull information from related tables in a single query. For example, let's imagine that we have a table of flight <code>destinations</code> and a table of <code>flights</code> to destinations. The <code>flights</code> table contains an <code>arrived_at</code> column which indicates when the flight arrived at the destination.</p>
+<p>Using the subquery functionality available to the query builder's <code>select</code> and <code>addSelect</code> methods, we can select all of the <code>destinations</code> and the name of the flight that most recently arrived at that destination using a single query:</p>
+<pre><code>use App\Models\Destination;
+use App\Models\Flight;
+
+return Destination::addSelect(['last_flight' =&gt; Flight::select('name')
+    -&gt;whereColumn('destination_id', 'destinations.id')
+    -&gt;orderByDesc('arrived_at')
+    -&gt;limit(1)
+])-&gt;get();
+</code></pre>
+<p><a name="subquery-ordering"></a></p>
+<h4 id="subquery-ordering">Subquery Ordering</h4>
+<p>In addition, the query builder's <code>orderBy</code> function supports subqueries. Continuing to use our flight example, we may use this functionality to sort all destinations based on when the last flight arrived at that destination. Again, this may be done while executing a single database query:</p>
+<pre><code>return Destination::orderByDesc(
+    Flight::select('arrived_at')
+        -&gt;whereColumn('destination_id', 'destinations.id')
+        -&gt;orderByDesc('arrived_at')
+        -&gt;limit(1)
+)-&gt;get();
+</code></pre>
+<p><a name="retrieving-single-models"></a></p>
+<h2 id="retrieving-single-models-aggregates">Retrieving Single Models / Aggregates</h2>
+<p>In addition to retrieving all of the records matching a given query, you may also retrieve single records using the <code>find</code>, <code>first</code>, or <code>firstWhere</code> methods. Instead of returning a collection of models, these methods return a single model instance:</p>
+<pre><code>use App\Models\Flight;
+
+// Retrieve a model by its primary key...
+$flight = Flight::find(1);
+
+// Retrieve the first model matching the query constraints...
+$flight = Flight::where('active', 1)-&gt;first();
+
+// Alternative to retrieving the first model matching the query constraints...
+$flight = Flight::firstWhere('active', 1);
+</code></pre>
+<p>Sometimes you may wish to retrieve the first result of a query or perform some other action if no results are found. The <code>firstOr</code> method will return the first result matching the query or, if no results are found, execute the given closure. The value returned by the closure will be considered the result of the <code>firstOr</code> method:</p>
+<pre><code>$model = Flight::where('legs', '&gt;', 3)-&gt;firstOr(function () {
+    // ...
+});
+</code></pre>
+<p><a name="not-found-exceptions"></a></p>
+<h4 id="not-found-exceptions">Not Found Exceptions</h4>
+<p>Sometimes you may wish to throw an exception if a model is not found. This is particularly useful in routes or controllers. The <code>findOrFail</code> and <code>firstOrFail</code> methods will retrieve the first result of the query; however, if no result is found, an <code>Illuminate\Database\Eloquent\ModelNotFoundException</code> will be thrown:</p>
+<pre><code>$flight = Flight::findOrFail(1);
+
+$flight = Flight::where('legs', '&gt;', 3)-&gt;firstOrFail();
+</code></pre>
+<p>If the <code>ModelNotFoundException</code> is not caught, a 404 HTTP response is automatically sent back to the client:</p>
+<pre><code>use App\Models\Flight;
+
+Route::get('/api/flights/{id}', function ($id) {
+    return Flight::findOrFail($id);
+});
+</code></pre>
+<p><a name="retrieving-or-creating-models"></a></p>
+<h3 id="retrieving-or-creating-models">Retrieving Or Creating Models</h3>
+<p>The <code>firstOrCreate</code> method will attempt to locate a database record using the given column / value pairs. If the model can not be found in the database, a record will be inserted with the attributes resulting from merging the first array argument with the optional second array argument:</p>
+<p>The <code>firstOrNew</code> method, like <code>firstOrCreate</code>, will attempt to locate a record in the database matching the given attributes. However, if a model is not found, a new model instance will be returned. Note that the model returned by <code>firstOrNew</code> has not yet been persisted to the database. You will need to manually call the <code>save</code> method to persist it:</p>
+<pre><code>use App\Models\Flight;
+
+// Retrieve flight by name or create it if it doesn't exist...
+$flight = Flight::firstOrCreate([
+    'name' =&gt; 'London to Paris'
+]);
+
+// Retrieve flight by name or create it with the name, delayed, and arrival_time attributes...
+$flight = Flight::firstOrCreate(
+    ['name' =&gt; 'London to Paris'],
+    ['delayed' =&gt; 1, 'arrival_time' =&gt; '11:30']
+);
+
+// Retrieve flight by name or instantiate a new Flight instance...
+$flight = Flight::firstOrNew([
+    'name' =&gt; 'London to Paris'
+]);
+
+// Retrieve flight by name or instantiate with the name, delayed, and arrival_time attributes...
+$flight = Flight::firstOrNew(
+    ['name' =&gt; 'Tokyo to Sydney'],
+    ['delayed' =&gt; 1, 'arrival_time' =&gt; '11:30']
+);
+</code></pre>
+<p><a name="retrieving-aggregates"></a></p>
+<h3 id="retrieving-aggregates">Retrieving Aggregates</h3>
+<p>When interacting with Eloquent models, you may also use the <code>count</code>, <code>sum</code>, <code>max</code>, and other <a href="/docs/{{version}}/queries#aggregates">aggregate methods</a> provided by the Laravel <a href="/docs/{{version}}/queries">query builder</a>. As you might expect, these methods return a scalar value instead of an Eloquent model instance:</p>
+<pre><code>$count = Flight::where('active', 1)-&gt;count();
+
+$max = Flight::where('active', 1)-&gt;max('price');
+</code></pre>
+<p><a name="inserting-and-updating-models"></a></p>
+<h2 id="inserting-updating-models">Inserting &amp; Updating Models</h2>
+<p><a name="inserts"></a></p>
+<h3 id="inserts">Inserts</h3>
+<p>Of course, when using Eloquent, we don't only need to retrieve models from the database. We also need to insert new records. Thankfully, Eloquent makes it simple. To insert a new record into the database, you should instantiate a new model instance and set attributes on the model. Then, call the <code>save</code> method on the model instance:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Flight;
+use Illuminate\Http\Request;
+
+class FlightController extends Controller
+{
+    /**
+     * Store a new flight in the database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // Validate the request...
+
+        $flight = new Flight;
+
+        $flight-&gt;name = $request-&gt;name;
+
+        $flight-&gt;save();
+    }
+}
+</code></pre>
+<p>In this example, we assign the <code>name</code> field from the incoming HTTP request to the <code>name</code> attribute of the <code>App\Models\Flight</code> model instance. When we call the <code>save</code> method, a record will be inserted into the database. The model's <code>created_at</code> and <code>updated_at</code> timestamps will automatically be set when the <code>save</code> method is called, so there is no need to set them manually.</p>
+<p>Alternatively, you may use the <code>create</code> method to "save" a new model using a single PHP statement. The inserted model instance will be returned to you by the <code>create</code> method:</p>
+<pre><code>use App\Models\Flight;
+
+$flight = Flight::create([
+    'name' =&gt; 'London to Paris',
+]);
+</code></pre>
+<p>However, before using the <code>create</code> method, you will need to specify either a <code>fillable</code> or <code>guarded</code> property on your model class. These properties are required because all Eloquent models are protected against mass assignment vulnerabilities by default. To learn more about mass assignment, please consult the <a href="#mass-assignment">mass assignment documentation</a>.</p>
+<p><a name="updates"></a></p>
+<h3 id="updates">Updates</h3>
+<p>The <code>save</code> method may also be used to update models that already exist in the database. To update a model, you should retrieve it and set any attributes you wish to update. Then, you should call the model's <code>save</code> method. Again, the <code>updated_at</code> timestamp will automatically be updated, so there is no need to manually set its value:</p>
+<pre><code>use App\Models\Flight;
+
+$flight = Flight::find(1);
+
+$flight-&gt;name = 'Paris to London';
+
+$flight-&gt;save();
+</code></pre>
+<p><a name="mass-updates"></a></p>
+<h4 id="mass-updates">Mass Updates</h4>
+<p>Updates can also be performed against models that match a given query. In this example, all flights that are <code>active</code> and have a <code>destination</code> of <code>San Diego</code> will be marked as delayed:</p>
+<pre><code>Flight::where('active', 1)
+      -&gt;where('destination', 'San Diego')
+      -&gt;update(['delayed' =&gt; 1]);
+</code></pre>
+<p>The <code>update</code> method expects an array of column and value pairs representing the columns that should be updated.</p>
+<blockquote>
+<p>{note} When issuing a mass update via Eloquent, the <code>saving</code>, <code>saved</code>, <code>updating</code>, and <code>updated</code> model events will not be fired for the updated models. This is because the models are never actually retrieved when issuing a mass update.</p>
+</blockquote>
+<p><a name="examining-attribute-changes"></a></p>
+<h4 id="examining-attribute-changes">Examining Attribute Changes</h4>
+<p>Eloquent provides the <code>isDirty</code>, <code>isClean</code>, and <code>wasChanged</code> methods to examine the internal state of your model and determine how its attributes have changed from when the model was originally retrieved.</p>
+<p>The <code>isDirty</code> method determines if any of the model's attributes have been changed since the model was retrieved. You may pass a specific attribute name to the <code>isDirty</code> method to determine if a particular attribute is dirty. The <code>isClean</code> will determine if an attribute has remained unchanged since the model was retrieved. This method also accepts an optional attribute argument:</p>
+<pre><code>use App\Models\User;
+
+$user = User::create([
+    'first_name' =&gt; 'Taylor',
+    'last_name' =&gt; 'Otwell',
+    'title' =&gt; 'Developer',
+]);
+
+$user-&gt;title = 'Painter';
+
+$user-&gt;isDirty(); // true
+$user-&gt;isDirty('title'); // true
+$user-&gt;isDirty('first_name'); // false
+
+$user-&gt;isClean(); // false
+$user-&gt;isClean('title'); // false
+$user-&gt;isClean('first_name'); // true
+
+$user-&gt;save();
+
+$user-&gt;isDirty(); // false
+$user-&gt;isClean(); // true
+</code></pre>
+<p>The <code>wasChanged</code> method determines if any attributes were changed when the model was last saved within the current request cycle. If needed, you may pass an attribute name to see if a particular attribute was changed:</p>
+<pre><code>$user = User::create([
+    'first_name' =&gt; 'Taylor',
+    'last_name' =&gt; 'Otwell',
+    'title' =&gt; 'Developer',
+]);
+
+$user-&gt;title = 'Painter';
+
+$user-&gt;save();
+
+$user-&gt;wasChanged(); // true
+$user-&gt;wasChanged('title'); // true
+$user-&gt;wasChanged('first_name'); // false
+</code></pre>
+<p>The <code>getOriginal</code> method returns an array containing the original attributes of the model regardless of any changes to the model since it was retrieved. If needed, you may pass a specific attribute name to get the original value of a particular attribute:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;name; // John
+$user-&gt;email; // john@example.com
+
+$user-&gt;name = "Jack";
+$user-&gt;name; // Jack
+
+$user-&gt;getOriginal('name'); // John
+$user-&gt;getOriginal(); // Array of original attributes...
+</code></pre>
+<p><a name="mass-assignment"></a></p>
+<h3 id="mass-assignment">Mass Assignment</h3>
+<p>You may use the <code>create</code> method to "save" a new model using a single PHP statement. The inserted model instance will be returned to you by the method:</p>
+<pre><code>use App\Models\Flight;
+
+$flight = Flight::create([
+    'name' =&gt; 'London to Paris',
+]);
+</code></pre>
+<p>However, before using the <code>create</code> method, you will need to specify either a <code>fillable</code> or <code>guarded</code> property on your model class. These properties are required because all Eloquent models are protected against mass assignment vulnerabilities by default.</p>
+<p>A mass assignment vulnerability occurs when a user passes an unexpected HTTP request field and that field changes a column in your database that you did not expect. For example, a malicious user might send an <code>is_admin</code> parameter through an HTTP request, which is then passed to your model's <code>create</code> method, allowing the user to escalate themselves to an administrator.</p>
+<p>So, to get started, you should define which model attributes you want to make mass assignable. You may do this using the <code>$fillable</code> property on the model. For example, let's make the <code>name</code> attribute of our <code>Flight</code> model mass assignable:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name'];
+}
+</code></pre>
+<p>Once you have specified which attributes are mass assignable, you may use the <code>create</code> method to insert a new record in the database. The <code>create</code> method returns the newly created model instance:</p>
+<pre><code>$flight = Flight::create(['name' =&gt; 'London to Paris']);
+</code></pre>
+<p>If you already have a model instance, you may use the <code>fill</code> method to populate it with an array of attributes:</p>
+<pre><code>$flight-&gt;fill(['name' =&gt; 'Amsterdam to Frankfurt']);
+</code></pre>
+<p><a name="mass-assignment-json-columns"></a></p>
+<h4 id="mass-assignment-json-columns">Mass Assignment &amp; JSON Columns</h4>
+<p>When assigning JSON columns, each column's mass assignable key must be specified in your model's <code>$fillable</code> array. For security, Laravel does not support updating nested JSON attributes when using the <code>guarded</code> property:</p>
+<pre><code>/**
+ * The attributes that are mass assignable.
+ *
+ * @var array
+ */
+protected $fillable = [
+    'options-&gt;enabled',
+];
+</code></pre>
+<p><a name="allowing-mass-assignment"></a></p>
+<h4 id="allowing-mass-assignment">Allowing Mass Assignment</h4>
+<p>If you would like to make all of your attributes mass assignable, you may define your model's <code>$guarded</code> property as an empty array. If you choose to unguard your model, you should take special care to always hand-craft the arrays passed to Eloquent's <code>fill</code>, <code>create</code>, and <code>update</code> methods:</p>
+<pre><code>/**
+ * The attributes that aren't mass assignable.
+ *
+ * @var array
+ */
+protected $guarded = [];
+</code></pre>
+<p><a name="upserts"></a></p>
+<h3 id="upserts">Upserts</h3>
+<p>Occasionally, you may need to update an existing model or create a new model if no matching model exists. Like the <code>firstOrCreate</code> method, the <code>updateOrCreate</code> method persists the model, so there's no need to manually call the <code>save</code> method.</p>
+<p>In the example below, if a flight exists with a <code>departure</code> location of <code>Oakland</code> and a <code>destination</code> location of <code>San Diego</code>, its <code>price</code> and <code>discounted</code> columns will be updated. If no such flight exists, a new flight will be created which has the attributes resulting from merging the first argument array with the second argument array:</p>
+<pre><code>$flight = Flight::updateOrCreate(
+    ['departure' =&gt; 'Oakland', 'destination' =&gt; 'San Diego'],
+    ['price' =&gt; 99, 'discounted' =&gt; 1]
+);
+</code></pre>
+<p>If you would like to perform multiple "upserts" in a single query, then you should use the <code>upsert</code> method instead. The method's first argument consists of the values to insert or update, while the second argument lists the column(s) that uniquely identify records within the associated table. The method's third and final argument is an array of the columns that should be updated if a matching record already exists in the database. The <code>upsert</code> method will automatically set the <code>created_at</code> and <code>updated_at</code> timestamps if timestamps are enabled on the model:</p>
+<pre><code>Flight::upsert([
+    ['departure' =&gt; 'Oakland', 'destination' =&gt; 'San Diego', 'price' =&gt; 99],
+    ['departure' =&gt; 'Chicago', 'destination' =&gt; 'New York', 'price' =&gt; 150]
+], ['departure', 'destination'], ['price']);
+</code></pre>
+<blockquote>
+<p>{note} All databases systems except SQL Server require the columns in the second argument provided to the <code>upsert</code> method to have a "primary" or "unique" index.</p>
+</blockquote>
+<p><a name="deleting-models"></a></p>
+<h2 id="deleting-models">Deleting Models</h2>
+<p>To delete a model, you may call the <code>delete</code> method on the model instance:</p>
+<pre><code>use App\Models\Flight;
+
+$flight = Flight::find(1);
+
+$flight-&gt;delete();
+</code></pre>
+<p>You may call the <code>truncate</code> method to delete all of the model's associated database records. The <code>truncate</code> operation will also reset any auto-incrementing IDs on the model's associated table:</p>
+<pre><code>Flight::truncate();
+</code></pre>
+<p><a name="deleting-an-existing-model-by-its-primary-key"></a></p>
+<h4 id="deleting-an-existing-model-by-its-primary-key">Deleting An Existing Model By Its Primary Key</h4>
+<p>In the example above, we are retrieving the model from the database before calling the <code>delete</code> method. However, if you know the primary key of the model, you may delete the model without explicitly retrieving it by calling the <code>destroy</code> method.  In addition to accepting the single primary key, the <code>destroy</code> method will accept multiple primary keys, an array of primary keys, or a <a href="/docs/{{version}}/collections">collection</a> of primary keys:</p>
+<pre><code>Flight::destroy(1);
+
+Flight::destroy(1, 2, 3);
+
+Flight::destroy([1, 2, 3]);
+
+Flight::destroy(collect([1, 2, 3]));
+</code></pre>
+<blockquote>
+<p>{note} The <code>destroy</code> method loads each model individually and calls the <code>delete</code> method so that the <code>deleting</code> and <code>deleted</code> events are properly dispatched for each model.</p>
+</blockquote>
+<p><a name="deleting-models-using-queries"></a></p>
+<h4 id="deleting-models-using-queries">Deleting Models Using Queries</h4>
+<p>Of course, you may build an Eloquent query to delete all models matching your query's criteria. In this example, we will delete all flights that are marked as inactive. Like mass updates, mass deletes will not dispatch model events for the models that are deleted:</p>
+<pre><code>$deletedRows = Flight::where('active', 0)-&gt;delete();
+</code></pre>
+<blockquote>
+<p>{note} When executing a mass delete statement via Eloquent, the <code>deleting</code> and <code>deleted</code> model events will not be dispatched for the deleted models. This is because the models are never actually retrieved when executing the delete statement.</p>
+</blockquote>
+<p><a name="soft-deleting"></a></p>
+<h3 id="soft-deleting">Soft Deleting</h3>
+<p>In addition to actually removing records from your database, Eloquent can also "soft delete" models. When models are soft deleted, they are not actually removed from your database. Instead, a <code>deleted_at</code> attribute is set on the model indicating the date and time at which the model was "deleted". To enable soft deletes for a model, add the <code>Illuminate\Database\Eloquent\SoftDeletes</code> trait to the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Flight extends Model
+{
+    use SoftDeletes;
+}
+</code></pre>
+<blockquote>
+<p>{tip} The <code>SoftDeletes</code> trait will automatically cast the <code>deleted_at</code> attribute to a <code>DateTime</code> / <code>Carbon</code> instance for you.</p>
+</blockquote>
+<p>You should also add the <code>deleted_at</code> column to your database table. The Laravel <a href="/docs/{{version}}/migrations">schema builder</a> contains a helper method to create this column:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('flights', function (Blueprint $table) {
+    $table-&gt;softDeletes();
+});
+
+Schema::table('flights', function (Blueprint $table) {
+    $table-&gt;dropSoftDeletes();
+});
+</code></pre>
+<p>Now, when you call the <code>delete</code> method on the model, the <code>deleted_at</code> column will be set to the current date and time. However, the model's database record will be left in the table. When querying a model that uses soft deletes, the soft deleted models will automatically be excluded from all query results.</p>
+<p>To determine if a given model instance has been soft deleted, you may use the <code>trashed</code> method:</p>
+<pre><code>if ($flight-&gt;trashed()) {
+    //
+}
+</code></pre>
+<p><a name="restoring-soft-deleted-models"></a></p>
+<h4 id="restoring-soft-deleted-models">Restoring Soft Deleted Models</h4>
+<p>Sometimes you may wish to "un-delete" a soft deleted model. To restore a soft deleted model, you may call the <code>restore</code> method on a model instance. The <code>restore</code> method will set the model's <code>deleted_at</code> column to <code>null</code>:</p>
+<pre><code>$flight-&gt;restore();
+</code></pre>
+<p>You may also use the <code>restore</code> method in a query to restore multiple models. Again, like other "mass" operations, this will not dispatch any model events for the models that are restored:</p>
+<pre><code>Flight::withTrashed()
+        -&gt;where('airline_id', 1)
+        -&gt;restore();
+</code></pre>
+<p>The <code>restore</code> method may also be used when building <a href="/docs/{{version}}/eloquent-relationships">relationship</a> queries:</p>
+<pre><code>$flight-&gt;history()-&gt;restore();
+</code></pre>
+<p><a name="permanently-deleting-models"></a></p>
+<h4 id="permanently-deleting-models">Permanently Deleting Models</h4>
+<p>Sometimes you may need to truly remove a model from your database. You may use the <code>forceDelete</code> method to permanently remove a soft deleted model from the database table:</p>
+<pre><code>$flight-&gt;forceDelete();
+</code></pre>
+<p>You may also use the <code>forceDelete</code> method when building Eloquent relationship queries:</p>
+<pre><code>$flight-&gt;history()-&gt;forceDelete();
+</code></pre>
+<p><a name="querying-soft-deleted-models"></a></p>
+<h3 id="querying-soft-deleted-models">Querying Soft Deleted Models</h3>
+<p><a name="including-soft-deleted-models"></a></p>
+<h4 id="including-soft-deleted-models">Including Soft Deleted Models</h4>
+<p>As noted above, soft deleted models will automatically be excluded from query results. However, you may force soft deleted models to be included in a query's results by calling the <code>withTrashed</code> method on the query:</p>
+<pre><code>use App\Models\Flight;
+
+$flights = Flight::withTrashed()
+                -&gt;where('account_id', 1)
+                -&gt;get();
+</code></pre>
+<p>The <code>withTrashed</code> method may also be called when building a <a href="/docs/{{version}}/eloquent-relationships">relationship</a> query:</p>
+<pre><code>$flight-&gt;history()-&gt;withTrashed()-&gt;get();
+</code></pre>
+<p><a name="retrieving-only-soft-deleted-models"></a></p>
+<h4 id="retrieving-only-soft-deleted-models">Retrieving Only Soft Deleted Models</h4>
+<p>The <code>onlyTrashed</code> method will retrieve <strong>only</strong> soft deleted models:</p>
+<pre><code>$flights = Flight::onlyTrashed()
+                -&gt;where('airline_id', 1)
+                -&gt;get();
+</code></pre>
+<p><a name="pruning-models"></a></p>
+<h2 id="pruning-models">Pruning Models</h2>
+<p>Sometimes you may want to periodically delete models that are no longer needed. To accomplish this, you may add the <code>Illuminate\Database\Eloquent\Prunable</code> or <code>Illuminate\Database\Eloquent\MassPrunable</code> trait to the models you would like to periodically prune. After adding one of the traits to the model, implement a <code>prunable</code> method which returns an Eloquent query builder that resolves the models that are no longer needed:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
+
+class Flight extends Model
+{
+    use Prunable;
+
+    /**
+     * Get the prunable model query.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function prunable()
+    {
+        return static::where('created_at', '&lt;=', now()-&gt;subMonth());
+    }
+}
+</code></pre>
+<p>When marking models as <code>Prunable</code>, you may also define a <code>pruning</code> method on the model. This method will be called before the model is deleted. This method can be useful for deleting any additional resources associated with the model, such as stored files, before the model is permanently removed from the database:</p>
+<pre><code>/**
+ * Prepare the model for pruning.
+ *
+ * @return void
+ */
+protected function pruning()
+{
+    //
+}
+</code></pre>
+<p>After configuring your prunable model, you should schedule the <code>model:prune</code> Artisan command in your application's <code>App\Console\Kernel</code> class. You are free to choose the appropriate interval at which this command should be run:</p>
+<pre><code>/**
+ * Define the application's command schedule.
+ *
+ * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+ * @return void
+ */
+protected function schedule(Schedule $schedule)
+{
+    $schedule-&gt;command('model:prune')-&gt;daily();
+}
+</code></pre>
+<p>Behind the scenes, the <code>model:prune</code> command will automatically detect "Prunable" models within your application's <code>app/Models</code> directory. If your models are in a different location, you may use the <code>--model</code> option to specify the model class names:</p>
+<pre><code>$schedule-&gt;command('model:prune', [
+    '--model' =&gt; [Address::class, Flight::class],
+])-&gt;daily();
+</code></pre>
+<blockquote>
+<p>{note} Soft deleting models will be permanently deleted (<code>forceDelete</code>) if they match the prunable query.</p>
+</blockquote>
+<p><a name="mass-pruning"></a></p>
+<h4 id="mass-pruning">Mass Pruning</h4>
+<p>When models are marked with the <code>Illuminate\Database\Eloquent\MassPrunable</code> trait, models are deleted from the database using mass-deletion queries. Therefore, the <code>pruning</code> method will not be invoked, nor will the <code>deleting</code> and <code>deleted</code> model events be dispatched. This is because the models are never actually retrieved before deletion, thus making the pruning process much more efficient:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\MassPrunable;
+
+class Flight extends Model
+{
+    use MassPrunable;
+
+    /**
+     * Get the prunable model query.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function prunable()
+    {
+        return static::where('created_at', '&lt;=', now()-&gt;subMonth());
+    }
+}
+</code></pre>
+<p><a name="replicating-models"></a></p>
+<h2 id="replicating-models">Replicating Models</h2>
+<p>You may create an unsaved copy of an existing model instance using the <code>replicate</code> method. This method is particularly useful when you have model instances that share many of the same attributes:</p>
+<pre><code>use App\Models\Address;
+
+$shipping = Address::create([
+    'type' =&gt; 'shipping',
+    'line_1' =&gt; '123 Example Street',
+    'city' =&gt; 'Victorville',
+    'state' =&gt; 'CA',
+    'postcode' =&gt; '90001',
+]);
+
+$billing = $shipping-&gt;replicate()-&gt;fill([
+    'type' =&gt; 'billing'
+]);
+
+$billing-&gt;save();
+</code></pre>
+<p>To exclude one or more attributes from being replicated to the new model, you may pass an array to the <code>replicate</code> method:</p>
+<pre><code>$flight = Flight::create([
+    'destination' =&gt; 'LAX',
+    'origin' =&gt; 'LHR',
+    'last_flown' =&gt; '2020-03-04 11:00:00',
+    'last_pilot_id' =&gt; 747,
+]);
+
+$flight = $flight-&gt;replicate([
+    'last_flown',
+    'last_pilot_id'
+]);
+</code></pre>
+<p><a name="query-scopes"></a></p>
+<h2 id="query-scopes">Query Scopes</h2>
+<p><a name="global-scopes"></a></p>
+<h3 id="global-scopes">Global Scopes</h3>
+<p>Global scopes allow you to add constraints to all queries for a given model. Laravel's own <a href="#soft-deleting">soft delete</a> functionality utilizes global scopes to only retrieve "non-deleted" models from the database. Writing your own global scopes can provide a convenient, easy way to make sure every query for a given model receives certain constraints.</p>
+<p><a name="writing-global-scopes"></a></p>
+<h4 id="writing-global-scopes">Writing Global Scopes</h4>
+<p>Writing a global scope is simple. First, define a class that implements the <code>Illuminate\Database\Eloquent\Scope</code> interface. Laravel does not have a conventional location that you should place scope classes, so you are free to place this class in any directory that you wish.</p>
+<p>The <code>Scope</code> interface requires you to implement one method: <code>apply</code>. The <code>apply</code> method may add <code>where</code> constraints or other types of clauses to the query as needed:</p>
+<pre><code>&lt;?php
+
+namespace App\Scopes;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
+
+class AncientScope implements Scope
+{
+    /**
+     * Apply the scope to a given Eloquent query builder.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return void
+     */
+    public function apply(Builder $builder, Model $model)
+    {
+        $builder-&gt;where('created_at', '&lt;', now()-&gt;subYears(2000));
+    }
+}
+</code></pre>
+<blockquote>
+<p>{tip} If your global scope is adding columns to the select clause of the query, you should use the <code>addSelect</code> method instead of <code>select</code>. This will prevent the unintentional replacement of the query's existing select clause.</p>
+</blockquote>
+<p><a name="applying-global-scopes"></a></p>
+<h4 id="applying-global-scopes">Applying Global Scopes</h4>
+<p>To assign a global scope to a model, you should override the model's <code>booted</code> method and invoke the model's <code>addGlobalScope</code> method. The <code>addGlobalScope</code> method accepts an instance of your scope as its only argument:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use App\Scopes\AncientScope;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::addGlobalScope(new AncientScope);
+    }
+}
+</code></pre>
+<p>After adding the scope in the example above to the <code>App\Models\User</code> model, a call to the <code>User::all()</code> method will execute the following SQL query:</p>
+<pre><code class="language-sql">select * from `users` where `created_at` &lt; 0021-02-18 00:00:00
+</code></pre>
+<p><a name="anonymous-global-scopes"></a></p>
+<h4 id="anonymous-global-scopes">Anonymous Global Scopes</h4>
+<p>Eloquent also allows you to define global scopes using closures, which is particularly useful for simple scopes that do not warrant a separate class of their own. When defining a global scope using a closure, you should provide a scope name of your own choosing as the first argument to the <code>addGlobalScope</code> method:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::addGlobalScope('ancient', function (Builder $builder) {
+            $builder-&gt;where('created_at', '&lt;', now()-&gt;subYears(2000));
+        });
+    }
+}
+</code></pre>
+<p><a name="removing-global-scopes"></a></p>
+<h4 id="removing-global-scopes">Removing Global Scopes</h4>
+<p>If you would like to remove a global scope for a given query, you may use the <code>withoutGlobalScope</code> method. This method accepts the class name of the global scope as its only argument:</p>
+<pre><code>User::withoutGlobalScope(AncientScope::class)-&gt;get();
+</code></pre>
+<p>Or, if you defined the global scope using a closure, you should pass the string name that you assigned to the global scope:</p>
+<pre><code>User::withoutGlobalScope('ancient')-&gt;get();
+</code></pre>
+<p>If you would like to remove several or even all of the query's global scopes, you may use the <code>withoutGlobalScopes</code> method:</p>
+<pre><code>// Remove all of the global scopes...
+User::withoutGlobalScopes()-&gt;get();
+
+// Remove some of the global scopes...
+User::withoutGlobalScopes([
+    FirstScope::class, SecondScope::class
+])-&gt;get();
+</code></pre>
+<p><a name="local-scopes"></a></p>
+<h3 id="local-scopes">Local Scopes</h3>
+<p>Local scopes allow you to define common sets of query constraints that you may easily re-use throughout your application. For example, you may need to frequently retrieve all users that are considered "popular". To define a scope, prefix an Eloquent model method with <code>scope</code>.</p>
+<p>Scopes should always return a query builder instance:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopular($query)
+    {
+        return $query-&gt;where('votes', '&gt;', 100);
+    }
+
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query-&gt;where('active', 1);
+    }
+}
+</code></pre>
+<p><a name="utilizing-a-local-scope"></a></p>
+<h4 id="utilizing-a-local-scope">Utilizing A Local Scope</h4>
+<p>Once the scope has been defined, you may call the scope methods when querying the model. However, you should not include the <code>scope</code> prefix when calling the method. You can even chain calls to various scopes:</p>
+<pre><code>use App\Models\User;
+
+$users = User::popular()-&gt;active()-&gt;orderBy('created_at')-&gt;get();
+</code></pre>
+<p>Combining multiple Eloquent model scopes via an <code>or</code> query operator may require the use of closures to achieve the correct <a href="/docs/{{version}}/queries#logical-grouping">logical grouping</a>:</p>
+<pre><code>$users = User::popular()-&gt;orWhere(function (Builder $query) {
+    $query-&gt;active();
+})-&gt;get();
+</code></pre>
+<p>However, since this can be cumbersome, Laravel provides a "higher order" <code>orWhere</code> method that allows you to fluently chain scopes together without the use of closures:</p>
+<pre><code>$users = App\Models\User::popular()-&gt;orWhere-&gt;active()-&gt;get();
+</code></pre>
+<p><a name="dynamic-scopes"></a></p>
+<h4 id="dynamic-scopes">Dynamic Scopes</h4>
+<p>Sometimes you may wish to define a scope that accepts parameters. To get started, just add your additional parameters to your scope method's signature. Scope parameters should be defined after the <code>$query</code> parameter:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * Scope a query to only include users of a given type.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  mixed  $type
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfType($query, $type)
+    {
+        return $query-&gt;where('type', $type);
+    }
+}
+</code></pre>
+<p>Once the expected arguments have been added to your scope method's signature, you may pass the arguments when calling the scope:</p>
+<pre><code>$users = User::ofType('admin')-&gt;get();
+</code></pre>
+<p><a name="comparing-models"></a></p>
+<h2 id="comparing-models">Comparing Models</h2>
+<p>Sometimes you may need to determine if two models are the "same" or not. The <code>is</code> and <code>isNot</code> methods may be used to quickly verify two models have the same primary key, table, and database connection or not:</p>
+<pre><code>if ($post-&gt;is($anotherPost)) {
+    //
+}
+
+if ($post-&gt;isNot($anotherPost)) {
+    //
+}
+</code></pre>
+<p>The <code>is</code> and <code>isNot</code> methods are also available when using the <code>belongsTo</code>, <code>hasOne</code>, <code>morphTo</code>, and <code>morphOne</code> <a href="/docs/{{version}}/eloquent-relationships">relationships</a>. This method is particularly helpful when you would like to compare a related model without issuing a query to retrieve that model:</p>
+<pre><code>if ($post-&gt;author()-&gt;is($user)) {
+    //
+}
+</code></pre>
+<p><a name="events"></a></p>
+<h2 id="events">Events</h2>
+<blockquote>
+<p>{tip} Want to broadcast your Eloquent events directly to your client-side application? Check out Laravel's <a href="/docs/{{version}}/broadcasting#model-broadcasting">model event broadcasting</a>.</p>
+</blockquote>
+<p>Eloquent models dispatch several events, allowing you to hook into the following moments in a model's lifecycle: <code>retrieved</code>, <code>creating</code>, <code>created</code>, <code>updating</code>, <code>updated</code>, <code>saving</code>, <code>saved</code>, <code>deleting</code>, <code>deleted</code>, <code>restoring</code>, <code>restored</code>, and <code>replicating</code>.</p>
+<p>The <code>retrieved</code> event will dispatch when an existing model is retrieved from the database. When a new model is saved for the first time, the <code>creating</code> and <code>created</code> events will dispatch. The <code>updating</code> / <code>updated</code> events will dispatch when an existing model is modified and the <code>save</code> method is called. The <code>saving</code> / <code>saved</code> events will dispatch when a model is created or updated - even if the model's attributes have not been changed. Event names ending with <code>-ing</code> are dispatched before any changes to the model are persisted, while events ending with <code>-ed</code> are dispatched after the changes to the model are persisted.</p>
+<p>To start listening to model events, define a <code>$dispatchesEvents</code> property on your Eloquent model. This property maps various points of the Eloquent model's lifecycle to your own <a href="/docs/{{version}}/events">event classes</a>. Each model event class should expect to receive an instance of the affected model via its constructor:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use App\Events\UserDeleted;
+use App\Events\UserSaved;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'saved' =&gt; UserSaved::class,
+        'deleted' =&gt; UserDeleted::class,
+    ];
+}
+</code></pre>
+<p>After defining and mapping your Eloquent events, you may use <a href="/docs/{{version}}/events#defining-listeners">event listeners</a> to handle the events.</p>
+<blockquote>
+<p>{note} When issuing a mass update or delete query via Eloquent, the <code>saved</code>, <code>updated</code>, <code>deleting</code>, and <code>deleted</code> model events will not be dispatched for the affected models. This is because the models are never actually retrieved when performing mass updates or deletes.</p>
+</blockquote>
+<p><a name="events-using-closures"></a></p>
+<h3 id="using-closures">Using Closures</h3>
+<p>Instead of using custom event classes, you may register closures that execute when various model events are dispatched. Typically, you should register these closures in the <code>booted</code> method of your model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            //
+        });
+    }
+}
+</code></pre>
+<p>If needed, you may utilize <a href="/docs/{{version}}/events#queuable-anonymous-event-listeners">queueable anonymous event listeners</a> when registering model events. This will instruct Laravel to execute the model event listener in the background using your application's <a href="/docs/{{version}}/queues">queue</a>:</p>
+<pre><code>use function Illuminate\Events\queueable;
+
+static::created(queueable(function ($user) {
+    //
+}));
+</code></pre>
+<p><a name="observers"></a></p>
+<h3 id="observers">Observers</h3>
+<p><a name="defining-observers"></a></p>
+<h4 id="defining-observers">Defining Observers</h4>
+<p>If you are listening for many events on a given model, you may use observers to group all of your listeners into a single class. Observer classes have method names which reflect the Eloquent events you wish to listen for. Each of these methods receives the affected model as their only argument. The <code>make:observer</code> Artisan command is the easiest way to create a new observer class:</p>
+<pre><code>php artisan make:observer UserObserver --model=User
+</code></pre>
+<p>This command will place the new observer in your <code>App/Observers</code> directory. If this directory does not exist, Artisan will create it for you. Your fresh observer will look like the following:</p>
+<pre><code>&lt;?php
+
+namespace App\Observers;
+
+use App\Models\User;
+
+class UserObserver
+{
+    /**
+     * Handle the User "created" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function created(User $user)
+    {
+        //
+    }
+
+    /**
+     * Handle the User "updated" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function updated(User $user)
+    {
+        //
+    }
+
+    /**
+     * Handle the User "deleted" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function deleted(User $user)
+    {
+        //
+    }
+
+    /**
+     * Handle the User "forceDeleted" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function forceDeleted(User $user)
+    {
+        //
+    }
+}
+</code></pre>
+<p>To register an observer, you need to call the <code>observe</code> method on the model you wish to observe. You may register observers in the <code>boot</code> method of your application's <code>App\Providers\EventServiceProvider</code> service provider:</p>
+<pre><code>use App\Models\User;
+use App\Observers\UserObserver;
+
+/**
+ * Register any events for your application.
+ *
+ * @return void
+ */
+public function boot()
+{
+    User::observe(UserObserver::class);
+}
+</code></pre>
+<blockquote>
+<p>{tip} There are additional events an observer can listen to, such as <code>saving</code> and <code>retrieved</code>. These events are described within the <a href="#events">events</a> documentation.</p>
+</blockquote>
+<p><a name="observers-and-database-transactions"></a></p>
+<h4 id="observers-database-transactions">Observers &amp; Database Transactions</h4>
+<p>When models are being created within a database transaction, you may want to instruct an observer to only execute its event handlers after the database transaction is committed. You may accomplish this by defining an <code>$afterCommit</code> property on the observer. If a database transaction is not in progress, the event handlers will execute immediately:</p>
+<pre><code>&lt;?php
+
+namespace App\Observers;
+
+use App\Models\User;
+
+class UserObserver
+{
+    /**
+     * Handle events after all transactions are committed.
+     *
+     * @var bool
+     */
+    public $afterCommit = true;
+
+    /**
+     * Handle the User "created" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function created(User $user)
+    {
+        //
+    }
+}
+</code></pre>
+<p><a name="muting-events"></a></p>
+<h3 id="muting-events">Muting Events</h3>
+<p>You may occasionally need to temporarily "mute" all events fired by a model. You may achieve this using the <code>withoutEvents</code> method. The <code>withoutEvents</code> method accepts a closure as its only argument. Any code executed within this closure will not dispatch model events. For example, the following example will fetch and delete an <code>App\Models\User</code> instance without dispatching any model events. Any value returned by the closure will be returned by the <code>withoutEvents</code> method:</p>
+<pre><code>use App\Models\User;
+
+$user = User::withoutEvents(function () use () {
+    User::findOrFail(1)-&gt;delete();
+
+    return User::find(2);
+});
+</code></pre>
+<p><a name="saving-a-single-model-without-events"></a></p>
+<h4 id="saving-a-single-model-without-events">Saving A Single Model Without Events</h4>
+<p>Sometimes you may wish to "save" a given model without dispatching any events. You may accomplish this using the <code>saveQuietly</code> method:</p>
+<pre><code>$user = User::findOrFail(1);
+
+$user-&gt;name = 'Victoria Faith';
+
+$user-&gt;saveQuietly();
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../redis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Redis" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Redis
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../collections/" class="md-footer__link md-footer__link--next" aria-label="Next: Kolleksiyalar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Kolleksiyalar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

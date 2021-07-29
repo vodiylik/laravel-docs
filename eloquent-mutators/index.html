@@ -1,0 +1,2513 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/eloquent-mutators/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Mutators / Casts - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#eloquent-mutators-casting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mutators / Casts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Mutators / Casts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Mutators / Casts
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessors-mutators" class="md-nav__link">
+    Accessors &amp; Mutators
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessors &amp; Mutators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-an-accessor" class="md-nav__link">
+    Defining An Accessor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-a-mutator" class="md-nav__link">
+    Defining A Mutator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attribute-casting" class="md-nav__link">
+    Attribute Casting
+  </a>
+  
+    <nav class="md-nav" aria-label="Attribute Casting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-json-casting" class="md-nav__link">
+    Array &amp; JSON Casting
+  </a>
+  
+    <nav class="md-nav" aria-label="Array &amp; JSON Casting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-object-collection-casting" class="md-nav__link">
+    Array Object &amp; Collection Casting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-casting" class="md-nav__link">
+    Date Casting
+  </a>
+  
+    <nav class="md-nav" aria-label="Date Casting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#date-casting-serialization-timezones" class="md-nav__link">
+    Date Casting, Serialization, &amp; Timezones
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-time-casting" class="md-nav__link">
+    Query Time Casting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-casts" class="md-nav__link">
+    Custom Casts
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Casts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-object-casting" class="md-nav__link">
+    Value Object Casting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-json-serialization" class="md-nav__link">
+    Array / JSON Serialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inbound-casting" class="md-nav__link">
+    Inbound Casting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cast-parameters" class="md-nav__link">
+    Cast Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#castables" class="md-nav__link">
+    Castables
+  </a>
+  
+    <nav class="md-nav" aria-label="Castables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#castables-anonymous-cast-classes" class="md-nav__link">
+    Castables &amp; Anonymous Cast Classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessors-mutators" class="md-nav__link">
+    Accessors &amp; Mutators
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessors &amp; Mutators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-an-accessor" class="md-nav__link">
+    Defining An Accessor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-a-mutator" class="md-nav__link">
+    Defining A Mutator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attribute-casting" class="md-nav__link">
+    Attribute Casting
+  </a>
+  
+    <nav class="md-nav" aria-label="Attribute Casting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-json-casting" class="md-nav__link">
+    Array &amp; JSON Casting
+  </a>
+  
+    <nav class="md-nav" aria-label="Array &amp; JSON Casting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array-object-collection-casting" class="md-nav__link">
+    Array Object &amp; Collection Casting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-casting" class="md-nav__link">
+    Date Casting
+  </a>
+  
+    <nav class="md-nav" aria-label="Date Casting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#date-casting-serialization-timezones" class="md-nav__link">
+    Date Casting, Serialization, &amp; Timezones
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-time-casting" class="md-nav__link">
+    Query Time Casting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-casts" class="md-nav__link">
+    Custom Casts
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Casts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value-object-casting" class="md-nav__link">
+    Value Object Casting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-json-serialization" class="md-nav__link">
+    Array / JSON Serialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inbound-casting" class="md-nav__link">
+    Inbound Casting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cast-parameters" class="md-nav__link">
+    Cast Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#castables" class="md-nav__link">
+    Castables
+  </a>
+  
+    <nav class="md-nav" aria-label="Castables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#castables-anonymous-cast-classes" class="md-nav__link">
+    Castables &amp; Anonymous Cast Classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="eloquent-mutators-casting">Eloquent: Mutators &amp; Casting</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#accessors-and-mutators">Accessors &amp; Mutators</a><ul>
+<li><a href="#defining-an-accessor">Defining An Accessor</a></li>
+<li><a href="#defining-a-mutator">Defining A Mutator</a></li>
+</ul>
+</li>
+<li><a href="#attribute-casting">Attribute Casting</a><ul>
+<li><a href="#array-and-json-casting">Array &amp; JSON Casting</a></li>
+<li><a href="#date-casting">Date Casting</a></li>
+<li><a href="#query-time-casting">Query Time Casting</a></li>
+</ul>
+</li>
+<li><a href="#custom-casts">Custom Casts</a><ul>
+<li><a href="#value-object-casting">Value Object Casting</a></li>
+<li><a href="#array-json-serialization">Array / JSON Serialization</a></li>
+<li><a href="#inbound-casting">Inbound Casting</a></li>
+<li><a href="#cast-parameters">Cast Parameters</a></li>
+<li><a href="#castables">Castables</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Accessors, mutators, and attribute casting allow you to transform Eloquent attribute values when you retrieve or set them on model instances. For example, you may want to use the <a href="/docs/{{version}}/encryption">Laravel encrypter</a> to encrypt a value while it is stored in the database, and then automatically decrypt the attribute when you access it on an Eloquent model. Or, you may want to convert a JSON string that is stored in your database to an array when it is accessed via your Eloquent model.</p>
+<p><a name="accessors-and-mutators"></a></p>
+<h2 id="accessors-mutators">Accessors &amp; Mutators</h2>
+<p><a name="defining-an-accessor"></a></p>
+<h3 id="defining-an-accessor">Defining An Accessor</h3>
+<p>An accessor transforms an Eloquent attribute value when it is accessed. To define an accessor, create a <code>get{Attribute}Attribute</code> method on your model where <code>{Attribute}</code> is the "studly" cased name of the column you wish to access.</p>
+<p>In this example, we'll define an accessor for the <code>first_name</code> attribute. The accessor will automatically be called by Eloquent when attempting to retrieve the value of the <code>first_name</code> attribute:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * Get the user's first name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+}
+</code></pre>
+<p>As you can see, the original value of the column is passed to the accessor, allowing you to manipulate and return the value. To access the value of the accessor, you may simply access the <code>first_name</code> attribute on a model instance:</p>
+<pre><code>use App\Models\User;
+
+$user = User::find(1);
+
+$firstName = $user-&gt;first_name;
+</code></pre>
+<p>You are not limited to interacting with a single attribute within your accessor. You may also use accessors to return new, computed values from existing attributes:</p>
+<pre><code>/**
+ * Get the user's full name.
+ *
+ * @return string
+ */
+public function getFullNameAttribute()
+{
+    return "{$this-&gt;first_name} {$this-&gt;last_name}";
+}
+</code></pre>
+<blockquote>
+<p>{tip} If you would like these computed values to be added to the array / JSON representations of your model, <a href="/docs/{{version}}/eloquent-serialization#appending-values-to-json">you will need to append them</a>.</p>
+</blockquote>
+<p><a name="defining-a-mutator"></a></p>
+<h3 id="defining-a-mutator">Defining A Mutator</h3>
+<p>A mutator transforms an Eloquent attribute value when it is set. To define a mutator, define a <code>set{Attribute}Attribute</code> method on your model where <code>{Attribute}</code> is the "studly" cased name of the column you wish to access.</p>
+<p>Let's define a mutator for the <code>first_name</code> attribute. This mutator will be automatically called when we attempt to set the value of the <code>first_name</code> attribute on the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * Set the user's first name.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setFirstNameAttribute($value)
+    {
+        $this-&gt;attributes['first_name'] = strtolower($value);
+    }
+}
+</code></pre>
+<p>The mutator will receive the value that is being set on the attribute, allowing you to manipulate the value and set the manipulated value on the Eloquent model's internal <code>$attributes</code> property. To use our mutator, we only need to set the <code>first_name</code> attribute on an Eloquent model:</p>
+<pre><code>use App\Models\User;
+
+$user = User::find(1);
+
+$user-&gt;first_name = 'Sally';
+</code></pre>
+<p>In this example, the <code>setFirstNameAttribute</code> function will be called with the value <code>Sally</code>. The mutator will then apply the <code>strtolower</code> function to the name and set its resulting value in the internal <code>$attributes</code> array.</p>
+<p><a name="attribute-casting"></a></p>
+<h2 id="attribute-casting">Attribute Casting</h2>
+<p>Attribute casting provides functionality similar to accessors and mutators without requiring you to define any additional methods on your model. Instead, your model's <code>$casts</code> property provides a convenient method of converting attributes to common data types.</p>
+<p>The <code>$casts</code> property should be an array where the key is the name of the attribute being cast and the value is the type you wish to cast the column to. The supported cast types are:</p>
+<div class="content-list" markdown="1">
+- `array`
+- `boolean`
+- `collection`
+- `date`
+- `datetime`
+- `decimal:<digits>`
+- `double`
+- `encrypted`
+- `encrypted:array`
+- `encrypted:collection`
+- `encrypted:object`
+- `float`
+- `integer`
+- `object`
+- `real`
+- `string`
+- `timestamp`
+</div>
+
+<p>To demonstrate attribute casting, let's cast the <code>is_admin</code> attribute, which is stored in our database as an integer (<code>0</code> or <code>1</code>) to a boolean value:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_admin' =&gt; 'boolean',
+    ];
+}
+</code></pre>
+<p>After defining the cast, the <code>is_admin</code> attribute will always be cast to a boolean when you access it, even if the underlying value is stored in the database as an integer:</p>
+<pre><code>$user = App\Models\User::find(1);
+
+if ($user-&gt;is_admin) {
+    //
+}
+</code></pre>
+<p>If you need to add a new, temporary cast at runtime, you may use the <code>mergeCasts</code> method. These cast definitions will be added to any of the casts already defined on the model:</p>
+<pre><code>$user-&gt;mergeCasts([
+    'is_admin' =&gt; 'integer',
+    'options' =&gt; 'object',
+]);
+</code></pre>
+<blockquote>
+<p>{note} Attributes that are <code>null</code> will not be cast. In addition, you should never define a cast (or an attribute) that has the same name as a relationship.</p>
+</blockquote>
+<p><a name="array-and-json-casting"></a></p>
+<h3 id="array-json-casting">Array &amp; JSON Casting</h3>
+<p>The <code>array</code> cast is particularly useful when working with columns that are stored as serialized JSON. For example, if your database has a <code>JSON</code> or <code>TEXT</code> field type that contains serialized JSON, adding the <code>array</code> cast to that attribute will automatically deserialize the attribute to a PHP array when you access it on your Eloquent model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'options' =&gt; 'array',
+    ];
+}
+</code></pre>
+<p>Once the cast is defined, you may access the <code>options</code> attribute and it will automatically be deserialized from JSON into a PHP array. When you set the value of the <code>options</code> attribute, the given array will automatically be serialized back into JSON for storage:</p>
+<pre><code>use App\Models\User;
+
+$user = User::find(1);
+
+$options = $user-&gt;options;
+
+$options['key'] = 'value';
+
+$user-&gt;options = $options;
+
+$user-&gt;save();
+</code></pre>
+<p>To update a single field of a JSON attribute with a more terse syntax, you may use the <code>-&gt;</code> operator when calling the <code>update</code> method:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;update(['options-&gt;key' =&gt; 'value']);
+</code></pre>
+<p><a name="array-object-and-collection-casting"></a></p>
+<h4 id="array-object-collection-casting">Array Object &amp; Collection Casting</h4>
+<p>Although the standard <code>array</code> cast is sufficient for many applications, it does have some disadvantages. Since the <code>array</code> cast returns a primitive type, it is not possible to mutate an offset of the array directly. For example, the following code will trigger a PHP error:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;options['key'] = $value;
+</code></pre>
+<p>To solve this, Laravel offers an <code>AsArrayObject</code> cast that casts your JSON attribute to an <a href="https://www.php.net/manual/en/class.arrayobject.php">ArrayObject</a> class. This feature is implemented using Laravel's <a href="#custom-casts">custom cast</a> implementation, which allows Laravel to intelligently cache and transform the mutated object such that individual offsets may be modified without triggering a PHP error. To use the <code>AsArrayObject</code> cast, simply assign it to an attribute:</p>
+<pre><code>use Illuminate\Database\Eloquent\Casts\AsArrayObject;
+
+/**
+ * The attributes that should be cast.
+ *
+ * @var array
+ */
+protected $casts = [
+    'options' =&gt; AsArrayObject::class,
+];
+</code></pre>
+<p>Similarly, Laravel offers an <code>AsCollection</code> cast that casts your JSON attribute to a Laravel <a href="/docs/{{version}}/collections">Collection</a> instance:</p>
+<pre><code>use Illuminate\Database\Eloquent\Casts\AsCollection;
+
+/**
+ * The attributes that should be cast.
+ *
+ * @var array
+ */
+protected $casts = [
+    'options' =&gt; AsCollection::class,
+];
+</code></pre>
+<p><a name="date-casting"></a></p>
+<h3 id="date-casting">Date Casting</h3>
+<p>By default, Eloquent will cast the <code>created_at</code> and <code>updated_at</code> columns to instances of <a href="https://github.com/briannesbitt/Carbon">Carbon</a>, which extends the PHP <code>DateTime</code> class and provides an assortment of helpful methods. You may cast additional date attributes by defining additional date casts within your model's <code>$cast</code> property array. Typically, dates should be cast using the <code>datetime</code> cast.</p>
+<p>When defining a <code>date</code> or <code>datetime</code> cast, you may also specify the date's format. This format will be used when the <a href="/docs/{{version}}/eloquent-serialization">model is serialized to an array or JSON</a>:</p>
+<pre><code>/**
+ * The attributes that should be cast.
+ *
+ * @var array
+ */
+protected $casts = [
+    'created_at' =&gt; 'datetime:Y-m-d',
+];
+</code></pre>
+<p>When a column is cast as a date, you may set the corresponding model attribute value to a UNIX timestamp, date string (<code>Y-m-d</code>), date-time string, or a <code>DateTime</code> / <code>Carbon</code> instance. The date's value will be correctly converted and stored in your database.</p>
+<p>You may customize the default serialization format for all of your model's dates by defining a <code>serializeDate</code> method on your model. This method does not affect how your dates are formatted for storage in the database:</p>
+<pre><code>/**
+ * Prepare a date for array / JSON serialization.
+ *
+ * @param  \DateTimeInterface  $date
+ * @return string
+ */
+protected function serializeDate(DateTimeInterface $date)
+{
+    return $date-&gt;format('Y-m-d');
+}
+</code></pre>
+<p>To specify the format that should be used when actually storing a model's dates within your database, you should define a <code>$dateFormat</code> property on your model:</p>
+<pre><code>/**
+ * The storage format of the model's date columns.
+ *
+ * @var string
+ */
+protected $dateFormat = 'U';
+</code></pre>
+<p><a name="date-casting-and-timezones"></a></p>
+<h4 id="date-casting-serialization-timezones">Date Casting, Serialization, &amp; Timezones</h4>
+<p>By default, the <code>date</code> and <code>datetime</code> casts will serialize dates to a UTC ISO-8601 date string (<code>1986-05-28T21:05:54.000000Z</code>), regardless of the timezone specified in your application's <code>timezone</code> configuration option. You are strongly encouraged to always use this serialization format, as well as to store your application's dates in the UTC timezone by not changing your application's <code>timezone</code> configuration option from its default <code>UTC</code> value. Consistently using the UTC timezone throughout your application will provide the maximum level of interoperability with other date manipulation libraries written in PHP and JavaScript.</p>
+<p>If a custom format is applied to the <code>date</code> or <code>datetime</code> cast, such as <code>datetime:Y-m-d H:i:s</code>, the inner timezone of the Carbon instance will be used during date serialization. Typically, this will be the timezone specified in your application's <code>timezone</code> configuration option.</p>
+<p><a name="query-time-casting"></a></p>
+<h3 id="query-time-casting">Query Time Casting</h3>
+<p>Sometimes you may need to apply casts while executing a query, such as when selecting a raw value from a table. For example, consider the following query:</p>
+<pre><code>use App\Models\Post;
+use App\Models\User;
+
+$users = User::select([
+    'users.*',
+    'last_posted_at' =&gt; Post::selectRaw('MAX(created_at)')
+            -&gt;whereColumn('user_id', 'users.id')
+])-&gt;get();
+</code></pre>
+<p>The <code>last_posted_at</code> attribute on the results of this query will be a simple string. It would be wonderful if we could apply a <code>datetime</code> cast to this attribute when executing the query. Thankfully, we may accomplish this using the <code>withCasts</code> method:</p>
+<pre><code>$users = User::select([
+    'users.*',
+    'last_posted_at' =&gt; Post::selectRaw('MAX(created_at)')
+            -&gt;whereColumn('user_id', 'users.id')
+])-&gt;withCasts([
+    'last_posted_at' =&gt; 'datetime'
+])-&gt;get();
+</code></pre>
+<p><a name="custom-casts"></a></p>
+<h2 id="custom-casts">Custom Casts</h2>
+<p>Laravel has a variety of built-in, helpful cast types; however, you may occasionally need to define your own cast types. You may accomplish this by defining a class that implements the <code>CastsAttributes</code> interface.</p>
+<p>Classes that implement this interface must define a <code>get</code> and <code>set</code> method. The <code>get</code> method is responsible for transforming a raw value from the database into a cast value, while the <code>set</code> method should transform a cast value into a raw value that can be stored in the database. As an example, we will re-implement the built-in <code>json</code> cast type as a custom cast type:</p>
+<pre><code>&lt;?php
+
+namespace App\Casts;
+
+use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+
+class Json implements CastsAttributes
+{
+    /**
+     * Cast the given value.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param  string  $key
+     * @param  mixed  $value
+     * @param  array  $attributes
+     * @return array
+     */
+    public function get($model, $key, $value, $attributes)
+    {
+        return json_decode($value, true);
+    }
+
+    /**
+     * Prepare the given value for storage.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param  string  $key
+     * @param  array  $value
+     * @param  array  $attributes
+     * @return string
+     */
+    public function set($model, $key, $value, $attributes)
+    {
+        return json_encode($value);
+    }
+}
+</code></pre>
+<p>Once you have defined a custom cast type, you may attach it to a model attribute using its class name:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use App\Casts\Json;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'options' =&gt; Json::class,
+    ];
+}
+</code></pre>
+<p><a name="value-object-casting"></a></p>
+<h3 id="value-object-casting">Value Object Casting</h3>
+<p>You are not limited to casting values to primitive types. You may also cast values to objects. Defining custom casts that cast values to objects is very similar to casting to primitive types; however, the <code>set</code> method should return an array of key / value pairs that will be used to set raw, storable values on the model.</p>
+<p>As an example, we will define a custom cast class that casts multiple model values into a single <code>Address</code> value object. We will assume the <code>Address</code> value has two public properties: <code>lineOne</code> and <code>lineTwo</code>:</p>
+<pre><code>&lt;?php
+
+namespace App\Casts;
+
+use App\Models\Address as AddressModel;
+use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use InvalidArgumentException;
+
+class Address implements CastsAttributes
+{
+    /**
+     * Cast the given value.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param  string  $key
+     * @param  mixed  $value
+     * @param  array  $attributes
+     * @return \App\Models\Address
+     */
+    public function get($model, $key, $value, $attributes)
+    {
+        return new AddressModel(
+            $attributes['address_line_one'],
+            $attributes['address_line_two']
+        );
+    }
+
+    /**
+     * Prepare the given value for storage.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param  string  $key
+     * @param  \App\Models\Address  $value
+     * @param  array  $attributes
+     * @return array
+     */
+    public function set($model, $key, $value, $attributes)
+    {
+        if (! $value instanceof AddressModel) {
+            throw new InvalidArgumentException('The given value is not an Address instance.');
+        }
+
+        return [
+            'address_line_one' =&gt; $value-&gt;lineOne,
+            'address_line_two' =&gt; $value-&gt;lineTwo,
+        ];
+    }
+}
+</code></pre>
+<p>When casting to value objects, any changes made to the value object will automatically be synced back to the model before the model is saved:</p>
+<pre><code>use App\Models\User;
+
+$user = User::find(1);
+
+$user-&gt;address-&gt;lineOne = 'Updated Address Value';
+
+$user-&gt;save();
+</code></pre>
+<blockquote>
+<p>{tip} If you plan to serialize your Eloquent models containing value objects to JSON or arrays, you should implement the <code>Illuminate\Contracts\Support\Arrayable</code> and <code>JsonSerializable</code> interfaces on the value object.</p>
+</blockquote>
+<p><a name="array-json-serialization"></a></p>
+<h3 id="array-json-serialization">Array / JSON Serialization</h3>
+<p>When an Eloquent model is converted to an array or JSON using the <code>toArray</code> and <code>toJson</code> methods, your custom cast value objects will typically be serialized as well as long as they implement the <code>Illuminate\Contracts\Support\Arrayable</code> and <code>JsonSerializable</code> interfaces. However, when using value objects provided by third-party libraries, you may not have the ability to add these interfaces to the object.</p>
+<p>Therefore, you may specify that your custom cast class will be responsible for serializing the value object. To do so, your custom cast class should implement the <code>Illuminate\Contracts\Database\Eloquent\SerializesCastableAttributes</code> interface. This interface states that your class should contain a <code>serialize</code> method which should return the serialized form of your value object:</p>
+<pre><code>/**
+ * Get the serialized representation of the value.
+ *
+ * @param  \Illuminate\Database\Eloquent\Model  $model
+ * @param  string  $key
+ * @param  mixed  $value
+ * @param  array  $attributes
+ * @return mixed
+ */
+public function serialize($model, string $key, $value, array $attributes)
+{
+    return (string) $value;
+}
+</code></pre>
+<p><a name="inbound-casting"></a></p>
+<h3 id="inbound-casting">Inbound Casting</h3>
+<p>Occasionally, you may need to write a custom cast that only transforms values that are being set on the model and does not perform any operations when attributes are being retrieved from the model. A classic example of an inbound only cast is a "hashing" cast. Inbound only custom casts should implement the <code>CastsInboundAttributes</code> interface, which only requires a <code>set</code> method to be defined.</p>
+<pre><code>&lt;?php
+
+namespace App\Casts;
+
+use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
+
+class Hash implements CastsInboundAttributes
+{
+    /**
+     * The hashing algorithm.
+     *
+     * @var string
+     */
+    protected $algorithm;
+
+    /**
+     * Create a new cast class instance.
+     *
+     * @param  string|null  $algorithm
+     * @return void
+     */
+    public function __construct($algorithm = null)
+    {
+        $this-&gt;algorithm = $algorithm;
+    }
+
+    /**
+     * Prepare the given value for storage.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param  string  $key
+     * @param  array  $value
+     * @param  array  $attributes
+     * @return string
+     */
+    public function set($model, $key, $value, $attributes)
+    {
+        return is_null($this-&gt;algorithm)
+                    ? bcrypt($value)
+                    : hash($this-&gt;algorithm, $value);
+    }
+}
+</code></pre>
+<p><a name="cast-parameters"></a></p>
+<h3 id="cast-parameters">Cast Parameters</h3>
+<p>When attaching a custom cast to a model, cast parameters may be specified by separating them from the class name using a <code>:</code> character and comma-delimiting multiple parameters. The parameters will be passed to the constructor of the cast class:</p>
+<pre><code>/**
+ * The attributes that should be cast.
+ *
+ * @var array
+ */
+protected $casts = [
+    'secret' =&gt; Hash::class.':sha256',
+];
+</code></pre>
+<p><a name="castables"></a></p>
+<h3 id="castables">Castables</h3>
+<p>You may want to allow your application's value objects to define their own custom cast classes. Instead of attaching the custom cast class to your model, you may alternatively attach a value object class that implements the <code>Illuminate\Contracts\Database\Eloquent\Castable</code> interface:</p>
+<pre><code>use App\Models\Address;
+
+protected $casts = [
+    'address' =&gt; Address::class,
+];
+</code></pre>
+<p>Objects that implement the <code>Castable</code> interface must define a <code>castUsing</code> method that returns the class name of the custom caster class that is responsible for casting to and from the <code>Castable</code> class:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Contracts\Database\Eloquent\Castable;
+use App\Casts\Address as AddressCast;
+
+class Address implements Castable
+{
+    /**
+     * Get the name of the caster class to use when casting from / to this cast target.
+     *
+     * @param  array  $arguments
+     * @return string
+     */
+    public static function castUsing(array $arguments)
+    {
+        return AddressCast::class;
+    }
+}
+</code></pre>
+<p>When using <code>Castable</code> classes, you may still provide arguments in the <code>$casts</code> definition. The arguments will be passed to the <code>castUsing</code> method:</p>
+<pre><code>use App\Models\Address;
+
+protected $casts = [
+    'address' =&gt; Address::class.':argument',
+];
+</code></pre>
+<p><a name="anonymous-cast-classes"></a></p>
+<h4 id="castables-anonymous-cast-classes">Castables &amp; Anonymous Cast Classes</h4>
+<p>By combining "castables" with PHP's <a href="https://www.php.net/manual/en/language.oop5.anonymous.php">anonymous classes</a>, you may define a value object and its casting logic as a single castable object. To accomplish this, return an anonymous class from your value object's <code>castUsing</code> method. The anonymous class should implement the <code>CastsAttributes</code> interface:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Contracts\Database\Eloquent\Castable;
+use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+
+class Address implements Castable
+{
+    // ...
+
+    /**
+     * Get the caster class to use when casting from / to this cast target.
+     *
+     * @param  array  $arguments
+     * @return object|string
+     */
+    public static function castUsing(array $arguments)
+    {
+        return new class implements CastsAttributes
+        {
+            public function get($model, $key, $value, $attributes)
+            {
+                return new Address(
+                    $attributes['address_line_one'],
+                    $attributes['address_line_two']
+                );
+            }
+
+            public function set($model, $key, $value, $attributes)
+            {
+                return [
+                    'address_line_one' =&gt; $value-&gt;lineOne,
+                    'address_line_two' =&gt; $value-&gt;lineTwo,
+                ];
+            }
+        };
+    }
+}
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../collections/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kolleksiyalar" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Kolleksiyalar
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../eloquent-serialization/" class="md-footer__link md-footer__link--next" aria-label="Next: Serializatsiya" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Serializatsiya
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

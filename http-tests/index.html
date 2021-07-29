@@ -1,0 +1,3616 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/http-tests/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>HTTP Testing - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#http-tests" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HTTP Testing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" checked>
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          HTTP Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        HTTP Testing
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-requests" class="md-nav__link">
+    Making Requests
+  </a>
+  
+    <nav class="md-nav" aria-label="Making Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-request-headers" class="md-nav__link">
+    Customizing Request Headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    Cookies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-authentication" class="md-nav__link">
+    Session / Authentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-responses" class="md-nav__link">
+    Debugging Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-json-apis" class="md-nav__link">
+    Testing JSON APIs
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing JSON APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asserting-exact-json-matches" class="md-nav__link">
+    Asserting Exact JSON Matches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserting-on-json-paths" class="md-nav__link">
+    Asserting On JSON Paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluent-json-testing" class="md-nav__link">
+    Fluent JSON Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Fluent JSON Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-etc-method" class="md-nav__link">
+    Understanding The etc Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserting-against-json-collections" class="md-nav__link">
+    Asserting Against JSON Collections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-json-collection-assertions" class="md-nav__link">
+    Scoping JSON Collection Assertions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserting-json-types" class="md-nav__link">
+    Asserting JSON Types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-file-uploads" class="md-nav__link">
+    Testing File Uploads
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing File Uploads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fake-file-customization" class="md-nav__link">
+    Fake File Customization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-views" class="md-nav__link">
+    Testing Views
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sharing-errors" class="md-nav__link">
+    Sharing Errors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rendering-blade-components" class="md-nav__link">
+    Rendering Blade &amp; Components
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-assertions" class="md-nav__link">
+    Available Assertions
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Assertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-assertions" class="md-nav__link">
+    Response Assertions
+  </a>
+  
+    <nav class="md-nav" aria-label="Response Assertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertcookie" class="md-nav__link">
+    assertCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookieexpired" class="md-nav__link">
+    assertCookieExpired
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookienotexpired" class="md-nav__link">
+    assertCookieNotExpired
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookiemissing" class="md-nav__link">
+    assertCookieMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcreated" class="md-nav__link">
+    assertCreated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontsee" class="md-nav__link">
+    assertDontSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontseetext" class="md-nav__link">
+    assertDontSeeText
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdownload" class="md-nav__link">
+    assertDownload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertexactjson" class="md-nav__link">
+    assertExactJson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertforbidden" class="md-nav__link">
+    assertForbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertheader" class="md-nav__link">
+    assertHeader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertheadermissing" class="md-nav__link">
+    assertHeaderMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjson" class="md-nav__link">
+    assertJson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsoncount" class="md-nav__link">
+    assertJsonCount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonfragment" class="md-nav__link">
+    assertJsonFragment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissing" class="md-nav__link">
+    assertJsonMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingexact" class="md-nav__link">
+    assertJsonMissingExact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingvalidationerrors" class="md-nav__link">
+    assertJsonMissingValidationErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonpath" class="md-nav__link">
+    assertJsonPath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonstructure" class="md-nav__link">
+    assertJsonStructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonvalidationerrors" class="md-nav__link">
+    assertJsonValidationErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertlocation" class="md-nav__link">
+    assertLocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnocontent" class="md-nav__link">
+    assertNoContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotfound" class="md-nav__link">
+    assertNotFound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertok" class="md-nav__link">
+    assertOk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertplaincookie" class="md-nav__link">
+    assertPlainCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirect" class="md-nav__link">
+    assertRedirect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsee" class="md-nav__link">
+    assertSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseeinorder" class="md-nav__link">
+    assertSeeInOrder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseetext" class="md-nav__link">
+    assertSeeText
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseetextinorder" class="md-nav__link">
+    assertSeeTextInOrder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhas" class="md-nav__link">
+    assertSessionHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasinput" class="md-nav__link">
+    assertSessionHasInput
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasall" class="md-nav__link">
+    assertSessionHasAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhaserrors" class="md-nav__link">
+    assertSessionHasErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhaserrorsin" class="md-nav__link">
+    assertSessionHasErrorsIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasnoerrors" class="md-nav__link">
+    assertSessionHasNoErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessiondoesnthaveerrors" class="md-nav__link">
+    assertSessionDoesntHaveErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionmissing" class="md-nav__link">
+    assertSessionMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertstatus" class="md-nav__link">
+    assertStatus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsuccessful" class="md-nav__link">
+    assertSuccessful
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertunauthorized" class="md-nav__link">
+    assertUnauthorized
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewhas" class="md-nav__link">
+    assertViewHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewhasall" class="md-nav__link">
+    assertViewHasAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewis" class="md-nav__link">
+    assertViewIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewmissing" class="md-nav__link">
+    assertViewMissing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-assertions" class="md-nav__link">
+    Authentication Assertions
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication Assertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticated" class="md-nav__link">
+    assertAuthenticated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertguest" class="md-nav__link">
+    assertGuest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticatedas" class="md-nav__link">
+    assertAuthenticatedAs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-requests" class="md-nav__link">
+    Making Requests
+  </a>
+  
+    <nav class="md-nav" aria-label="Making Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-request-headers" class="md-nav__link">
+    Customizing Request Headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    Cookies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-authentication" class="md-nav__link">
+    Session / Authentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-responses" class="md-nav__link">
+    Debugging Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-json-apis" class="md-nav__link">
+    Testing JSON APIs
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing JSON APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asserting-exact-json-matches" class="md-nav__link">
+    Asserting Exact JSON Matches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserting-on-json-paths" class="md-nav__link">
+    Asserting On JSON Paths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluent-json-testing" class="md-nav__link">
+    Fluent JSON Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Fluent JSON Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-etc-method" class="md-nav__link">
+    Understanding The etc Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserting-against-json-collections" class="md-nav__link">
+    Asserting Against JSON Collections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-json-collection-assertions" class="md-nav__link">
+    Scoping JSON Collection Assertions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserting-json-types" class="md-nav__link">
+    Asserting JSON Types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-file-uploads" class="md-nav__link">
+    Testing File Uploads
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing File Uploads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fake-file-customization" class="md-nav__link">
+    Fake File Customization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-views" class="md-nav__link">
+    Testing Views
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sharing-errors" class="md-nav__link">
+    Sharing Errors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rendering-blade-components" class="md-nav__link">
+    Rendering Blade &amp; Components
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-assertions" class="md-nav__link">
+    Available Assertions
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Assertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-assertions" class="md-nav__link">
+    Response Assertions
+  </a>
+  
+    <nav class="md-nav" aria-label="Response Assertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertcookie" class="md-nav__link">
+    assertCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookieexpired" class="md-nav__link">
+    assertCookieExpired
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookienotexpired" class="md-nav__link">
+    assertCookieNotExpired
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcookiemissing" class="md-nav__link">
+    assertCookieMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertcreated" class="md-nav__link">
+    assertCreated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontsee" class="md-nav__link">
+    assertDontSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdontseetext" class="md-nav__link">
+    assertDontSeeText
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertdownload" class="md-nav__link">
+    assertDownload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertexactjson" class="md-nav__link">
+    assertExactJson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertforbidden" class="md-nav__link">
+    assertForbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertheader" class="md-nav__link">
+    assertHeader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertheadermissing" class="md-nav__link">
+    assertHeaderMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjson" class="md-nav__link">
+    assertJson
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsoncount" class="md-nav__link">
+    assertJsonCount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonfragment" class="md-nav__link">
+    assertJsonFragment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissing" class="md-nav__link">
+    assertJsonMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingexact" class="md-nav__link">
+    assertJsonMissingExact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonmissingvalidationerrors" class="md-nav__link">
+    assertJsonMissingValidationErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonpath" class="md-nav__link">
+    assertJsonPath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonstructure" class="md-nav__link">
+    assertJsonStructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertjsonvalidationerrors" class="md-nav__link">
+    assertJsonValidationErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertlocation" class="md-nav__link">
+    assertLocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnocontent" class="md-nav__link">
+    assertNoContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertnotfound" class="md-nav__link">
+    assertNotFound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertok" class="md-nav__link">
+    assertOk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertplaincookie" class="md-nav__link">
+    assertPlainCookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertredirect" class="md-nav__link">
+    assertRedirect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsee" class="md-nav__link">
+    assertSee
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseeinorder" class="md-nav__link">
+    assertSeeInOrder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseetext" class="md-nav__link">
+    assertSeeText
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertseetextinorder" class="md-nav__link">
+    assertSeeTextInOrder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhas" class="md-nav__link">
+    assertSessionHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasinput" class="md-nav__link">
+    assertSessionHasInput
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasall" class="md-nav__link">
+    assertSessionHasAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhaserrors" class="md-nav__link">
+    assertSessionHasErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhaserrorsin" class="md-nav__link">
+    assertSessionHasErrorsIn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionhasnoerrors" class="md-nav__link">
+    assertSessionHasNoErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessiondoesnthaveerrors" class="md-nav__link">
+    assertSessionDoesntHaveErrors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsessionmissing" class="md-nav__link">
+    assertSessionMissing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertstatus" class="md-nav__link">
+    assertStatus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsuccessful" class="md-nav__link">
+    assertSuccessful
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertunauthorized" class="md-nav__link">
+    assertUnauthorized
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewhas" class="md-nav__link">
+    assertViewHas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewhasall" class="md-nav__link">
+    assertViewHasAll
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewis" class="md-nav__link">
+    assertViewIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertviewmissing" class="md-nav__link">
+    assertViewMissing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-assertions" class="md-nav__link">
+    Authentication Assertions
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication Assertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticated" class="md-nav__link">
+    assertAuthenticated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertguest" class="md-nav__link">
+    assertGuest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertauthenticatedas" class="md-nav__link">
+    assertAuthenticatedAs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="http-tests">HTTP Tests</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#making-requests">Making Requests</a><ul>
+<li><a href="#customizing-request-headers">Customizing Request Headers</a></li>
+<li><a href="#cookies">Cookies</a></li>
+<li><a href="#session-and-authentication">Session / Authentication</a></li>
+<li><a href="#debugging-responses">Debugging Responses</a></li>
+</ul>
+</li>
+<li><a href="#testing-json-apis">Testing JSON APIs</a><ul>
+<li><a href="#fluent-json-testing">Fluent JSON Testing</a></li>
+</ul>
+</li>
+<li><a href="#testing-file-uploads">Testing File Uploads</a></li>
+<li><a href="#testing-views">Testing Views</a><ul>
+<li><a href="#rendering-blade-and-components">Rendering Blade &amp; Components</a></li>
+</ul>
+</li>
+<li><a href="#available-assertions">Available Assertions</a><ul>
+<li><a href="#response-assertions">Response Assertions</a></li>
+<li><a href="#authentication-assertions">Authentication Assertions</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel provides a very fluent API for making HTTP requests to your application and examining the responses. For example, take a look at the feature test defined below:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function test_a_basic_request()
+    {
+        $response = $this-&gt;get('/');
+
+        $response-&gt;assertStatus(200);
+    }
+}
+</code></pre>
+<p>The <code>get</code> method makes a <code>GET</code> request into the application, while the <code>assertStatus</code> method asserts that the returned response should have the given HTTP status code. In addition to this simple assertion, Laravel also contains a variety of assertions for inspecting the response headers, content, JSON structure, and more.</p>
+<p><a name="making-requests"></a></p>
+<h2 id="making-requests">Making Requests</h2>
+<p>To make a request to your application, you may invoke the <code>get</code>, <code>post</code>, <code>put</code>, <code>patch</code>, or <code>delete</code> methods within your test. These methods do not actually issue a "real" HTTP request to your application. Instead, the entire network request is simulated internally.</p>
+<p>Instead of returning an <code>Illuminate\Http\Response</code> instance, test request methods return an instance of <code>Illuminate\Testing\TestResponse</code>, which provides a <a href="#available-assertions">variety of helpful assertions</a> that allow you to inspect your application's responses:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function test_a_basic_request()
+    {
+        $response = $this-&gt;get('/');
+
+        $response-&gt;assertStatus(200);
+    }
+}
+</code></pre>
+<p>In general, each of your tests should only make one request to your application. Unexpected behavior may occur if multiple requests are executed within a single test method.</p>
+<blockquote>
+<p>{tip} For convenience, the CSRF middleware is automatically disabled when running tests.</p>
+</blockquote>
+<p><a name="customizing-request-headers"></a></p>
+<h3 id="customizing-request-headers">Customizing Request Headers</h3>
+<p>You may use the <code>withHeaders</code> method to customize the request's headers before it is sent to the application. This method allows you to add any custom headers you would like to the request:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic functional test example.
+     *
+     * @return void
+     */
+    public function test_interacting_with_headers()
+    {
+        $response = $this-&gt;withHeaders([
+            'X-Header' =&gt; 'Value',
+        ])-&gt;post('/user', ['name' =&gt; 'Sally']);
+
+        $response-&gt;assertStatus(201);
+    }
+}
+</code></pre>
+<p><a name="cookies"></a></p>
+<h3 id="cookies">Cookies</h3>
+<p>You may use the <code>withCookie</code> or <code>withCookies</code> methods to set cookie values before making a request. The <code>withCookie</code> method accepts a cookie name and value as its two arguments, while the <code>withCookies</code> method accepts an array of name / value pairs:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_interacting_with_cookies()
+    {
+        $response = $this-&gt;withCookie('color', 'blue')-&gt;get('/');
+
+        $response = $this-&gt;withCookies([
+            'color' =&gt; 'blue',
+            'name' =&gt; 'Taylor',
+        ])-&gt;get('/');
+    }
+}
+</code></pre>
+<p><a name="session-and-authentication"></a></p>
+<h3 id="session-authentication">Session / Authentication</h3>
+<p>Laravel provides several helpers for interacting with the session during HTTP testing. First, you may set the session data to a given array using the <code>withSession</code> method. This is useful for loading the session with data before issuing a request to your application:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_interacting_with_the_session()
+    {
+        $response = $this-&gt;withSession(['banned' =&gt; false])-&gt;get('/');
+    }
+}
+</code></pre>
+<p>Laravel's session is typically used to maintain state for the currently authenticated user. Therefore, the <code>actingAs</code> helper method provides a simple way to authenticate a given user as the current user. For example, we may use a <a href="/docs/{{version}}/database-testing#writing-factories">model factory</a> to generate and authenticate a user:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use App\Models\User;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_an_action_that_requires_authentication()
+    {
+        $user = User::factory()-&gt;create();
+
+        $response = $this-&gt;actingAs($user)
+                         -&gt;withSession(['banned' =&gt; false])
+                         -&gt;get('/');
+    }
+}
+</code></pre>
+<p>You may also specify which guard should be used to authenticate the given user by passing the guard name as the second argument to the <code>actingAs</code> method:</p>
+<pre><code>$this-&gt;actingAs($user, 'api')
+</code></pre>
+<p><a name="debugging-responses"></a></p>
+<h3 id="debugging-responses">Debugging Responses</h3>
+<p>After making a test request to your application, the <code>dump</code>, <code>dumpHeaders</code>, and <code>dumpSession</code> methods may be used to examine and debug the response contents:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function test_basic_test()
+    {
+        $response = $this-&gt;get('/');
+
+        $response-&gt;dumpHeaders();
+
+        $response-&gt;dumpSession();
+
+        $response-&gt;dump();
+    }
+}
+</code></pre>
+<p><a name="testing-json-apis"></a></p>
+<h2 id="testing-json-apis">Testing JSON APIs</h2>
+<p>Laravel also provides several helpers for testing JSON APIs and their responses. For example, the <code>json</code>, <code>getJson</code>, <code>postJson</code>, <code>putJson</code>, <code>patchJson</code>, <code>deleteJson</code>, and <code>optionsJson</code> methods may be used to issue JSON requests with various HTTP verbs. You may also easily pass data and headers to these methods. To get started, let's write a test to make a <code>POST</code> request to <code>/api/user</code> and assert that the expected JSON data was returned:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic functional test example.
+     *
+     * @return void
+     */
+    public function test_making_an_api_request()
+    {
+        $response = $this-&gt;postJson('/api/user', ['name' =&gt; 'Sally']);
+
+        $response
+            -&gt;assertStatus(201)
+            -&gt;assertJson([
+                'created' =&gt; true,
+            ]);
+    }
+}
+</code></pre>
+<p>In addition, JSON response data may be accessed as array variables on the response, making it convenient for you to inspect the individual values returned within a JSON response:</p>
+<pre><code>$this-&gt;assertTrue($response['created']);
+</code></pre>
+<blockquote>
+<p>{tip} The <code>assertJson</code> method converts the response to an array and utilizes <code>PHPUnit::assertArraySubset</code> to verify that the given array exists within the JSON response returned by the application. So, if there are other properties in the JSON response, this test will still pass as long as the given fragment is present.</p>
+</blockquote>
+<p><a name="verifying-exact-match"></a></p>
+<h4 id="asserting-exact-json-matches">Asserting Exact JSON Matches</h4>
+<p>As previously mentioned, the <code>assertJson</code> method may be used to assert that a fragment of JSON exists within the JSON response. If you would like to verify that a given array <strong>exactly matches</strong> the JSON returned by your application, you should use the <code>assertExactJson</code> method:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic functional test example.
+     *
+     * @return void
+     */
+    public function test_asserting_an_exact_json_match()
+    {
+        $response = $this-&gt;json('POST', '/user', ['name' =&gt; 'Sally']);
+
+        $response
+            -&gt;assertStatus(201)
+            -&gt;assertExactJson([
+                'created' =&gt; true,
+            ]);
+    }
+}
+</code></pre>
+<p><a name="verifying-json-paths"></a></p>
+<h4 id="asserting-on-json-paths">Asserting On JSON Paths</h4>
+<p>If you would like to verify that the JSON response contains the given data at a specified path, you should use the <code>assertJsonPath</code> method:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic functional test example.
+     *
+     * @return void
+     */
+    public function test_asserting_a_json_paths_value()
+    {
+        $response = $this-&gt;json('POST', '/user', ['name' =&gt; 'Sally']);
+
+        $response
+            -&gt;assertStatus(201)
+            -&gt;assertJsonPath('team.owner.name', 'Darian');
+    }
+}
+</code></pre>
+<p><a name="fluent-json-testing"></a></p>
+<h3 id="fluent-json-testing">Fluent JSON Testing</h3>
+<p>Laravel also offers a beautiful way to fluently test your application's JSON responses. To get started, pass a closure to the <code>assertJson</code> method. This closure will be invoked with an instance of <code>Illuminate\Testing\Fluent\AssertableJson</code> which can be used to make assertions against the JSON that was returned by your application. The <code>where</code> method may be used to make assertions against a particular attribute of the JSON, while the <code>missing</code> method may be used to assert that a particular attribute is missing from the JSON:</p>
+<pre><code>use Illuminate\Testing\Fluent\AssertableJson;
+
+/**
+ * A basic functional test example.
+ *
+ * @return void
+ */
+public function test_fluent_json()
+{
+    $response = $this-&gt;json('GET', '/users/1');
+
+    $response
+        -&gt;assertJson(fn (AssertableJson $json) =&gt;
+            $json-&gt;where('id', 1)
+                 -&gt;where('name', 'Victoria Faith')
+                 -&gt;missing('password')
+                 -&gt;etc()
+        );
+}
+</code></pre>
+<h4 id="understanding-the-etc-method">Understanding The <code>etc</code> Method</h4>
+<p>In the example above, you may have noticed we invoked the <code>etc</code> method at the end of our assertion chain. This method informs Laravel that there may be other attributes present on the JSON object. If the <code>etc</code> method is not used, the test will fail if other attributes that you did not make assertions against exist on the JSON object.</p>
+<p>The intention behind this behavior is to protect you from unintentionally exposing sensitive information in your JSON responses by forcing you to either explicitly make an assertion against the attribute or explicitly allow additional attributes via the <code>etc</code> method.</p>
+<p><a name="asserting-against-json-collections"></a></p>
+<h4 id="asserting-against-json-collections">Asserting Against JSON Collections</h4>
+<p>Often, your route will return a JSON response that contains multiple items, such as multiple users:</p>
+<pre><code>Route::get('/users', function () {
+    return User::all();
+});
+</code></pre>
+<p>In these situations, we may use the fluent JSON object's <code>has</code> method to make assertions against the users included in the response. For example, let's assert that the JSON response contains three users. Next, we'll make some assertions about the first user in the collection using the <code>first</code> method. The <code>first</code> method accepts a closure which receives another assertable JSON string that we can use to make assertions about the first object in the JSON collection:</p>
+<pre><code>$response
+    -&gt;assertJson(fn (AssertableJson $json) =&gt;
+        $json-&gt;has(3)
+             -&gt;first(fn ($json) =&gt;
+                $json-&gt;where('id', 1)
+                     -&gt;where('name', 'Victoria Faith')
+                     -&gt;missing('password')
+                     -&gt;etc()
+             )
+    );
+</code></pre>
+<p><a name="scoping-json-collection-assertions"></a></p>
+<h4 id="scoping-json-collection-assertions">Scoping JSON Collection Assertions</h4>
+<p>Sometimes, your application's routes will return JSON collections that are assigned named keys:</p>
+<pre><code>Route::get('/users', function () {
+    return [
+        'meta' =&gt; [...],
+        'users' =&gt; User::all(),
+    ];
+})
+</code></pre>
+<p>When testing these routes, you may use the <code>has</code> method to assert against the number of items in the collection. In addition, you may use the <code>has</code> method to scope a chain of assertions:</p>
+<pre><code>$response
+    -&gt;assertJson(fn (AssertableJson $json) =&gt;
+        $json-&gt;has('meta')
+             -&gt;has('users', 3)
+             -&gt;has('users.0', fn ($json) =&gt;
+                $json-&gt;where('id', 1)
+                     -&gt;where('name', 'Victoria Faith')
+                     -&gt;missing('password')
+                     -&gt;etc()
+             )
+    );
+</code></pre>
+<p>However, instead of making two separate calls to the <code>has</code> method to assert against the <code>users</code> collection, you may make a single call which provides a closure as its third parameter. When doing so, the closure will automatically be invoked and scoped to the first item in the collection:</p>
+<pre><code>$response
+    -&gt;assertJson(fn (AssertableJson $json) =&gt;
+        $json-&gt;has('meta')
+             -&gt;has('users', 3, fn ($json) =&gt;
+                $json-&gt;where('id', 1)
+                     -&gt;where('name', 'Victoria Faith')
+                     -&gt;missing('password')
+                     -&gt;etc()
+             )
+    );
+</code></pre>
+<p><a name="asserting-json-types"></a></p>
+<h4 id="asserting-json-types">Asserting JSON Types</h4>
+<p>You may only want to assert that the properties in the JSON response are of a certain type. The <code>Illuminate\Testing\Fluent\AssertableJson</code> class provides the <code>whereType</code> and <code>whereAllType</code> methods for doing just that:</p>
+<pre><code>$response-&gt;assertJson(fn (AssertableJson $json) =&gt;
+    $json-&gt;whereType('id', 'integer')
+         -&gt;whereAllType([
+            'users.0.name' =&gt; 'string',
+            'meta' =&gt; 'array'
+        ])
+);
+</code></pre>
+<p>You may specify multiple types using the <code>|</code> character, or passing an array of types as the second parameter to the <code>whereType</code> method. The assertion will be successful if the response value is any of the listed types:</p>
+<pre><code>$response-&gt;assertJson(fn (AssertableJson $json) =&gt;
+    $json-&gt;whereType('name', 'string|null')
+         -&gt;whereType('id', ['string', 'integer'])
+);
+</code></pre>
+<p>The <code>whereType</code> and <code>whereTypeAll</code> methods recognize the following types: <code>string</code>, <code>integer</code>, <code>double</code>, <code>boolean</code>, <code>array</code>, and <code>null</code>.</p>
+<p><a name="testing-file-uploads"></a></p>
+<h2 id="testing-file-uploads">Testing File Uploads</h2>
+<p>The <code>Illuminate\Http\UploadedFile</code> class provides a <code>fake</code> method which may be used to generate dummy files or images for testing. This, combined with the <code>Storage</code> facade's <code>fake</code> method, greatly simplifies the testing of file uploads. For example, you may combine these two features to easily test an avatar upload form:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_avatars_can_be_uploaded()
+    {
+        Storage::fake('avatars');
+
+        $file = UploadedFile::fake()-&gt;image('avatar.jpg');
+
+        $response = $this-&gt;post('/avatar', [
+            'avatar' =&gt; $file,
+        ]);
+
+        Storage::disk('avatars')-&gt;assertExists($file-&gt;hashName());
+    }
+}
+</code></pre>
+<p>If you would like to assert that a given file does not exist, you may use the <code>assertMissing</code> method provided by the <code>Storage</code> facade:</p>
+<pre><code>Storage::fake('avatars');
+
+// ...
+
+Storage::disk('avatars')-&gt;assertMissing('missing.jpg');
+</code></pre>
+<p><a name="fake-file-customization"></a></p>
+<h4 id="fake-file-customization">Fake File Customization</h4>
+<p>When creating files using the <code>fake</code> method provided by the <code>UploadedFile</code> class, you may specify the width, height, and size of the image (in kilobytes) in order to better test your application's validation rules:</p>
+<pre><code>UploadedFile::fake()-&gt;image('avatar.jpg', $width, $height)-&gt;size(100);
+</code></pre>
+<p>In addition to creating images, you may create files of any other type using the <code>create</code> method:</p>
+<pre><code>UploadedFile::fake()-&gt;create('document.pdf', $sizeInKilobytes);
+</code></pre>
+<p>If needed, you may pass a <code>$mimeType</code> argument to the method to explicitly define the MIME type that should be returned by the file:</p>
+<pre><code>UploadedFile::fake()-&gt;create(
+    'document.pdf', $sizeInKilobytes, 'application/pdf'
+);
+</code></pre>
+<p><a name="testing-views"></a></p>
+<h2 id="testing-views">Testing Views</h2>
+<p>Laravel also allows you to render a view without making a simulated HTTP request to the application. To accomplish this, you may call the <code>view</code> method within your test. The <code>view</code> method accepts the view name and an optional array of data. The method returns an instance of <code>Illuminate\Testing\TestView</code>, which offers several methods to conveniently make assertions about the view's contents:</p>
+<pre><code>&lt;?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function test_a_welcome_view_can_be_rendered()
+    {
+        $view = $this-&gt;view('welcome', ['name' =&gt; 'Taylor']);
+
+        $view-&gt;assertSee('Taylor');
+    }
+}
+</code></pre>
+<p>The <code>TestView</code> class provides the following assertion methods: <code>assertSee</code>, <code>assertSeeInOrder</code>, <code>assertSeeText</code>, <code>assertSeeTextInOrder</code>, <code>assertDontSee</code>, and <code>assertDontSeeText</code>.</p>
+<p>If needed, you may get the raw, rendered view contents by casting the <code>TestView</code> instance to a string:</p>
+<pre><code>$contents = (string) $this-&gt;view('welcome');
+</code></pre>
+<p><a name="sharing-errors"></a></p>
+<h4 id="sharing-errors">Sharing Errors</h4>
+<p>Some views may depend on errors shared in the <a href="/docs/{{version}}/validation#quick-displaying-the-validation-errors">global error bag provided by Laravel</a>. To hydrate the error bag with error messages, you may use the <code>withViewErrors</code> method:</p>
+<pre><code>$view = $this-&gt;withViewErrors([
+    'name' =&gt; ['Please provide a valid name.']
+])-&gt;view('form');
+
+$view-&gt;assertSee('Please provide a valid name.');
+</code></pre>
+<p><a name="rendering-blade-and-components"></a></p>
+<h3 id="rendering-blade-components">Rendering Blade &amp; Components</h3>
+<p>If necessary, you may use the <code>blade</code> method to evaluate and render a raw <a href="/docs/{{version}}/blade">Blade</a> string. Like the <code>view</code> method, the <code>blade</code> method returns an instance of <code>Illuminate\Testing\TestView</code>:</p>
+<pre><code>$view = $this-&gt;blade(
+    '&lt;x-component :name="$name" /&gt;',
+    ['name' =&gt; 'Taylor']
+);
+
+$view-&gt;assertSee('Taylor');
+</code></pre>
+<p>You may use the <code>component</code> method to evaluate and render a <a href="/docs/{{version}}/blade#components">Blade component</a>. Like the <code>view</code> method, the <code>component</code> method returns an instance of <code>Illuminate\Testing\TestView</code>:</p>
+<pre><code>$view = $this-&gt;component(Profile::class, ['name' =&gt; 'Taylor']);
+
+$view-&gt;assertSee('Taylor');
+</code></pre>
+<p><a name="available-assertions"></a></p>
+<h2 id="available-assertions">Available Assertions</h2>
+<p><a name="response-assertions"></a></p>
+<h3 id="response-assertions">Response Assertions</h3>
+<p>Laravel's <code>Illuminate\Testing\TestResponse</code> class provides a variety of custom assertion methods that you may utilize when testing your application. These assertions may be accessed on the response that is returned by the <code>json</code>, <code>get</code>, <code>post</code>, <code>put</code>, and <code>delete</code> test methods:</p>
+<style>
+    .collection-method-list > p {
+        column-count: 2; -moz-column-count: 2; -webkit-column-count: 2;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    .collection-method-list a {
+        display: block;
+    }
+</style>
+
+<div class="collection-method-list" markdown="1">
+
+[assertCookie](#assert-cookie)
+[assertCookieExpired](#assert-cookie-expired)
+[assertCookieNotExpired](#assert-cookie-not-expired)
+[assertCookieMissing](#assert-cookie-missing)
+[assertCreated](#assert-created)
+[assertDontSee](#assert-dont-see)
+[assertDontSeeText](#assert-dont-see-text)
+[assertDownload](#assert-download)
+[assertExactJson](#assert-exact-json)
+[assertForbidden](#assert-forbidden)
+[assertHeader](#assert-header)
+[assertHeaderMissing](#assert-header-missing)
+[assertJson](#assert-json)
+[assertJsonCount](#assert-json-count)
+[assertJsonFragment](#assert-json-fragment)
+[assertJsonMissing](#assert-json-missing)
+[assertJsonMissingExact](#assert-json-missing-exact)
+[assertJsonMissingValidationErrors](#assert-json-missing-validation-errors)
+[assertJsonPath](#assert-json-path)
+[assertJsonStructure](#assert-json-structure)
+[assertJsonValidationErrors](#assert-json-validation-errors)
+[assertLocation](#assert-location)
+[assertNoContent](#assert-no-content)
+[assertNotFound](#assert-not-found)
+[assertOk](#assert-ok)
+[assertPlainCookie](#assert-plain-cookie)
+[assertRedirect](#assert-redirect)
+[assertSee](#assert-see)
+[assertSeeInOrder](#assert-see-in-order)
+[assertSeeText](#assert-see-text)
+[assertSeeTextInOrder](#assert-see-text-in-order)
+[assertSessionHas](#assert-session-has)
+[assertSessionHasInput](#assert-session-has-input)
+[assertSessionHasAll](#assert-session-has-all)
+[assertSessionHasErrors](#assert-session-has-errors)
+[assertSessionHasErrorsIn](#assert-session-has-errors-in)
+[assertSessionHasNoErrors](#assert-session-has-no-errors)
+[assertSessionDoesntHaveErrors](#assert-session-doesnt-have-errors)
+[assertSessionMissing](#assert-session-missing)
+[assertStatus](#assert-status)
+[assertSuccessful](#assert-successful)
+[assertUnauthorized](#assert-unauthorized)
+[assertViewHas](#assert-view-has)
+[assertViewHasAll](#assert-view-has-all)
+[assertViewIs](#assert-view-is)
+[assertViewMissing](#assert-view-missing)
+
+</div>
+
+<p><a name="assert-cookie"></a></p>
+<h4 id="assertcookie">assertCookie</h4>
+<p>Assert that the response contains the given cookie:</p>
+<pre><code>$response-&gt;assertCookie($cookieName, $value = null);
+</code></pre>
+<p><a name="assert-cookie-expired"></a></p>
+<h4 id="assertcookieexpired">assertCookieExpired</h4>
+<p>Assert that the response contains the given cookie and it is expired:</p>
+<pre><code>$response-&gt;assertCookieExpired($cookieName);
+</code></pre>
+<p><a name="assert-cookie-not-expired"></a></p>
+<h4 id="assertcookienotexpired">assertCookieNotExpired</h4>
+<p>Assert that the response contains the given cookie and it is not expired:</p>
+<pre><code>$response-&gt;assertCookieNotExpired($cookieName);
+</code></pre>
+<p><a name="assert-cookie-missing"></a></p>
+<h4 id="assertcookiemissing">assertCookieMissing</h4>
+<p>Assert that the response does not contains the given cookie:</p>
+<pre><code>$response-&gt;assertCookieMissing($cookieName);
+</code></pre>
+<p><a name="assert-created"></a></p>
+<h4 id="assertcreated">assertCreated</h4>
+<p>Assert that the response has a 201 HTTP status code:</p>
+<pre><code>$response-&gt;assertCreated();
+</code></pre>
+<p><a name="assert-dont-see"></a></p>
+<h4 id="assertdontsee">assertDontSee</h4>
+<p>Assert that the given string is not contained within the response returned by the application. This assertion will automatically escape the given string unless you pass a second argument of <code>false</code>:</p>
+<pre><code>$response-&gt;assertDontSee($value, $escaped = true);
+</code></pre>
+<p><a name="assert-dont-see-text"></a></p>
+<h4 id="assertdontseetext">assertDontSeeText</h4>
+<p>Assert that the given string is not contained within the response text. This assertion will automatically escape the given string unless you pass a second argument of <code>false</code>. This method will pass the response content to the <code>strip_tags</code> PHP function before making the assertion:</p>
+<pre><code>$response-&gt;assertDontSeeText($value, $escaped = true);
+</code></pre>
+<p><a name="assert-download"></a></p>
+<h4 id="assertdownload">assertDownload</h4>
+<p>Assert that the response is a "download". Typically, this means the invoked route that returned the response returned a <code>Response::download</code> response, <code>BinaryFileResponse</code>, or <code>Storage::download</code> response:</p>
+<pre><code>$response-&gt;assertDownload();
+</code></pre>
+<p>If you wish, you may assert that the downloadable file was assigned a given file name:</p>
+<pre><code>$response-&gt;assertDownload('image.jpg');
+</code></pre>
+<p><a name="assert-exact-json"></a></p>
+<h4 id="assertexactjson">assertExactJson</h4>
+<p>Assert that the response contains an exact match of the given JSON data:</p>
+<pre><code>$response-&gt;assertExactJson(array $data);
+</code></pre>
+<p><a name="assert-forbidden"></a></p>
+<h4 id="assertforbidden">assertForbidden</h4>
+<p>Assert that the response has a forbidden (403) HTTP status code:</p>
+<pre><code>$response-&gt;assertForbidden();
+</code></pre>
+<p><a name="assert-header"></a></p>
+<h4 id="assertheader">assertHeader</h4>
+<p>Assert that the given header and value is present on the response:</p>
+<pre><code>$response-&gt;assertHeader($headerName, $value = null);
+</code></pre>
+<p><a name="assert-header-missing"></a></p>
+<h4 id="assertheadermissing">assertHeaderMissing</h4>
+<p>Assert that the given header is not present on the response:</p>
+<pre><code>$response-&gt;assertHeaderMissing($headerName);
+</code></pre>
+<p><a name="assert-json"></a></p>
+<h4 id="assertjson">assertJson</h4>
+<p>Assert that the response contains the given JSON data:</p>
+<pre><code>$response-&gt;assertJson(array $data, $strict = false);
+</code></pre>
+<p>The <code>assertJson</code> method converts the response to an array and utilizes <code>PHPUnit::assertArraySubset</code> to verify that the given array exists within the JSON response returned by the application. So, if there are other properties in the JSON response, this test will still pass as long as the given fragment is present.</p>
+<p><a name="assert-json-count"></a></p>
+<h4 id="assertjsoncount">assertJsonCount</h4>
+<p>Assert that the response JSON has an array with the expected number of items at the given key:</p>
+<pre><code>$response-&gt;assertJsonCount($count, $key = null);
+</code></pre>
+<p><a name="assert-json-fragment"></a></p>
+<h4 id="assertjsonfragment">assertJsonFragment</h4>
+<p>Assert that the response contains the given JSON data anywhere in the response:</p>
+<pre><code>Route::get('/users', function () {
+    return [
+        'users' =&gt; [
+            [
+                'name' =&gt; 'Taylor Otwell',
+            ],
+        ],
+    ];
+});
+
+$response-&gt;assertJsonFragment(['name' =&gt; 'Taylor Otwell']);
+</code></pre>
+<p><a name="assert-json-missing"></a></p>
+<h4 id="assertjsonmissing">assertJsonMissing</h4>
+<p>Assert that the response does not contain the given JSON data:</p>
+<pre><code>$response-&gt;assertJsonMissing(array $data);
+</code></pre>
+<p><a name="assert-json-missing-exact"></a></p>
+<h4 id="assertjsonmissingexact">assertJsonMissingExact</h4>
+<p>Assert that the response does not contain the exact JSON data:</p>
+<pre><code>$response-&gt;assertJsonMissingExact(array $data);
+</code></pre>
+<p><a name="assert-json-missing-validation-errors"></a></p>
+<h4 id="assertjsonmissingvalidationerrors">assertJsonMissingValidationErrors</h4>
+<p>Assert that the response has no JSON validation errors for the given keys:</p>
+<pre><code>$response-&gt;assertJsonMissingValidationErrors($keys);
+</code></pre>
+<p><a name="assert-json-path"></a></p>
+<h4 id="assertjsonpath">assertJsonPath</h4>
+<p>Assert that the response contains the given data at the specified path:</p>
+<pre><code>$response-&gt;assertJsonPath($path, $expectedValue);
+</code></pre>
+<p>For example, if the JSON response returned by your application contains the following data:</p>
+<pre><code class="language-js">{
+    &quot;user&quot;: {
+        &quot;name&quot;: &quot;Steve Schoger&quot;
+    }
+}
+</code></pre>
+<p>You may assert that the <code>name</code> property of the <code>user</code> object matches a given value like so:</p>
+<pre><code>$response-&gt;assertJsonPath('user.name', 'Steve Schoger');
+</code></pre>
+<p><a name="assert-json-structure"></a></p>
+<h4 id="assertjsonstructure">assertJsonStructure</h4>
+<p>Assert that the response has a given JSON structure:</p>
+<pre><code>$response-&gt;assertJsonStructure(array $structure);
+</code></pre>
+<p>For example, if the JSON response returned by your application contains the following data:</p>
+<pre><code class="language-js">{
+    &quot;user&quot;: {
+        &quot;name&quot;: &quot;Steve Schoger&quot;
+    }
+}
+</code></pre>
+<p>You may assert that the JSON structure matches your expectations like so:</p>
+<pre><code>$response-&gt;assertJsonStructure([
+    'user' =&gt; [
+        'name',
+    ]
+]);
+</code></pre>
+<p>Sometimes, JSON responses returned by your application may contain arrays of objects:</p>
+<pre><code class="language-js">{
+    &quot;user&quot;: [
+        {
+            &quot;name&quot;: &quot;Steve Schoger&quot;,
+            &quot;age&quot;: 55,
+            &quot;location&quot;: &quot;Earth&quot;
+        },  
+        {
+            &quot;name&quot;: &quot;Mary Schoger&quot;,
+            &quot;age&quot;: 60,
+            &quot;location&quot;: &quot;Earth&quot;
+        }
+    ]
+}
+</code></pre>
+<p>In this situation, you may use the <code>*</code> character to assert against the structure of all of the objects in the array:</p>
+<pre><code>$response-&gt;assertJsonStructure([
+    'user' =&gt; [
+        '*' =&gt; [
+             'name',
+             'age',
+             'location'
+        ]
+    ]
+]);
+</code></pre>
+<p><a name="assert-json-validation-errors"></a></p>
+<h4 id="assertjsonvalidationerrors">assertJsonValidationErrors</h4>
+<p>Assert that the response has the given JSON validation errors for the given keys. This method should be used when asserting against responses where the validation errors are returned as a JSON structure instead of being flashed to the session:</p>
+<pre><code>$response-&gt;assertJsonValidationErrors(array $data);
+</code></pre>
+<p><a name="assert-location"></a></p>
+<h4 id="assertlocation">assertLocation</h4>
+<p>Assert that the response has the given URI value in the <code>Location</code> header:</p>
+<pre><code>$response-&gt;assertLocation($uri);
+</code></pre>
+<p><a name="assert-no-content"></a></p>
+<h4 id="assertnocontent">assertNoContent</h4>
+<p>Assert that the response has the given HTTP status code and no content:</p>
+<pre><code>$response-&gt;assertNoContent($status = 204);
+</code></pre>
+<p><a name="assert-not-found"></a></p>
+<h4 id="assertnotfound">assertNotFound</h4>
+<p>Assert that the response has a not found (404) HTTP status code:</p>
+<pre><code>$response-&gt;assertNotFound();
+</code></pre>
+<p><a name="assert-ok"></a></p>
+<h4 id="assertok">assertOk</h4>
+<p>Assert that the response has a 200 HTTP status code:</p>
+<pre><code>$response-&gt;assertOk();
+</code></pre>
+<p><a name="assert-plain-cookie"></a></p>
+<h4 id="assertplaincookie">assertPlainCookie</h4>
+<p>Assert that the response contains the given unencrypted cookie:</p>
+<pre><code>$response-&gt;assertPlainCookie($cookieName, $value = null);
+</code></pre>
+<p><a name="assert-redirect"></a></p>
+<h4 id="assertredirect">assertRedirect</h4>
+<p>Assert that the response is a redirect to the given URI:</p>
+<pre><code>$response-&gt;assertRedirect($uri);
+</code></pre>
+<p><a name="assert-see"></a></p>
+<h4 id="assertsee">assertSee</h4>
+<p>Assert that the given string is contained within the response. This assertion will automatically escape the given string unless you pass a second argument of <code>false</code>:</p>
+<pre><code>$response-&gt;assertSee($value, $escaped = true);
+</code></pre>
+<p><a name="assert-see-in-order"></a></p>
+<h4 id="assertseeinorder">assertSeeInOrder</h4>
+<p>Assert that the given strings are contained in order within the response. This assertion will automatically escape the given strings unless you pass a second argument of <code>false</code>:</p>
+<pre><code>$response-&gt;assertSeeInOrder(array $values, $escaped = true);
+</code></pre>
+<p><a name="assert-see-text"></a></p>
+<h4 id="assertseetext">assertSeeText</h4>
+<p>Assert that the given string is contained within the response text. This assertion will automatically escape the given string unless you pass a second argument of <code>false</code>. The response content will be passed to the <code>strip_tags</code> PHP function before the assertion is made:</p>
+<pre><code>$response-&gt;assertSeeText($value, $escaped = true);
+</code></pre>
+<p><a name="assert-see-text-in-order"></a></p>
+<h4 id="assertseetextinorder">assertSeeTextInOrder</h4>
+<p>Assert that the given strings are contained in order within the response text. This assertion will automatically escape the given strings unless you pass a second argument of <code>false</code>. The response content will be passed to the <code>strip_tags</code> PHP function before the assertion is made:</p>
+<pre><code>$response-&gt;assertSeeTextInOrder(array $values, $escaped = true);
+</code></pre>
+<p><a name="assert-session-has"></a></p>
+<h4 id="assertsessionhas">assertSessionHas</h4>
+<p>Assert that the session contains the given piece of data:</p>
+<pre><code>$response-&gt;assertSessionHas($key, $value = null);
+</code></pre>
+<p><a name="assert-session-has-input"></a></p>
+<h4 id="assertsessionhasinput">assertSessionHasInput</h4>
+<p>Assert that the session has a given value in the <a href="/docs/{{version}}/responses#redirecting-with-flashed-session-data">flashed input array</a>:</p>
+<pre><code>$response-&gt;assertSessionHasInput($key, $value = null);
+</code></pre>
+<p><a name="assert-session-has-all"></a></p>
+<h4 id="assertsessionhasall">assertSessionHasAll</h4>
+<p>Assert that the session contains a given array of key / value pairs:</p>
+<pre><code>$response-&gt;assertSessionHasAll(array $data);
+</code></pre>
+<p>For example, if your application's session contains <code>name</code> and <code>status</code> keys, you may assert that both exist and have the specified values like so:</p>
+<pre><code>$response-&gt;assertSessionHasAll([
+    'name' =&gt; 'Taylor Otwell',
+    'status' =&gt; 'active',
+]);
+</code></pre>
+<p><a name="assert-session-has-errors"></a></p>
+<h4 id="assertsessionhaserrors">assertSessionHasErrors</h4>
+<p>Assert that the session contains an error for the given <code>$keys</code>. If <code>$keys</code> is an associative array, assert that the session contains a specific error message (value) for each field (key). This method should be used when testing routes that flash validation errors to the session instead of returning them as a JSON structure:</p>
+<pre><code>$response-&gt;assertSessionHasErrors(
+    array $keys, $format = null, $errorBag = 'default'
+);
+</code></pre>
+<p>For example, to assert that the <code>name</code> and <code>email</code> fields have validation error messages that were flashed to the session, you may invoke the <code>assertSessionHasErrors</code> method like so:</p>
+<pre><code>$response-&gt;assertSessionHasErrors(['name', 'email']);
+</code></pre>
+<p>Or, you may assert that a given field has a particular validation error message:</p>
+<pre><code>$response-&gt;assertSessionHasErrors([
+    'name' =&gt; 'The given name was invalid.'
+]);
+</code></pre>
+<p><a name="assert-session-has-errors-in"></a></p>
+<h4 id="assertsessionhaserrorsin">assertSessionHasErrorsIn</h4>
+<p>Assert that the session contains an error for the given <code>$keys</code> within a specific <a href="/docs/{{version}}/validation#named-error-bags">error bag</a>. If <code>$keys</code> is an associative array, assert that the session contains a specific error message (value) for each field (key), within the error bag:</p>
+<pre><code>$response-&gt;assertSessionHasErrorsIn($errorBag, $keys = [], $format = null);
+</code></pre>
+<p><a name="assert-session-has-no-errors"></a></p>
+<h4 id="assertsessionhasnoerrors">assertSessionHasNoErrors</h4>
+<p>Assert that the session has no validation errors:</p>
+<pre><code>$response-&gt;assertSessionHasNoErrors();
+</code></pre>
+<p><a name="assert-session-doesnt-have-errors"></a></p>
+<h4 id="assertsessiondoesnthaveerrors">assertSessionDoesntHaveErrors</h4>
+<p>Assert that the session has no validation errors for the given keys:</p>
+<pre><code>$response-&gt;assertSessionDoesntHaveErrors($keys = [], $format = null, $errorBag = 'default');
+</code></pre>
+<p><a name="assert-session-missing"></a></p>
+<h4 id="assertsessionmissing">assertSessionMissing</h4>
+<p>Assert that the session does not contain the given key:</p>
+<pre><code>$response-&gt;assertSessionMissing($key);
+</code></pre>
+<p><a name="assert-status"></a></p>
+<h4 id="assertstatus">assertStatus</h4>
+<p>Assert that the response has a given HTTP status code:</p>
+<pre><code>$response-&gt;assertStatus($code);
+</code></pre>
+<p><a name="assert-successful"></a></p>
+<h4 id="assertsuccessful">assertSuccessful</h4>
+<p>Assert that the response has a successful (&gt;= 200 and &lt; 300) HTTP status code:</p>
+<pre><code>$response-&gt;assertSuccessful();
+</code></pre>
+<p><a name="assert-unauthorized"></a></p>
+<h4 id="assertunauthorized">assertUnauthorized</h4>
+<p>Assert that the response has an unauthorized (401) HTTP status code:</p>
+<pre><code>$response-&gt;assertUnauthorized();
+</code></pre>
+<p><a name="assert-view-has"></a></p>
+<h4 id="assertviewhas">assertViewHas</h4>
+<p>Assert that the response view contains given a piece of data:</p>
+<pre><code>$response-&gt;assertViewHas($key, $value = null);
+</code></pre>
+<p>Passing a closure as the second argument to the <code>assertViewHas</code> method will allow you to inspect and make assertions against a particular piece of view data:</p>
+<pre><code>$response-&gt;assertViewHas('user', function (User $user) {
+    return $user-&gt;name === 'Taylor';
+});
+</code></pre>
+<p>In addition, view data may be accessed as array variables on the response, allowing you to convenient inspect it:</p>
+<pre><code>$this-&gt;assertEquals('Taylor', $response['name']);
+</code></pre>
+<p><a name="assert-view-has-all"></a></p>
+<h4 id="assertviewhasall">assertViewHasAll</h4>
+<p>Assert that the response view has a given list of data:</p>
+<pre><code>$response-&gt;assertViewHasAll(array $data);
+</code></pre>
+<p>This method may be used to assert that the view simply contains data matching the given keys:</p>
+<pre><code>$response-&gt;assertViewHasAll([
+    'name',
+    'email',
+]);
+</code></pre>
+<p>Or, you may assert that the view data is present and has specific values:</p>
+<pre><code>$response-&gt;assertViewHasAll([
+    'name' =&gt; 'Taylor Otwell',
+    'email' =&gt; 'taylor@example.com,',
+]);
+</code></pre>
+<p><a name="assert-view-is"></a></p>
+<h4 id="assertviewis">assertViewIs</h4>
+<p>Assert that the given view was returned by the route:</p>
+<pre><code>$response-&gt;assertViewIs($value);
+</code></pre>
+<p><a name="assert-view-missing"></a></p>
+<h4 id="assertviewmissing">assertViewMissing</h4>
+<p>Assert that the given data key was not made available to the view returned in the application's response:</p>
+<pre><code>$response-&gt;assertViewMissing($key);
+</code></pre>
+<p><a name="authentication-assertions"></a></p>
+<h3 id="authentication-assertions">Authentication Assertions</h3>
+<p>Laravel also provides a variety of authentication related assertions that you may utilize within your application's feature tests. Note that these methods are invoked on the test class itself and not the <code>Illuminate\Testing\TestResponse</code> instance returned by methods such as <code>get</code> and <code>post</code>.</p>
+<p><a name="assert-authenticated"></a></p>
+<h4 id="assertauthenticated">assertAuthenticated</h4>
+<p>Assert that a user is authenticated:</p>
+<pre><code>$this-&gt;assertAuthenticated($guard = null);
+</code></pre>
+<p><a name="assert-guest"></a></p>
+<h4 id="assertguest">assertGuest</h4>
+<p>Assert that a user is not authenticated:</p>
+<pre><code>$this-&gt;assertGuest($guard = null);
+</code></pre>
+<p><a name="assert-authenticated-as"></a></p>
+<h4 id="assertauthenticatedas">assertAuthenticatedAs</h4>
+<p>Assert that a specific user is authenticated:</p>
+<pre><code>$this-&gt;assertAuthenticatedAs($user, $guard = null);
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../testing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Boshlash" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Boshlash
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../console-tests/" class="md-footer__link md-footer__link--next" aria-label="Next: Console testlar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Console testlar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

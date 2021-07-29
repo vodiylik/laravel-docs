@@ -1,0 +1,2861 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/artisan/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Artisan konsoli - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#artisan-console" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Artisan konsoli
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Artisan konsoli
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Artisan konsoli
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel-sail" class="md-nav__link">
+    Laravel Sail
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinker-repl" class="md-nav__link">
+    Tinker (REPL)
+  </a>
+  
+    <nav class="md-nav" aria-label="Tinker (REPL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-allow-list" class="md-nav__link">
+    Command Allow List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes-that-should-not-be-aliased" class="md-nav__link">
+    Classes That Should Not Be Aliased
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-commands" class="md-nav__link">
+    Writing Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-commands" class="md-nav__link">
+    Generating Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-structure" class="md-nav__link">
+    Command Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure-commands" class="md-nav__link">
+    Closure Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Closure Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-hinting-dependencies" class="md-nav__link">
+    Type-Hinting Dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure-command-descriptions" class="md-nav__link">
+    Closure Command Descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-input-expectations" class="md-nav__link">
+    Defining Input Expectations
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Input Expectations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options-with-values" class="md-nav__link">
+    Options With Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-shortcuts" class="md-nav__link">
+    Option Shortcuts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-arrays" class="md-nav__link">
+    Input Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-arrays" class="md-nav__link">
+    Option Arrays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-descriptions" class="md-nav__link">
+    Input Descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-io" class="md-nav__link">
+    Command I/O
+  </a>
+  
+    <nav class="md-nav" aria-label="Command I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-input" class="md-nav__link">
+    Retrieving Input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompting-for-input" class="md-nav__link">
+    Prompting For Input
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompting For Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asking-for-confirmation" class="md-nav__link">
+    Asking For Confirmation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-completion" class="md-nav__link">
+    Auto-Completion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-choice-questions" class="md-nav__link">
+    Multiple Choice Questions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-output" class="md-nav__link">
+    Writing Output
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress-bars" class="md-nav__link">
+    Progress Bars
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registering-commands" class="md-nav__link">
+    Registering Commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programmatically-executing-commands" class="md-nav__link">
+    Programmatically Executing Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Programmatically Executing Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passing-array-values" class="md-nav__link">
+    Passing Array Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-boolean-values" class="md-nav__link">
+    Passing Boolean Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queueing-artisan-commands" class="md-nav__link">
+    Queueing Artisan Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calling-commands-from-other-commands" class="md-nav__link">
+    Calling Commands From Other Commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-handling" class="md-nav__link">
+    Signal Handling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stub-customization" class="md-nav__link">
+    Stub Customization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel-sail" class="md-nav__link">
+    Laravel Sail
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinker-repl" class="md-nav__link">
+    Tinker (REPL)
+  </a>
+  
+    <nav class="md-nav" aria-label="Tinker (REPL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-allow-list" class="md-nav__link">
+    Command Allow List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes-that-should-not-be-aliased" class="md-nav__link">
+    Classes That Should Not Be Aliased
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-commands" class="md-nav__link">
+    Writing Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-commands" class="md-nav__link">
+    Generating Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-structure" class="md-nav__link">
+    Command Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure-commands" class="md-nav__link">
+    Closure Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Closure Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-hinting-dependencies" class="md-nav__link">
+    Type-Hinting Dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure-command-descriptions" class="md-nav__link">
+    Closure Command Descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-input-expectations" class="md-nav__link">
+    Defining Input Expectations
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Input Expectations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    Options
+  </a>
+  
+    <nav class="md-nav" aria-label="Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#options-with-values" class="md-nav__link">
+    Options With Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-shortcuts" class="md-nav__link">
+    Option Shortcuts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-arrays" class="md-nav__link">
+    Input Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-arrays" class="md-nav__link">
+    Option Arrays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-descriptions" class="md-nav__link">
+    Input Descriptions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-io" class="md-nav__link">
+    Command I/O
+  </a>
+  
+    <nav class="md-nav" aria-label="Command I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retrieving-input" class="md-nav__link">
+    Retrieving Input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompting-for-input" class="md-nav__link">
+    Prompting For Input
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompting For Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asking-for-confirmation" class="md-nav__link">
+    Asking For Confirmation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-completion" class="md-nav__link">
+    Auto-Completion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-choice-questions" class="md-nav__link">
+    Multiple Choice Questions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-output" class="md-nav__link">
+    Writing Output
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress-bars" class="md-nav__link">
+    Progress Bars
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registering-commands" class="md-nav__link">
+    Registering Commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programmatically-executing-commands" class="md-nav__link">
+    Programmatically Executing Commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Programmatically Executing Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passing-array-values" class="md-nav__link">
+    Passing Array Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-boolean-values" class="md-nav__link">
+    Passing Boolean Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queueing-artisan-commands" class="md-nav__link">
+    Queueing Artisan Commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calling-commands-from-other-commands" class="md-nav__link">
+    Calling Commands From Other Commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-handling" class="md-nav__link">
+    Signal Handling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stub-customization" class="md-nav__link">
+    Stub Customization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="artisan-console">Artisan Console</h1>
+<ul>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#tinker">Tinker (REPL)</a></li>
+</ul>
+</li>
+<li><a href="#writing-commands">Writing Commands</a><ul>
+<li><a href="#generating-commands">Generating Commands</a></li>
+<li><a href="#command-structure">Command Structure</a></li>
+<li><a href="#closure-commands">Closure Commands</a></li>
+</ul>
+</li>
+<li><a href="#defining-input-expectations">Defining Input Expectations</a><ul>
+<li><a href="#arguments">Arguments</a></li>
+<li><a href="#options">Options</a></li>
+<li><a href="#input-arrays">Input Arrays</a></li>
+<li><a href="#input-descriptions">Input Descriptions</a></li>
+</ul>
+</li>
+<li><a href="#command-io">Command I/O</a><ul>
+<li><a href="#retrieving-input">Retrieving Input</a></li>
+<li><a href="#prompting-for-input">Prompting For Input</a></li>
+<li><a href="#writing-output">Writing Output</a></li>
+</ul>
+</li>
+<li><a href="#registering-commands">Registering Commands</a></li>
+<li><a href="#programmatically-executing-commands">Programmatically Executing Commands</a><ul>
+<li><a href="#calling-commands-from-other-commands">Calling Commands From Other Commands</a></li>
+</ul>
+</li>
+<li><a href="#signal-handling">Signal Handling</a></li>
+<li><a href="#stub-customization">Stub Customization</a></li>
+<li><a href="#events">Events</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Artisan is the command line interface included with Laravel. Artisan exists at the root of your application as the <code>artisan</code> script and provides a number of helpful commands that can assist you while you build your application. To view a list of all available Artisan commands, you may use the <code>list</code> command:</p>
+<pre><code>php artisan list
+</code></pre>
+<p>Every command also includes a "help" screen which displays and describes the command's available arguments and options. To view a help screen, precede the name of the command with <code>help</code>:</p>
+<pre><code>php artisan help migrate
+</code></pre>
+<p><a name="laravel-sail"></a></p>
+<h4 id="laravel-sail">Laravel Sail</h4>
+<p>If you are using <a href="/docs/{{version}}/sail">Laravel Sail</a> as your local development environment, remember to use the <code>sail</code> command line to invoke Artisan commands. Sail will execute your Artisan commands within your application's Docker containers:</p>
+<pre><code>./sail artisan list
+</code></pre>
+<p><a name="tinker"></a></p>
+<h3 id="tinker-repl">Tinker (REPL)</h3>
+<p>Laravel Tinker is a powerful REPL for the Laravel framework, powered by the <a href="https://github.com/bobthecow/psysh">PsySH</a> package.</p>
+<p><a name="installation"></a></p>
+<h4 id="installation">Installation</h4>
+<p>All Laravel applications include Tinker by default. However, you may install Tinker using Composer if you have previously removed it from your application:</p>
+<pre><code>composer require laravel/tinker
+</code></pre>
+<blockquote>
+<p>{tip} Looking for a graphical UI for interacting with your Laravel application? Check out <a href="https://tinkerwell.app">Tinkerwell</a>!</p>
+</blockquote>
+<p><a name="usage"></a></p>
+<h4 id="usage">Usage</h4>
+<p>Tinker allows you to interact with your entire Laravel application on the command line, including your Eloquent models, jobs, events, and more. To enter the Tinker environment, run the <code>tinker</code> Artisan command:</p>
+<pre><code>php artisan tinker
+</code></pre>
+<p>You can publish Tinker's configuration file using the <code>vendor:publish</code> command:</p>
+<pre><code>php artisan vendor:publish --provider="Laravel\Tinker\TinkerServiceProvider"
+</code></pre>
+<blockquote>
+<p>{note} The <code>dispatch</code> helper function and <code>dispatch</code> method on the <code>Dispatchable</code> class depends on garbage collection to place the job on the queue. Therefore, when using tinker, you should use <code>Bus::dispatch</code> or <code>Queue::push</code> to dispatch jobs.</p>
+</blockquote>
+<p><a name="command-allow-list"></a></p>
+<h4 id="command-allow-list">Command Allow List</h4>
+<p>Tinker utilizes an "allow" list to determine which Artisan commands are allowed to be run within its shell. By default, you may run the <code>clear-compiled</code>, <code>down</code>, <code>env</code>, <code>inspire</code>, <code>migrate</code>, <code>optimize</code>, and <code>up</code> commands. If you would like to allow more commands you may add them to the <code>commands</code> array in your <code>tinker.php</code> configuration file:</p>
+<pre><code>'commands' =&gt; [
+    // App\Console\Commands\ExampleCommand::class,
+],
+</code></pre>
+<p><a name="classes-that-should-not-be-aliased"></a></p>
+<h4 id="classes-that-should-not-be-aliased">Classes That Should Not Be Aliased</h4>
+<p>Typically, Tinker automatically aliases classes as you interact with them in Tinker. However, you may wish to never alias some classes. You may accomplish this by listing the classes in the <code>dont_alias</code> array of your <code>tinker.php</code> configuration file:</p>
+<pre><code>'dont_alias' =&gt; [
+    App\Models\User::class,
+],
+</code></pre>
+<p><a name="writing-commands"></a></p>
+<h2 id="writing-commands">Writing Commands</h2>
+<p>In addition to the commands provided with Artisan, you may build your own custom commands. Commands are typically stored in the <code>app/Console/Commands</code> directory; however, you are free to choose your own storage location as long as your commands can be loaded by Composer.</p>
+<p><a name="generating-commands"></a></p>
+<h3 id="generating-commands">Generating Commands</h3>
+<p>To create a new command, you may use the <code>make:command</code> Artisan command. This command will create a new command class in the <code>app/Console/Commands</code> directory. Don't worry if this directory does not exist in your application - it will be created the first time you run the <code>make:command</code> Artisan command:</p>
+<pre><code>php artisan make:command SendEmails
+</code></pre>
+<p><a name="command-structure"></a></p>
+<h3 id="command-structure">Command Structure</h3>
+<p>After generating your command, you should define appropriate values for the <code>signature</code> and <code>description</code> properties of the class. These properties will be used when displaying your command on the <code>list</code> screen. The <code>signature</code> property also allows you to define <a href="#defining-input-expectations">your command's input expectations</a>. The <code>handle</code> method will be called when your command is executed. You may place your command logic in this method.</p>
+<p>Let's take a look at an example command. Note that we are able to request any dependencies we need via the command's <code>handle</code> method. The Laravel <a href="/docs/{{version}}/container">service container</a> will automatically inject all dependencies that are type-hinted in this method's signature:</p>
+<pre><code>&lt;?php
+
+namespace App\Console\Commands;
+
+use App\Models\User;
+use App\Support\DripEmailer;
+use Illuminate\Console\Command;
+
+class SendEmails extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'mail:send {user}';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Send a marketing email to a user';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @param  \App\Support\DripEmailer  $drip
+     * @return mixed
+     */
+    public function handle(DripEmailer $drip)
+    {
+        $drip-&gt;send(User::find($this-&gt;argument('user')));
+    }
+}
+</code></pre>
+<blockquote>
+<p>{tip} For greater code reuse, it is good practice to keep your console commands light and let them defer to application services to accomplish their tasks. In the example above, note that we inject a service class to do the "heavy lifting" of sending the e-mails.</p>
+</blockquote>
+<p><a name="closure-commands"></a></p>
+<h3 id="closure-commands">Closure Commands</h3>
+<p>Closure based commands provide an alternative to defining console commands as classes. In the same way that route closures are an alternative to controllers, think of command closures as an alternative to command classes. Within the <code>commands</code> method of your <code>app/Console/Kernel.php</code> file, Laravel loads the <code>routes/console.php</code> file:</p>
+<pre><code>/**
+ * Register the closure based commands for the application.
+ *
+ * @return void
+ */
+protected function commands()
+{
+    require base_path('routes/console.php');
+}
+</code></pre>
+<p>Even though this file does not define HTTP routes, it defines console based entry points (routes) into your application. Within this file, you may define all of your closure based console commands using the <code>Artisan::command</code> method. The <code>command</code> method accepts two arguments: the <a href="#defining-input-expectations">command signature</a> and a closure which receives the command's arguments and options:</p>
+<pre><code>Artisan::command('mail:send {user}', function ($user) {
+    $this-&gt;info("Sending email to: {$user}!");
+});
+</code></pre>
+<p>The closure is bound to the underlying command instance, so you have full access to all of the helper methods you would typically be able to access on a full command class.</p>
+<p><a name="type-hinting-dependencies"></a></p>
+<h4 id="type-hinting-dependencies">Type-Hinting Dependencies</h4>
+<p>In addition to receiving your command's arguments and options, command closures may also type-hint additional dependencies that you would like resolved out of the <a href="/docs/{{version}}/container">service container</a>:</p>
+<pre><code>use App\Models\User;
+use App\Support\DripEmailer;
+
+Artisan::command('mail:send {user}', function (DripEmailer $drip, $user) {
+    $drip-&gt;send(User::find($user));
+});
+</code></pre>
+<p><a name="closure-command-descriptions"></a></p>
+<h4 id="closure-command-descriptions">Closure Command Descriptions</h4>
+<p>When defining a closure based command, you may use the <code>purpose</code> method to add a description to the command. This description will be displayed when you run the <code>php artisan list</code> or <code>php artisan help</code> commands:</p>
+<pre><code>Artisan::command('mail:send {user}', function ($user) {
+    // ...
+})-&gt;purpose('Send a marketing email to a user');
+</code></pre>
+<p><a name="defining-input-expectations"></a></p>
+<h2 id="defining-input-expectations">Defining Input Expectations</h2>
+<p>When writing console commands, it is common to gather input from the user through arguments or options. Laravel makes it very convenient to define the input you expect from the user using the <code>signature</code> property on your commands. The <code>signature</code> property allows you to define the name, arguments, and options for the command in a single, expressive, route-like syntax.</p>
+<p><a name="arguments"></a></p>
+<h3 id="arguments">Arguments</h3>
+<p>All user supplied arguments and options are wrapped in curly braces. In the following example, the command defines one required argument: <code>user</code>:</p>
+<pre><code>/**
+ * The name and signature of the console command.
+ *
+ * @var string
+ */
+protected $signature = 'mail:send {user}';
+</code></pre>
+<p>You may also make arguments optional or define default values for arguments:</p>
+<pre><code>// Optional argument...
+mail:send {user?}
+
+// Optional argument with default value...
+mail:send {user=foo}
+</code></pre>
+<p><a name="options"></a></p>
+<h3 id="options">Options</h3>
+<p>Options, like arguments, are another form of user input. Options are prefixed by two hyphens (<code>--</code>) when they are provided via the command line. There are two types of options: those that receive a value and those that don't. Options that don't receive a value serve as a boolean "switch". Let's take a look at an example of this type of option:</p>
+<pre><code>/**
+ * The name and signature of the console command.
+ *
+ * @var string
+ */
+protected $signature = 'mail:send {user} {--queue}';
+</code></pre>
+<p>In this example, the <code>--queue</code> switch may be specified when calling the Artisan command. If the <code>--queue</code> switch is passed, the value of the option will be <code>true</code>. Otherwise, the value will be <code>false</code>:</p>
+<pre><code>php artisan mail:send 1 --queue
+</code></pre>
+<p><a name="options-with-values"></a></p>
+<h4 id="options-with-values">Options With Values</h4>
+<p>Next, let's take a look at an option that expects a value. If the user must specify a value for an option, you should suffix the option name with a <code>=</code> sign:</p>
+<pre><code>/**
+ * The name and signature of the console command.
+ *
+ * @var string
+ */
+protected $signature = 'mail:send {user} {--queue=}';
+</code></pre>
+<p>In this example, the user may pass a value for the option like so. If the option is not specified when invoking the command, its value will be <code>null</code>:</p>
+<pre><code>php artisan mail:send 1 --queue=default
+</code></pre>
+<p>You may assign default values to options by specifying the default value after the option name. If no option value is passed by the user, the default value will be used:</p>
+<pre><code>mail:send {user} {--queue=default}
+</code></pre>
+<p><a name="option-shortcuts"></a></p>
+<h4 id="option-shortcuts">Option Shortcuts</h4>
+<p>To assign a shortcut when defining an option, you may specify it before the option name and use the <code>|</code> character as a delimiter to separate the shortcut from the full option name:</p>
+<pre><code>mail:send {user} {--Q|queue}
+</code></pre>
+<p><a name="input-arrays"></a></p>
+<h3 id="input-arrays">Input Arrays</h3>
+<p>If you would like to define arguments or options to expect multiple input values, you may use the <code>*</code> character. First, let's take a look at an example that specifies such an argument:</p>
+<pre><code>mail:send {user*}
+</code></pre>
+<p>When calling this method, the <code>user</code> arguments may be passed in order to the command line. For example, the following command will set the value of <code>user</code> to an array with <code>foo</code> and <code>bar</code> as its values:</p>
+<pre><code>php artisan mail:send foo bar
+</code></pre>
+<p>This <code>*</code> character can be combined with an optional argument definition to allow zero or more instances of an argument:</p>
+<pre><code>mail:send {user?*}
+</code></pre>
+<p><a name="option-arrays"></a></p>
+<h4 id="option-arrays">Option Arrays</h4>
+<p>When defining an option that expects multiple input values, each option value passed to the command should be prefixed with the option name:</p>
+<pre><code>mail:send {user} {--id=*}
+
+php artisan mail:send --id=1 --id=2
+</code></pre>
+<p><a name="input-descriptions"></a></p>
+<h3 id="input-descriptions">Input Descriptions</h3>
+<p>You may assign descriptions to input arguments and options by separating the argument name from the description using a colon. If you need a little extra room to define your command, feel free to spread the definition across multiple lines:</p>
+<pre><code>/**
+ * The name and signature of the console command.
+ *
+ * @var string
+ */
+protected $signature = 'mail:send
+                        {user : The ID of the user}
+                        {--queue= : Whether the job should be queued}';
+</code></pre>
+<p><a name="command-io"></a></p>
+<h2 id="command-io">Command I/O</h2>
+<p><a name="retrieving-input"></a></p>
+<h3 id="retrieving-input">Retrieving Input</h3>
+<p>While your command is executing, you will likely need to access the values for the arguments and options accepted by your command. To do so, you may use the <code>argument</code> and <code>option</code> methods. If an argument or option does not exist, <code>null</code> will be returned:</p>
+<pre><code>/**
+ * Execute the console command.
+ *
+ * @return int
+ */
+public function handle()
+{
+    $userId = $this-&gt;argument('user');
+
+    //
+}
+</code></pre>
+<p>If you need to retrieve all of the arguments as an <code>array</code>, call the <code>arguments</code> method:</p>
+<pre><code>$arguments = $this-&gt;arguments();
+</code></pre>
+<p>Options may be retrieved just as easily as arguments using the <code>option</code> method. To retrieve all of the options as an array, call the <code>options</code> method:</p>
+<pre><code>// Retrieve a specific option...
+$queueName = $this-&gt;option('queue');
+
+// Retrieve all options as an array...
+$options = $this-&gt;options();
+</code></pre>
+<p><a name="prompting-for-input"></a></p>
+<h3 id="prompting-for-input">Prompting For Input</h3>
+<p>In addition to displaying output, you may also ask the user to provide input during the execution of your command. The <code>ask</code> method will prompt the user with the given question, accept their input, and then return the user's input back to your command:</p>
+<pre><code>/**
+ * Execute the console command.
+ *
+ * @return mixed
+ */
+public function handle()
+{
+    $name = $this-&gt;ask('What is your name?');
+}
+</code></pre>
+<p>The <code>secret</code> method is similar to <code>ask</code>, but the user's input will not be visible to them as they type in the console. This method is useful when asking for sensitive information such as passwords:</p>
+<pre><code>$password = $this-&gt;secret('What is the password?');
+</code></pre>
+<p><a name="asking-for-confirmation"></a></p>
+<h4 id="asking-for-confirmation">Asking For Confirmation</h4>
+<p>If you need to ask the user for a simple "yes or no" confirmation, you may use the <code>confirm</code> method. By default, this method will return <code>false</code>. However, if the user enters <code>y</code> or <code>yes</code> in response to the prompt, the method will return <code>true</code>.</p>
+<pre><code>if ($this-&gt;confirm('Do you wish to continue?')) {
+    //
+}
+</code></pre>
+<p>If necessary, you may specify that the confirmation prompt should return <code>true</code> by default by passing <code>true</code> as the second argument to the <code>confirm</code> method:</p>
+<pre><code>if ($this-&gt;confirm('Do you wish to continue?', true)) {
+    //
+}
+</code></pre>
+<p><a name="auto-completion"></a></p>
+<h4 id="auto-completion">Auto-Completion</h4>
+<p>The <code>anticipate</code> method can be used to provide auto-completion for possible choices. The user can still provide any answer, regardless of the auto-completion hints:</p>
+<pre><code>$name = $this-&gt;anticipate('What is your name?', ['Taylor', 'Dayle']);
+</code></pre>
+<p>Alternatively, you may pass a closure as the second argument to the <code>anticipate</code> method. The closure will be called each time the user types an input character. The closure should accept a string parameter containing the user's input so far, and return an array of options for auto-completion:</p>
+<pre><code>$name = $this-&gt;anticipate('What is your address?', function ($input) {
+    // Return auto-completion options...
+});
+</code></pre>
+<p><a name="multiple-choice-questions"></a></p>
+<h4 id="multiple-choice-questions">Multiple Choice Questions</h4>
+<p>If you need to give the user a predefined set of choices when asking a question, you may use the <code>choice</code> method. You may set the array index of the default value to be returned if no option is chosen by passing the index as the third argument to the method:</p>
+<pre><code>$name = $this-&gt;choice(
+    'What is your name?',
+    ['Taylor', 'Dayle'],
+    $defaultIndex
+);
+</code></pre>
+<p>In addition, the <code>choice</code> method accepts optional fourth and fifth arguments for determining the maximum number of attempts to select a valid response and whether multiple selections are permitted:</p>
+<pre><code>$name = $this-&gt;choice(
+    'What is your name?',
+    ['Taylor', 'Dayle'],
+    $defaultIndex,
+    $maxAttempts = null,
+    $allowMultipleSelections = false
+);
+</code></pre>
+<p><a name="writing-output"></a></p>
+<h3 id="writing-output">Writing Output</h3>
+<p>To send output to the console, you may use the <code>line</code>, <code>info</code>, <code>comment</code>, <code>question</code>, <code>warn</code>, and <code>error</code> methods. Each of these methods will use appropriate ANSI colors for their purpose. For example, let's display some general information to the user. Typically, the <code>info</code> method will display in the console as green colored text:</p>
+<pre><code>/**
+ * Execute the console command.
+ *
+ * @return mixed
+ */
+public function handle()
+{
+    // ...
+
+    $this-&gt;info('The command was successful!');
+}
+</code></pre>
+<p>To display an error message, use the <code>error</code> method. Error message text is typically displayed in red:</p>
+<pre><code>$this-&gt;error('Something went wrong!');
+</code></pre>
+<p>You may use the <code>line</code> method to display plain, uncolored text:</p>
+<pre><code>$this-&gt;line('Display this on the screen');
+</code></pre>
+<p>You may use the <code>newLine</code> method to display a blank line:</p>
+<pre><code>// Write a single blank line...
+$this-&gt;newLine();
+
+// Write three blank lines...
+$this-&gt;newLine(3);
+</code></pre>
+<p><a name="tables"></a></p>
+<h4 id="tables">Tables</h4>
+<p>The <code>table</code> method makes it easy to correctly format multiple rows / columns of data. All you need to do is provide the column names and the data for the table and Laravel will
+automatically calculate the appropriate width and height of the table for you:</p>
+<pre><code>use App\Models\User;
+
+$this-&gt;table(
+    ['Name', 'Email'],
+    User::all(['name', 'email'])-&gt;toArray()
+);
+</code></pre>
+<p><a name="progress-bars"></a></p>
+<h4 id="progress-bars">Progress Bars</h4>
+<p>For long running tasks, it can be helpful to show a progress bar that informs users how complete the task is. Using the <code>withProgressBar</code> method, Laravel will display a progress bar and advance its progress for each iteration over a given iterable value:</p>
+<pre><code>use App\Models\User;
+
+$users = $this-&gt;withProgressBar(User::all(), function ($user) {
+    $this-&gt;performTask($user);
+});
+</code></pre>
+<p>Sometimes, you may need more manual control over how a progress bar is advanced. First, define the total number of steps the process will iterate through. Then, advance the progress bar after processing each item:</p>
+<pre><code>$users = App\Models\User::all();
+
+$bar = $this-&gt;output-&gt;createProgressBar(count($users));
+
+$bar-&gt;start();
+
+foreach ($users as $user) {
+    $this-&gt;performTask($user);
+
+    $bar-&gt;advance();
+}
+
+$bar-&gt;finish();
+</code></pre>
+<blockquote>
+<p>{tip} For more advanced options, check out the <a href="https://symfony.com/doc/current/components/console/helpers/progressbar.html">Symfony Progress Bar component documentation</a>.</p>
+</blockquote>
+<p><a name="registering-commands"></a></p>
+<h2 id="registering-commands">Registering Commands</h2>
+<p>All of your console commands are registered within your application's <code>App\Console\Kernel</code> class, which is your application's "console kernel". Within the <code>commands</code> method of this class, you will see a call to the kernel's <code>load</code> method. The <code>load</code> method will scan the <code>app/Console/Commands</code> directory and automatically register each command it contains with Artisan. You are even free to make additional calls to the <code>load</code> method to scan other directories for Artisan commands:</p>
+<pre><code>/**
+ * Register the commands for the application.
+ *
+ * @return void
+ */
+protected function commands()
+{
+    $this-&gt;load(__DIR__.'/Commands');
+    $this-&gt;load(__DIR__.'/../Domain/Orders/Commands');
+
+    // ...
+}
+</code></pre>
+<p>If necessary, you may manually register commands by adding the command's class name to the <code>$commands</code> property of your <code>App\Console\Kernel</code> class. When Artisan boots, all the commands listed in this property will be resolved by the <a href="/docs/{{version}}/container">service container</a> and registered with Artisan:</p>
+<pre><code>protected $commands = [
+    Commands\SendEmails::class
+];
+</code></pre>
+<p><a name="programmatically-executing-commands"></a></p>
+<h2 id="programmatically-executing-commands">Programmatically Executing Commands</h2>
+<p>Sometimes you may wish to execute an Artisan command outside of the CLI. For example, you may wish to execute an Artisan command from a route or controller. You may use the <code>call</code> method on the <code>Artisan</code> facade to accomplish this. The <code>call</code> method accepts either the command's signature name or class name as its first argument, and an array of command parameters as the second argument. The exit code will be returned:</p>
+<pre><code>use Illuminate\Support\Facades\Artisan;
+
+Route::post('/user/{user}/mail', function ($user) {
+    $exitCode = Artisan::call('mail:send', [
+        'user' =&gt; $user, '--queue' =&gt; 'default'
+    ]);
+
+    //
+});
+</code></pre>
+<p>Alternatively, you may pass the entire Artisan command to the <code>call</code> method as a string:</p>
+<pre><code>Artisan::call('mail:send 1 --queue=default');
+</code></pre>
+<p><a name="passing-array-values"></a></p>
+<h4 id="passing-array-values">Passing Array Values</h4>
+<p>If your command defines an option that accepts an array, you may pass an array of values to that option:</p>
+<pre><code>use Illuminate\Support\Facades\Artisan;
+
+Route::post('/mail', function () {
+    $exitCode = Artisan::call('mail:send', [
+        '--id' =&gt; [5, 13]
+    ]);
+});
+</code></pre>
+<p><a name="passing-boolean-values"></a></p>
+<h4 id="passing-boolean-values">Passing Boolean Values</h4>
+<p>If you need to specify the value of an option that does not accept string values, such as the <code>--force</code> flag on the <code>migrate:refresh</code> command, you should pass <code>true</code> or <code>false</code> as the value of the option:</p>
+<pre><code>$exitCode = Artisan::call('migrate:refresh', [
+    '--force' =&gt; true,
+]);
+</code></pre>
+<p><a name="queueing-artisan-commands"></a></p>
+<h4 id="queueing-artisan-commands">Queueing Artisan Commands</h4>
+<p>Using the <code>queue</code> method on the <code>Artisan</code> facade, you may even queue Artisan commands so they are processed in the background by your <a href="/docs/{{version}}/queues">queue workers</a>. Before using this method, make sure you have configured your queue and are running a queue listener:</p>
+<pre><code>use Illuminate\Support\Facades\Artisan;
+
+Route::post('/user/{user}/mail', function ($user) {
+    Artisan::queue('mail:send', [
+        'user' =&gt; $user, '--queue' =&gt; 'default'
+    ]);
+
+    //
+});
+</code></pre>
+<p>Using the <code>onConnection</code> and <code>onQueue</code> methods, you may specify the connection or queue the Artisan command should be dispatched to:</p>
+<pre><code>Artisan::queue('mail:send', [
+    'user' =&gt; 1, '--queue' =&gt; 'default'
+])-&gt;onConnection('redis')-&gt;onQueue('commands');
+</code></pre>
+<p><a name="calling-commands-from-other-commands"></a></p>
+<h3 id="calling-commands-from-other-commands">Calling Commands From Other Commands</h3>
+<p>Sometimes you may wish to call other commands from an existing Artisan command. You may do so using the <code>call</code> method. This <code>call</code> method accepts the command name and an array of command arguments / options:</p>
+<pre><code>/**
+ * Execute the console command.
+ *
+ * @return mixed
+ */
+public function handle()
+{
+    $this-&gt;call('mail:send', [
+        'user' =&gt; 1, '--queue' =&gt; 'default'
+    ]);
+
+    //
+}
+</code></pre>
+<p>If you would like to call another console command and suppress all of its output, you may use the <code>callSilently</code> method. The <code>callSilently</code> method has the same signature as the <code>call</code> method:</p>
+<pre><code>$this-&gt;callSilently('mail:send', [
+    'user' =&gt; 1, '--queue' =&gt; 'default'
+]);
+</code></pre>
+<p><a name="signal-handling"></a></p>
+<h2 id="signal-handling">Signal Handling</h2>
+<p>The Symfony Console component, which powers the Artisan console, allows you to indicate which process signals (if any) your command handles. For example, you may indicate that your command handles the <code>SIGINT</code> and <code>SIGTERM</code> signals.</p>
+<p>To get started, you should implement the <code>Symfony\Component\Console\Command\SignalableCommandInterface</code> interface on your Artisan command class. This interface requires you to define two methods: <code>getSubscribedSignals</code> and <code>handleSignal</code>:</p>
+<pre><code class="language-php">&lt;?php
+
+use Symfony\Component\Console\Command\SignalableCommandInterface;
+
+class StartServer extends Command implements SignalableCommandInterface
+{
+    // ...
+
+    /**
+     * Get the list of signals handled by the command.
+     *
+     * @return array
+     */
+    public function getSubscribedSignals(): array
+    {
+        return [SIGINT, SIGTERM];
+    }
+
+    /**
+     * Handle an incoming signal.
+     *
+     * @param  int  $signal
+     * @return void
+     */
+    public function handleSignal(int $signal): void
+    {
+        if ($signal === SIGINT) {
+            $this-&gt;stopServer();
+
+            return;
+        }
+    }
+}
+</code></pre>
+<p>As you might expect, the <code>getSubscribedSignals</code> method should return an array of the signals that your command can handle, while the <code>handleSignal</code> method receives the signal and can respond accordingly.</p>
+<p><a name="stub-customization"></a></p>
+<h2 id="stub-customization">Stub Customization</h2>
+<p>The Artisan console's <code>make</code> commands are used to create a variety of classes, such as controllers, jobs, migrations, and tests. These classes are generated using "stub" files that are populated with values based on your input. However, you may want to make small changes to files generated by Artisan. To accomplish this, you may use the <code>stub:publish</code> command to publish the most common stubs to your application so that you can customize them:</p>
+<pre><code>php artisan stub:publish
+</code></pre>
+<p>The published stubs will be located within a <code>stubs</code> directory in the root of your application. Any changes you make to these stubs will be reflected when you generate their corresponding classes using Artisan's <code>make</code> commands.</p>
+<p><a name="events"></a></p>
+<h2 id="events">Events</h2>
+<p>Artisan dispatches three events when running commands: <code>Illuminate\Console\Events\ArtisanStarting</code>, <code>Illuminate\Console\Events\CommandStarting</code>, and <code>Illuminate\Console\Events\CommandFinished</code>. The <code>ArtisanStarting</code> event is dispatched immediately when Artisan starts running. Next, the <code>CommandStarting</code> event is dispatched immediately before a command runs. Finally, the <code>CommandFinished</code> event is dispatched once a command finishes executing.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../logging/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Logging" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Logging
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../broadcasting/" class="md-footer__link md-footer__link--next" aria-label="Next: Broadcasting" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Broadcasting
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

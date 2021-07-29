@@ -1,0 +1,2464 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/controllers/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Kontrollerlar - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#controllers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kontrollerlar
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Kontrollerlar
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Kontrollerlar
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-controllers" class="md-nav__link">
+    Writing Controllers
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Controllers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-controllers" class="md-nav__link">
+    Basic Controllers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-action-controllers" class="md-nav__link">
+    Single Action Controllers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller-middleware" class="md-nav__link">
+    Controller Middleware
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-controllers" class="md-nav__link">
+    Resource Controllers
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Controllers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actions-handled-by-resource-controller" class="md-nav__link">
+    Actions Handled By Resource Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-missing-model-behavior" class="md-nav__link">
+    Customizing Missing Model Behavior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-the-resource-model" class="md-nav__link">
+    Specifying The Resource Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partial-resource-routes" class="md-nav__link">
+    Partial Resource Routes
+  </a>
+  
+    <nav class="md-nav" aria-label="Partial Resource Routes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-resource-routes" class="md-nav__link">
+    API Resource Routes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-resources" class="md-nav__link">
+    Nested Resources
+  </a>
+  
+    <nav class="md-nav" aria-label="Nested Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scoping-nested-resources" class="md-nav__link">
+    Scoping Nested Resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shallow-nesting" class="md-nav__link">
+    Shallow Nesting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-resource-routes" class="md-nav__link">
+    Naming Resource Routes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-resource-route-parameters" class="md-nav__link">
+    Naming Resource Route Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-resource-routes" class="md-nav__link">
+    Scoping Resource Routes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localizing-resource-uris" class="md-nav__link">
+    Localizing Resource URIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supplementing-resource-controllers" class="md-nav__link">
+    Supplementing Resource Controllers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-injection-controllers" class="md-nav__link">
+    Dependency Injection &amp; Controllers
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency Injection &amp; Controllers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor-injection" class="md-nav__link">
+    Constructor Injection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-injection" class="md-nav__link">
+    Method Injection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-controllers" class="md-nav__link">
+    Writing Controllers
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Controllers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-controllers" class="md-nav__link">
+    Basic Controllers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-action-controllers" class="md-nav__link">
+    Single Action Controllers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller-middleware" class="md-nav__link">
+    Controller Middleware
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-controllers" class="md-nav__link">
+    Resource Controllers
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Controllers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actions-handled-by-resource-controller" class="md-nav__link">
+    Actions Handled By Resource Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-missing-model-behavior" class="md-nav__link">
+    Customizing Missing Model Behavior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specifying-the-resource-model" class="md-nav__link">
+    Specifying The Resource Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partial-resource-routes" class="md-nav__link">
+    Partial Resource Routes
+  </a>
+  
+    <nav class="md-nav" aria-label="Partial Resource Routes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-resource-routes" class="md-nav__link">
+    API Resource Routes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-resources" class="md-nav__link">
+    Nested Resources
+  </a>
+  
+    <nav class="md-nav" aria-label="Nested Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scoping-nested-resources" class="md-nav__link">
+    Scoping Nested Resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shallow-nesting" class="md-nav__link">
+    Shallow Nesting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-resource-routes" class="md-nav__link">
+    Naming Resource Routes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-resource-route-parameters" class="md-nav__link">
+    Naming Resource Route Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-resource-routes" class="md-nav__link">
+    Scoping Resource Routes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localizing-resource-uris" class="md-nav__link">
+    Localizing Resource URIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supplementing-resource-controllers" class="md-nav__link">
+    Supplementing Resource Controllers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-injection-controllers" class="md-nav__link">
+    Dependency Injection &amp; Controllers
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency Injection &amp; Controllers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor-injection" class="md-nav__link">
+    Constructor Injection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-injection" class="md-nav__link">
+    Method Injection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="controllers">Controllers</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#writing-controllers">Writing Controllers</a><ul>
+<li><a href="#basic-controllers">Basic Controllers</a></li>
+<li><a href="#single-action-controllers">Single Action Controllers</a></li>
+</ul>
+</li>
+<li><a href="#controller-middleware">Controller Middleware</a></li>
+<li><a href="#resource-controllers">Resource Controllers</a><ul>
+<li><a href="#restful-partial-resource-routes">Partial Resource Routes</a></li>
+<li><a href="#restful-nested-resources">Nested Resources</a></li>
+<li><a href="#restful-naming-resource-routes">Naming Resource Routes</a></li>
+<li><a href="#restful-naming-resource-route-parameters">Naming Resource Route Parameters</a></li>
+<li><a href="#restful-scoping-resource-routes">Scoping Resource Routes</a></li>
+<li><a href="#restful-localizing-resource-uris">Localizing Resource URIs</a></li>
+<li><a href="#restful-supplementing-resource-controllers">Supplementing Resource Controllers</a></li>
+</ul>
+</li>
+<li><a href="#dependency-injection-and-controllers">Dependency Injection &amp; Controllers</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Instead of defining all of your request handling logic as closures in your route files, you may wish to organize this behavior using "controller" classes. Controllers can group related request handling logic into a single class. For example, a <code>UserController</code> class might handle all incoming requests related to users, including showing, creating, updating, and deleting users. By default, controllers are stored in the <code>app/Http/Controllers</code> directory.</p>
+<p><a name="writing-controllers"></a></p>
+<h2 id="writing-controllers">Writing Controllers</h2>
+<p><a name="basic-controllers"></a></p>
+<h3 id="basic-controllers">Basic Controllers</h3>
+<p>Let's take a look at an example of a basic controller. Note that the controller extends the base controller class included with Laravel: <code>App\Http\Controllers\Controller</code>:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+
+class UserController extends Controller
+{
+    /**
+     * Show the profile for a given user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
+    public function show($id)
+    {
+        return view('user.profile', [
+            'user' =&gt; User::findOrFail($id)
+        ]);
+    }
+}
+</code></pre>
+<p>You can define a route to this controller method like so:</p>
+<pre><code>use App\Http\Controllers\UserController;
+
+Route::get('/user/{id}', [UserController::class, 'show']);
+</code></pre>
+<p>When an incoming request matches the specified route URI, the <code>show</code> method on the <code>App\Http\Controllers\UserController</code> class will be invoked and the route parameters will be passed to the method.</p>
+<blockquote>
+<p>{tip} Controllers are not <strong>required</strong> to extend a base class. However, you will not have access to convenient features such as the <code>middleware</code> and <code>authorize</code> methods.</p>
+</blockquote>
+<p><a name="single-action-controllers"></a></p>
+<h3 id="single-action-controllers">Single Action Controllers</h3>
+<p>If a controller action is particularly complex, you might find it convenient to dedicate an entire controller class to that single action. To accomplish this, you may define a single <code>__invoke</code> method within the controller:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+
+class ProvisionServer extends Controller
+{
+    /**
+     * Provision a new web server.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke()
+    {
+        // ...
+    }
+}
+</code></pre>
+<p>When registering routes for single action controllers, you do not need to specify a controller method. Instead, you may simply pass the name of the controller to the router:</p>
+<pre><code>use App\Http\Controllers\ProvisionServer;
+
+Route::post('/server', ProvisionServer::class);
+</code></pre>
+<p>You may generate an invokable controller by using the <code>--invokable</code> option of the <code>make:controller</code> Artisan command:</p>
+<pre><code>php artisan make:controller ProvisionServer --invokable
+</code></pre>
+<blockquote>
+<p>{tip} Controller stubs may be customized using <a href="/docs/{{version}}/artisan#stub-customization">stub publishing</a>.</p>
+</blockquote>
+<p><a name="controller-middleware"></a></p>
+<h2 id="controller-middleware">Controller Middleware</h2>
+<p><a href="/docs/{{version}}/middleware">Middleware</a> may be assigned to the controller's routes in your route files:</p>
+<pre><code>Route::get('profile', [UserController::class, 'show'])-&gt;middleware('auth');
+</code></pre>
+<p>Or, you may find it convenient to specify middleware within your controller's constructor. Using the <code>middleware</code> method within your controller's constructor, you can assign middleware to the controller's actions:</p>
+<pre><code>class UserController extends Controller
+{
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this-&gt;middleware('auth');
+        $this-&gt;middleware('log')-&gt;only('index');
+        $this-&gt;middleware('subscribed')-&gt;except('store');
+    }
+}
+</code></pre>
+<p>Controllers also allow you to register middleware using a closure. This provides a convenient way to define an inline middleware for a single controller without defining an entire middleware class:</p>
+<pre><code>$this-&gt;middleware(function ($request, $next) {
+    return $next($request);
+});
+</code></pre>
+<p><a name="resource-controllers"></a></p>
+<h2 id="resource-controllers">Resource Controllers</h2>
+<p>If you think of each Eloquent model in your application as a "resource", it is typical to perform the same sets of actions against each resource in your application. For example, imagine your application contains a <code>Photo</code> model and a <code>Movie</code> model. It is likely that users can create, read, update, or delete these resources.</p>
+<p>Because of this common use case, Laravel resource routing assigns the typical create, read, update, and delete ("CRUD") routes to a controller with a single line of code. To get started, we can use the <code>make:controller</code> Artisan command's <code>--resource</code> option to quickly create a controller to handle these actions:</p>
+<pre><code>php artisan make:controller PhotoController --resource
+</code></pre>
+<p>This command will generate a controller at <code>app/Http/Controllers/PhotoController.php</code>. The controller will contain a method for each of the available resource operations. Next, you may register a resource route that points to the controller:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+
+Route::resource('photos', PhotoController::class);
+</code></pre>
+<p>This single route declaration creates multiple routes to handle a variety of actions on the resource. The generated controller will already have methods stubbed for each of these actions. Remember, you can always get a quick overview of your application's routes by running the <code>route:list</code> Artisan command.</p>
+<p>You may even register many resource controllers at once by passing an array to the <code>resources</code> method:</p>
+<pre><code>Route::resources([
+    'photos' =&gt; PhotoController::class,
+    'posts' =&gt; PostController::class,
+]);
+</code></pre>
+<p><a name="actions-handled-by-resource-controller"></a></p>
+<h4 id="actions-handled-by-resource-controller">Actions Handled By Resource Controller</h4>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>URI</th>
+<th>Action</th>
+<th>Route Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/photos</code></td>
+<td>index</td>
+<td>photos.index</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/create</code></td>
+<td>create</td>
+<td>photos.create</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/photos</code></td>
+<td>store</td>
+<td>photos.store</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}</code></td>
+<td>show</td>
+<td>photos.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/edit</code></td>
+<td>edit</td>
+<td>photos.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/photos/{photo}</code></td>
+<td>update</td>
+<td>photos.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/photos/{photo}</code></td>
+<td>destroy</td>
+<td>photos.destroy</td>
+</tr>
+</tbody>
+</table>
+<p><a name="customizing-missing-model-behavior"></a></p>
+<h4 id="customizing-missing-model-behavior">Customizing Missing Model Behavior</h4>
+<p>Typically, a 404 HTTP response will be generated if an implicitly bound resource model is not found. However, you may customize this behavior by calling the <code>missing</code> method when defining your resource route. The <code>missing</code> method accepts a closure that will be invoked if an implicitly bound model can not be found for any of the resource's routes:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
+Route::resource('photos', PhotoController::class)
+        -&gt;missing(function (Request $request) {
+            return Redirect::route('photos.index');
+        });
+</code></pre>
+<p><a name="specifying-the-resource-model"></a></p>
+<h4 id="specifying-the-resource-model">Specifying The Resource Model</h4>
+<p>If you are using <a href="/docs/{{version}}/routing#route-model-binding">route model binding</a> and would like the resource controller's methods to type-hint a model instance, you may use the <code>--model</code> option when generating the controller:</p>
+<pre><code>php artisan make:controller PhotoController --resource --model=Photo
+</code></pre>
+<p><a name="restful-partial-resource-routes"></a></p>
+<h3 id="partial-resource-routes">Partial Resource Routes</h3>
+<p>When declaring a resource route, you may specify a subset of actions the controller should handle instead of the full set of default actions:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+
+Route::resource('photos', PhotoController::class)-&gt;only([
+    'index', 'show'
+]);
+
+Route::resource('photos', PhotoController::class)-&gt;except([
+    'create', 'store', 'update', 'destroy'
+]);
+</code></pre>
+<p><a name="api-resource-routes"></a></p>
+<h4 id="api-resource-routes">API Resource Routes</h4>
+<p>When declaring resource routes that will be consumed by APIs, you will commonly want to exclude routes that present HTML templates such as <code>create</code> and <code>edit</code>. For convenience, you may use the <code>apiResource</code> method to automatically exclude these two routes:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+
+Route::apiResource('photos', PhotoController::class);
+</code></pre>
+<p>You may register many API resource controllers at once by passing an array to the <code>apiResources</code> method:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PostController;
+
+Route::apiResources([
+    'photos' =&gt; PhotoController::class,
+    'posts' =&gt; PostController::class,
+]);
+</code></pre>
+<p>To quickly generate an API resource controller that does not include the <code>create</code> or <code>edit</code> methods, use the <code>--api</code> switch when executing the <code>make:controller</code> command:</p>
+<pre><code>php artisan make:controller PhotoController --api
+</code></pre>
+<p><a name="restful-nested-resources"></a></p>
+<h3 id="nested-resources">Nested Resources</h3>
+<p>Sometimes you may need to define routes to a nested resource. For example, a photo resource may have multiple comments that may be attached to the photo. To nest the resource controllers, you may use "dot" notation in your route declaration:</p>
+<pre><code>use App\Http\Controllers\PhotoCommentController;
+
+Route::resource('photos.comments', PhotoCommentController::class);
+</code></pre>
+<p>This route will register a nested resource that may be accessed with URIs like the following:</p>
+<pre><code>/photos/{photo}/comments/{comment}
+</code></pre>
+<p><a name="scoping-nested-resources"></a></p>
+<h4 id="scoping-nested-resources">Scoping Nested Resources</h4>
+<p>Laravel's <a href="/docs/{{version}}/routing#implicit-model-binding-scoping">implicit model binding</a> feature can automatically scope nested bindings such that the resolved child model is confirmed to belong to the parent model. By using the <code>scoped</code> method when defining your nested resource, you may enable automatic scoping as well as instruct Laravel which field the child resource should be retrieved by. For more information on how to accomplish this, please see the documentation on <a href="#restful-scoping-resource-routes">scoping resource routes</a>.</p>
+<p><a name="shallow-nesting"></a></p>
+<h4 id="shallow-nesting">Shallow Nesting</h4>
+<p>Often, it is not entirely necessary to have both the parent and the child IDs within a URI since the child ID is already a unique identifier. When using unique identifiers such as auto-incrementing primary keys to identify your models in URI segments, you may choose to use "shallow nesting":</p>
+<pre><code>use App\Http\Controllers\CommentController;
+
+Route::resource('photos.comments', CommentController::class)-&gt;shallow();
+</code></pre>
+<p>This route definition will define the following routes:</p>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>URI</th>
+<th>Action</th>
+<th>Route Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/comments</code></td>
+<td>index</td>
+<td>photos.comments.index</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/comments/create</code></td>
+<td>create</td>
+<td>photos.comments.create</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/photos/{photo}/comments</code></td>
+<td>store</td>
+<td>photos.comments.store</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/comments/{comment}</code></td>
+<td>show</td>
+<td>comments.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/comments/{comment}/edit</code></td>
+<td>edit</td>
+<td>comments.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/comments/{comment}</code></td>
+<td>update</td>
+<td>comments.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/comments/{comment}</code></td>
+<td>destroy</td>
+<td>comments.destroy</td>
+</tr>
+</tbody>
+</table>
+<p><a name="restful-naming-resource-routes"></a></p>
+<h3 id="naming-resource-routes">Naming Resource Routes</h3>
+<p>By default, all resource controller actions have a route name; however, you can override these names by passing a <code>names</code> array with your desired route names:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+
+Route::resource('photos', PhotoController::class)-&gt;names([
+    'create' =&gt; 'photos.build'
+]);
+</code></pre>
+<p><a name="restful-naming-resource-route-parameters"></a></p>
+<h3 id="naming-resource-route-parameters">Naming Resource Route Parameters</h3>
+<p>By default, <code>Route::resource</code> will create the route parameters for your resource routes based on the "singularized" version of the resource name. You can easily override this on a per resource basis using the <code>parameters</code> method. The array passed into the <code>parameters</code> method should be an associative array of resource names and parameter names:</p>
+<pre><code>use App\Http\Controllers\AdminUserController;
+
+Route::resource('users', AdminUserController::class)-&gt;parameters([
+    'users' =&gt; 'admin_user'
+]);
+</code></pre>
+<p>The example above generates the following URI for the resource's <code>show</code> route:</p>
+<pre><code>/users/{admin_user}
+</code></pre>
+<p><a name="restful-scoping-resource-routes"></a></p>
+<h3 id="scoping-resource-routes">Scoping Resource Routes</h3>
+<p>Laravel's <a href="/docs/{{version}}/routing#implicit-model-binding-scoping">scoped implicit model binding</a> feature can automatically scope nested bindings such that the resolved child model is confirmed to belong to the parent model. By using the <code>scoped</code> method when defining your nested resource, you may enable automatic scoping as well as instruct Laravel which field the child resource should be retrieved by:</p>
+<pre><code>use App\Http\Controllers\PhotoCommentController;
+
+Route::resource('photos.comments', PhotoCommentController::class)-&gt;scoped([
+    'comment' =&gt; 'slug',
+]);
+</code></pre>
+<p>This route will register a scoped nested resource that may be accessed with URIs like the following:</p>
+<pre><code>/photos/{photo}/comments/{comment:slug}
+</code></pre>
+<p>When using a custom keyed implicit binding as a nested route parameter, Laravel will automatically scope the query to retrieve the nested model by its parent using conventions to guess the relationship name on the parent. In this case, it will be assumed that the <code>Photo</code> model has a relationship named <code>comments</code> (the plural of the route parameter name) which can be used to retrieve the <code>Comment</code> model.</p>
+<p><a name="restful-localizing-resource-uris"></a></p>
+<h3 id="localizing-resource-uris">Localizing Resource URIs</h3>
+<p>By default, <code>Route::resource</code> will create resource URIs using English verbs. If you need to localize the <code>create</code> and <code>edit</code> action verbs, you may use the <code>Route::resourceVerbs</code> method. This may be done at the beginning of the <code>boot</code> method within your application's <code>App\Providers\RouteServiceProvider</code>:</p>
+<pre><code>/**
+ * Define your route model bindings, pattern filters, etc.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Route::resourceVerbs([
+        'create' =&gt; 'crear',
+        'edit' =&gt; 'editar',
+    ]);
+
+    // ...
+}
+</code></pre>
+<p>Once the verbs have been customized, a resource route registration such as <code>Route::resource('fotos', PhotoController::class)</code> will produce the following URIs:</p>
+<pre><code>/fotos/crear
+
+/fotos/{foto}/editar
+</code></pre>
+<p><a name="restful-supplementing-resource-controllers"></a></p>
+<h3 id="supplementing-resource-controllers">Supplementing Resource Controllers</h3>
+<p>If you need to add additional routes to a resource controller beyond the default set of resource routes, you should define those routes before your call to the <code>Route::resource</code> method; otherwise, the routes defined by the <code>resource</code> method may unintentionally take precedence over your supplemental routes:</p>
+<pre><code>use App\Http\Controller\PhotoController;
+
+Route::get('/photos/popular', [PhotoController::class, 'popular']);
+Route::resource('photos', PhotoController::class);
+</code></pre>
+<blockquote>
+<p>{tip} Remember to keep your controllers focused. If you find yourself routinely needing methods outside of the typical set of resource actions, consider splitting your controller into two, smaller controllers.</p>
+</blockquote>
+<p><a name="dependency-injection-and-controllers"></a></p>
+<h2 id="dependency-injection-controllers">Dependency Injection &amp; Controllers</h2>
+<p><a name="constructor-injection"></a></p>
+<h4 id="constructor-injection">Constructor Injection</h4>
+<p>The Laravel <a href="/docs/{{version}}/container">service container</a> is used to resolve all Laravel controllers. As a result, you are able to type-hint any dependencies your controller may need in its constructor. The declared dependencies will automatically be resolved and injected into the controller instance:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Repositories\UserRepository;
+
+class UserController extends Controller
+{
+    /**
+     * The user repository instance.
+     */
+    protected $users;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param  \App\Repositories\UserRepository  $users
+     * @return void
+     */
+    public function __construct(UserRepository $users)
+    {
+        $this-&gt;users = $users;
+    }
+}
+</code></pre>
+<p><a name="method-injection"></a></p>
+<h4 id="method-injection">Method Injection</h4>
+<p>In addition to constructor injection, you may also type-hint dependencies on your controller's methods. A common use-case for method injection is injecting the <code>Illuminate\Http\Request</code> instance into your controller methods:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Store a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $name = $request-&gt;name;
+
+        //
+    }
+}
+</code></pre>
+<p>If your controller method is also expecting input from a route parameter, list your route arguments after your other dependencies. For example, if your route is defined like so:</p>
+<pre><code>use App\Http\Controllers\UserController;
+
+Route::put('/user/{id}', [UserController::class, 'update']);
+</code></pre>
+<p>You may still type-hint the <code>Illuminate\Http\Request</code> and access your <code>id</code> parameter by defining your controller method as follows:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Update the given user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+}
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../csrf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CSRF himoya" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              CSRF himoya
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../requests/" class="md-footer__link md-footer__link--next" aria-label="Next: Requestlar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Requestlar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

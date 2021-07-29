@@ -1,0 +1,2107 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/contracts/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Kontraktlar - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contracts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kontraktlar
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Kontraktlar
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Kontraktlar
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contracts-vs-facades" class="md-nav__link">
+    Contracts Vs. Facades
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-contracts" class="md-nav__link">
+    When To Use Contracts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-contracts" class="md-nav__link">
+    How To Use Contracts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contract-reference" class="md-nav__link">
+    Contract Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contracts-vs-facades" class="md-nav__link">
+    Contracts Vs. Facades
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-contracts" class="md-nav__link">
+    When To Use Contracts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-contracts" class="md-nav__link">
+    How To Use Contracts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contract-reference" class="md-nav__link">
+    Contract Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="contracts">Contracts</h1>
+<ul>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#contracts-vs-facades">Contracts Vs. Facades</a></li>
+</ul>
+</li>
+<li><a href="#when-to-use-contracts">When To Use Contracts</a></li>
+<li><a href="#how-to-use-contracts">How To Use Contracts</a></li>
+<li><a href="#contract-reference">Contract Reference</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel's "contracts" are a set of interfaces that define the core services provided by the framework. For example, an <code>Illuminate\Contracts\Queue\Queue</code> contract defines the methods needed for queueing jobs, while the <code>Illuminate\Contracts\Mail\Mailer</code> contract defines the methods needed for sending e-mail.</p>
+<p>Each contract has a corresponding implementation provided by the framework. For example, Laravel provides a queue implementation with a variety of drivers, and a mailer implementation that is powered by <a href="https://swiftmailer.symfony.com/">SwiftMailer</a>.</p>
+<p>All of the Laravel contracts live in <a href="https://github.com/illuminate/contracts">their own GitHub repository</a>. This provides a quick reference point for all available contracts, as well as a single, decoupled package that may be utilized when building packages that interact with Laravel services.</p>
+<p><a name="contracts-vs-facades"></a></p>
+<h3 id="contracts-vs-facades">Contracts Vs. Facades</h3>
+<p>Laravel's <a href="/docs/{{version}}/facades">facades</a> and helper functions provide a simple way of utilizing Laravel's services without needing to type-hint and resolve contracts out of the service container. In most cases, each facade has an equivalent contract.</p>
+<p>Unlike facades, which do not require you to require them in your class' constructor, contracts allow you to define explicit dependencies for your classes. Some developers prefer to explicitly define their dependencies in this way and therefore prefer to use contracts, while other developers enjoy the convenience of facades. <strong>In general, most applications can use facades without issue during development.</strong></p>
+<p><a name="when-to-use-contracts"></a></p>
+<h2 id="when-to-use-contracts">When To Use Contracts</h2>
+<p>The decision to use contracts or facades will come down to personal taste and the tastes of your development team. Both contracts and facades can be used to create robust, well-tested Laravel applications. Contracts and facades are not mutually exclusive. Some parts of your applications may use facades while others depend on contracts. As long as you are keeping your class' responsibilities focused, you will notice very few practical differences between using contracts and facades.</p>
+<p>In general, most applications can use facades without issue during development. If you are building a package that integrates with multiple PHP frameworks you may wish to use the <code>illuminate/contracts</code> package to define your integration with Laravel's services without the need to require Laravel's concrete implementations in your package's <code>composer.json</code> file.</p>
+<p><a name="how-to-use-contracts"></a></p>
+<h2 id="how-to-use-contracts">How To Use Contracts</h2>
+<p>So, how do you get an implementation of a contract? It's actually quite simple.</p>
+<p>Many types of classes in Laravel are resolved through the <a href="/docs/{{version}}/container">service container</a>, including controllers, event listeners, middleware, queued jobs, and even route closures. So, to get an implementation of a contract, you can just "type-hint" the interface in the constructor of the class being resolved.</p>
+<p>For example, take a look at this event listener:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderWasPlaced;
+use App\Models\User;
+use Illuminate\Contracts\Redis\Factory;
+
+class CacheOrderInformation
+{
+    /**
+     * The Redis factory implementation.
+     *
+     * @var \Illuminate\Contracts\Redis\Factory
+     */
+    protected $redis;
+
+    /**
+     * Create a new event handler instance.
+     *
+     * @param  \Illuminate\Contracts\Redis\Factory  $redis
+     * @return void
+     */
+    public function __construct(Factory $redis)
+    {
+        $this-&gt;redis = $redis;
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  \App\Events\OrderWasPlaced  $event
+     * @return void
+     */
+    public function handle(OrderWasPlaced $event)
+    {
+        //
+    }
+}
+</code></pre>
+<p>When the event listener is resolved, the service container will read the type-hints on the constructor of the class, and inject the appropriate value. To learn more about registering things in the service container, check out <a href="/docs/{{version}}/container">its documentation</a>.</p>
+<p><a name="contract-reference"></a></p>
+<h2 id="contract-reference">Contract Reference</h2>
+<p>This table provides a quick reference to all of the Laravel contracts and their equivalent facades:</p>
+<table>
+<thead>
+<tr>
+<th>Contract</th>
+<th>References Facade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/Access/Authorizable.php">Illuminate\Contracts\Auth\Access\Authorizable</a></td>
+<td> &nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/Access/Gate.php">Illuminate\Contracts\Auth\Access\Gate</a></td>
+<td><code>Gate</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/Authenticatable.php">Illuminate\Contracts\Auth\Authenticatable</a></td>
+<td> &nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/CanResetPassword.php">Illuminate\Contracts\Auth\CanResetPassword</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/Factory.php">Illuminate\Contracts\Auth\Factory</a></td>
+<td><code>Auth</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/Guard.php">Illuminate\Contracts\Auth\Guard</a></td>
+<td><code>Auth::guard()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/PasswordBroker.php">Illuminate\Contracts\Auth\PasswordBroker</a></td>
+<td><code>Password::broker()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/PasswordBrokerFactory.php">Illuminate\Contracts\Auth\PasswordBrokerFactory</a></td>
+<td><code>Password</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/StatefulGuard.php">Illuminate\Contracts\Auth\StatefulGuard</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/SupportsBasicAuth.php">Illuminate\Contracts\Auth\SupportsBasicAuth</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Auth/UserProvider.php">Illuminate\Contracts\Auth\UserProvider</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Bus/Dispatcher.php">Illuminate\Contracts\Bus\Dispatcher</a></td>
+<td><code>Bus</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Bus/QueueingDispatcher.php">Illuminate\Contracts\Bus\QueueingDispatcher</a></td>
+<td><code>Bus::dispatchToQueue()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Broadcasting/Factory.php">Illuminate\Contracts\Broadcasting\Factory</a></td>
+<td><code>Broadcast</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Broadcasting/Broadcaster.php">Illuminate\Contracts\Broadcasting\Broadcaster</a></td>
+<td><code>Broadcast::connection()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Broadcasting/ShouldBroadcast.php">Illuminate\Contracts\Broadcasting\ShouldBroadcast</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Broadcasting/ShouldBroadcastNow.php">Illuminate\Contracts\Broadcasting\ShouldBroadcastNow</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Cache/Factory.php">Illuminate\Contracts\Cache\Factory</a></td>
+<td><code>Cache</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Cache/Lock.php">Illuminate\Contracts\Cache\Lock</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Cache/LockProvider.php">Illuminate\Contracts\Cache\LockProvider</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Cache/Repository.php">Illuminate\Contracts\Cache\Repository</a></td>
+<td><code>Cache::driver()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Cache/Store.php">Illuminate\Contracts\Cache\Store</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Config/Repository.php">Illuminate\Contracts\Config\Repository</a></td>
+<td><code>Config</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Console/Application.php">Illuminate\Contracts\Console\Application</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Console/Kernel.php">Illuminate\Contracts\Console\Kernel</a></td>
+<td><code>Artisan</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Container/Container.php">Illuminate\Contracts\Container\Container</a></td>
+<td><code>App</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Cookie/Factory.php">Illuminate\Contracts\Cookie\Factory</a></td>
+<td><code>Cookie</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Cookie/QueueingFactory.php">Illuminate\Contracts\Cookie\QueueingFactory</a></td>
+<td><code>Cookie::queue()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Database/ModelIdentifier.php">Illuminate\Contracts\Database\ModelIdentifier</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Debug/ExceptionHandler.php">Illuminate\Contracts\Debug\ExceptionHandler</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Encryption/Encrypter.php">Illuminate\Contracts\Encryption\Encrypter</a></td>
+<td><code>Crypt</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Events/Dispatcher.php">Illuminate\Contracts\Events\Dispatcher</a></td>
+<td><code>Event</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Filesystem/Cloud.php">Illuminate\Contracts\Filesystem\Cloud</a></td>
+<td><code>Storage::cloud()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Filesystem/Factory.php">Illuminate\Contracts\Filesystem\Factory</a></td>
+<td><code>Storage</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Filesystem/Filesystem.php">Illuminate\Contracts\Filesystem\Filesystem</a></td>
+<td><code>Storage::disk()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Foundation/Application.php">Illuminate\Contracts\Foundation\Application</a></td>
+<td><code>App</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Hashing/Hasher.php">Illuminate\Contracts\Hashing\Hasher</a></td>
+<td><code>Hash</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Http/Kernel.php">Illuminate\Contracts\Http\Kernel</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Mail/MailQueue.php">Illuminate\Contracts\Mail\MailQueue</a></td>
+<td><code>Mail::queue()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Mail/Mailable.php">Illuminate\Contracts\Mail\Mailable</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Mail/Mailer.php">Illuminate\Contracts\Mail\Mailer</a></td>
+<td><code>Mail</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Notifications/Dispatcher.php">Illuminate\Contracts\Notifications\Dispatcher</a></td>
+<td><code>Notification</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Notifications/Factory.php">Illuminate\Contracts\Notifications\Factory</a></td>
+<td><code>Notification</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Pagination/LengthAwarePaginator.php">Illuminate\Contracts\Pagination\LengthAwarePaginator</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Pagination/Paginator.php">Illuminate\Contracts\Pagination\Paginator</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Pipeline/Hub.php">Illuminate\Contracts\Pipeline\Hub</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Pipeline/Pipeline.php">Illuminate\Contracts\Pipeline\Pipeline</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Queue/EntityResolver.php">Illuminate\Contracts\Queue\EntityResolver</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Queue/Factory.php">Illuminate\Contracts\Queue\Factory</a></td>
+<td><code>Queue</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Queue/Job.php">Illuminate\Contracts\Queue\Job</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Queue/Monitor.php">Illuminate\Contracts\Queue\Monitor</a></td>
+<td><code>Queue</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Queue/Queue.php">Illuminate\Contracts\Queue\Queue</a></td>
+<td><code>Queue::connection()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Queue/QueueableCollection.php">Illuminate\Contracts\Queue\QueueableCollection</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Queue/QueueableEntity.php">Illuminate\Contracts\Queue\QueueableEntity</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Queue/ShouldQueue.php">Illuminate\Contracts\Queue\ShouldQueue</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Redis/Factory.php">Illuminate\Contracts\Redis\Factory</a></td>
+<td><code>Redis</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Routing/BindingRegistrar.php">Illuminate\Contracts\Routing\BindingRegistrar</a></td>
+<td><code>Route</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Routing/Registrar.php">Illuminate\Contracts\Routing\Registrar</a></td>
+<td><code>Route</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Routing/ResponseFactory.php">Illuminate\Contracts\Routing\ResponseFactory</a></td>
+<td><code>Response</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Routing/UrlGenerator.php">Illuminate\Contracts\Routing\UrlGenerator</a></td>
+<td><code>URL</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Routing/UrlRoutable.php">Illuminate\Contracts\Routing\UrlRoutable</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Session/Session.php">Illuminate\Contracts\Session\Session</a></td>
+<td><code>Session::driver()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Support/Arrayable.php">Illuminate\Contracts\Support\Arrayable</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Support/Htmlable.php">Illuminate\Contracts\Support\Htmlable</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Support/Jsonable.php">Illuminate\Contracts\Support\Jsonable</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Support/MessageBag.php">Illuminate\Contracts\Support\MessageBag</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Support/MessageProvider.php">Illuminate\Contracts\Support\MessageProvider</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Support/Renderable.php">Illuminate\Contracts\Support\Renderable</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Support/Responsable.php">Illuminate\Contracts\Support\Responsable</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Translation/Loader.php">Illuminate\Contracts\Translation\Loader</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Translation/Translator.php">Illuminate\Contracts\Translation\Translator</a></td>
+<td><code>Lang</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Validation/Factory.php">Illuminate\Contracts\Validation\Factory</a></td>
+<td><code>Validator</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Validation/ImplicitRule.php">Illuminate\Contracts\Validation\ImplicitRule</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Validation/Rule.php">Illuminate\Contracts\Validation\Rule</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Validation/ValidatesWhenResolved.php">Illuminate\Contracts\Validation\ValidatesWhenResolved</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/Validation/Validator.php">Illuminate\Contracts\Validation\Validator</a></td>
+<td><code>Validator::make()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/View/Engine.php">Illuminate\Contracts\View\Engine</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/View/Factory.php">Illuminate\Contracts\View\Factory</a></td>
+<td><code>View</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/illuminate/contracts/blob/{{version}}/View/View.php">Illuminate\Contracts\View\View</a></td>
+<td><code>View::make()</code></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../collections/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kolleksiyalar" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Kolleksiyalar
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../events/" class="md-footer__link md-footer__link--next" aria-label="Next: Eventlar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Eventlar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4325 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/migrations/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Migratsiyalar - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-migrations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Migratsiyalar
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        Eventlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Migratsiyalar
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Migratsiyalar
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-migrations" class="md-nav__link">
+    Generating Migrations
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating Migrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#squashing-migrations" class="md-nav__link">
+    Squashing Migrations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-structure" class="md-nav__link">
+    Migration Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Migration Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anonymous-migrations" class="md-nav__link">
+    Anonymous Migrations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-the-migration-connection" class="md-nav__link">
+    Setting The Migration Connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-migrations" class="md-nav__link">
+    Running Migrations
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Migrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forcing-migrations-to-run-in-production" class="md-nav__link">
+    Forcing Migrations To Run In Production
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rolling-back-migrations" class="md-nav__link">
+    Rolling Back Migrations
+  </a>
+  
+    <nav class="md-nav" aria-label="Rolling Back Migrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roll-back-migrate-using-a-single-command" class="md-nav__link">
+    Roll Back &amp; Migrate Using A Single Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop-all-tables-migrate" class="md-nav__link">
+    Drop All Tables &amp; Migrate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-tables" class="md-nav__link">
+    Creating Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-for-table-column-existence" class="md-nav__link">
+    Checking For Table / Column Existence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-connection-table-options" class="md-nav__link">
+    Database Connection &amp; Table Options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-tables" class="md-nav__link">
+    Updating Tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-dropping-tables" class="md-nav__link">
+    Renaming / Dropping Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Renaming / Dropping Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renaming-tables-with-foreign-keys" class="md-nav__link">
+    Renaming Tables With Foreign Keys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#columns" class="md-nav__link">
+    Columns
+  </a>
+  
+    <nav class="md-nav" aria-label="Columns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-columns" class="md-nav__link">
+    Creating Columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-column-types" class="md-nav__link">
+    Available Column Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Column Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bigincrements-collection-method" class="md-nav__link">
+    bigIncrements() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#biginteger-collection-method" class="md-nav__link">
+    bigInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-collection-method" class="md-nav__link">
+    binary() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-collection-method" class="md-nav__link">
+    boolean() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#char-collection-method" class="md-nav__link">
+    char() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetimetz-collection-method" class="md-nav__link">
+    dateTimeTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetime-collection-method" class="md-nav__link">
+    dateTime() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-collection-method" class="md-nav__link">
+    date() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decimal-collection-method" class="md-nav__link">
+    decimal() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#double-collection-method" class="md-nav__link">
+    double() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum-collection-method" class="md-nav__link">
+    enum() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#float-collection-method" class="md-nav__link">
+    float() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreignid-collection-method" class="md-nav__link">
+    foreignId() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreignuuid-collection-method" class="md-nav__link">
+    foreignUuid() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometrycollection-collection-method" class="md-nav__link">
+    geometryCollection() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometry-collection-method" class="md-nav__link">
+    geometry() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id-collection-method" class="md-nav__link">
+    id() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#increments-collection-method" class="md-nav__link">
+    increments() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-collection-method" class="md-nav__link">
+    integer() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipaddress-collection-method" class="md-nav__link">
+    ipAddress() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-collection-method" class="md-nav__link">
+    json() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonb-collection-method" class="md-nav__link">
+    jsonb() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linestring-collection-method" class="md-nav__link">
+    lineString() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#longtext-collection-method" class="md-nav__link">
+    longText() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macaddress-collection-method" class="md-nav__link">
+    macAddress() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediumincrements-collection-method" class="md-nav__link">
+    mediumIncrements() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediuminteger-collection-method" class="md-nav__link">
+    mediumInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediumtext-collection-method" class="md-nav__link">
+    mediumText() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morphs-collection-method" class="md-nav__link">
+    morphs() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multilinestring-collection-method" class="md-nav__link">
+    multiLineString() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipoint-collection-method" class="md-nav__link">
+    multiPoint() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipolygon-collection-method" class="md-nav__link">
+    multiPolygon() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullabletimestamps-collection-method" class="md-nav__link">
+    nullableTimestamps() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullablemorphs-collection-method" class="md-nav__link">
+    nullableMorphs() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullableuuidmorphs-collection-method" class="md-nav__link">
+    nullableUuidMorphs() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#point-collection-method" class="md-nav__link">
+    point() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polygon-collection-method" class="md-nav__link">
+    polygon() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remembertoken-collection-method" class="md-nav__link">
+    rememberToken() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-collection-method" class="md-nav__link">
+    set() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smallincrements-collection-method" class="md-nav__link">
+    smallIncrements() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smallinteger-collection-method" class="md-nav__link">
+    smallInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softdeletestz-collection-method" class="md-nav__link">
+    softDeletesTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softdeletes-collection-method" class="md-nav__link">
+    softDeletes() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-collection-method" class="md-nav__link">
+    string() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-collection-method" class="md-nav__link">
+    text() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timetz-collection-method" class="md-nav__link">
+    timeTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-collection-method" class="md-nav__link">
+    time() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamptz-collection-method" class="md-nav__link">
+    timestampTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamp-collection-method" class="md-nav__link">
+    timestamp() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestampstz-collection-method" class="md-nav__link">
+    timestampsTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamps-collection-method" class="md-nav__link">
+    timestamps() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinyincrements-collection-method" class="md-nav__link">
+    tinyIncrements() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinyinteger-collection-method" class="md-nav__link">
+    tinyInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinytext-collection-method" class="md-nav__link">
+    tinyText() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedbiginteger-collection-method" class="md-nav__link">
+    unsignedBigInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsigneddecimal-collection-method" class="md-nav__link">
+    unsignedDecimal() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedinteger-collection-method" class="md-nav__link">
+    unsignedInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedmediuminteger-collection-method" class="md-nav__link">
+    unsignedMediumInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedsmallinteger-collection-method" class="md-nav__link">
+    unsignedSmallInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedtinyinteger-collection-method" class="md-nav__link">
+    unsignedTinyInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuidmorphs-collection-method" class="md-nav__link">
+    uuidMorphs() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid-collection-method" class="md-nav__link">
+    uuid() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#year-collection-method" class="md-nav__link">
+    year() {#collection-method}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-modifiers" class="md-nav__link">
+    Column Modifiers
+  </a>
+  
+    <nav class="md-nav" aria-label="Column Modifiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-expressions" class="md-nav__link">
+    Default Expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-order" class="md-nav__link">
+    Column Order
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifying-columns" class="md-nav__link">
+    Modifying Columns
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying Columns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-column-attributes" class="md-nav__link">
+    Updating Column Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-columns" class="md-nav__link">
+    Renaming Columns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropping-columns" class="md-nav__link">
+    Dropping Columns
+  </a>
+  
+    <nav class="md-nav" aria-label="Dropping Columns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-command-aliases" class="md-nav__link">
+    Available Command Aliases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexes" class="md-nav__link">
+    Indexes
+  </a>
+  
+    <nav class="md-nav" aria-label="Indexes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-indexes" class="md-nav__link">
+    Creating Indexes
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Indexes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-index-types" class="md-nav__link">
+    Available Index Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-lengths-mysql-mariadb" class="md-nav__link">
+    Index Lengths &amp; MySQL / MariaDB
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-indexes" class="md-nav__link">
+    Renaming Indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropping-indexes" class="md-nav__link">
+    Dropping Indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreign-key-constraints" class="md-nav__link">
+    Foreign Key Constraints
+  </a>
+  
+    <nav class="md-nav" aria-label="Foreign Key Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dropping-foreign-keys" class="md-nav__link">
+    Dropping Foreign Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toggling-foreign-key-constraints" class="md-nav__link">
+    Toggling Foreign Key Constraints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-migrations" class="md-nav__link">
+    Generating Migrations
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating Migrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#squashing-migrations" class="md-nav__link">
+    Squashing Migrations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-structure" class="md-nav__link">
+    Migration Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Migration Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anonymous-migrations" class="md-nav__link">
+    Anonymous Migrations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-the-migration-connection" class="md-nav__link">
+    Setting The Migration Connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-migrations" class="md-nav__link">
+    Running Migrations
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Migrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forcing-migrations-to-run-in-production" class="md-nav__link">
+    Forcing Migrations To Run In Production
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rolling-back-migrations" class="md-nav__link">
+    Rolling Back Migrations
+  </a>
+  
+    <nav class="md-nav" aria-label="Rolling Back Migrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roll-back-migrate-using-a-single-command" class="md-nav__link">
+    Roll Back &amp; Migrate Using A Single Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop-all-tables-migrate" class="md-nav__link">
+    Drop All Tables &amp; Migrate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-tables" class="md-nav__link">
+    Creating Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-for-table-column-existence" class="md-nav__link">
+    Checking For Table / Column Existence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-connection-table-options" class="md-nav__link">
+    Database Connection &amp; Table Options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-tables" class="md-nav__link">
+    Updating Tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-dropping-tables" class="md-nav__link">
+    Renaming / Dropping Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Renaming / Dropping Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renaming-tables-with-foreign-keys" class="md-nav__link">
+    Renaming Tables With Foreign Keys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#columns" class="md-nav__link">
+    Columns
+  </a>
+  
+    <nav class="md-nav" aria-label="Columns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-columns" class="md-nav__link">
+    Creating Columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-column-types" class="md-nav__link">
+    Available Column Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Column Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bigincrements-collection-method" class="md-nav__link">
+    bigIncrements() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#biginteger-collection-method" class="md-nav__link">
+    bigInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-collection-method" class="md-nav__link">
+    binary() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean-collection-method" class="md-nav__link">
+    boolean() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#char-collection-method" class="md-nav__link">
+    char() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetimetz-collection-method" class="md-nav__link">
+    dateTimeTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetime-collection-method" class="md-nav__link">
+    dateTime() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-collection-method" class="md-nav__link">
+    date() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decimal-collection-method" class="md-nav__link">
+    decimal() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#double-collection-method" class="md-nav__link">
+    double() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum-collection-method" class="md-nav__link">
+    enum() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#float-collection-method" class="md-nav__link">
+    float() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreignid-collection-method" class="md-nav__link">
+    foreignId() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreignuuid-collection-method" class="md-nav__link">
+    foreignUuid() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometrycollection-collection-method" class="md-nav__link">
+    geometryCollection() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometry-collection-method" class="md-nav__link">
+    geometry() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id-collection-method" class="md-nav__link">
+    id() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#increments-collection-method" class="md-nav__link">
+    increments() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-collection-method" class="md-nav__link">
+    integer() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipaddress-collection-method" class="md-nav__link">
+    ipAddress() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-collection-method" class="md-nav__link">
+    json() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonb-collection-method" class="md-nav__link">
+    jsonb() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linestring-collection-method" class="md-nav__link">
+    lineString() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#longtext-collection-method" class="md-nav__link">
+    longText() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macaddress-collection-method" class="md-nav__link">
+    macAddress() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediumincrements-collection-method" class="md-nav__link">
+    mediumIncrements() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediuminteger-collection-method" class="md-nav__link">
+    mediumInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediumtext-collection-method" class="md-nav__link">
+    mediumText() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#morphs-collection-method" class="md-nav__link">
+    morphs() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multilinestring-collection-method" class="md-nav__link">
+    multiLineString() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipoint-collection-method" class="md-nav__link">
+    multiPoint() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multipolygon-collection-method" class="md-nav__link">
+    multiPolygon() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullabletimestamps-collection-method" class="md-nav__link">
+    nullableTimestamps() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullablemorphs-collection-method" class="md-nav__link">
+    nullableMorphs() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullableuuidmorphs-collection-method" class="md-nav__link">
+    nullableUuidMorphs() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#point-collection-method" class="md-nav__link">
+    point() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polygon-collection-method" class="md-nav__link">
+    polygon() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remembertoken-collection-method" class="md-nav__link">
+    rememberToken() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-collection-method" class="md-nav__link">
+    set() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smallincrements-collection-method" class="md-nav__link">
+    smallIncrements() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smallinteger-collection-method" class="md-nav__link">
+    smallInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softdeletestz-collection-method" class="md-nav__link">
+    softDeletesTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softdeletes-collection-method" class="md-nav__link">
+    softDeletes() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-collection-method" class="md-nav__link">
+    string() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-collection-method" class="md-nav__link">
+    text() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timetz-collection-method" class="md-nav__link">
+    timeTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-collection-method" class="md-nav__link">
+    time() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamptz-collection-method" class="md-nav__link">
+    timestampTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamp-collection-method" class="md-nav__link">
+    timestamp() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestampstz-collection-method" class="md-nav__link">
+    timestampsTz() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamps-collection-method" class="md-nav__link">
+    timestamps() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinyincrements-collection-method" class="md-nav__link">
+    tinyIncrements() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinyinteger-collection-method" class="md-nav__link">
+    tinyInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tinytext-collection-method" class="md-nav__link">
+    tinyText() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedbiginteger-collection-method" class="md-nav__link">
+    unsignedBigInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsigneddecimal-collection-method" class="md-nav__link">
+    unsignedDecimal() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedinteger-collection-method" class="md-nav__link">
+    unsignedInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedmediuminteger-collection-method" class="md-nav__link">
+    unsignedMediumInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedsmallinteger-collection-method" class="md-nav__link">
+    unsignedSmallInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsignedtinyinteger-collection-method" class="md-nav__link">
+    unsignedTinyInteger() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuidmorphs-collection-method" class="md-nav__link">
+    uuidMorphs() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid-collection-method" class="md-nav__link">
+    uuid() {#collection-method}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#year-collection-method" class="md-nav__link">
+    year() {#collection-method}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-modifiers" class="md-nav__link">
+    Column Modifiers
+  </a>
+  
+    <nav class="md-nav" aria-label="Column Modifiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-expressions" class="md-nav__link">
+    Default Expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-order" class="md-nav__link">
+    Column Order
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifying-columns" class="md-nav__link">
+    Modifying Columns
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying Columns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-column-attributes" class="md-nav__link">
+    Updating Column Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-columns" class="md-nav__link">
+    Renaming Columns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropping-columns" class="md-nav__link">
+    Dropping Columns
+  </a>
+  
+    <nav class="md-nav" aria-label="Dropping Columns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-command-aliases" class="md-nav__link">
+    Available Command Aliases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexes" class="md-nav__link">
+    Indexes
+  </a>
+  
+    <nav class="md-nav" aria-label="Indexes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-indexes" class="md-nav__link">
+    Creating Indexes
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Indexes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-index-types" class="md-nav__link">
+    Available Index Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index-lengths-mysql-mariadb" class="md-nav__link">
+    Index Lengths &amp; MySQL / MariaDB
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renaming-indexes" class="md-nav__link">
+    Renaming Indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dropping-indexes" class="md-nav__link">
+    Dropping Indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreign-key-constraints" class="md-nav__link">
+    Foreign Key Constraints
+  </a>
+  
+    <nav class="md-nav" aria-label="Foreign Key Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dropping-foreign-keys" class="md-nav__link">
+    Dropping Foreign Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toggling-foreign-key-constraints" class="md-nav__link">
+    Toggling Foreign Key Constraints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="database-migrations">Database: Migrations</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#generating-migrations">Generating Migrations</a><ul>
+<li><a href="#squashing-migrations">Squashing Migrations</a></li>
+</ul>
+</li>
+<li><a href="#migration-structure">Migration Structure</a></li>
+<li><a href="#running-migrations">Running Migrations</a><ul>
+<li><a href="#rolling-back-migrations">Rolling Back Migrations</a></li>
+</ul>
+</li>
+<li><a href="#tables">Tables</a><ul>
+<li><a href="#creating-tables">Creating Tables</a></li>
+<li><a href="#updating-tables">Updating Tables</a></li>
+<li><a href="#renaming-and-dropping-tables">Renaming / Dropping Tables</a></li>
+</ul>
+</li>
+<li><a href="#columns">Columns</a><ul>
+<li><a href="#creating-columns">Creating Columns</a></li>
+<li><a href="#available-column-types">Available Column Types</a></li>
+<li><a href="#column-modifiers">Column Modifiers</a></li>
+<li><a href="#modifying-columns">Modifying Columns</a></li>
+<li><a href="#dropping-columns">Dropping Columns</a></li>
+</ul>
+</li>
+<li><a href="#indexes">Indexes</a><ul>
+<li><a href="#creating-indexes">Creating Indexes</a></li>
+<li><a href="#renaming-indexes">Renaming Indexes</a></li>
+<li><a href="#dropping-indexes">Dropping Indexes</a></li>
+<li><a href="#foreign-key-constraints">Foreign Key Constraints</a></li>
+</ul>
+</li>
+<li><a href="#events">Events</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Migrations are like version control for your database, allowing your team to define and share the application's database schema definition. If you have ever had to tell a teammate to manually add a column to their local database schema after pulling in your changes from source control, you've faced the problem that database migrations solve.</p>
+<p>The Laravel <code>Schema</code> <a href="/docs/{{version}}/facades">facade</a> provides database agnostic support for creating and manipulating tables across all of Laravel's supported database systems. Typically, migrations will use this facade to create and modify database tables and columns.</p>
+<p><a name="generating-migrations"></a></p>
+<h2 id="generating-migrations">Generating Migrations</h2>
+<p>You may use the <code>make:migration</code> <a href="/docs/{{version}}/artisan">Artisan command</a> to generate a database migration. The new migration will be placed in your <code>database/migrations</code> directory. Each migration filename contains a timestamp that allows Laravel to determine the order of the migrations:</p>
+<pre><code>php artisan make:migration create_flights_table
+</code></pre>
+<p>Laravel will use the name of the migration to attempt to guess the name of the table and whether or not the migration will be creating a new table. If Laravel is able to determine the table name from the migration name, Laravel will pre-fill the generated migration file with the specified table. Otherwise, you may simply specify the table in the migration file manually.</p>
+<p>If you would like to specify a custom path for the generated migration, you may use the <code>--path</code> option when executing the <code>make:migration</code> command. The given path should be relative to your application's base path.</p>
+<blockquote>
+<p>{tip} Migration stubs may be customized using <a href="/docs/{{version}}/artisan#stub-customization">stub publishing</a>.</p>
+</blockquote>
+<p><a name="squashing-migrations"></a></p>
+<h3 id="squashing-migrations">Squashing Migrations</h3>
+<p>As you build your application, you may accumulate more and more migrations over time. This can lead to your <code>database/migrations</code> directory becoming bloated with potentially hundreds of migrations. If you would like, you may "squash" your migrations into a single SQL file. To get started, execute the <code>schema:dump</code> command:</p>
+<pre><code>php artisan schema:dump
+
+// Dump the current database schema and prune all existing migrations...
+php artisan schema:dump --prune
+</code></pre>
+<p>When you execute this command, Laravel will write a "schema" file to your application's <code>database/schema</code> directory. Now, when you attempt to migrate your database and no other migrations have been executed, Laravel will execute the schema file's SQL statements first. After executing the schema file's statements, Laravel will execute any remaining migrations that were not part of the schema dump.</p>
+<p>You should commit your database schema file to source control so that other new developers on your team may quickly create your application's initial database structure.</p>
+<blockquote>
+<p>{note} Migration squashing is only available for the MySQL, PostgreSQL, and SQLite databases and utilizes the database's command-line client. Schema dumps may not be restored to in-memory SQLite databases.</p>
+</blockquote>
+<p><a name="migration-structure"></a></p>
+<h2 id="migration-structure">Migration Structure</h2>
+<p>A migration class contains two methods: <code>up</code> and <code>down</code>. The <code>up</code> method is used to add new tables, columns, or indexes to your database, while the <code>down</code> method should reverse the operations performed by the <code>up</code> method.</p>
+<p>Within both of these methods, you may use the Laravel schema builder to expressively create and modify tables. To learn about all of the methods available on the <code>Schema</code> builder, <a href="#creating-tables">check out its documentation</a>. For example, the following migration creates a <code>flights</code> table:</p>
+<pre><code>&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateFlightsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('flights', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;string('name');
+            $table-&gt;string('airline');
+            $table-&gt;timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('flights');
+    }
+}
+</code></pre>
+<p><a name="anonymous-migrations"></a></p>
+<h4 id="anonymous-migrations">Anonymous Migrations</h4>
+<p>As you may have noticed in the example above, Laravel will automatically assign a class name to all of the migrations that you generate using the <code>make:migration</code> command. However, if you wish, you may return an anonymous class from your migration file. This is primarily useful if your application accumulates many migrations and two of them have a class name collision:</p>
+<pre><code>&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+
+return new class extends Migration
+{
+    //
+};
+</code></pre>
+<p><a name="setting-the-migration-connection"></a></p>
+<h4 id="setting-the-migration-connection">Setting The Migration Connection</h4>
+<p>If your migration will be interacting with a database connection other than your application's default database connection, you should set the <code>$connection</code> property of your migration:</p>
+<pre><code>/**
+ * The database connection that should be used by the migration.
+ *
+ * @var string
+ */
+protected $connection = 'pgsql';
+
+/**
+ * Run the migrations.
+ *
+ * @return void
+ */
+public function up()
+{
+    //
+}
+</code></pre>
+<p><a name="running-migrations"></a></p>
+<h2 id="running-migrations">Running Migrations</h2>
+<p>To run all of your outstanding migrations, execute the <code>migrate</code> Artisan command:</p>
+<pre><code>php artisan migrate
+</code></pre>
+<p>If you would like to see which migrations have run thus far, you may use the <code>migrate:status</code> Artisan command:</p>
+<pre><code>php artisan migrate:status
+</code></pre>
+<p><a name="forcing-migrations-to-run-in-production"></a></p>
+<h4 id="forcing-migrations-to-run-in-production">Forcing Migrations To Run In Production</h4>
+<p>Some migration operations are destructive, which means they may cause you to lose data. In order to protect you from running these commands against your production database, you will be prompted for confirmation before the commands are executed. To force the commands to run without a prompt, use the <code>--force</code> flag:</p>
+<pre><code>php artisan migrate --force
+</code></pre>
+<p><a name="rolling-back-migrations"></a></p>
+<h3 id="rolling-back-migrations">Rolling Back Migrations</h3>
+<p>To roll back the latest migration operation, you may use the <code>rollback</code> Artisan command. This command rolls back the last "batch" of migrations, which may include multiple migration files:</p>
+<pre><code>php artisan migrate:rollback
+</code></pre>
+<p>You may roll back a limited number of migrations by providing the <code>step</code> option to the <code>rollback</code> command. For example, the following command will roll back the last five migrations:</p>
+<pre><code>php artisan migrate:rollback --step=5
+</code></pre>
+<p>The <code>migrate:reset</code> command will roll back all of your application's migrations:</p>
+<pre><code>php artisan migrate:reset
+</code></pre>
+<p><a name="roll-back-migrate-using-a-single-command"></a></p>
+<h4 id="roll-back-migrate-using-a-single-command">Roll Back &amp; Migrate Using A Single Command</h4>
+<p>The <code>migrate:refresh</code> command will roll back all of your migrations and then execute the <code>migrate</code> command. This command effectively re-creates your entire database:</p>
+<pre><code>php artisan migrate:refresh
+
+// Refresh the database and run all database seeds...
+php artisan migrate:refresh --seed
+</code></pre>
+<p>You may roll back and re-migrate a limited number of migrations by providing the <code>step</code> option to the <code>refresh</code> command. For example, the following command will roll back and re-migrate the last five migrations:</p>
+<pre><code>php artisan migrate:refresh --step=5
+</code></pre>
+<p><a name="drop-all-tables-migrate"></a></p>
+<h4 id="drop-all-tables-migrate">Drop All Tables &amp; Migrate</h4>
+<p>The <code>migrate:fresh</code> command will drop all tables from the database and then execute the <code>migrate</code> command:</p>
+<pre><code>php artisan migrate:fresh
+
+php artisan migrate:fresh --seed
+</code></pre>
+<blockquote>
+<p>{note} The <code>migrate:fresh</code> command will drop all database tables regardless of their prefix. This command should be used with caution when developing on a database that is shared with other applications.</p>
+</blockquote>
+<p><a name="tables"></a></p>
+<h2 id="tables">Tables</h2>
+<p><a name="creating-tables"></a></p>
+<h3 id="creating-tables">Creating Tables</h3>
+<p>To create a new database table, use the <code>create</code> method on the <code>Schema</code> facade. The <code>create</code> method accepts two arguments: the first is the name of the table, while the second is a closure which receives a <code>Blueprint</code> object that may be used to define the new table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::create('users', function (Blueprint $table) {
+    $table-&gt;id();
+    $table-&gt;string('name');
+    $table-&gt;string('email');
+    $table-&gt;timestamps();
+});
+</code></pre>
+<p>When creating the table, you may use any of the schema builder's <a href="#creating-columns">column methods</a> to define the table's columns.</p>
+<p><a name="checking-for-table-column-existence"></a></p>
+<h4 id="checking-for-table-column-existence">Checking For Table / Column Existence</h4>
+<p>You may check for the existence of a table or column using the <code>hasTable</code> and <code>hasColumn</code> methods:</p>
+<pre><code>if (Schema::hasTable('users')) {
+    // The "users" table exists...
+}
+
+if (Schema::hasColumn('users', 'email')) {
+    // The "users" table exists and has an "email" column...
+}
+</code></pre>
+<p><a name="database-connection-table-options"></a></p>
+<h4 id="database-connection-table-options">Database Connection &amp; Table Options</h4>
+<p>If you want to perform a schema operation on a database connection that is not your application's default connection, use the <code>connection</code> method:</p>
+<pre><code>Schema::connection('sqlite')-&gt;create('users', function (Blueprint $table) {
+    $table-&gt;id();
+});
+</code></pre>
+<p>In addition, a few other properties and methods may be used to define other aspects of the table's creation. The <code>engine</code> property may be used to specify the table's storage engine when using MySQL:</p>
+<pre><code>Schema::create('users', function (Blueprint $table) {
+    $table-&gt;engine = 'InnoDB';
+
+    // ...
+});
+</code></pre>
+<p>The <code>charset</code> and <code>collation</code> properties may be used to specify the character set and collation for the created table when using MySQL:</p>
+<pre><code>Schema::create('users', function (Blueprint $table) {
+    $table-&gt;charset = 'utf8mb4';
+    $table-&gt;collation = 'utf8mb4_unicode_ci';
+
+    // ...
+});
+</code></pre>
+<p>The <code>temporary</code> method may be used to indicate that the table should be "temporary". Temporary tables are only visible to the current connection's database session and are dropped automatically when the connection is closed:</p>
+<pre><code>Schema::create('calculations', function (Blueprint $table) {
+    $table-&gt;temporary();
+
+    // ...
+});
+</code></pre>
+<p><a name="updating-tables"></a></p>
+<h3 id="updating-tables">Updating Tables</h3>
+<p>The <code>table</code> method on the <code>Schema</code> facade may be used to update existing tables. Like the <code>create</code> method, the <code>table</code> method accepts two arguments: the name of the table and a closure that receives a <code>Blueprint</code> instance you may use to add columns or indexes to the table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;integer('votes');
+});
+</code></pre>
+<p><a name="renaming-and-dropping-tables"></a></p>
+<h3 id="renaming-dropping-tables">Renaming / Dropping Tables</h3>
+<p>To rename an existing database table, use the <code>rename</code> method:</p>
+<pre><code>use Illuminate\Support\Facades\Schema;
+
+Schema::rename($from, $to);
+</code></pre>
+<p>To drop an existing table, you may use the <code>drop</code> or <code>dropIfExists</code> methods:</p>
+<pre><code>Schema::drop('users');
+
+Schema::dropIfExists('users');
+</code></pre>
+<p><a name="renaming-tables-with-foreign-keys"></a></p>
+<h4 id="renaming-tables-with-foreign-keys">Renaming Tables With Foreign Keys</h4>
+<p>Before renaming a table, you should verify that any foreign key constraints on the table have an explicit name in your migration files instead of letting Laravel assign a convention based name. Otherwise, the foreign key constraint name will refer to the old table name.</p>
+<p><a name="columns"></a></p>
+<h2 id="columns">Columns</h2>
+<p><a name="creating-columns"></a></p>
+<h3 id="creating-columns">Creating Columns</h3>
+<p>The <code>table</code> method on the <code>Schema</code> facade may be used to update existing tables. Like the <code>create</code> method, the <code>table</code> method accepts two arguments: the name of the table and a closure that receives an <code>Illuminate\Database\Schema\Blueprint</code> instance you may use to add columns to the table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;integer('votes');
+});
+</code></pre>
+<p><a name="available-column-types"></a></p>
+<h3 id="available-column-types">Available Column Types</h3>
+<p>The schema builder blueprint offers a variety of methods that correspond to the different types of columns you can add to your database tables. Each of the available methods are listed in the table below:</p>
+<style>
+    #collection-method-list > p {
+        column-count: 3; -moz-column-count: 3; -webkit-column-count: 3;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    #collection-method-list a {
+        display: block;
+    }
+</style>
+
+<div id="collection-method-list" markdown="1">
+[bigIncrements](#column-method-bigIncrements)
+[bigInteger](#column-method-bigInteger)
+[binary](#column-method-binary)
+[boolean](#column-method-boolean)
+[char](#column-method-char)
+[dateTimeTz](#column-method-dateTimeTz)
+[dateTime](#column-method-dateTime)
+[date](#column-method-date)
+[decimal](#column-method-decimal)
+[double](#column-method-double)
+[enum](#column-method-enum)
+[float](#column-method-float)
+[foreignId](#column-method-foreignId)
+[foreignUuid](#column-method-foreignUuid)
+[geometryCollection](#column-method-geometryCollection)
+[geometry](#column-method-geometry)
+[id](#column-method-id)
+[increments](#column-method-increments)
+[integer](#column-method-integer)
+[ipAddress](#column-method-ipAddress)
+[json](#column-method-json)
+[jsonb](#column-method-jsonb)
+[lineString](#column-method-lineString)
+[longText](#column-method-longText)
+[macAddress](#column-method-macAddress)
+[mediumIncrements](#column-method-mediumIncrements)
+[mediumInteger](#column-method-mediumInteger)
+[mediumText](#column-method-mediumText)
+[morphs](#column-method-morphs)
+[multiLineString](#column-method-multiLineString)
+[multiPoint](#column-method-multiPoint)
+[multiPolygon](#column-method-multiPolygon)
+[nullableMorphs](#column-method-nullableMorphs)
+[nullableTimestamps](#column-method-nullableTimestamps)
+[nullableUuidMorphs](#column-method-nullableUuidMorphs)
+[point](#column-method-point)
+[polygon](#column-method-polygon)
+[rememberToken](#column-method-rememberToken)
+[set](#column-method-set)
+[smallIncrements](#column-method-smallIncrements)
+[smallInteger](#column-method-smallInteger)
+[softDeletesTz](#column-method-softDeletesTz)
+[softDeletes](#column-method-softDeletes)
+[string](#column-method-string)
+[text](#column-method-text)
+[timeTz](#column-method-timeTz)
+[time](#column-method-time)
+[timestampTz](#column-method-timestampTz)
+[timestamp](#column-method-timestamp)
+[timestampsTz](#column-method-timestampsTz)
+[timestamps](#column-method-timestamps)
+[tinyIncrements](#column-method-tinyIncrements)
+[tinyInteger](#column-method-tinyInteger)
+[tinyText](#column-method-tinyText)
+[unsignedBigInteger](#column-method-unsignedBigInteger)
+[unsignedDecimal](#column-method-unsignedDecimal)
+[unsignedInteger](#column-method-unsignedInteger)
+[unsignedMediumInteger](#column-method-unsignedMediumInteger)
+[unsignedSmallInteger](#column-method-unsignedSmallInteger)
+[unsignedTinyInteger](#column-method-unsignedTinyInteger)
+[uuidMorphs](#column-method-uuidMorphs)
+[uuid](#column-method-uuid)
+[year](#column-method-year)
+</div>
+
+<p><a name="column-method-bigIncrements"></a></p>
+<h4 id="bigincrements-collection-method"><code>bigIncrements()</code> {#collection-method}</h4>
+<p>The <code>bigIncrements</code> method creates an auto-incrementing <code>UNSIGNED BIGINT</code> (primary key) equivalent column:</p>
+<pre><code>$table-&gt;bigIncrements('id');
+</code></pre>
+<p><a name="column-method-bigInteger"></a></p>
+<h4 id="biginteger-collection-method"><code>bigInteger()</code> {#collection-method}</h4>
+<p>The <code>bigInteger</code> method creates a <code>BIGINT</code> equivalent column:</p>
+<pre><code>$table-&gt;bigInteger('votes');
+</code></pre>
+<p><a name="column-method-binary"></a></p>
+<h4 id="binary-collection-method"><code>binary()</code> {#collection-method}</h4>
+<p>The <code>binary</code> method creates a <code>BLOB</code> equivalent column:</p>
+<pre><code>$table-&gt;binary('photo');
+</code></pre>
+<p><a name="column-method-boolean"></a></p>
+<h4 id="boolean-collection-method"><code>boolean()</code> {#collection-method}</h4>
+<p>The <code>boolean</code> method creates a <code>BOOLEAN</code> equivalent column:</p>
+<pre><code>$table-&gt;boolean('confirmed');
+</code></pre>
+<p><a name="column-method-char"></a></p>
+<h4 id="char-collection-method"><code>char()</code> {#collection-method}</h4>
+<p>The <code>char</code> method creates a <code>CHAR</code> equivalent column with of a given length:</p>
+<pre><code>$table-&gt;char('name', 100);
+</code></pre>
+<p><a name="column-method-dateTimeTz"></a></p>
+<h4 id="datetimetz-collection-method"><code>dateTimeTz()</code> {#collection-method}</h4>
+<p>The <code>dateTimeTz</code> method creates a <code>DATETIME</code> (with timezone) equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;dateTimeTz('created_at', $precision = 0);
+</code></pre>
+<p><a name="column-method-dateTime"></a></p>
+<h4 id="datetime-collection-method"><code>dateTime()</code> {#collection-method}</h4>
+<p>The <code>dateTime</code> method creates a <code>DATETIME</code> equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;dateTime('created_at', $precision = 0);
+</code></pre>
+<p><a name="column-method-date"></a></p>
+<h4 id="date-collection-method"><code>date()</code> {#collection-method}</h4>
+<p>The <code>date</code> method creates a <code>DATE</code> equivalent column:</p>
+<pre><code>$table-&gt;date('created_at');
+</code></pre>
+<p><a name="column-method-decimal"></a></p>
+<h4 id="decimal-collection-method"><code>decimal()</code> {#collection-method}</h4>
+<p>The <code>decimal</code> method creates a <code>DECIMAL</code> equivalent column with the given precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;decimal('amount', $precision = 8, $scale = 2);
+</code></pre>
+<p><a name="column-method-double"></a></p>
+<h4 id="double-collection-method"><code>double()</code> {#collection-method}</h4>
+<p>The <code>double</code> method creates a <code>DOUBLE</code> equivalent column with the given precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;double('amount', 8, 2);
+</code></pre>
+<p><a name="column-method-enum"></a></p>
+<h4 id="enum-collection-method"><code>enum()</code> {#collection-method}</h4>
+<p>The <code>enum</code> method creates a <code>ENUM</code> equivalent column with the given valid values:</p>
+<pre><code>$table-&gt;enum('difficulty', ['easy', 'hard']);
+</code></pre>
+<p><a name="column-method-float"></a></p>
+<h4 id="float-collection-method"><code>float()</code> {#collection-method}</h4>
+<p>The <code>float</code> method creates a <code>FLOAT</code> equivalent column with the given precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;float('amount', 8, 2);
+</code></pre>
+<p><a name="column-method-foreignId"></a></p>
+<h4 id="foreignid-collection-method"><code>foreignId()</code> {#collection-method}</h4>
+<p>The <code>foreignId</code> method creates an <code>UNSIGNED BIGINT</code> equivalent column:</p>
+<pre><code>$table-&gt;foreignId('user_id');
+</code></pre>
+<p><a name="column-method-foreignUuid"></a></p>
+<h4 id="foreignuuid-collection-method"><code>foreignUuid()</code> {#collection-method}</h4>
+<p>The <code>foreignUuid</code> method creates a <code>UUID</code> equivalent column:</p>
+<pre><code>$table-&gt;foreignUuid('id');
+</code></pre>
+<p><a name="column-method-geometryCollection"></a></p>
+<h4 id="geometrycollection-collection-method"><code>geometryCollection()</code> {#collection-method}</h4>
+<p>The <code>geometryCollection</code> method creates a <code>GEOMETRYCOLLECTION</code> equivalent column:</p>
+<pre><code>$table-&gt;geometryCollection('positions');
+</code></pre>
+<p><a name="column-method-geometry"></a></p>
+<h4 id="geometry-collection-method"><code>geometry()</code> {#collection-method}</h4>
+<p>The <code>geometry</code> method creates a <code>GEOMETRY</code> equivalent column:</p>
+<pre><code>$table-&gt;geometry('positions');
+</code></pre>
+<p><a name="column-method-id"></a></p>
+<h4 id="id-collection-method"><code>id()</code> {#collection-method}</h4>
+<p>The <code>id</code> method is an alias of the <code>bigIncrements</code> method. By default, the method will create an <code>id</code> column; however, you may pass a column name if you would like to assign a different name to the column:</p>
+<pre><code>$table-&gt;id();
+</code></pre>
+<p><a name="column-method-increments"></a></p>
+<h4 id="increments-collection-method"><code>increments()</code> {#collection-method}</h4>
+<p>The <code>increments</code> method creates an auto-incrementing <code>UNSIGNED INTEGER</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;increments('id');
+</code></pre>
+<p><a name="column-method-integer"></a></p>
+<h4 id="integer-collection-method"><code>integer()</code> {#collection-method}</h4>
+<p>The <code>integer</code> method creates an <code>INTEGER</code> equivalent column:</p>
+<pre><code>$table-&gt;integer('votes');
+</code></pre>
+<p><a name="column-method-ipAddress"></a></p>
+<h4 id="ipaddress-collection-method"><code>ipAddress()</code> {#collection-method}</h4>
+<p>The <code>ipAddress</code> method creates a <code>VARCHAR</code> equivalent column:</p>
+<pre><code>$table-&gt;ipAddress('visitor');
+</code></pre>
+<p><a name="column-method-json"></a></p>
+<h4 id="json-collection-method"><code>json()</code> {#collection-method}</h4>
+<p>The <code>json</code> method creates a <code>JSON</code> equivalent column:</p>
+<pre><code>$table-&gt;json('options');
+</code></pre>
+<p><a name="column-method-jsonb"></a></p>
+<h4 id="jsonb-collection-method"><code>jsonb()</code> {#collection-method}</h4>
+<p>The <code>jsonb</code> method creates a <code>JSONB</code> equivalent column:</p>
+<pre><code>$table-&gt;jsonb('options');
+</code></pre>
+<p><a name="column-method-lineString"></a></p>
+<h4 id="linestring-collection-method"><code>lineString()</code> {#collection-method}</h4>
+<p>The <code>lineString</code> method creates a <code>LINESTRING</code> equivalent column:</p>
+<pre><code>$table-&gt;lineString('positions');
+</code></pre>
+<p><a name="column-method-longText"></a></p>
+<h4 id="longtext-collection-method"><code>longText()</code> {#collection-method}</h4>
+<p>The <code>longText</code> method creates a <code>LONGTEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;longText('description');
+</code></pre>
+<p><a name="column-method-macAddress"></a></p>
+<h4 id="macaddress-collection-method"><code>macAddress()</code> {#collection-method}</h4>
+<p>The <code>macAddress</code> method creates a column that is intended to hold a MAC address. Some database systems, such as PostgreSQL, have a dedicated column type for this type of data. Other database systems will use a string equivalent column:</p>
+<pre><code>$table-&gt;macAddress('device');
+</code></pre>
+<p><a name="column-method-mediumIncrements"></a></p>
+<h4 id="mediumincrements-collection-method"><code>mediumIncrements()</code> {#collection-method}</h4>
+<p>The <code>mediumIncrements</code> method creates an auto-incrementing <code>UNSIGNED MEDIUMINT</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;mediumIncrements('id');
+</code></pre>
+<p><a name="column-method-mediumInteger"></a></p>
+<h4 id="mediuminteger-collection-method"><code>mediumInteger()</code> {#collection-method}</h4>
+<p>The <code>mediumInteger</code> method creates a <code>MEDIUMINT</code> equivalent column:</p>
+<pre><code>$table-&gt;mediumInteger('votes');
+</code></pre>
+<p><a name="column-method-mediumText"></a></p>
+<h4 id="mediumtext-collection-method"><code>mediumText()</code> {#collection-method}</h4>
+<p>The <code>mediumText</code> method creates a <code>MEDIUMTEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;mediumText('description');
+</code></pre>
+<p><a name="column-method-morphs"></a></p>
+<h4 id="morphs-collection-method"><code>morphs()</code> {#collection-method}</h4>
+<p>The <code>morphs</code> method is a convenience method that adds a <code>{column}_id</code> <code>UNSIGNED BIGINT</code> equivalent column and a <code>{column}_type</code> <code>VARCHAR</code> equivalent column.</p>
+<p>This method is intended to be used when defining the columns necessary for a polymorphic <a href="/docs/{{version}}/eloquent-relationships">Eloquent relationship</a>. In the following example, <code>taggable_id</code> and <code>taggable_type</code> columns would be created:</p>
+<pre><code>$table-&gt;morphs('taggable');
+</code></pre>
+<p><a name="column-method-multiLineString"></a></p>
+<h4 id="multilinestring-collection-method"><code>multiLineString()</code> {#collection-method}</h4>
+<p>The <code>multiLineString</code> method creates a <code>MULTILINESTRING</code> equivalent column:</p>
+<pre><code>$table-&gt;multiLineString('positions');
+</code></pre>
+<p><a name="column-method-multiPoint"></a></p>
+<h4 id="multipoint-collection-method"><code>multiPoint()</code> {#collection-method}</h4>
+<p>The <code>multiPoint</code> method creates a <code>MULTIPOINT</code> equivalent column:</p>
+<pre><code>$table-&gt;multiPoint('positions');
+</code></pre>
+<p><a name="column-method-multiPolygon"></a></p>
+<h4 id="multipolygon-collection-method"><code>multiPolygon()</code> {#collection-method}</h4>
+<p>The <code>multiPolygon</code> method creates a <code>MULTIPOLYGON</code> equivalent column:</p>
+<pre><code>$table-&gt;multiPolygon('positions');
+</code></pre>
+<p><a name="column-method-nullableTimestamps"></a></p>
+<h4 id="nullabletimestamps-collection-method"><code>nullableTimestamps()</code> {#collection-method}</h4>
+<p>The <code>nullableTimestamps</code> method is an alias of the <a href="#column-method-timestamps">timestamps</a> method:</p>
+<pre><code>$table-&gt;nullableTimestamps(0);
+</code></pre>
+<p><a name="column-method-nullableMorphs"></a></p>
+<h4 id="nullablemorphs-collection-method"><code>nullableMorphs()</code> {#collection-method}</h4>
+<p>The method is similar to the <a href="#column-method-morphs">morphs</a> method; however, the columns that are created will be "nullable":</p>
+<pre><code>$table-&gt;nullableMorphs('taggable');
+</code></pre>
+<p><a name="column-method-nullableUuidMorphs"></a></p>
+<h4 id="nullableuuidmorphs-collection-method"><code>nullableUuidMorphs()</code> {#collection-method}</h4>
+<p>The method is similar to the <a href="#column-method-uuidMorphs">uuidMorphs</a> method; however, the columns that are created will be "nullable":</p>
+<pre><code>$table-&gt;nullableUuidMorphs('taggable');
+</code></pre>
+<p><a name="column-method-point"></a></p>
+<h4 id="point-collection-method"><code>point()</code> {#collection-method}</h4>
+<p>The <code>point</code> method creates a <code>POINT</code> equivalent column:</p>
+<pre><code>$table-&gt;point('position');
+</code></pre>
+<p><a name="column-method-polygon"></a></p>
+<h4 id="polygon-collection-method"><code>polygon()</code> {#collection-method}</h4>
+<p>The <code>polygon</code> method creates a <code>POLYGON</code> equivalent column:</p>
+<pre><code>$table-&gt;polygon('position');
+</code></pre>
+<p><a name="column-method-rememberToken"></a></p>
+<h4 id="remembertoken-collection-method"><code>rememberToken()</code> {#collection-method}</h4>
+<p>The <code>rememberToken</code> method creates a nullable, <code>VARCHAR(100)</code> equivalent column that is intended to store the current "remember me" <a href="/docs/{{version}}/authentication#remembering-users">authentication token</a>:</p>
+<pre><code>$table-&gt;rememberToken();
+</code></pre>
+<p><a name="column-method-set"></a></p>
+<h4 id="set-collection-method"><code>set()</code> {#collection-method}</h4>
+<p>The <code>set</code> method creates a <code>SET</code> equivalent column with the given list of valid values:</p>
+<pre><code>$table-&gt;set('flavors', ['strawberry', 'vanilla']);
+</code></pre>
+<p><a name="column-method-smallIncrements"></a></p>
+<h4 id="smallincrements-collection-method"><code>smallIncrements()</code> {#collection-method}</h4>
+<p>The <code>smallIncrements</code> method creates an auto-incrementing <code>UNSIGNED SMALLINT</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;smallIncrements('id');
+</code></pre>
+<p><a name="column-method-smallInteger"></a></p>
+<h4 id="smallinteger-collection-method"><code>smallInteger()</code> {#collection-method}</h4>
+<p>The <code>smallInteger</code> method creates a <code>SMALLINT</code> equivalent column:</p>
+<pre><code>$table-&gt;smallInteger('votes');
+</code></pre>
+<p><a name="column-method-softDeletesTz"></a></p>
+<h4 id="softdeletestz-collection-method"><code>softDeletesTz()</code> {#collection-method}</h4>
+<p>The <code>softDeletesTz</code> method adds a nullable <code>deleted_at</code> <code>TIMESTAMP</code> (with timezone) equivalent column with an optional precision (total digits). This column is intended to store the <code>deleted_at</code> timestamp needed for Eloquent's "soft delete" functionality:</p>
+<pre><code>$table-&gt;softDeletesTz($column = 'deleted_at', $precision = 0);
+</code></pre>
+<p><a name="column-method-softDeletes"></a></p>
+<h4 id="softdeletes-collection-method"><code>softDeletes()</code> {#collection-method}</h4>
+<p>The <code>softDeletes</code> method adds a nullable <code>deleted_at</code> <code>TIMESTAMP</code> equivalent column with an optional precision (total digits). This column is intended to store the <code>deleted_at</code> timestamp needed for Eloquent's "soft delete" functionality:</p>
+<pre><code>$table-&gt;softDeletes($column = 'deleted_at', $precision = 0);
+</code></pre>
+<p><a name="column-method-string"></a></p>
+<h4 id="string-collection-method"><code>string()</code> {#collection-method}</h4>
+<p>The <code>string</code> method creates a <code>VARCHAR</code> equivalent column of the given length:</p>
+<pre><code>$table-&gt;string('name', 100);
+</code></pre>
+<p><a name="column-method-text"></a></p>
+<h4 id="text-collection-method"><code>text()</code> {#collection-method}</h4>
+<p>The <code>text</code> method creates a <code>TEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;text('description');
+</code></pre>
+<p><a name="column-method-timeTz"></a></p>
+<h4 id="timetz-collection-method"><code>timeTz()</code> {#collection-method}</h4>
+<p>The <code>timeTz</code> method creates a <code>TIME</code> (with timezone) equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timeTz('sunrise', $precision = 0);
+</code></pre>
+<p><a name="column-method-time"></a></p>
+<h4 id="time-collection-method"><code>time()</code> {#collection-method}</h4>
+<p>The <code>time</code> method creates a <code>TIME</code> equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;time('sunrise', $precision = 0);
+</code></pre>
+<p><a name="column-method-timestampTz"></a></p>
+<h4 id="timestamptz-collection-method"><code>timestampTz()</code> {#collection-method}</h4>
+<p>The <code>timestampTz</code> method creates a <code>TIMESTAMP</code> (with timezone) equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestampTz('added_at', $precision = 0);
+</code></pre>
+<p><a name="column-method-timestamp"></a></p>
+<h4 id="timestamp-collection-method"><code>timestamp()</code> {#collection-method}</h4>
+<p>The <code>timestamp</code> method creates a <code>TIMESTAMP</code> equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestamp('added_at', $precision = 0);
+</code></pre>
+<p><a name="column-method-timestampsTz"></a></p>
+<h4 id="timestampstz-collection-method"><code>timestampsTz()</code> {#collection-method}</h4>
+<p>The <code>timestampsTz</code> method creates <code>created_at</code> and <code>updated_at</code> <code>TIMESTAMP</code> (with timezone) equivalent columns with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestampsTz($precision = 0);
+</code></pre>
+<p><a name="column-method-timestamps"></a></p>
+<h4 id="timestamps-collection-method"><code>timestamps()</code> {#collection-method}</h4>
+<p>The <code>timestamps</code> method creates <code>created_at</code> and <code>updated_at</code> <code>TIMESTAMP</code> equivalent columns with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestamps($precision = 0);
+</code></pre>
+<p><a name="column-method-tinyIncrements"></a></p>
+<h4 id="tinyincrements-collection-method"><code>tinyIncrements()</code> {#collection-method}</h4>
+<p>The <code>tinyIncrements</code> method creates an auto-incrementing <code>UNSIGNED TINYINT</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;tinyIncrements('id');
+</code></pre>
+<p><a name="column-method-tinyInteger"></a></p>
+<h4 id="tinyinteger-collection-method"><code>tinyInteger()</code> {#collection-method}</h4>
+<p>The <code>tinyInteger</code> method creates a <code>TINYINT</code> equivalent column:</p>
+<pre><code>$table-&gt;tinyInteger('votes');
+</code></pre>
+<p><a name="column-method-tinyText"></a></p>
+<h4 id="tinytext-collection-method"><code>tinyText()</code> {#collection-method}</h4>
+<p>The <code>tinyText</code> method creates a <code>TINYTEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;tinyText('notes');
+</code></pre>
+<p><a name="column-method-unsignedBigInteger"></a></p>
+<h4 id="unsignedbiginteger-collection-method"><code>unsignedBigInteger()</code> {#collection-method}</h4>
+<p>The <code>unsignedBigInteger</code> method creates an <code>UNSIGNED BIGINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedBigInteger('votes');
+</code></pre>
+<p><a name="column-method-unsignedDecimal"></a></p>
+<h4 id="unsigneddecimal-collection-method"><code>unsignedDecimal()</code> {#collection-method}</h4>
+<p>The <code>unsignedDecimal</code> method creates an <code>UNSIGNED DECIMAL</code> equivalent column with an optional precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;unsignedDecimal('amount', $precision = 8, $scale = 2);
+</code></pre>
+<p><a name="column-method-unsignedInteger"></a></p>
+<h4 id="unsignedinteger-collection-method"><code>unsignedInteger()</code> {#collection-method}</h4>
+<p>The <code>unsignedInteger</code> method creates an <code>UNSIGNED INTEGER</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedInteger('votes');
+</code></pre>
+<p><a name="column-method-unsignedMediumInteger"></a></p>
+<h4 id="unsignedmediuminteger-collection-method"><code>unsignedMediumInteger()</code> {#collection-method}</h4>
+<p>The <code>unsignedMediumInteger</code> method creates an <code>UNSIGNED MEDIUMINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedMediumInteger('votes');
+</code></pre>
+<p><a name="column-method-unsignedSmallInteger"></a></p>
+<h4 id="unsignedsmallinteger-collection-method"><code>unsignedSmallInteger()</code> {#collection-method}</h4>
+<p>The <code>unsignedSmallInteger</code> method creates an <code>UNSIGNED SMALLINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedSmallInteger('votes');
+</code></pre>
+<p><a name="column-method-unsignedTinyInteger"></a></p>
+<h4 id="unsignedtinyinteger-collection-method"><code>unsignedTinyInteger()</code> {#collection-method}</h4>
+<p>The <code>unsignedTinyInteger</code> method creates an <code>UNSIGNED TINYINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedTinyInteger('votes');
+</code></pre>
+<p><a name="column-method-uuidMorphs"></a></p>
+<h4 id="uuidmorphs-collection-method"><code>uuidMorphs()</code> {#collection-method}</h4>
+<p>The <code>uuidMorphs</code> method is a convenience method that adds a <code>{column}_id</code> <code>CHAR(36)</code> equivalent column and a <code>{column}_type</code> <code>VARCHAR</code> equivalent column.</p>
+<p>This method is intended to be used when defining the columns necessary for a polymorphic <a href="/docs/{{version}}/eloquent-relationships">Eloquent relationship</a> that use UUID identifiers. In the following example, <code>taggable_id</code> and <code>taggable_type</code> columns would be created:</p>
+<pre><code>$table-&gt;uuidMorphs('taggable');
+</code></pre>
+<p><a name="column-method-uuid"></a></p>
+<h4 id="uuid-collection-method"><code>uuid()</code> {#collection-method}</h4>
+<p>The <code>uuid</code> method creates a <code>UUID</code> equivalent column:</p>
+<pre><code>$table-&gt;uuid('id');
+</code></pre>
+<p><a name="column-method-year"></a></p>
+<h4 id="year-collection-method"><code>year()</code> {#collection-method}</h4>
+<p>The <code>year</code> method creates a <code>YEAR</code> equivalent column:</p>
+<pre><code>$table-&gt;year('birth_year');
+</code></pre>
+<p><a name="column-modifiers"></a></p>
+<h3 id="column-modifiers">Column Modifiers</h3>
+<p>In addition to the column types listed above, there are several column "modifiers" you may use when adding a column to a database table. For example, to make the column "nullable", you may use the <code>nullable</code> method:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('email')-&gt;nullable();
+});
+</code></pre>
+<p>The following table contains all of the available column modifiers. This list does not include <a href="#creating-indexes">index modifiers</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-&gt;after('column')</code></td>
+<td>Place the column "after" another column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;autoIncrement()</code></td>
+<td>Set INTEGER columns as auto-incrementing (primary key).</td>
+</tr>
+<tr>
+<td><code>-&gt;charset('utf8mb4')</code></td>
+<td>Specify a character set for the column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;collation('utf8mb4_unicode_ci')</code></td>
+<td>Specify a collation for the column (MySQL/PostgreSQL/SQL Server).</td>
+</tr>
+<tr>
+<td><code>-&gt;comment('my comment')</code></td>
+<td>Add a comment to a column (MySQL/PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;default($value)</code></td>
+<td>Specify a "default" value for the column.</td>
+</tr>
+<tr>
+<td><code>-&gt;first()</code></td>
+<td>Place the column "first" in the table (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;from($integer)</code></td>
+<td>Set the starting value of an auto-incrementing field (MySQL / PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;nullable($value = true)</code></td>
+<td>Allow NULL values to be inserted into the column.</td>
+</tr>
+<tr>
+<td><code>-&gt;storedAs($expression)</code></td>
+<td>Create a stored generated column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;unsigned()</code></td>
+<td>Set INTEGER columns as UNSIGNED (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;useCurrent()</code></td>
+<td>Set TIMESTAMP columns to use CURRENT_TIMESTAMP as default value.</td>
+</tr>
+<tr>
+<td><code>-&gt;useCurrentOnUpdate()</code></td>
+<td>Set TIMESTAMP columns to use CURRENT_TIMESTAMP when a record is updated.</td>
+</tr>
+<tr>
+<td><code>-&gt;virtualAs($expression)</code></td>
+<td>Create a virtual generated column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;generatedAs($expression)</code></td>
+<td>Create an identity column with specified sequence options (PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;always()</code></td>
+<td>Defines the precedence of sequence values over input for an identity column (PostgreSQL).</td>
+</tr>
+</tbody>
+</table>
+<p><a name="default-expressions"></a></p>
+<h4 id="default-expressions">Default Expressions</h4>
+<p>The <code>default</code> modifier accepts a value or an <code>Illuminate\Database\Query\Expression</code> instance. Using an <code>Expression</code> instance will prevent Laravel from wrapping the value in quotes and allow you to use database specific functions. One situation where this is particularly useful is when you need to assign default values to JSON columns:</p>
+<pre><code>&lt;?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateFlightsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('flights', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;json('movies')-&gt;default(new Expression('(JSON_ARRAY())'));
+            $table-&gt;timestamps();
+        });
+    }
+}
+</code></pre>
+<blockquote>
+<p>{note} Support for default expressions depends on your database driver, database version, and the field type. Please refer to your database's documentation.</p>
+</blockquote>
+<p><a name="column-order"></a></p>
+<h4 id="column-order">Column Order</h4>
+<p>When using the MySQL database, the <code>after</code> method may be used to add columns after an existing column in the schema:</p>
+<pre><code>$table-&gt;after('password', function ($table) {
+    $table-&gt;string('address_line1');
+    $table-&gt;string('address_line2');
+    $table-&gt;string('city');
+});
+</code></pre>
+<p><a name="modifying-columns"></a></p>
+<h3 id="modifying-columns">Modifying Columns</h3>
+<p><a name="prerequisites"></a></p>
+<h4 id="prerequisites">Prerequisites</h4>
+<p>Before modifying a column, you must install the <code>doctrine/dbal</code> package using the Composer package manager. The Doctrine DBAL library is used to determine the current state of the column and to create the SQL queries needed to make the requested changes to your column:</p>
+<pre><code>composer require doctrine/dbal
+</code></pre>
+<p>If you plan to modify columns created using the <code>timestamp</code> method, you must also add the following configuration to your application's <code>config/database.php</code> configuration file:</p>
+<pre><code class="language-php">use Illuminate\Database\DBAL\TimestampType;
+
+'dbal' =&gt; [
+    'types' =&gt; [
+        'timestamp' =&gt; TimestampType::class,
+    ],
+],
+</code></pre>
+<blockquote>
+<p>{note} If your application is using Microsoft SQL Server, please ensure that you install <code>doctrine/dbal:^3.0</code>.</p>
+</blockquote>
+<p><a name="updating-column-attributes"></a></p>
+<h4 id="updating-column-attributes">Updating Column Attributes</h4>
+<p>The <code>change</code> method allows you to modify the type and attributes of existing columns. For example, you may wish to increase the size of a <code>string</code> column. To see the <code>change</code> method in action, let's increase the size of the <code>name</code> column from 25 to 50. To accomplish this, we simply define the new state of the column and then call the <code>change</code> method:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('name', 50)-&gt;change();
+});
+</code></pre>
+<p>We could also modify a column to be nullable:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('name', 50)-&gt;nullable()-&gt;change();
+});
+</code></pre>
+<blockquote>
+<p>{note} The following column types can be modified: <code>bigInteger</code>, <code>binary</code>, <code>boolean</code>, <code>date</code>, <code>dateTime</code>, <code>dateTimeTz</code>, <code>decimal</code>, <code>integer</code>, <code>json</code>, <code>longText</code>, <code>mediumText</code>, <code>smallInteger</code>, <code>string</code>, <code>text</code>, <code>time</code>, <code>unsignedBigInteger</code>, <code>unsignedInteger</code>, <code>unsignedSmallInteger</code>, and <code>uuid</code>.  To modify a <code>timestamp</code> column type a <a href="#prerequisites">Doctrine type must be registered</a>.</p>
+</blockquote>
+<p><a name="renaming-columns"></a></p>
+<h4 id="renaming-columns">Renaming Columns</h4>
+<p>To rename a column, you may use the <code>renameColumn</code> method provided by the schema builder blueprint. Before renaming a column, ensure that you have installed the <code>doctrine/dbal</code> library via the Composer package manager:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;renameColumn('from', 'to');
+});
+</code></pre>
+<blockquote>
+<p>{note} Renaming an <code>enum</code> column is not currently supported.</p>
+</blockquote>
+<p><a name="dropping-columns"></a></p>
+<h3 id="dropping-columns">Dropping Columns</h3>
+<p>To drop a column, you may use the <code>dropColumn</code> method on the schema builder blueprint. If your application is utilizing an SQLite database, you must install the <code>doctrine/dbal</code> package via the Composer package manager before the <code>dropColumn</code> method may be used:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;dropColumn('votes');
+});
+</code></pre>
+<p>You may drop multiple columns from a table by passing an array of column names to the <code>dropColumn</code> method:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;dropColumn(['votes', 'avatar', 'location']);
+});
+</code></pre>
+<blockquote>
+<p>{note} Dropping or modifying multiple columns within a single migration while using an SQLite database is not supported.</p>
+</blockquote>
+<p><a name="available-command-aliases"></a></p>
+<h4 id="available-command-aliases">Available Command Aliases</h4>
+<p>Laravel provides several convenient methods related to dropping common types of columns. Each of these methods is described in the table below:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;dropMorphs('morphable');</code></td>
+<td>Drop the <code>morphable_id</code> and <code>morphable_type</code> columns.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropRememberToken();</code></td>
+<td>Drop the <code>remember_token</code> column.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropSoftDeletes();</code></td>
+<td>Drop the <code>deleted_at</code> column.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropSoftDeletesTz();</code></td>
+<td>Alias of <code>dropSoftDeletes()</code> method.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropTimestamps();</code></td>
+<td>Drop the <code>created_at</code> and <code>updated_at</code> columns.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropTimestampsTz();</code></td>
+<td>Alias of <code>dropTimestamps()</code> method.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="indexes"></a></p>
+<h2 id="indexes">Indexes</h2>
+<p><a name="creating-indexes"></a></p>
+<h3 id="creating-indexes">Creating Indexes</h3>
+<p>The Laravel schema builder supports several types of indexes. The following example creates a new <code>email</code> column and specifies that its values should be unique. To create the index, we can chain the <code>unique</code> method onto the column definition:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('email')-&gt;unique();
+});
+</code></pre>
+<p>Alternatively, you may create the index after defining the column. To do so, you should call the <code>unique</code> method on the schema builder blueprint. This method accepts the name of the column that should receive a unique index:</p>
+<pre><code>$table-&gt;unique('email');
+</code></pre>
+<p>You may even pass an array of columns to an index method to create a compound (or composite) index:</p>
+<pre><code>$table-&gt;index(['account_id', 'created_at']);
+</code></pre>
+<p>When creating an index, Laravel will automatically generate an index name based on the table, column names, and the index type, but you may pass a second argument to the method to specify the index name yourself:</p>
+<pre><code>$table-&gt;unique('email', 'unique_email');
+</code></pre>
+<p><a name="available-index-types"></a></p>
+<h4 id="available-index-types">Available Index Types</h4>
+<p>Laravel's schema builder blueprint class provides methods for creating each type of index supported by Laravel. Each index method accepts an optional second argument to specify the name of the index. If omitted, the name will be derived from the names of the table and column(s) used for the index, as well as the index type. Each of the available index methods is described in the table below:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;primary('id');</code></td>
+<td>Adds a primary key.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;primary(['id', 'parent_id']);</code></td>
+<td>Adds composite keys.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;unique('email');</code></td>
+<td>Adds a unique index.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;index('state');</code></td>
+<td>Adds an index.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;spatialIndex('location');</code></td>
+<td>Adds a spatial index (except SQLite).</td>
+</tr>
+</tbody>
+</table>
+<p><a name="index-lengths-mysql-mariadb"></a></p>
+<h4 id="index-lengths-mysql-mariadb">Index Lengths &amp; MySQL / MariaDB</h4>
+<p>By default, Laravel uses the <code>utf8mb4</code> character set. If you are running a version of MySQL older than the 5.7.7 release or MariaDB older than the 10.2.2 release, you may need to manually configure the default string length generated by migrations in order for MySQL to create indexes for them. You may configure the default string length by calling the <code>Schema::defaultStringLength</code> method within the <code>boot</code> method of your <code>App\Providers\AppServiceProvider</code> class:</p>
+<pre><code>use Illuminate\Support\Facades\Schema;
+
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+</code></pre>
+<p>Alternatively, you may enable the <code>innodb_large_prefix</code> option for your database. Refer to your database's documentation for instructions on how to properly enable this option.</p>
+<p><a name="renaming-indexes"></a></p>
+<h3 id="renaming-indexes">Renaming Indexes</h3>
+<p>To rename an index, you may use the <code>renameIndex</code> method provided by the schema builder blueprint. This method accepts the current index name as its first argument and the desired name as its second argument:</p>
+<pre><code>$table-&gt;renameIndex('from', 'to')
+</code></pre>
+<p><a name="dropping-indexes"></a></p>
+<h3 id="dropping-indexes">Dropping Indexes</h3>
+<p>To drop an index, you must specify the index's name. By default, Laravel automatically assigns an index name based on the table name, the name of the indexed column, and the index type. Here are some examples:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;dropPrimary('users_id_primary');</code></td>
+<td>Drop a primary key from the "users" table.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropUnique('users_email_unique');</code></td>
+<td>Drop a unique index from the "users" table.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropIndex('geo_state_index');</code></td>
+<td>Drop a basic index from the "geo" table.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropSpatialIndex('geo_location_spatialindex');</code></td>
+<td>Drop a spatial index from the "geo" table  (except SQLite).</td>
+</tr>
+</tbody>
+</table>
+<p>If you pass an array of columns into a method that drops indexes, the conventional index name will be generated based on the table name, columns, and index type:</p>
+<pre><code>Schema::table('geo', function (Blueprint $table) {
+    $table-&gt;dropIndex(['state']); // Drops index 'geo_state_index'
+});
+</code></pre>
+<p><a name="foreign-key-constraints"></a></p>
+<h3 id="foreign-key-constraints">Foreign Key Constraints</h3>
+<p>Laravel also provides support for creating foreign key constraints, which are used to force referential integrity at the database level. For example, let's define a <code>user_id</code> column on the <code>posts</code> table that references the <code>id</code> column on a <code>users</code> table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;unsignedBigInteger('user_id');
+
+    $table-&gt;foreign('user_id')-&gt;references('id')-&gt;on('users');
+});
+</code></pre>
+<p>Since this syntax is rather verbose, Laravel provides additional, terser methods that use conventions to provide a better developer experience. When using the <code>foreignId</code> method to create your column, the example above can be rewritten like so:</p>
+<pre><code>Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;foreignId('user_id')-&gt;constrained();
+});
+</code></pre>
+<p>The <code>foreignId</code> method creates an <code>UNSIGNED BIGINT</code> equivalent column, while the <code>constrained</code> method will use conventions to determine the table and column name being referenced. If your table name does not match Laravel's conventions, you may specify the table name by passing it as an argument to the <code>constrained</code> method:</p>
+<pre><code>Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;foreignId('user_id')-&gt;constrained('users');
+});
+</code></pre>
+<p>You may also specify the desired action for the "on delete" and "on update" properties of the constraint:</p>
+<pre><code>$table-&gt;foreignId('user_id')
+      -&gt;constrained()
+      -&gt;onUpdate('cascade')
+      -&gt;onDelete('cascade');
+</code></pre>
+<p>Any additional <a href="#column-modifiers">column modifiers</a> must be called before the <code>constrained</code> method:</p>
+<pre><code>$table-&gt;foreignId('user_id')
+      -&gt;nullable()
+      -&gt;constrained();
+</code></pre>
+<p><a name="dropping-foreign-keys"></a></p>
+<h4 id="dropping-foreign-keys">Dropping Foreign Keys</h4>
+<p>To drop a foreign key, you may use the <code>dropForeign</code> method, passing the name of the foreign key constraint to be deleted as an argument. Foreign key constraints use the same naming convention as indexes. In other words, the foreign key constraint name is based on the name of the table and the columns in the constraint, followed by a "_foreign" suffix:</p>
+<pre><code>$table-&gt;dropForeign('posts_user_id_foreign');
+</code></pre>
+<p>Alternatively, you may pass an array containing the column name that holds the foreign key to the <code>dropForeign</code> method. The array will be converted to a foreign key constraint name using Laravel's constraint naming conventions:</p>
+<pre><code>$table-&gt;dropForeign(['user_id']);
+</code></pre>
+<p><a name="toggling-foreign-key-constraints"></a></p>
+<h4 id="toggling-foreign-key-constraints">Toggling Foreign Key Constraints</h4>
+<p>You may enable or disable foreign key constraints within your migrations by using the following methods:</p>
+<pre><code>Schema::enableForeignKeyConstraints();
+
+Schema::disableForeignKeyConstraints();
+</code></pre>
+<blockquote>
+<p>{note} SQLite disables foreign key constraints by default. When using SQLite, make sure to <a href="/docs/{{version}}/database#configuration">enable foreign key support</a> in your database configuration before attempting to create them in your migrations. In addition, SQLite only supports foreign keys upon creation of the table and <a href="https://www.sqlite.org/omitted.html">not when tables are altered</a>.</p>
+</blockquote>
+<p><a name="events"></a></p>
+<h2 id="events">Events</h2>
+<p>For convenience, each migration operation will dispatch an <a href="/docs/{{version}}/events">event</a>. All of the following events extend the base <code>Illuminate\Database\Events\MigrationEvent</code> class:</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><code>Illuminate\Database\Events\MigrationsStarted</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Illuminate\Database\Events\MigrationsEnded</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Illuminate\Database\Events\MigrationStarted</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>Illuminate\Database\Events\MigrationEnded</code></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../pagination/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Paginatsiya" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Paginatsiya
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../seeding/" class="md-footer__link md-footer__link--next" aria-label="Next: Seeding" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Seeding
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>

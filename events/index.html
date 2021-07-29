@@ -1,0 +1,2602 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Shukrullo Turgunov">
+      
+      
+        <link rel="canonical" href="https://laravel.k3.uz/events/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
+    
+    
+      
+        <title>Eventlar - Laravel Docs (uz)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#events" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel Docs (uz)" class="md-header__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel Docs (uz)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Eventlar
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel Docs (uz)" class="md-nav__button md-logo" aria-label="Laravel Docs (uz)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel Docs (uz)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Ma'lumot
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumot" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Reliz haqida
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Yangilash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Hissa qo'shish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Boshlash
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlash" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlash
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        O'rnatish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Sozlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structure/" class="md-nav__link">
+        Papkalar strukturasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/" class="md-nav__link">
+        Starter Kitlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Serverga yuklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Arxitektura konsepsiyasi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arxitektura konsepsiyasi" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Arxitektura konsepsiyasi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle/" class="md-nav__link">
+        Request Lifecycle
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container/" class="md-nav__link">
+        Servislar konteyneri
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../providers/" class="md-nav__link">
+        Servis provayderlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../facades/" class="md-nav__link">
+        Fasadlar
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Boshlang'ich bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Boshlang'ich bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Boshlang'ich bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware/" class="md-nav__link">
+        Middleware
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csrf/" class="md-nav__link">
+        CSRF himoya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controllers/" class="md-nav__link">
+        Kontrollerlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requests/" class="md-nav__link">
+        Requestlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../responses/" class="md-nav__link">
+        Responselar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../views/" class="md-nav__link">
+        Viewlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blade/" class="md-nav__link">
+        Blade Templatelar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../urls/" class="md-nav__link">
+        URL generatsiyasi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session/" class="md-nav__link">
+        Sessiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Xatoliklarni aniqlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Kengaytirilgan bo'limlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Kengaytirilgan bo'limlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Kengaytirilgan bo'limlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artisan/" class="md-nav__link">
+        Artisan konsoli
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cache/" class="md-nav__link">
+        Kesh
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets.md" class="md-nav__link">
+        Assetlarni kompilyatsiyalash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contracts/" class="md-nav__link">
+        Kontraktlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Eventlar
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Eventlar
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registering-events-listeners" class="md-nav__link">
+    Registering Events &amp; Listeners
+  </a>
+  
+    <nav class="md-nav" aria-label="Registering Events &amp; Listeners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-events-listeners" class="md-nav__link">
+    Generating Events &amp; Listeners
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-registering-events" class="md-nav__link">
+    Manually Registering Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Manually Registering Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queueable-anonymous-event-listeners" class="md-nav__link">
+    Queueable Anonymous Event Listeners
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildcard-event-listeners" class="md-nav__link">
+    Wildcard Event Listeners
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-discovery" class="md-nav__link">
+    Event Discovery
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Discovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-discovery-in-production" class="md-nav__link">
+    Event Discovery In Production
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-events" class="md-nav__link">
+    Defining Events
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-listeners" class="md-nav__link">
+    Defining Listeners
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Listeners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stopping-the-propagation-of-an-event" class="md-nav__link">
+    Stopping The Propagation Of An Event
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queued-event-listeners" class="md-nav__link">
+    Queued Event Listeners
+  </a>
+  
+    <nav class="md-nav" aria-label="Queued Event Listeners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-queue-connection-queue-name" class="md-nav__link">
+    Customizing The Queue Connection &amp; Queue Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditionally-queueing-listeners" class="md-nav__link">
+    Conditionally Queueing Listeners
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-interacting-with-the-queue" class="md-nav__link">
+    Manually Interacting With The Queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queued-event-listeners-database-transactions" class="md-nav__link">
+    Queued Event Listeners &amp; Database Transactions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-failed-jobs" class="md-nav__link">
+    Handling Failed Jobs
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Failed Jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-queued-listener-maximum-attempts" class="md-nav__link">
+    Specifying Queued Listener Maximum Attempts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dispatching-events" class="md-nav__link">
+    Dispatching Events
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-subscribers" class="md-nav__link">
+    Event Subscribers
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Subscribers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-event-subscribers" class="md-nav__link">
+    Writing Event Subscribers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-event-subscribers" class="md-nav__link">
+    Registering Event Subscribers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        File Storage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/" class="md-nav__link">
+        Helperlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-client/" class="md-nav__link">
+        HTTP Client
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Lokalizatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        Notification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packages/" class="md-nav__link">
+        Package ishlab chiqish
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queue.md" class="md-nav__link">
+        Queue
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedulering.md" class="md-nav__link">
+        Tasklarni rejalashtirish
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Havfsizlik
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Havfsizlik" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Havfsizlik
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Autentifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        Autorizatiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../verification/" class="md-nav__link">
+        Email verifikatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encryption/" class="md-nav__link">
+        Shifrlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hashing/" class="md-nav__link">
+        Heshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passwords/" class="md-nav__link">
+        Parolni tiklash
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Ma'lumotlar ombori
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ma'lumotlar ombori" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Ma'lumotlar ombori
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Query Builder
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagination/" class="md-nav__link">
+        Paginatsiya
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/" class="md-nav__link">
+        Migratsiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeding/" class="md-nav__link">
+        Seeding
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      <label class="md-nav__link" for="__nav_8">
+        Eloquent ORM
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Eloquent ORM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Eloquent ORM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../relationships.md" class="md-nav__link">
+        O'zaro bog'lanishlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collections/" class="md-nav__link">
+        Kolleksiyalar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-mutators/" class="md-nav__link">
+        Mutators / Casts
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-apis.md" class="md-nav__link">
+        API Resurslar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eloquent-serialization/" class="md-nav__link">
+        Serializatsiya
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Testing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Testing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Boshlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-tests/" class="md-nav__link">
+        HTTP Testing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console-tests/" class="md-nav__link">
+        Console testlar
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Brauzerda testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-testing/" class="md-nav__link">
+        DB ni testlash
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mocking/" class="md-nav__link">
+        Mocking
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      <label class="md-nav__link" for="__nav_10">
+        Paketlar
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Paketlar" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Paketlar
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../starter-kits/#laravel-breeze" class="md-nav__link">
+        Breeze
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../billing/" class="md-nav__link">
+        Cashier (Stripe)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cashier-paddle/" class="md-nav__link">
+        Cashier (Paddle)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dusk/" class="md-nav__link">
+        Dusk
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../envoy/" class="md-nav__link">
+        Envoy
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortify/" class="md-nav__link">
+        Fortify
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../homestead/" class="md-nav__link">
+        Homestead
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        Horizon
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://jetstream.laravel.com/" class="md-nav__link">
+        Jetstream
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../octane/" class="md-nav__link">
+        Octane
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../passport/" class="md-nav__link">
+        Passport
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sail/" class="md-nav__link">
+        Sail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sanctum/" class="md-nav__link">
+        Sanctum
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scout/" class="md-nav__link">
+        Scout
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socialite/" class="md-nav__link">
+        Socialite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telescope/" class="md-nav__link">
+        Telescope
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../valet/" class="md-nav__link">
+        Valet
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://laravel.com/api/8.x" class="md-nav__link">
+        API Dokumentatsiya
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registering-events-listeners" class="md-nav__link">
+    Registering Events &amp; Listeners
+  </a>
+  
+    <nav class="md-nav" aria-label="Registering Events &amp; Listeners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-events-listeners" class="md-nav__link">
+    Generating Events &amp; Listeners
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-registering-events" class="md-nav__link">
+    Manually Registering Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Manually Registering Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queueable-anonymous-event-listeners" class="md-nav__link">
+    Queueable Anonymous Event Listeners
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildcard-event-listeners" class="md-nav__link">
+    Wildcard Event Listeners
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-discovery" class="md-nav__link">
+    Event Discovery
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Discovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-discovery-in-production" class="md-nav__link">
+    Event Discovery In Production
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-events" class="md-nav__link">
+    Defining Events
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-listeners" class="md-nav__link">
+    Defining Listeners
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Listeners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stopping-the-propagation-of-an-event" class="md-nav__link">
+    Stopping The Propagation Of An Event
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queued-event-listeners" class="md-nav__link">
+    Queued Event Listeners
+  </a>
+  
+    <nav class="md-nav" aria-label="Queued Event Listeners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-the-queue-connection-queue-name" class="md-nav__link">
+    Customizing The Queue Connection &amp; Queue Name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditionally-queueing-listeners" class="md-nav__link">
+    Conditionally Queueing Listeners
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-interacting-with-the-queue" class="md-nav__link">
+    Manually Interacting With The Queue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queued-event-listeners-database-transactions" class="md-nav__link">
+    Queued Event Listeners &amp; Database Transactions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-failed-jobs" class="md-nav__link">
+    Handling Failed Jobs
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Failed Jobs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-queued-listener-maximum-attempts" class="md-nav__link">
+    Specifying Queued Listener Maximum Attempts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dispatching-events" class="md-nav__link">
+    Dispatching Events
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-subscribers" class="md-nav__link">
+    Event Subscribers
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Subscribers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-event-subscribers" class="md-nav__link">
+    Writing Event Subscribers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-event-subscribers" class="md-nav__link">
+    Registering Event Subscribers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="events">Events</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#registering-events-and-listeners">Registering Events &amp; Listeners</a><ul>
+<li><a href="#generating-events-and-listeners">Generating Events &amp; Listeners</a></li>
+<li><a href="#manually-registering-events">Manually Registering Events</a></li>
+<li><a href="#event-discovery">Event Discovery</a></li>
+</ul>
+</li>
+<li><a href="#defining-events">Defining Events</a></li>
+<li><a href="#defining-listeners">Defining Listeners</a></li>
+<li><a href="#queued-event-listeners">Queued Event Listeners</a><ul>
+<li><a href="#manually-interacting-with-the-queue">Manually Interacting With The Queue</a></li>
+<li><a href="#queued-event-listeners-and-database-transactions">Queued Event Listeners &amp; Database Transactions</a></li>
+<li><a href="#handling-failed-jobs">Handling Failed Jobs</a></li>
+</ul>
+</li>
+<li><a href="#dispatching-events">Dispatching Events</a></li>
+<li><a href="#event-subscribers">Event Subscribers</a><ul>
+<li><a href="#writing-event-subscribers">Writing Event Subscribers</a></li>
+<li><a href="#registering-event-subscribers">Registering Event Subscribers</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel's events provide a simple observer pattern implementation, allowing you to subscribe and listen for various events that occur within your application. Event classes are typically stored in the <code>app/Events</code> directory, while their listeners are stored in <code>app/Listeners</code>. Don't worry if you don't see these directories in your application as they will be created for you as you generate events and listeners using Artisan console commands.</p>
+<p>Events serve as a great way to decouple various aspects of your application, since a single event can have multiple listeners that do not depend on each other. For example, you may wish to send a Slack notification to your user each time an order has shipped. Instead of coupling your order processing code to your Slack notification code, you can raise an <code>App\Events\OrderShipped</code> event which a listener can receive and use to dispatch a Slack notification.</p>
+<p><a name="registering-events-and-listeners"></a></p>
+<h2 id="registering-events-listeners">Registering Events &amp; Listeners</h2>
+<p>The <code>App\Providers\EventServiceProvider</code> included with your Laravel application provides a convenient place to register all of your application's event listeners. The <code>listen</code> property contains an array of all events (keys) and their listeners (values). You may add as many events to this array as your application requires. For example, let's add an <code>OrderShipped</code> event:</p>
+<pre><code>use App\Events\OrderShipped;
+use App\Listeners\SendShipmentNotification;
+
+/**
+ * The event listener mappings for the application.
+ *
+ * @var array
+ */
+protected $listen = [
+    OrderShipped::class =&gt; [
+        SendShipmentNotification::class,
+    ],
+];
+</code></pre>
+<blockquote>
+<p>{tip} The <code>event:list</code> command may be used to display a list of all events and listeners registered by your application.</p>
+</blockquote>
+<p><a name="generating-events-and-listeners"></a></p>
+<h3 id="generating-events-listeners">Generating Events &amp; Listeners</h3>
+<p>Of course, manually creating the files for each event and listener is cumbersome. Instead, add listeners and events to your <code>EventServiceProvider</code> and use the <code>event:generate</code> Artisan command. This command will generate any events or listeners that are listed in your <code>EventServiceProvider</code> that do not already exist:</p>
+<pre><code>php artisan event:generate
+</code></pre>
+<p>Alternatively, you may use the <code>make:event</code> and <code>make:listener</code> Artisan commands to generate individual events and listeners:</p>
+<pre><code>php artisan make:event PodcastProcessed
+
+php artisan make:listener SendPodcastNotification --event=PodcastProcessed
+</code></pre>
+<p><a name="manually-registering-events"></a></p>
+<h3 id="manually-registering-events">Manually Registering Events</h3>
+<p>Typically, events should be registered via the <code>EventServiceProvider</code> <code>$listen</code> array; however, you may also register class or closure based event listeners manually in the <code>boot</code> method of your <code>EventServiceProvider</code>:</p>
+<pre><code>use App\Events\PodcastProcessed;
+use App\Listeners\SendPodcastNotification;
+use Illuminate\Support\Facades\Event;
+
+/**
+ * Register any other events for your application.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Event::listen(
+        PodcastProcessed::class,
+        [SendPodcastNotification::class, 'handle']
+    );
+
+    Event::listen(function (PodcastProcessed $event) {
+        //
+    });
+}
+</code></pre>
+<p><a name="queuable-anonymous-event-listeners"></a></p>
+<h4 id="queueable-anonymous-event-listeners">Queueable Anonymous Event Listeners</h4>
+<p>When registering closure based event listeners manually, you may wrap the listener closure within the <code>Illuminate\Events\queueable</code> function to instruct Laravel to execute the listener using the <a href="/docs/{{version}}/queues">queue</a>:</p>
+<pre><code>use App\Events\PodcastProcessed;
+use function Illuminate\Events\queueable;
+use Illuminate\Support\Facades\Event;
+
+/**
+ * Register any other events for your application.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Event::listen(queueable(function (PodcastProcessed $event) {
+        //
+    }));
+}
+</code></pre>
+<p>Like queued jobs, you may use the <code>onConnection</code>, <code>onQueue</code>, and <code>delay</code> methods to customize the execution of the queued listener:</p>
+<pre><code>Event::listen(queueable(function (PodcastProcessed $event) {
+    //
+})-&gt;onConnection('redis')-&gt;onQueue('podcasts')-&gt;delay(now()-&gt;addSeconds(10)));
+</code></pre>
+<p>If you would like to handle anonymous queued listener failures, you may provide a closure to the <code>catch</code> method while defining the <code>queueable</code> listener. This closure will receive the event instance and the <code>Throwable</code> instance that caused the listener's failure:</p>
+<pre><code>use App\Events\PodcastProcessed;
+use function Illuminate\Events\queueable;
+use Illuminate\Support\Facades\Event;
+use Throwable;
+
+Event::listen(queueable(function (PodcastProcessed $event) {
+    //
+})-&gt;catch(function (PodcastProcessed $event, Throwable $e) {
+    // The queued listener failed...
+}));
+</code></pre>
+<p><a name="wildcard-event-listeners"></a></p>
+<h4 id="wildcard-event-listeners">Wildcard Event Listeners</h4>
+<p>You may even register listeners using the <code>*</code> as a wildcard parameter, allowing you to catch multiple events on the same listener. Wildcard listeners receive the event name as their first argument and the entire event data array as their second argument:</p>
+<pre><code>Event::listen('event.*', function ($eventName, array $data) {
+    //
+});
+</code></pre>
+<p><a name="event-discovery"></a></p>
+<h3 id="event-discovery">Event Discovery</h3>
+<p>Instead of registering events and listeners manually in the <code>$listen</code> array of the <code>EventServiceProvider</code>, you can enable automatic event discovery. When event discovery is enabled, Laravel will automatically find and register your events and listeners by scanning your application's <code>Listeners</code> directory. In addition, any explicitly defined events listed in the <code>EventServiceProvider</code> will still be registered.</p>
+<p>Laravel finds event listeners by scanning the listener classes using PHP's reflection services. When Laravel finds any listener class method that begins with <code>handle</code>, Laravel will register those methods as event listeners for the event that is type-hinted in the method's signature:</p>
+<pre><code>use App\Events\PodcastProcessed;
+
+class SendPodcastNotification
+{
+    /**
+     * Handle the given event.
+     *
+     * @param  \App\Events\PodcastProcessed  $event
+     * @return void
+     */
+    public function handle(PodcastProcessed $event)
+    {
+        //
+    }
+}
+</code></pre>
+<p>Event discovery is disabled by default, but you can enable it by overriding the <code>shouldDiscoverEvents</code> method of your application's <code>EventServiceProvider</code>:</p>
+<pre><code>/**
+ * Determine if events and listeners should be automatically discovered.
+ *
+ * @return bool
+ */
+public function shouldDiscoverEvents()
+{
+    return true;
+}
+</code></pre>
+<p>By default, all listeners within your application's <code>app/Listeners</code> directory will be scanned. If you would like to define additional directories to scan, you may override the <code>discoverEventsWithin</code> method in your <code>EventServiceProvider</code>:</p>
+<pre><code>/**
+ * Get the listener directories that should be used to discover events.
+ *
+ * @return array
+ */
+protected function discoverEventsWithin()
+{
+    return [
+        $this-&gt;app-&gt;path('Listeners'),
+    ];
+}
+</code></pre>
+<p><a name="event-discovery-in-production"></a></p>
+<h4 id="event-discovery-in-production">Event Discovery In Production</h4>
+<p>In production, it is not efficient for the framework to scan all of your listeners on every request. Therefore, during your deployment process, you should run the <code>event:cache</code> Artisan command to cache a manifest of all of your application's events and listeners. This manifest will be used by the framework to speed up the event registration process. The <code>event:clear</code> command may be used to destroy the cache.</p>
+<p><a name="defining-events"></a></p>
+<h2 id="defining-events">Defining Events</h2>
+<p>An event class is essentially a data container which holds the information related to the event. For example, let's assume an <code>App\Events\OrderShipped</code> event receives an <a href="/docs/{{version}}/eloquent">Eloquent ORM</a> object:</p>
+<pre><code>&lt;?php
+
+namespace App\Events;
+
+use App\Models\Order;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class OrderShipped
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    /**
+     * The order instance.
+     *
+     * @var \App\Models\Order
+     */
+    public $order;
+
+    /**
+     * Create a new event instance.
+     *
+     * @param  \App\Models\Order  $order
+     * @return void
+     */
+    public function __construct(Order $order)
+    {
+        $this-&gt;order = $order;
+    }
+}
+</code></pre>
+<p>As you can see, this event class contains no logic. It is a container for the <code>App\Models\Order</code> instance that was purchased. The <code>SerializesModels</code> trait used by the event will gracefully serialize any Eloquent models if the event object is serialized using PHP's <code>serialize</code> function, such as when utilizing <a href="#queued-event-listeners">queued listeners</a>.</p>
+<p><a name="defining-listeners"></a></p>
+<h2 id="defining-listeners">Defining Listeners</h2>
+<p>Next, let's take a look at the listener for our example event. Event listeners receive event instances in their <code>handle</code> method. The <code>event:generate</code> and <code>make:listener</code> Artisan commands will automatically import the proper event class and type-hint the event on the <code>handle</code> method. Within the <code>handle</code> method, you may perform any actions necessary to respond to the event:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+
+class SendShipmentNotification
+{
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  \App\Events\OrderShipped  $event
+     * @return void
+     */
+    public function handle(OrderShipped $event)
+    {
+        // Access the order using $event-&gt;order...
+    }
+}
+</code></pre>
+<blockquote>
+<p>{tip} Your event listeners may also type-hint any dependencies they need on their constructors. All event listeners are resolved via the Laravel <a href="/docs/{{version}}/container">service container</a>, so dependencies will be injected automatically.</p>
+</blockquote>
+<p><a name="stopping-the-propagation-of-an-event"></a></p>
+<h4 id="stopping-the-propagation-of-an-event">Stopping The Propagation Of An Event</h4>
+<p>Sometimes, you may wish to stop the propagation of an event to other listeners. You may do so by returning <code>false</code> from your listener's <code>handle</code> method.</p>
+<p><a name="queued-event-listeners"></a></p>
+<h2 id="queued-event-listeners">Queued Event Listeners</h2>
+<p>Queueing listeners can be beneficial if your listener is going to perform a slow task such as sending an email or making an HTTP request. Before using queued listeners, make sure to <a href="/docs/{{version}}/queues">configure your queue</a> and start a queue worker on your server or local development environment.</p>
+<p>To specify that a listener should be queued, add the <code>ShouldQueue</code> interface to the listener class. Listeners generated by the <code>event:generate</code> and <code>make:listener</code> Artisan commands already have this interface imported into the current namespace so you can use it immediately:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    //
+}
+</code></pre>
+<p>That's it! Now, when an event handled by this listener is dispatched, the listener will automatically be queued by the event dispatcher using Laravel's <a href="/docs/{{version}}/queues">queue system</a>. If no exceptions are thrown when the listener is executed by the queue, the queued job will automatically be deleted after it has finished processing.</p>
+<p><a name="customizing-the-queue-connection-queue-name"></a></p>
+<h4 id="customizing-the-queue-connection-queue-name">Customizing The Queue Connection &amp; Queue Name</h4>
+<p>If you would like to customize the queue connection, queue name, or queue delay time of an event listener, you may define the <code>$connection</code>, <code>$queue</code>, or <code>$delay</code> properties on your listener class:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    /**
+     * The name of the connection the job should be sent to.
+     *
+     * @var string|null
+     */
+    public $connection = 'sqs';
+
+    /**
+     * The name of the queue the job should be sent to.
+     *
+     * @var string|null
+     */
+    public $queue = 'listeners';
+
+    /**
+     * The time (seconds) before the job should be processed.
+     *
+     * @var int
+     */
+    public $delay = 60;
+}
+</code></pre>
+<p>If you would like to define the listener's queue connection or queue name at runtime, you may define <code>viaConnection</code> or <code>viaQueue</code> methods on the listener:</p>
+<pre><code>/**
+ * Get the name of the listener's queue connection.
+ *
+ * @return string
+ */
+public function viaConnection()
+{
+    return 'sqs';
+}
+
+/**
+ * Get the name of the listener's queue.
+ *
+ * @return string
+ */
+public function viaQueue()
+{
+    return 'listeners';
+}
+</code></pre>
+<p><a name="conditionally-queueing-listeners"></a></p>
+<h4 id="conditionally-queueing-listeners">Conditionally Queueing Listeners</h4>
+<p>Sometimes, you may need to determine whether a listener should be queued based on some data that are only available at runtime. To accomplish this, a <code>shouldQueue</code> method may be added to a listener to determine whether the listener should be queued. If the <code>shouldQueue</code> method returns <code>false</code>, the listener will not be executed:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderCreated;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class RewardGiftCard implements ShouldQueue
+{
+    /**
+     * Reward a gift card to the customer.
+     *
+     * @param  \App\Events\OrderCreated  $event
+     * @return void
+     */
+    public function handle(OrderCreated $event)
+    {
+        //
+    }
+
+    /**
+     * Determine whether the listener should be queued.
+     *
+     * @param  \App\Events\OrderCreated  $event
+     * @return bool
+     */
+    public function shouldQueue(OrderCreated $event)
+    {
+        return $event-&gt;order-&gt;subtotal &gt;= 5000;
+    }
+}
+</code></pre>
+<p><a name="manually-interacting-with-the-queue"></a></p>
+<h3 id="manually-interacting-with-the-queue">Manually Interacting With The Queue</h3>
+<p>If you need to manually access the listener's underlying queue job's <code>delete</code> and <code>release</code> methods, you may do so using the <code>Illuminate\Queue\InteractsWithQueue</code> trait. This trait is imported by default on generated listeners and provides access to these methods:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    /**
+     * Handle the event.
+     *
+     * @param  \App\Events\OrderShipped  $event
+     * @return void
+     */
+    public function handle(OrderShipped $event)
+    {
+        if (true) {
+            $this-&gt;release(30);
+        }
+    }
+}
+</code></pre>
+<p><a name="queued-event-listeners-and-database-transactions"></a></p>
+<h3 id="queued-event-listeners-database-transactions">Queued Event Listeners &amp; Database Transactions</h3>
+<p>When queued listeners are dispatched within database transactions, they may be processed by the queue before the database transaction has committed. When this happens, any updates you have made to models or database records during the database transaction may not yet be reflected in the database. In addition, any models or database records created within the transaction may not exist in the database. If your listener depends on these models, unexpected errors can occur when the job that dispatches the queued listener is processed.</p>
+<p>If your queue connection's <code>after_commit</code> configuration option is set to <code>false</code>, you may still indicate that a particular queued listener should be dispatched after all open database transactions have been committed by defining an <code>$afterCommit</code> property on the listener class:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    public $afterCommit = true;
+}
+</code></pre>
+<blockquote>
+<p>{tip} To learn more about working around these issues, please review the documentation regarding <a href="/docs/{{version}}/queues#jobs-and-database-transactions">queued jobs and database transactions</a>.</p>
+</blockquote>
+<p><a name="handling-failed-jobs"></a></p>
+<h3 id="handling-failed-jobs">Handling Failed Jobs</h3>
+<p>Sometimes your queued event listeners may fail. If queued listener exceeds the maximum number of attempts as defined by your queue worker, the <code>failed</code> method will be called on your listener. The <code>failed</code> method receives the event instance and the <code>Throwable</code> that caused the failure:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    /**
+     * Handle the event.
+     *
+     * @param  \App\Events\OrderShipped  $event
+     * @return void
+     */
+    public function handle(OrderShipped $event)
+    {
+        //
+    }
+
+    /**
+     * Handle a job failure.
+     *
+     * @param  \App\Events\OrderShipped  $event
+     * @param  \Throwable  $exception
+     * @return void
+     */
+    public function failed(OrderShipped $event, $exception)
+    {
+        //
+    }
+}
+</code></pre>
+<p><a name="specifying-queued-listener-maximum-attempts"></a></p>
+<h4 id="specifying-queued-listener-maximum-attempts">Specifying Queued Listener Maximum Attempts</h4>
+<p>If one of your queued listeners is encountering an error, you likely do not want it to keep retrying indefinitely. Therefore, Laravel provides various ways to specify how many times or for how long a listener may be attempted.</p>
+<p>You may define <code>$tries</code> property on your listener class to specify how many times the listener may be attempted before it is considered to have failed:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class SendShipmentNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    /**
+     * The number of times the queued listener may be attempted.
+     *
+     * @var int
+     */
+    public $tries = 5;
+}
+</code></pre>
+<p>As an alternative to defining how many times a listener may be attempted before it fails, you may define a time at which the listener should no longer be attempted. This allows a listener to be attempted any number of times within a given time frame. To define the time at which a listener should no longer be attempted, add a <code>retryUntil</code> method to your listener class. This method should return a <code>DateTime</code> instance:</p>
+<pre><code>/**
+ * Determine the time at which the listener should timeout.
+ *
+ * @return \DateTime
+ */
+public function retryUntil()
+{
+    return now()-&gt;addMinutes(5);
+}
+</code></pre>
+<p><a name="dispatching-events"></a></p>
+<h2 id="dispatching-events">Dispatching Events</h2>
+<p>To dispatch an event, you may call the static <code>dispatch</code> method on the event. This method is made available on the event by the <code>Illuminate\Foundation\Events\Dispatchable</code> trait. Any arguments passed to the <code>dispatch</code> method will be passed to the event's constructor:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Events\OrderShipped;
+use App\Http\Controllers\Controller;
+use App\Models\Order;
+use Illuminate\Http\Request;
+
+class OrderShipmentController extends Controller
+{
+    /**
+     * Ship the given order.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $order = Order::findOrFail($request-&gt;order_id);
+
+        // Order shipment logic...
+
+        OrderShipped::dispatch($order);
+    }
+}
+</code></pre>
+<blockquote>
+<p>{tip} When testing, it can be helpful to assert that certain events were dispatched without actually triggering their listeners. Laravel's <a href="/docs/{{version}}/mocking#event-fake">built-in testing helpers</a> makes it a cinch.</p>
+</blockquote>
+<p><a name="event-subscribers"></a></p>
+<h2 id="event-subscribers">Event Subscribers</h2>
+<p><a name="writing-event-subscribers"></a></p>
+<h3 id="writing-event-subscribers">Writing Event Subscribers</h3>
+<p>Event subscribers are classes that may subscribe to multiple events from within the subscriber class itself, allowing you to define several event handlers within a single class. Subscribers should define a <code>subscribe</code> method, which will be passed an event dispatcher instance. You may call the <code>listen</code> method on the given dispatcher to register event listeners:</p>
+<pre><code>&lt;?php
+
+namespace App\Listeners;
+
+class UserEventSubscriber
+{
+    /**
+     * Handle user login events.
+     */
+    public function handleUserLogin($event) {}
+
+    /**
+     * Handle user logout events.
+     */
+    public function handleUserLogout($event) {}
+
+    /**
+     * Register the listeners for the subscriber.
+     *
+     * @param  \Illuminate\Events\Dispatcher  $events
+     * @return void
+     */
+    public function subscribe($events)
+    {
+        $events-&gt;listen(
+            'Illuminate\Auth\Events\Login',
+            [UserEventSubscriber::class, 'handleUserLogin']
+        );
+
+        $events-&gt;listen(
+            'Illuminate\Auth\Events\Logout',
+            [UserEventSubscriber::class, 'handleUserLogout']
+        );
+    }
+}
+</code></pre>
+<p><a name="registering-event-subscribers"></a></p>
+<h3 id="registering-event-subscribers">Registering Event Subscribers</h3>
+<p>After writing the subscriber, you are ready to register it with the event dispatcher. You may register subscribers using the <code>$subscribe</code> property on the <code>EventServiceProvider</code>. For example, let's add the <code>UserEventSubscriber</code> to the list:</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use App\Listeners\UserEventSubscriber;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [
+        //
+    ];
+
+    /**
+     * The subscriber classes to register.
+     *
+     * @var array
+     */
+    protected $subscribe = [
+        UserEventSubscriber::class,
+    ];
+}
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../contracts/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kontraktlar" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Kontraktlar
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../filesystem/" class="md-footer__link md-footer__link--next" aria-label="Next: File Storage" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              File Storage
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 <a href="https://vodiylik.uz/">Shukrullo Turgunov</a>.
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
+      
+    
+  </body>
+</html>
